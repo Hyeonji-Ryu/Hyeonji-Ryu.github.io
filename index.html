@@ -178,6 +178,81 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/03/03/chapter-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyeonji Ryu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI & ML">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/03/chapter-6/" class="post-title-link" itemprop="url">결과 있는 함수</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+              
+
+              <time title="Post created: 2020-03-03 22:30:30 / Updated at: 23:24:06" itemprop="dateCreated datePublished" datetime="2020-03-03T22:30:30+09:00">2020-03-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Think-Julia/" itemprop="url" rel="index">
+                    <span itemprop="name">Think Julia</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
+</blockquote>
+<p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap06" target="_blank" rel="noopener">Fruitful Functions</a>를 한글로 요약 정리한 글입니다.</p>
+<!-- excerpt -->
+
+<h2 id="결과-있는-함수-Fruitful-Functions"><a href="#결과-있는-함수-Fruitful-Functions" class="headerlink" title="결과 있는 함수 (Fruitful Functions)"></a>결과 있는 함수 (Fruitful Functions)</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
     <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/03/03/chapter-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -593,7 +668,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-03 22:20:13" itemprop="dateModified" datetime="2020-03-03T22:20:13+09:00">2020-03-03</time>
+                <time title="Updated at: 2020-03-03 22:34:06" itemprop="dateModified" datetime="2020-03-03T22:34:06+09:00">2020-03-03</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -711,8 +786,8 @@
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ERROR: <span class="built_in">UndefVarError</span>: concat not defined</span><br><span class="line">Stacktrace:</span><br><span class="line"> [<span class="number">1</span>] printtwice at ./REPL[<span class="number">1</span>]:<span class="number">2</span> [inlined]</span><br><span class="line"> [<span class="number">2</span>] cattwice(::<span class="built_in">String</span>, ::<span class="built_in">String</span>) at ./REPL[<span class="number">2</span>]:<span class="number">3</span></span><br></pre></td></tr></table></figure>
 
 <p>위처럼 함수 목록들을 통해 오류가 발생한 프로그램 파일과 함수를 알려주는 것을 스택 추적이라고 한다<br>스택 추척의 함수 목록 순서는 스택 다이어그램의 프레임 순서와 반대이다.</p>
-<h3 id="유익한-함수와-빈-함수"><a href="#유익한-함수와-빈-함수" class="headerlink" title="유익한 함수와 빈 함수"></a>유익한 함수와 빈 함수</h3><p>우리가 사용하는 어떤 함수는 결괏값을 반환하지만 어떤 함수는 결과를 반환하지 않는다. 우리는 전자를 유익한 함수(fruitful function)이라고 하며, 후자를 빈 함수(void function)이라고 한다.</p>
-<p>예로 유익한 함수를 먼저 본다면,</p>
+<h3 id="결과-있는-함수와-빈-함수"><a href="#결과-있는-함수와-빈-함수" class="headerlink" title="결과 있는 함수와 빈 함수"></a>결과 있는 함수와 빈 함수</h3><p>우리가 사용하는 어떤 함수는 결괏값을 반환하지만 어떤 함수는 결과를 반환하지 않는다. 우리는 전자를 결과 있는 함수(fruitful function)이라고 하며, 후자를 빈 함수(void function)이라고 한다.</p>
+<p>예로 결과 있는 함수를 먼저 본다면,</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">golden</span> = (sqrt(<span class="number">5</span>) + <span class="number">1</span>) / <span class="number">2</span></span><br></pre></td></tr></table></figure>
 
 <p>위의 예시의 <code>sqrt()</code>는 유익한 함수로서 반환 값을 가지고 있기 때문에 바로 계산이 가능하다.<br>대화식 모드에서 함수를 호출하면, 다음과 같은 결과를 도출한다.</p>
@@ -724,7 +799,7 @@
 <p>위의 스크립트는 아래의 값은 산출만 한다. (저장하지 않는다.)</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2.23606797749979</span></span><br></pre></td></tr></table></figure>
 
-<p>따라서  스크립트 모드에서는 그다지 유익한 함수로서 작동하지 않는다.</p>
+<p>따라서 스크립트 모드에서는 그다지 유익한 함수로서 작동하지 않는다.</p>
 <p>빈 함수는 화면에 값을 표시하거나 다른 영향을 줄 수는 있지만 반환 값은 없다. 아래의 예시를 보자.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; result = printtwice(<span class="string">"Bing"</span>)</span><br><span class="line">Bing</span><br><span class="line">Bing</span><br><span class="line">julia&gt; show(result)</span><br><span class="line"><span class="literal">nothing</span></span><br></pre></td></tr></table></figure>
 
@@ -1221,7 +1296,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
