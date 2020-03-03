@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="책 ‘Think Julia’를 바탕으로 Julia의 기초에 대해서 알아보겠습니다.  글을 시작하기에 앞서 이 포스트는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Case Study: Interfac">
+  <meta name="description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Case Study: Interface Design를 한글로 요약 정리한 글입니다.   사례 연구: 인터페이스 디자인">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3. 인터페이스 디자인">
 <meta property="og:url" content="https://hyeonji-ryu.github.io/2020/03/02/chapter-4/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
-<meta property="og:description" content="책 ‘Think Julia’를 바탕으로 Julia의 기초에 대해서 알아보겠습니다.  글을 시작하기에 앞서 이 포스트는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Case Study: Interfac">
+<meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Case Study: Interface Design를 한글로 요약 정리한 글입니다.   사례 연구: 인터페이스 디자인">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-02T13:11:41.000Z">
-<meta property="article:modified_time" content="2020-03-02T10:40:33.494Z">
+<meta property="article:modified_time" content="2020-03-03T09:19:18.636Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta name="twitter:card" content="summary">
 
@@ -139,11 +139,6 @@
     <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
 
   </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>About</a>
-
-  </li>
         <li class="menu-item menu-item-categories">
 
     <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리</a>
@@ -204,10 +199,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">작성일</span>
-              
 
-              <time title="Post created: 2020-03-02 22:11:41 / Updated at: 19:40:33" itemprop="dateCreated datePublished" datetime="2020-03-02T22:11:41+09:00">2020-03-02</time>
+              <time title="Post created: 2020-03-02 22:11:41" itemprop="dateCreated datePublished" datetime="2020-03-02T22:11:41+09:00">2020-03-02</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-03-03 18:19:18" itemprop="dateModified" datetime="2020-03-03T18:19:18+09:00">2020-03-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -231,11 +232,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>책 ‘Think Julia’를 바탕으로 Julia의 기초에 대해서 알아보겠습니다.</p>
-<blockquote>
-<p>글을 시작하기에 앞서 이 포스트는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
+        <blockquote>
+<p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
 </blockquote>
 <p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap04" target="_blank" rel="noopener">Case Study: Interface Design</a>를 한글로 요약 정리한 글입니다.</p>
+<!-- excerpt -->
+
 <h2 id="사례-연구-인터페이스-디자인"><a href="#사례-연구-인터페이스-디자인" class="headerlink" title="사례 연구: 인터페이스 디자인"></a>사례 연구: 인터페이스 디자인</h2><p>이번 장에서는 함수들을 설계하는 과정들을 볼 수 있는 사례 연구를 살펴볼 것이다.</p>
 <p>이를 진행하기 위해서는 그림을 생성하는 거북이 그래픽(turtle graphics)을 사용해야 한다. 거북이 그래픽은 표준 라이브러리에 포함되어 있지 않기 때문에 해당 모듈을 줄리아 설정에 추가해야 한다.</p>
 <h3 id="거북이"><a href="#거북이" class="headerlink" title="거북이"></a>거북이</h3><p>모듈(module)은 관련 함수들을 모아 놓은 파일이다. 줄리아는 표준 라이브러리에서 몇 가지 모듈을 제공하고 있으며, 다른 패키지들도 모듈로 추가할 수 있다.</p>
@@ -366,7 +368,10 @@
     <a href="/2020/02/29/Chapter-3/" rel="prev" title="2. 함수">
       <i class="fa fa-chevron-left"></i> 2. 함수
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/03/chapter-5/" rel="next" title="4. 조건부와 재귀">
+      4. 조건부와 재귀 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -440,7 +445,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
