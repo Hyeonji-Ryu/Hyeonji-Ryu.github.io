@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Fruitful Functions를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-03T13:30:30.000Z">
-<meta property="article:modified_time" content="2020-03-05T06:55:54.499Z">
+<meta property="article:modified_time" content="2020-03-05T06:57:53.591Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -216,7 +216,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-05 15:55:54" itemprop="dateModified" datetime="2020-03-05T15:55:54+09:00">2020-03-05</time>
+                <time title="Updated at: 2020-03-05 15:57:53" itemprop="dateModified" datetime="2020-03-05T15:57:53+09:00">2020-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -262,7 +262,7 @@
 <p><strong>Tip</strong><br>줄리아는 절대값을 반환해주는 <code>abs()</code>를 내장하고 있다.</p>
 <h3 id="점진적인-개발-Incremental-Development"><a href="#점진적인-개발-Incremental-Development" class="headerlink" title="점진적인 개발 (Incremental Development)"></a>점진적인 개발 (Incremental Development)</h3><p>크고 복잡한 함수들을 작성할수록 디버깅에 많은 시간을 쏟아야 할 것이다.<br>복잡한 프로그램들을 점점 향상시키기 위해서, 점진적인 개발이라는 과정을 배우는 것은 중요하다.<br>점진적인 개발의 목표는 작은 단위의 코드들을 계속 테스트해야하고 수정해야하는 디버깅에 소요되는 시간을 줄이는 것이다.<br>예로 두 점인 (x1,y1)와 (x2,y2)의 거리를 구하려고 한다. 피타고라스 정리에 따르면 수학식은 다음과 같다.</p>
 <script type="math/tex; mode=display">\begin{equation} \label{eq1}
-d=sqrt{(x2-x1)^2+(y2-y1)^2}
+d= sqrt{(x2-x1)^2+(y2-y1)^2}
 \end{equation}</script><p>위의 수학식을 줄리아에서 구현하기 위해서는 어떻게 해야할까? 첫 번째로는 무엇을 인수로 제공하며, 얻으려는 반환 값은 무엇인지 정하는 것이다.<br>위의 사례에서는 두 점인 (x1,y1)와 (x2,y2)을 인수로 제공하면 된다. 반환 값의 경우는 소수로 표현된 거리를 얻을 것이다.<br>인수와 반환 값을 결정하면 바로 아래와 같은 코드를 완성할 수 있다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> distance(x₁, y₁, x₂, y₂)</span><br><span class="line">    <span class="number">0.0</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>위의 코드는 거리를 계산하지는 않으며, 본문에 따라 항상 0을 반환한다. 그러나 본문에 다른 명령문을 추가하기 전에 코드가 작동하는지 확인할 수 있다.<br>작동을 확인하기 위해 아래의 코드를 입력해보자.</p>
