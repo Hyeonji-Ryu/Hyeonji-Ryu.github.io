@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Fruitful Functions를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-03T13:30:30.000Z">
-<meta property="article:modified_time" content="2020-03-04T15:03:04.524Z">
+<meta property="article:modified_time" content="2020-03-05T06:52:09.596Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -216,7 +216,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-05 00:03:04" itemprop="dateModified" datetime="2020-03-05T00:03:04+09:00">2020-03-05</time>
+                <time title="Updated at: 2020-03-05 15:52:09" itemprop="dateModified" datetime="2020-03-05T15:52:09+09:00">2020-03-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -308,11 +308,13 @@ d=sqrt{(x2-x1)^2+(y2-y1)^2}
 <p>프로그래밍 언어가 수학 계산식을 표현할 수 있다는 사실은 수학자 앨런 튜링(Alan Turing)에 의해서 증명되었으며, 해당 이론을 튜링 이론이라고 한다. 만약 튜링 이론에 관심이 있다면 Michael Sipser의 저서인 Introduction to the Theory of Computation을 추천한다.</p>
 <p>지금부터는 우리가 배운 도구들을 사용하여 만들어진 몇 가지 재귀 함수를 살펴볼 것이다.<br>재귀 정의는 어떤 단어를 설명하는데 있어 그 단어를 선택한다는 점에서 순환 정의와 유사하다.</p>
 <p><strong>vorpal</strong><br>An adjective used to describe something that is vorpal.</p>
-<p>위의 예시를 보면 vorpal이란 단어를 정의하는데 vorpal이 쓰이는 것을 볼 수 있다. 재귀함수도 이와 유사한 구조를 가지고 있다. 재귀 함수의 예로 계승 함수(factorial function)을 살펴보자.</p>
-<p>(<script type="math/tex">\begin{equation} \label{eq1}
-n1=
-\end{equation}</script></p>
-<p>위의 정의는 <code>n</code>이 0이면 1을 반환하고, 만약 <code>n</code>이 0이상이라면 <code>n</code>과 <code>(n-1)!</code>을 곱하라고 설명한다.</p>
+<p>위의 예시를 보면 vorpal이란 단어를 정의하는데 vorpal이란 단어가 쓰이는 것을 볼 수 있다. 재귀함수도 이와 유사한 구조를 가지고 있다. 재귀 함수의 예로 계승 함수(factorial function)을 살펴보자.</p>
+<script type="math/tex; mode=display">\begin{equation}\label{eq2}
+
+n! = \Big\{1 if n=0
+n(n-1)! if n>0}
+
+\end{equation}</script><p>위의 정의는 <code>n</code>이 0이면 1을 반환하고, 만약 <code>n</code>이 0이상이라면 <code>n</code>과 <code>(n-1)!</code>을 곱하라고 설명한다.</p>
 <p>예를 들면 3!은 3과 2!를 곱하고, 2!는 2와 1!을 곱하며, 1!는 1과 0을 곱한다.<br>따라서 3!는 3<em>2</em>1*1이기에 6인 것이다.</p>
 <p>재귀 정의를 이용하여 위의 수학식을 함수로 작성할 수 있다. 첫 번째 단계는 인수가 무엇인지 결정하는 것이다. 이 경우에서는 정수가 인수로 사용된다는 것이 명확하다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> fact(n) <span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -331,7 +333,7 @@ n1=
 <li><code>2!</code>가 <code>2</code>을 반환했기 때문에 <code>3</code>과 곱해져 <code>6</code>을 반환한다.</li>
 </ul>
 <p>결국 마지막으로 작동된 명령문의 결과값인 6이 반환 값으로 보여준다. 또한 내부 변수인 <code>result</code>나 <code>recurse</code>도 함수가 작동을 멈추는 동시에 사라진다.</p>
-<p><strong>Tip</strong><br>줄리아는 계승 함수(actorial function)를 제공한다.</p>
+<p><strong>Tip</strong><br>줄리아는 계승 함수(factorial function)를 제공한다.</p>
 <h3 id="믿음의-도약-Leap-of-Faith"><a href="#믿음의-도약-Leap-of-Faith" class="headerlink" title="믿음의 도약 (Leap of Faith)"></a>믿음의 도약 (Leap of Faith)</h3><p>실행 흐름을 따르는 것은 프로그램을 읽는 하나의 방법이다. 그러나 때에 따라선 믿음의 도약이라고 부르는 방법도 사용할 수 있다. 믿음의 도약이란 함수가 어떻게 작동하는지를 파악하기 전에 함수를 호출하여 올바른 결괏값을 도출하는지 확인하여 그 함수가 잘 작동하고 있다고 믿는 것이다. 즉, 프로그램의 실행 흐름을 보는 것이 아니라 결괏값만을 보고 프로그램이 올바르게 작동하고 있는지 파악하는 것이다.</p>
 <p>실제로 내장 함수를 사용할 때 우리는 이 방법을 많이 사용한다. 에를 들어 <code>cos()</code>나 <code>exp()</code>를 사용할 때, 해당 함수의 본문을 검사하지 않으며, 결괏값만 보고 믿음을 주는 것이다. 재귀 프로그램 또한 실행 흐름을 따르는 대신에 재귀 호출이 되었다고 가정하여 결괏값을 확인한다.</p>
 <h3 id="연습해보기"><a href="#연습해보기" class="headerlink" title="연습해보기"></a>연습해보기</h3><p>가장 재귀적으로 정의된 가장 보편적인 수학 표현식 중 하나인 피보나치를 작성해보자. 피보나치에 대한 정의는 <a href="https://en.wikipedia.org/wiki/Fibonacci_number" target="_blank" rel="noopener">이 링크</a>를 확인하면 된다.</p>
