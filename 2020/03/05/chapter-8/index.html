@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Strings를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-05T12:13:37.000Z">
-<meta property="article:modified_time" content="2020-03-07T07:51:12.688Z">
+<meta property="article:modified_time" content="2020-03-07T08:44:48.633Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -216,7 +216,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-07 16:51:12" itemprop="dateModified" datetime="2020-03-07T16:51:12+09:00">2020-03-07</time>
+                <time title="Updated at: 2020-03-07 17:44:48" itemprop="dateModified" datetime="2020-03-07T17:44:48+09:00">2020-03-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; i = <span class="number">1</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line">julia&gt; fruit[i+<span class="number">1</span>]</span><br><span class="line"><span class="string">'a'</span>: ASCII/Unicode U+<span class="number">0061</span> (category Ll: Letter, lowercase)</span><br><span class="line">julia&gt; fruit[<span class="keyword">end</span>-<span class="number">1</span>]</span><br><span class="line"><span class="string">'n'</span>: ASCII/Unicode U+<span class="number">006</span><span class="literal">e</span> (category Ll: Letter, lowercase)</span><br></pre></td></tr></table></figure>
 <p>그러나 인덱스 값이 정수가 아니라면 오류 메시지가 뜬다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; letter = fruit[<span class="number">1.5</span>]</span><br><span class="line">ERROR: <span class="built_in">MethodError</span>: no method matching getindex(::<span class="built_in">String</span>, ::<span class="built_in">Float64</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="length"><a href="#length" class="headerlink" title="length"></a><code>length</code></h3><p><code>length</code>는 내장 함수로 캐릭터들의 길이를 반환한다.</p>
+<h3 id="length"><a href="#length" class="headerlink" title="length"></a><code>length</code></h3><p><code>length</code>는 내장 함수로 문자열 안에 있는 문자들의 개수를 반환한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; fruits = <span class="string">"🍌 🍎 🍐"</span></span><br><span class="line"><span class="string">"🍌 🍎 🍐"</span></span><br><span class="line">julia&gt; len = length(fruits)</span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
 <p>위의 예시를 보면 <code>length</code>는 이모티콘 3개와 그 사이의 띄어쓰기를 포함하여 총 길이를 <code>5</code>라고 반환한다.</p>
 <p>문자열의 마지막 문자를 얻고 싶다면, 아래의 코드를 입력하면 된다.</p>
@@ -277,14 +277,14 @@
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">index = firstindex(fruits)</span><br><span class="line"><span class="keyword">while</span> index &lt;= sizeof(fruits)</span><br><span class="line">    letter = fruits[index]</span><br><span class="line">    println(letter)</span><br><span class="line">    <span class="keyword">global</span> index = nextind(fruits, index)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>위의 코드는 변수 <code>index</code>에 <code>fruits</code>의 첫 번째 인덱스를 할당한다. 그 후 <code>while</code>루프 조건으로 넘어간다. 조건은 <code>index</code>가 <code>fruits</code>의 인덱스 총 길이보다 작으면 <code>true</code>을 도출하여 루프를 실행하거나, 크면 <code>false</code>를 도출하여 루프를 종료한다.</p>
 <p><code>firstindex()</code>는 인수의 첫 번째 인덱스를 반환한다. 키워드 <code>global</code>는 기존에 정의했던 변수에 새로운 값을 재할당한다.</p>
-<h3 id="문자열-슬라이스-String-Slices"><a href="#문자열-슬라이스-String-Slices" class="headerlink" title="문자열 슬라이스 (String Slices)"></a>문자열 슬라이스 (String Slices)</h3><p>문자열의 일부를 슬라이스(Slices)라고 부른다. 슬라이스는 캐릭터를 축출하는 것과 비슷핟다.</p>
+<h3 id="문자열-슬라이스-String-Slices"><a href="#문자열-슬라이스-String-Slices" class="headerlink" title="문자열 슬라이스 (String Slices)"></a>문자열 슬라이스 (String Slices)</h3><p>문자열의 일부를 슬라이스(Slices)라고 부른다. 슬라이스는 문자를 축출하는 것과 비슷하다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; str = <span class="string">"Julius Caesar"</span>;</span><br><span class="line"></span><br><span class="line">julia&gt; str[<span class="number">1</span>:<span class="number">6</span>]</span><br><span class="line"><span class="string">"Julius"</span></span><br></pre></td></tr></table></figure>
 <p>연산자 <code>[n:m]</code>은 인덱스 <code>n</code>번째 바이트부터 <code>m</code>번째 바이트까지의 문자들을 반환한다. 그렇기 때문에  인덱스 위치를 잘 파악하고 있어야 한다.</p>
-<p>키워드 <code>end</code>는 마지막 문자열을 반환한다.</p>
+<p>키워드 <code>end</code>는 마지막 문자를 반환한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; str[<span class="number">8</span>:<span class="keyword">end</span>]</span><br><span class="line"><span class="string">"Caesar"</span></span><br></pre></td></tr></table></figure>
-<p>만약에 첫 번째 인덱스의 수가 두 번째 인덱스의 수보다 크다면 공백(empty string)을 반환한다.</p>
+<p>만약에 첫 번째 인덱스의 수가 두 번째 인덱스의 수보다 크다면 빈 문자(empty string)를 반환한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; str[<span class="number">8</span>:<span class="number">7</span>]</span><br><span class="line"><span class="string">""</span></span><br></pre></td></tr></table></figure>
-<p>공백(empty string)은 어떤 캐릭터도 포함하지 않고 길이도 0이지만, 다른 문자열과 동일하게 사용할 수 있다.</p>
+<p>빈 문자(empty string)는 어떤 캐릭터도 포함하지 않고 길이도 0이지만, 다른 문자열과 동일하게 사용할 수 있다.</p>
 <h3 id="문자열은-변경-불가능-Strings-Are-Immutable"><a href="#문자열은-변경-불가능-Strings-Are-Immutable" class="headerlink" title="문자열은 변경 불가능 (Strings Are Immutable)"></a>문자열은 변경 불가능 (Strings Are Immutable)</h3><p>문자열을 변경하기 위해서 변수 옆에 연산자<code>[]</code>를 사용해보면 다음과 같은 결과를 얻을 수 있다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; greeting = <span class="string">"Hello, world!"</span></span><br><span class="line"><span class="string">"Hello, world!"</span></span><br><span class="line">julia&gt; greeting[<span class="number">1</span>] = <span class="string">'J'</span></span><br><span class="line">ERROR: <span class="built_in">MethodError</span>: no method matching setindex!(::<span class="built_in">String</span>, ::<span class="built_in">Char</span>, ::<span class="built_in">Int64</span>)</span><br></pre></td></tr></table></figure>
 <p>위와 같은 오류가 발생하는 이유는 기존에 있던 문자열을 변경할 수 없기 때문이다. 가장 좋은 방법은 기존에 있던 문자열을 새로운 문자열로 재할당하는 것이다.</p>
