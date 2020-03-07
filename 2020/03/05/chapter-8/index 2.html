@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Strings를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-05T12:13:37.000Z">
-<meta property="article:modified_time" content="2020-03-07T07:51:12.688Z">
+<meta property="article:modified_time" content="2020-03-06T10:00:06.475Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -216,7 +216,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-07 16:51:12" itemprop="dateModified" datetime="2020-03-07T16:51:12+09:00">2020-03-07</time>
+                <time title="Updated at: 2020-03-06 19:00:06" itemprop="dateModified" datetime="2020-03-06T19:00:06+09:00">2020-03-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -290,7 +290,7 @@
 <p>위와 같은 오류가 발생하는 이유는 기존에 있던 문자열을 변경할 수 없기 때문이다. 가장 좋은 방법은 기존에 있던 문자열을 새로운 문자열로 재할당하는 것이다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; greeting = <span class="string">"J"</span> * greeting[<span class="number">2</span>:<span class="keyword">end</span>]</span><br><span class="line"><span class="string">"Jello, world!"</span></span><br></pre></td></tr></table></figure>
 <p>이 예시에서는 새로운 첫 글자를 <code>greeting</code>애 연결한 후 재할당한다. 원래 문자열 내부를 변경하는 것은 아니다.</p>
-<h3 id="문자-보간법-String-Interpolation"><a href="#문자-보간법-String-Interpolation" class="headerlink" title="문자 보간법 (String Interpolation)"></a>문자 보간법 (String Interpolation)</h3><p>위의 예시처럼 곱셈 연산자인 <code>*</code>을 사용하여 연결하면 복잡한 변경이 요구될 때 번거로울 수 있다. 줄리아는 <code>$</code>을 사용하여 문자열 보간을 허용한다.<br>보간(Interpolation)이란 쉽게 설명하면 사이에 채워넣는 것을 의미한다.</p>
+<h3 id="문자-보간법-String-Interpolation"><a href="#문자-보간법-String-Interpolation" class="headerlink" title="문자 보간법 (String Interpolation)"></a>문자 보간법 (String Interpolation)</h3><p>위의 예시처럼 곱셈 연산자인 <code>*</code>을 사용하여 연결하먄 복잡한 변경이 요구될 때 번거로울 수 있다. 줄리아는 <code>$</code>을 사용하여 문자열 보간을 허용한다.<br>보간(Interpolation)이란 쉽게 설명하면 사이에 채워넣는 것을 의미한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; greet = <span class="string">"Hello"</span></span><br><span class="line"><span class="string">"Hello"</span></span><br><span class="line">julia&gt; whom = <span class="string">"World"</span></span><br><span class="line"><span class="string">"World"</span></span><br><span class="line">julia&gt; <span class="string">"<span class="variable">$greet</span>, <span class="subst">$(whom)</span>!"</span></span><br><span class="line"><span class="string">"Hello, World!"</span></span><br></pre></td></tr></table></figure>
 <p>위의 방법은 <code>*</code>을 사용하는 것보다 더 편리하고 읽기도 쉽다.</p>
 <p><code>$</code>다음에 작성되는 모든 표현식들은 문자열로 간주된다. 따라서 괄호를 사용하여 모든 표현식을 문자열로 보간할 수 있다.</p>
@@ -312,7 +312,7 @@
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; findfirst(<span class="string">"na"</span>, <span class="string">"banana"</span>)</span><br><span class="line"><span class="number">3</span>:<span class="number">4</span></span><br></pre></td></tr></table></figure>
 <p><code>findfirst()</code>는 문자열의 첫 번째부터 특정 문자들을 찾는다. 만약 특정 지점부터 문자를 찾고 싶다면 <code>findnext()</code>를 사용하면 된다. <code>findnext()</code>는 세 번째 인수에 특정 지점 인덱스를 추가하면 된다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; findnext(<span class="string">"na"</span>, <span class="string">"banana"</span>, <span class="number">4</span>)</span><br><span class="line"><span class="number">5</span>:<span class="number">6</span></span><br></pre></td></tr></table></figure>
-<h3 id="∈-연산자"><a href="#∈-연산자" class="headerlink" title="∈ 연산자"></a><code>∈</code> 연산자</h3><p>연산자 <code>∈(\in TAB)</code>은 불 연산자로서, 특정 문자가 문자열에 속했는지 여부를 보여준다.</p>
+<h3 id="∈-연산자"><a href="#∈-연산자" class="headerlink" title="∈ 연산자"></a><code>∈</code> 연산자</h3><p>연산자 <code>∈(\in TAB</code>은 불 연산자로서, 특정 문자가 문자열에 속했는지 여부를 보여준다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; <span class="string">'a'</span> ∈ <span class="string">"banana"</span>    <span class="comment"># 'a' in "banana"</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <p>예로, 아래의 함수는 단어1과 단어2에 모두 들어 있는 문자들만 출력한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> inboth(word1, word2)</span><br><span class="line">    <span class="keyword">for</span> letter <span class="keyword">in</span> word1</span><br><span class="line">        <span class="keyword">if</span> letter ∈ word2</span><br><span class="line">            print(letter, <span class="string">" "</span>)</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -366,10 +366,7 @@
     <a href="/2020/03/05/chapter-7/" rel="prev" title="6. 반복">
       <i class="fa fa-chevron-left"></i> 6. 반복
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/06/chapter-9/" rel="next" title="8. 워드 플레이">
-      8. 워드 플레이 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -443,7 +440,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
