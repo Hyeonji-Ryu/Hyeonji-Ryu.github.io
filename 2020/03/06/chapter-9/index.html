@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Case Study: Word Play를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-06T12:13:37.000Z">
-<meta property="article:modified_time" content="2020-03-09T14:22:09.767Z">
+<meta property="article:modified_time" content="2020-03-10T20:01:57.144Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -216,7 +216,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-09 23:22:09" itemprop="dateModified" datetime="2020-03-09T23:22:09+09:00">2020-03-09</time>
+                <time title="Updated at: 2020-03-11 05:01:57" itemprop="dateModified" datetime="2020-03-11T05:01:57+09:00">2020-03-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> line <span class="keyword">in</span> eachline(<span class="string">"words.txt"</span>)</span><br><span class="line">    println(line)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <h3 id="검색-Search"><a href="#검색-Search" class="headerlink" title="검색 (Search)"></a>검색 (Search)</h3><p>검색 패턴으로 해결할 수 있는 가장 간단한 예는 다음과 같다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> hasno_e(word)</span><br><span class="line">    <span class="keyword">for</span> letter <span class="keyword">in</span> word</span><br><span class="line">        <span class="keyword">if</span> letter == <span class="string">'e'</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="literal">true</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p><code>for</code>루프는 단어의 알파벳들을 순회한다. 알파벳 <code>e</code>를 찾으면 즉시 거짓을 반환하며, 그렇지 않다면 다음 알파벳으로 이동한다. 만약 단어에서 <code>e</code>를 못찾았다면 <code>true</code>를 반환하고 종료한다.</p>
+<p><code>for</code>루프는 단어의 알파벳들을 탐색한다. 알파벳 <code>e</code>를 찾으면 즉시 거짓을 반환하며, 그렇지 않다면 다음 알파벳으로 이동한다. 만약 단어에서 <code>e</code>를 못찾았다면 <code>true</code>를 반환하고 종료한다.</p>
 <p><code>∉(\notin TAB)</code> 연산자를 사용하여 위의 코드를 더 간결하게 작성할 수 있다. 다만 위의 함수는 검색 패턴이 어떻게 작동하는지 확인하기 위해서 먼저 살펴본 것이다.</p>
 <p><code>avoids()</code>는 <code>hasno_e()</code>를 일반화시킨 함수이며, 안의 구조는 똑같다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> avoids(word, forbidden)</span><br><span class="line">    <span class="keyword">for</span> letter <span class="keyword">in</span> word</span><br><span class="line">        <span class="keyword">if</span> letter ∈ forbidden</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="literal">true</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
@@ -396,7 +396,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
