@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Case Study: Data Structure Selection를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-12T09:31:08.000Z">
-<meta property="article:modified_time" content="2020-03-12T20:38:26.788Z">
+<meta property="article:modified_time" content="2020-03-12T21:03:48.469Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -216,7 +216,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-13 05:38:26" itemprop="dateModified" datetime="2020-03-13T05:38:26+09:00">2020-03-13</time>
+                <time title="Updated at: 2020-03-13 06:03:48" itemprop="dateModified" datetime="2020-03-13T06:03:48+09:00">2020-03-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,7 +251,7 @@
 <p> <strong>Tip</strong><br> <code>isletter()</code>은 문자를 알파벳인지 테스트한다.</p>
 <p><strong>연습문제 2</strong><br> <a href="https://gutenberg.org" target="_blank" rel="noopener">Project Gutenberg</a>로 가서 저작권이 없는 책을 일반 텍스트 형식으로 다운로드해라.<br> 이전에 사용했던 프로그램을 수정하여 다운로드한 책을 읽어온 후, 파일 시작 부분의 헤더 정보를 건너 뛰고 위의 프로그램을 실행하라.<br> 그 다음 책의 총 단어 수와 각 단어가 사용된 횟수를 계산하도록 프로그램을 수정해라.</p>
 <p><strong>연습문제 3</strong><br> 책에서 가장 자주 사용되는 20개의 단어를 인쇄하도록 이전 연습문제의 프로그램을 수정해라.</p>
-<p><strong>연습문제 4</strong><br> 이전 프로그램을 수정하여 단어 목록을 읽은 후, 단어 목록에 없는 단어를 책에 인쇄해라. 오타는 몇 개인가? 단어 목록에 있어야 하는 일반적인 단어는 몇 개이며, 실제로 모호한 단어는 몇 개인가?</p>
+<p><strong>연습문제 4</strong><br> 이전 프로그램을 수정하여 단어 목록을 읽은 후, 단어 목록에 없는 단어를 인쇄해라. 오타는 몇 개인가? 단어 목록에 있어야 하는 일반적인 단어는 몇 개이며, 실제로 모호한 단어는 몇 개인가?</p>
 <h3 id="랜덤-숫자"><a href="#랜덤-숫자" class="headerlink" title="랜덤 숫자"></a>랜덤 숫자</h3><p>같은 입력이 주어지면, 대부분의 컴퓨터 프로그램은 똑같은 결과를 출력한다. 그래서 이런 실행 흐름을 결정론적이라고 말할 수 있다. 결정론은 동일한 계산이 동일한 결과를 산출한다고 가정하기 때문에 일반적으로 좋은 이론이다. 하지만 일부 응용 프로그램의 경우 컴퓨터가 예측할 수 없는 형태이기를 원한다. 게임은 확실한 예이며, 다른 예들도 있다.</p>
 <p>프로그램을 비결정론적으로 만드는 것은 어렵지만, 적어도 비결정론적으로 보이게 하는 방법은 있다. 그 중 하나는 ‘의사 난수 (pseudorandom numbers)’ 생성하는 알고리즘을 사용하는 것이다. 의사 난수는 결정론적 계산에 의해 생성되기 때문에 실제로 임의의 숫자는 아니지만, 마치 랜덤 숫자와 같은 결과를 제공한다.</p>
 <p><code>rand()</code>는 <code>0.0</code>과 <code>1.0</code>사이의 랜덤 소수를 반환한다. (0.0은 포함하지만 1.0은 포함하지 않는다) <code>rand()</code>를 호출할 때마다, 긴 배열 중에 다음 소수가 반환된다. 아래의 코드를 통해 결과를 확인해보자.</p>
@@ -272,7 +272,7 @@
 <p>결과는 아래와 같다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; println(<span class="string">"Total number of words: "</span>, totalwords(hist))</span><br><span class="line">Total number of words: <span class="number">162742</span></span><br><span class="line"></span><br><span class="line">julia&gt; println(<span class="string">"Number of different words: "</span>, differentwords(hist))</span><br><span class="line"><span class="built_in">Number</span> of different words: <span class="number">7380</span></span><br></pre></td></tr></table></figure>
 <h3 id="가장-일반적인-단어"><a href="#가장-일반적인-단어" class="headerlink" title="가장 일반적인 단어"></a>가장 일반적인 단어</h3><p>가장 일반적인 단어들을 찾기 위해서는 각각의 튜플이 단어와 빈도를 포함한 튜플 배열을 만들고 그 배열을 정리하면 된다. 아래의 함수는 히스토스램을 가져와 단어-빈도 튜플 배열로 반환한다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> mostcommon(hist)</span><br><span class="line">    t = []</span><br><span class="line">    <span class="keyword">for</span> (key, value) <span class="keyword">in</span> hist</span><br><span class="line">        push!(t, (value, key))</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    reverse(sort(t))</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> mostcommon(hist)</span><br><span class="line">    t = []</span><br><span class="line">    <span class="keyword">for</span> (key, value) <span class="keyword">in</span> hist</span><br><span class="line">        push!(t, (value, key))</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    reverse!(sort(t))</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>위의 튜플은 빈도가 첫 번째 값이기 때문에 정렬도 빈도를 기준으로 배치된다. 아래의 코드는 10개의 가장 일반적인 단어를 반환한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">t = mostcommon(hist)</span><br><span class="line">println(<span class="string">"The most common words are:"</span>)</span><br><span class="line"><span class="keyword">for</span> (freq, word) <span class="keyword">in</span> t[<span class="number">1</span>:<span class="number">10</span>]</span><br><span class="line">    println(word, <span class="string">"\t"</span>, freq)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>위의 예시에서는 한 줄 내려주는 <code>\t</code>를 분리기호로 사용하였다. 그 결과 단어들은 아래로 정렬된다.</p>
@@ -301,7 +301,7 @@
 <p>대안으로는 다음과 같다.</p>
 <ul>
 <li><p><code>values()</code>를 사용해서 책에 있는 단어의 배열을 가져와라.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; words= [keys(hist), values(hist)]</span><br></pre></td></tr></table></figure>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; words= values(hist)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>단어 빈도의 누적 합계를 요소로 하는 배열을 만들어라. 이 배열의 마지막 요소는 책의 총 단어 수가 되어야 한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; words= keys(hist)</span><br></pre></td></tr></table></figure>
@@ -383,11 +383,11 @@
 <ul>
 <li>연습 문제 3</li>
 </ul>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> change(t)</span><br><span class="line">    m=[]</span><br><span class="line">    <span class="keyword">for</span> (key,value) <span class="keyword">in</span> t</span><br><span class="line">        push!(m,(value,key))</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    reverse!(sort(m))</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> topword(t, n)</span><br><span class="line">    words=change(t)</span><br><span class="line">    top=words[<span class="number">1</span>:n]</span><br><span class="line">    print(top)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>연습 문제 4</li>
 </ul>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">wordlist=sentencetoword(<span class="string">"words.txt"</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> findweird(t1,t2)</span><br><span class="line">    word1=keys(t1)</span><br><span class="line">    word2=keys(t2)</span><br><span class="line">    final=[]</span><br><span class="line">    <span class="keyword">for</span> word <span class="keyword">in</span> word1</span><br><span class="line">        <span class="keyword">if</span> word ∉ word2</span><br><span class="line">        push!(final,word)</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">return</span> final</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -413,8 +413,8 @@
       <i class="fa fa-chevron-left"></i> 11. 튜플
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/03/13/chapter-14/" rel="next" title="파일">
-      파일 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/03/13/chapter-14/" rel="next" title="13. 파일">
+      13. 파일 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
