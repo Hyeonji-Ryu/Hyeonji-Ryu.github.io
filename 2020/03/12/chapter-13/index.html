@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Case Study: Data Structure Selection를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-12T09:31:08.000Z">
-<meta property="article:modified_time" content="2020-03-12T21:31:49.078Z">
+<meta property="article:modified_time" content="2020-03-13T06:31:24.228Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -216,7 +216,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-13 06:31:49" itemprop="dateModified" datetime="2020-03-13T06:31:49+09:00">2020-03-13</time>
+                <time title="Updated at: 2020-03-13 15:31:24" itemprop="dateModified" datetime="2020-03-13T15:31:24+09:00">2020-03-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -300,19 +300,12 @@
 <p>위의 알고리즘은 작동하지만, 효율적이지는 않다. 랜덤 단어를 선택할 때마다 책만큼 큰 크기의 배열을 다시 만든다. 효율을 향상시키기 위해서 배열을 한번만 만들고 여러 번 선택하는 방법도 좋지만, 배열의 크기는 여전히 크다.</p>
 <p>대안으로는 다음과 같다.</p>
 <ul>
-<li><p><code>values()</code>를 사용해서 책에 있는 단어의 배열을 가져와라.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; words= values(hist)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>단어 빈도의 누적 합계를 요소로 하는 배열을 만들어라. 이 배열의 마지막 요소는 책의 총 단어 수가 되어야 한다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; words= keys(hist)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>1부터 n사이의 난수를 선택하라. 난수가 있는 위치의 인덱스를 찾기 위해 해당 이분법 검색(bisection search)를 사용하라.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; words= keys(hist)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>인덱스를 사용하여 연결되어 있는 단어를 찾아라.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; words= keys(hist)</span><br></pre></td></tr></table></figure>
-</li>
+<li>책에 있는 단어의 배열을 가져와라.</li>
+<li>단어 빈도의 누적 합계를 요소로 하는 배열을 만들어라. 이 배열의 마지막 요소는 책의 총 단어 수가 되어야 한다.</li>
+<li>1부터 n사이의 난수를 선택하라. 난수가 있는 위치의 인덱스를 찾기 위해 해당 이분법 검색(bisection search)를 사용하라.</li>
+<li>인덱스를 사용하여 연결되어 있는 단어를 찾아라.</li>
 </ul>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="마르코프-분석-Markov-Analysis"><a href="#마르코프-분석-Markov-Analysis" class="headerlink" title="마르코프 분석 (Markov Analysis)"></a>마르코프 분석 (Markov Analysis)</h3><p>책에서 무작위로 단어를 선택하면, 어휘는 알 수 있지만 문장은 얻지 못할 것이다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this the small regard harriet which knightley's it most things</span><br></pre></td></tr></table></figure>
 <p>위의 문장처럼 무작위로 단어를 배열하면 문법적인 문제로 어떤 의미도 갖지 못하는 경우가 많다. 예를 들어, 의미를 가진 문장이라면 “the” 다음에 명사나 형용사가 올 것으로 예상할 수 있으며 동사나 부사는 사용할 수 없다.</p>
