@@ -53,14 +53,16 @@
 <meta property="og:site_name" content="AI &amp; ML">
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Structs and Objects를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/20.png">
 <meta property="article:published_time" content="2020-03-14T17:04:23.000Z">
-<meta property="article:modified_time" content="2020-03-15T17:05:36.952Z">
+<meta property="article:modified_time" content="2020-03-15T20:09:18.997Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
 <meta property="article:tag" content="줄리아">
 <meta property="article:tag" content="기초 강의">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyeonji-ryu.github.io/images/20.png">
 
 <link rel="canonical" href="https://hyeonji-ryu.github.io/2020/03/15/chapter-15/">
 
@@ -216,7 +218,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-16 02:05:36" itemprop="dateModified" datetime="2020-03-16T02:05:36+09:00">2020-03-16</time>
+                <time title="Updated at: 2020-03-16 05:09:18" itemprop="dateModified" datetime="2020-03-16T05:09:18+09:00">2020-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,7 +247,44 @@
 <p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
 </blockquote>
 <p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap15" target="_blank" rel="noopener">Structs and Objects</a>를 한글로 요약 정리한 글입니다.<br><a id="more"></a></p>
-<h2 id="구조와-객체-Structs-and-Objects"><a href="#구조와-객체-Structs-and-Objects" class="headerlink" title="구조와 객체 (Structs and Objects)"></a>구조와 객체 (Structs and Objects)</h2>
+<h2 id="구조와-객체-Structs-and-Objects"><a href="#구조와-객체-Structs-and-Objects" class="headerlink" title="구조와 객체 (Structs and Objects)"></a>구조와 객체 (Structs and Objects)</h2><p>지금까지 우리는 내장된 데이터 타입들과 함수를 어떻게 사용하는지 배웠다. 다음 단계는 코드와 데이터를 생성하는 고유한 데이터 타입을 생성하는 방법을 배우는 것이다. 이 주제는 양이 방대하기 때문에 여러 장에 걸쳐 공부할 것이다.</p>
+<h3 id="복합-데이터-타입-Composite-Types"><a href="#복합-데이터-타입-Composite-Types" class="headerlink" title="복합 데이터 타입 (Composite Types)"></a>복합 데이터 타입 (Composite Types)</h3><p>우리는 그동안 줄리아에 내장된 데이터 타입을 많이 사용했다. 이제부터는 2차원 공간에서 점을 나타내는 새로운 데이터 타입인 <code>Point</code>를 정의할 것이다.</p>
+<p>수학에서 점은 보통 좌표를 구분하는 쉼표와 함께 괄호 안에 표시된다. 예를 들어, (0,0)은 원점을 나타낸 것이고, (x,y)는 원점으로부터 x는 가로축, y는 세로축의 거리를 표시한 것이다.</p>
+<ul>
+<li>좌표를 x와 y라는 두 변수에 별도로 저장할 수 있다.</li>
+<li>좌표를 배열이나 튜플의 요소로 저장할 수 있다.</li>
+<li>점을 객체로 나타내는 새로운 데이터 타입을 만들 수 있다.</li>
+</ul>
+<p>새로운 타입을 만드는 것은 다른 방법에 비해서 더욱 복잡하지만, 확실한 장점이 있다. (장점은 나중에 볼 것이다)</p>
+<p>복합 데이터 타입을 정의하는 것을 구조(struct)라고 한다. 점의 <code>struct</code> 정의는 다음과 같다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> Point</span><br><span class="line">    x</span><br><span class="line">    y</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>헤더는 새로운 구조를 부를 이름을 <code>Point</code>라고 정의하며, 본문은 구조의 속성(attributes) 또는 필드(fields)를 정의한다. <code>Point</code>구조는 <code>x</code>와 <code>y</code>라는 두 개의 필드를 가진다.</p>
+<p>구조는 객체를 만드는 공장과 같다. 점을 만들기 위해서는 필드의 값을 인수로 갖는 <code>Point()</code>를 호출한다. <code>Point()</code>를 함수로 쓸 때, 이를 생성자(constructor)라고 한다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; p = Point(<span class="number">3.0</span>, <span class="number">4.0</span>)</span><br><span class="line">Point(<span class="number">3.0</span>, <span class="number">4.0</span>)</span><br></pre></td></tr></table></figure>
+<p>반환 값은 <code>p</code>에 할당한 <code>Point</code>객체로 표시된다.</p>
+<p>새 객체를 만드는 것을 인스턴스화(instantiation)라고 하며, 객체는 데이터 타입의 인스턴스이다.</p>
+<p>만약 인스턴스를 출력한다면, 줄리아는 해당 인스턴스가 어떤 데이터 타입 및 속성을 가지고 있는지 일려준다.</p>
+<p>모든 객체는 어떤 데이터 타입의 인스턴스이다. 그렇기 때문에 객체(object)와 인스턴스(instance)라는 단어는 바꿔서 사용할 수 있다. 하지만 이 장에서는 개발자가 정의한 고유 데이터 타입을 설명할 때만 인스턴스를 사용할 것이다.</p>
+<p>객체와 그 필드를 보여주는 상태 다이아그램을 ‘객체 다이어그램(object diagram)’이라고 한다.</p>
+<p><img src="/images/20.png" alt="object diagram"></p>
+<h3 id="구조는-불변이다-Structs-are-Immutable"><a href="#구조는-불변이다-Structs-are-Immutable" class="headerlink" title="구조는 불변이다 (Structs are Immutable)"></a>구조는 불변이다 (Structs are Immutable)</h3><p><code>.</code>표기법을 사용하면 필드의 값을 가져올 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; x = p.x</span><br><span class="line"><span class="number">3.0</span></span><br><span class="line">julia&gt; p.y</span><br><span class="line"><span class="number">4.0</span></span><br></pre></td></tr></table></figure>
+<p>표현식 <code>p.x</code>는 ‘객체 <code>p</code>를 참고하여 <code>x</code>의 값을 가져와라’라는 의미이다. 예를 들어, <code>x</code>라는 이름으로 변수에 값을 할당해보자. 그래도 변수<code>x</code>와 필드<code>x</code>는 충돌하지 않는다.</p>
+<p>또한 어떤 표현식에서는 점 표기법을 사용할 수 있다. 예시는 아래와 같다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; distance = sqrt(p.x^<span class="number">2</span> + p.y^<span class="number">2</span>)</span><br><span class="line"><span class="number">5.0</span></span><br></pre></td></tr></table></figure>
+<p>그러나 구조는 기본적으로 변경할 수 없으며, 생성(construction) 후에는 필드가 값을 변경할 수 없다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; p.y = <span class="number">1.0</span></span><br><span class="line">ERROR: setfield! <span class="keyword">immutable</span> <span class="keyword">struct</span> of <span class="keyword">type</span> Point cannot be changed</span><br></pre></td></tr></table></figure>
+<p>이런 구조의 불변성은 몇 가지의 장점을 가지고 있다.</p>
+<ul>
+<li>더 효율적일 수 있다.</li>
+<li>데이터 타입 생성자가 제공하는 불변값을 위반하는 것은 불가능하다.</li>
+<li>불변 객체를 사용하는 코드는 추론하기가 더 쉽다.</li>
+</ul>
+<h3 id="변경가능한-구조-Mutable-Structs"><a href="#변경가능한-구조-Mutable-Structs" class="headerlink" title="변경가능한 구조 (Mutable Structs)"></a>변경가능한 구조 (Mutable Structs)</h3><p>필요한 경우, ‘변경가능한 복합 데이터 타입(mutable composite types)’은 키워드 <code>mutable struct</code>로 정의할 수 있다. 변경가능한 점(point) 정의는 아래와 같다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">mutable struct</span> MPoint</span><br><span class="line">    x</span><br><span class="line">    y</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>또한 점 표기법을 사용하여 변경가능한 구조의 인스턴스에 값을 할당할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; blank = MPoint(<span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">MPoint(<span class="number">0.0</span>, <span class="number">0.0</span>)</span><br><span class="line">julia&gt; blank.x = <span class="number">3.0</span></span><br><span class="line"><span class="number">3.0</span></span><br><span class="line">julia&gt; blank.y = <span class="number">4.0</span></span><br><span class="line"><span class="number">4.0</span></span><br></pre></td></tr></table></figure>
+<h3 id="직사각형-Rectangles"><a href="#직사각형-Rectangles" class="headerlink" title="직사각형 (Rectangles)"></a>직사각형 (Rectangles)</h3>
     </div>
 
     
@@ -329,7 +368,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#구조와-객체-Structs-and-Objects"><span class="nav-number">1.</span> <span class="nav-text">구조와 객체 (Structs and Objects)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#구조와-객체-Structs-and-Objects"><span class="nav-number">1.</span> <span class="nav-text">구조와 객체 (Structs and Objects)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#복합-데이터-타입-Composite-Types"><span class="nav-number">1.1.</span> <span class="nav-text">복합 데이터 타입 (Composite Types)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#구조는-불변이다-Structs-are-Immutable"><span class="nav-number">1.2.</span> <span class="nav-text">구조는 불변이다 (Structs are Immutable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#변경가능한-구조-Mutable-Structs"><span class="nav-number">1.3.</span> <span class="nav-text">변경가능한 구조 (Mutable Structs)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#직사각형-Rectangles"><span class="nav-number">1.4.</span> <span class="nav-text">직사각형 (Rectangles)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
