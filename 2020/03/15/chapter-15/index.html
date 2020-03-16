@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/20.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/21.png">
 <meta property="article:published_time" content="2020-03-14T17:04:23.000Z">
-<meta property="article:modified_time" content="2020-03-16T11:03:53.923Z">
+<meta property="article:modified_time" content="2020-03-16T11:28:19.326Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -219,7 +219,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-16 20:03:53" itemprop="dateModified" datetime="2020-03-16T20:03:53+09:00">2020-03-16</time>
+                <time title="Updated at: 2020-03-16 20:28:19" itemprop="dateModified" datetime="2020-03-16T20:28:19+09:00">2020-03-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -320,7 +320,22 @@
 <p>표현식 <code>rect.corner.x</code>은 “객체 <code>rect</code>을 참고하여 필드 <code>corner</code>를 선택한 후, 해당 객체의 <code>x</code> 필드를 가져오라”는 의미이다.</p>
 <p>다음은 <code>box</code>을 인수로 전달하고 <code>Point</code>를 <code>center</code>로 할당하는 예이다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; center = findcenter(box)</span><br><span class="line">Point(<span class="number">51.0</span>, <span class="number">102.0</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="복사-Copying"><a href="#복사-Copying" class="headerlink" title="복사 (Copying)"></a>복사 (Copying)</h3>
+<h3 id="복사-Copying"><a href="#복사-Copying" class="headerlink" title="복사 (Copying)"></a>복사 (Copying)</h3><p>에일리어싱은 한 곳에서 변경하면 다른 곳에 예기치 못한 영향을 주기 때문에 프로그램을 읽기 어렵게 만든다. 주어진 객체를 참조하는 모든 변수를 추적하기는 어렵다.</p>
+<p>객체를 복사하는 것은 에일리어싱을 대신한다. 줄리아는 객체를 복제할 수 있는 <code>deepcopy()</code>를 제공한다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; p1 = MPoint(<span class="number">3.0</span>, <span class="number">4.0</span>)</span><br><span class="line">MPoint(<span class="number">3.0</span>, <span class="number">4.0</span>)</span><br><span class="line">julia&gt; p2 = deepcopy(p1)</span><br><span class="line">MPoint(<span class="number">3.0</span>, <span class="number">4.0</span>)</span><br><span class="line">julia&gt; p1 ≡ p2</span><br><span class="line"><span class="literal">false</span></span><br><span class="line">julia&gt; p1 == p2</span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p><code>≡</code> 연산자는 우리가 예상했던 대로 <code>p1</code>과 <code>p2</code>가 같은 객체가 아니라는 것을 보여준다. 하지만 왜 <code>==</code> 연산자는 두 객체가 같은 값임에도 불구하고 <code>false</code>를 반환하는가? 그 이유는 변경가능한 객체에서 <code>==</code>연산자는 <code>===</code>연산자와 동일하게 작동하기 때문이다. 즉, 객체의 동등성(equivalence)이 아닌 동일성(identity을 비교한다. 이것은 줄리아가 변경가능한 복합 데이터 타입에서 무엇을 동등성으로 고려해야 하는지 모른다는 것을 의미한다.</p>
+<h3 id="디버깅"><a href="#디버깅" class="headerlink" title="디버깅"></a>디버깅</h3><p>객체 작업을 시작하면 몇 가지 새로운 예외가 발생할 수 있다. 존재하지 않는 필드에 접근하려고 하면 다음과 같은 결과를 얻는다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; p = Point(<span class="number">3.0</span>, <span class="number">4.0</span>)</span><br><span class="line">Point(<span class="number">3.0</span>, <span class="number">4.0</span>)</span><br><span class="line">julia&gt; p.z = <span class="number">1.0</span></span><br><span class="line">ERROR: <span class="keyword">type</span> Point has no field z</span><br><span class="line">Stacktrace:</span><br><span class="line"> [<span class="number">1</span>] setproperty!(::Point, ::<span class="built_in">Symbol</span>, ::<span class="built_in">Float64</span>) at ./sysimg.jl:<span class="number">19</span></span><br><span class="line"> [<span class="number">2</span>] top-level scope at none:<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>만약 객체의 데이터 타입이 무엇인지 확실하지 않다면, 물어볼 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; typeof(p)</span><br><span class="line">Point</span><br></pre></td></tr></table></figure>
+<p>또한 <code>isa</code>를 사용하여 객체가 데이터 타입의 인스턴스인지 확인할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; p <span class="keyword">isa</span> Point</span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>만약 객체가 특정 속성을 가지고 있는지 확신할 수 없다면, 내장 함수인 <code>fieldnames()</code>를 사용할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; fieldnames(Point)</span><br><span class="line">(:x, :y)</span><br></pre></td></tr></table></figure>
+<p>또는 <code>isdefined()</code>도 사용가능하다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; isdefined(p, :x)</span><br><span class="line"><span class="literal">true</span></span><br><span class="line">julia&gt; isdefined(p, :z)</span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>첫 번째 인수는 어떤 객체든 들어갈 수 있다. 두 번째 인수에는 <code>:</code>기호를 넣고 뒤에 필드의 이름을 작성하면 된다.</p>
+
     </div>
 
     
@@ -404,7 +419,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#구조와-객체-Structs-and-Objects"><span class="nav-number">1.</span> <span class="nav-text">구조와 객체 (Structs and Objects)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#복합-데이터-타입-Composite-Types"><span class="nav-number">1.1.</span> <span class="nav-text">복합 데이터 타입 (Composite Types)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#구조는-불변이다-Structs-are-Immutable"><span class="nav-number">1.2.</span> <span class="nav-text">구조는 불변이다 (Structs are Immutable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#변경가능한-구조-Mutable-Structs"><span class="nav-number">1.3.</span> <span class="nav-text">변경가능한 구조 (Mutable Structs)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#직사각형-Rectangles"><span class="nav-number">1.4.</span> <span class="nav-text">직사각형 (Rectangles)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#인수로서-인스턴스-Instances-as-Arguments"><span class="nav-number">1.5.</span> <span class="nav-text">인수로서 인스턴스 (Instances as Arguments)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#반환-값으로서-인스턴스-Instances-as-Return-Values"><span class="nav-number">1.6.</span> <span class="nav-text">반환 값으로서 인스턴스 (Instances as Return Values)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#복사-Copying"><span class="nav-number">1.7.</span> <span class="nav-text">복사 (Copying)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#구조와-객체-Structs-and-Objects"><span class="nav-number">1.</span> <span class="nav-text">구조와 객체 (Structs and Objects)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#복합-데이터-타입-Composite-Types"><span class="nav-number">1.1.</span> <span class="nav-text">복합 데이터 타입 (Composite Types)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#구조는-불변이다-Structs-are-Immutable"><span class="nav-number">1.2.</span> <span class="nav-text">구조는 불변이다 (Structs are Immutable)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#변경가능한-구조-Mutable-Structs"><span class="nav-number">1.3.</span> <span class="nav-text">변경가능한 구조 (Mutable Structs)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#직사각형-Rectangles"><span class="nav-number">1.4.</span> <span class="nav-text">직사각형 (Rectangles)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#인수로서-인스턴스-Instances-as-Arguments"><span class="nav-number">1.5.</span> <span class="nav-text">인수로서 인스턴스 (Instances as Arguments)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#반환-값으로서-인스턴스-Instances-as-Return-Values"><span class="nav-number">1.6.</span> <span class="nav-text">반환 값으로서 인스턴스 (Instances as Return Values)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#복사-Copying"><span class="nav-number">1.7.</span> <span class="nav-text">복사 (Copying)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#디버깅"><span class="nav-number">1.8.</span> <span class="nav-text">디버깅</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
