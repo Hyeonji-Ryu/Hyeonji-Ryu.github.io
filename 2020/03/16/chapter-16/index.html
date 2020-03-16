@@ -53,14 +53,16 @@
 <meta property="og:site_name" content="AI &amp; ML">
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Structs and Functions를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/22.png">
 <meta property="article:published_time" content="2020-03-16T11:28:58.000Z">
-<meta property="article:modified_time" content="2020-03-16T11:29:50.550Z">
+<meta property="article:modified_time" content="2020-03-16T12:20:08.445Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
 <meta property="article:tag" content="줄리아">
 <meta property="article:tag" content="기초 강의">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyeonji-ryu.github.io/images/22.png">
 
 <link rel="canonical" href="https://hyeonji-ryu.github.io/2020/03/16/chapter-16/">
 
@@ -210,7 +212,7 @@
               <span class="post-meta-item-text">작성일</span>
               
 
-              <time title="Post created: 2020-03-16 20:28:58 / Updated at: 20:29:50" itemprop="dateCreated datePublished" datetime="2020-03-16T20:28:58+09:00">2020-03-16</time>
+              <time title="Post created: 2020-03-16 20:28:58 / Updated at: 21:20:08" itemprop="dateCreated datePublished" datetime="2020-03-16T20:28:58+09:00">2020-03-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -239,7 +241,30 @@
 <p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
 </blockquote>
 <p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap16" target="_blank" rel="noopener">Structs and Functions</a>를 한글로 요약 정리한 글입니다.<br><a id="more"></a></p>
-<h2 id="구조와-함수-Structs-and-Functions"><a href="#구조와-함수-Structs-and-Functions" class="headerlink" title="구조와 함수 (Structs and Functions)"></a>구조와 함수 (Structs and Functions)</h2>
+<h2 id="구조와-함수-Structs-and-Functions"><a href="#구조와-함수-Structs-and-Functions" class="headerlink" title="구조와 함수 (Structs and Functions)"></a>구조와 함수 (Structs and Functions)</h2><p>저번 장에서 새로운 복합 데이터 타입을 생성하는 방법에 대해서 알아보았다면, 지금부터는 개발자가 정의한 고유 객체들을 매개 변수로 사용하여 결과로 반환하는 함수를 작성해볼 것이다. 따라서 이번 장에서는 “함수적 프로그래밍 스타일(unctional programming style)”과 새로운 두 가지 프로그램 개발 계획을 볼 것이다.</p>
+<h3 id="시간-Time"><a href="#시간-Time" class="headerlink" title="시간 (Time)"></a>시간 (Time)</h3><p>복합 데이터 타입의 또 다른 에시로서, 시간을 기록하는 <code>MyTime</code>을 <code>struct</code>로 정의할 것이다. 코드는 아래와 같다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Represents the time of day.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fields: hour, minute, second</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">struct</span> MyTime</span><br><span class="line">    hour</span><br><span class="line">    minute</span><br><span class="line">    second</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p><code>Time</code>이라는 이름은 이미 줄리아에서 사용 중이기 때문에, 충돌을 방지하기 위해 <code>MyTime</code>로 결정하였다. 이제 새로운 <code>MyTime</code> 객체를 생성할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; time = MyTime(<span class="number">11</span>, <span class="number">59</span>, <span class="number">30</span>)</span><br><span class="line">MyTime(<span class="number">11</span>, <span class="number">59</span>, <span class="number">30</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/22.png" alt="object diagram"></p>
+<p><code>MyTime</code> 객체 다이어그램은 위와 같다.</p>
+<h3 id="순수-함수-Pure-Functions"><a href="#순수-함수-Pure-Functions" class="headerlink" title="순수 함수 (Pure Functions)"></a>순수 함수 (Pure Functions)</h3><p>지금부터 시간 값을 추가하는 두 개의 함수를 작성할 것이다. 두 개의 함수 중 하나는 ‘순수 함수(pure functions)’이며 다른 하나는 ‘변경자(modifiers)’이다. 또한 이 함수들은 간단한 프로토 타입으로 시작하여 복잡한 문제를 점진적으로 해결하는 방법인 ‘프로토 타입(prototype)’ 및 ‘패치(patch)’를 호출하여 개발 계획도 증명할 것이다.</p>
+<p>아래의 코드는 <code>addtime</code>의 간단한 프로토 타입이다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> addtime(t1, t2)</span><br><span class="line">    MyTime(t1.hour + t2.hour, t1.minute + t2.minute, t1.second + t2.second)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>이 함수는 <code>MyTime</code> 객체를 새로 생성한 후, 필드를 초기화하고 새로운 객체에 대한 참조를 반환한다. 이렇게 인수로 전달된 객체를 수정하지 않고 반환하는 함수를 ‘순수 함수’라고 한다. 즉, 인수로 전달된 객체들은 값을 제공하거나 보여지는 정도만 실행되고 어떤 영향도 받지 않는다.</p>
+<p>위 함수를 테스트하기 위해서 두 개의 <code>MyTime</code> 객체를 만든다. <code>start</code>에는 ‘Monty Python and the Holy Grail’ 영화의  시작시간이 포함되고, <code>duration</code>에는 영화의 상영 시간인 1시간 35분이 포함된다.</p>
+<p><code>addtime</code>은 영화가 끝난 시간을 보여준다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; start = MyTime(<span class="number">9</span>, <span class="number">45</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">julia&gt; duration = MyTime(<span class="number">1</span>, <span class="number">35</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">julia&gt; done = addtime(start, duration);</span><br><span class="line"></span><br><span class="line">julia&gt; printtime(done)</span><br><span class="line"><span class="number">10</span>:<span class="number">80</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure>
+<p>결과는 <code>10:80:00</code>으로 우리가 원하던 시간은 아니다. 문제는 해당 함수가 분 단위와 초 단위가 60을 초과하는 경우를 처리하지 못한다는 것이다. 그렇게 되면 60분을 1시간으로, 60초를 1분으로 헤당 열에 반입해야 한다. 이를 해결한 코드는 아래와 같다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> addtime(t1, t2)</span><br><span class="line">    second = t1.second + t2.second</span><br><span class="line">    minute = t1.minute + t2.minute</span><br><span class="line">    hour = t1.hour + t2.hour</span><br><span class="line">    <span class="keyword">if</span> second &gt;= <span class="number">60</span></span><br><span class="line">        second -= <span class="number">60</span></span><br><span class="line">        minute += <span class="number">1</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">if</span> minute &gt;= <span class="number">60</span></span><br><span class="line">        minute -= <span class="number">60</span></span><br><span class="line">        hour += <span class="number">1</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    MyTime(hour, minute, second)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>위의 함수는 정확하게 작동하지만 코드가 복잡해졌다. 이후 더 짧은 대안들을 배울 것이다.</p>
+<h3 id="변경자-Modifiers"><a href="#변경자-Modifiers" class="headerlink" title="변경자 (Modifiers)"></a>변경자 (Modifiers)</h3><p>때로는 함수가 매개 변수로 얻는 객체를 수정하는 것이 더 유용하다. 이 경우에는 변경 사항이 호출자에게 보여진다. 이런 방식으로 작동하는 함수를 ‘변경자(Modifiers)’라고 한다.</p>
+<p>인수인 ‘second’의 숫자를 <code>MyTime</code> 객체에 추가하는 <code>increment!()</code>는 변경자를 사용하여 자연스럽게 작성할 수 있다. 초안은 아래와 같다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> increment!(time, seconds)</span><br><span class="line">    time.second += seconds</span><br><span class="line">    <span class="keyword">if</span> time.second &gt;= <span class="number">60</span></span><br><span class="line">        time.second -= <span class="number">60</span></span><br><span class="line">        time.minute += <span class="number">1</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">if</span> time.minute &gt;= <span class="number">60</span></span><br><span class="line">        time.minute -= <span class="number">60</span></span><br><span class="line">        time.hour += <span class="number">1</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>첫 번째 줄은 기본적인 작동을 수행하며, 나머지 줄은 우리가 봤던 특별한 경우들을 처리한다.</p>
+<p>이 함수는 정확한가? 만약 <code>second</code>가 60보다 크면 어떻게 작동하는가?</p>
+<p>위의 예시에서는 </p>
+<h3 id="프로토타이핑-vs-계획-Prototyping-Versus-Planning"><a href="#프로토타이핑-vs-계획-Prototyping-Versus-Planning" class="headerlink" title="프로토타이핑 vs. 계획 (Prototyping Versus Planning)"></a>프로토타이핑 vs. 계획 (Prototyping Versus Planning)</h3><h3 id="디버깅"><a href="#디버깅" class="headerlink" title="디버깅"></a>디버깅</h3>
     </div>
 
     
@@ -323,7 +348,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#구조와-함수-Structs-and-Functions"><span class="nav-number">1.</span> <span class="nav-text">구조와 함수 (Structs and Functions)</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#구조와-함수-Structs-and-Functions"><span class="nav-number">1.</span> <span class="nav-text">구조와 함수 (Structs and Functions)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#시간-Time"><span class="nav-number">1.1.</span> <span class="nav-text">시간 (Time)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#순수-함수-Pure-Functions"><span class="nav-number">1.2.</span> <span class="nav-text">순수 함수 (Pure Functions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#변경자-Modifiers"><span class="nav-number">1.3.</span> <span class="nav-text">변경자 (Modifiers)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#프로토타이핑-vs-계획-Prototyping-Versus-Planning"><span class="nav-number">1.4.</span> <span class="nav-text">프로토타이핑 vs. 계획 (Prototyping Versus Planning)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#디버깅"><span class="nav-number">1.5.</span> <span class="nav-text">디버깅</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
