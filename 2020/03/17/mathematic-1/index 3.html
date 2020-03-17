@@ -46,23 +46,25 @@
   };
 </script>
 
-  <meta name="description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Multiple Dispatch를 한글로 요약 정리한 글입니다.">
+  <meta name="description" content="글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning를 바탕으로 작성된 글임을 알려드립니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="16. 다중 디스패치">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/03/17/Think-Julia-Chapter-17/index.html">
+<meta property="og:title" content="1. introduction">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/03/17/mathematic-1/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
-<meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Multiple Dispatch를 한글로 요약 정리한 글입니다.">
+<meta property="og:description" content="글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning를 바탕으로 작성된 글임을 알려드립니다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2020-03-16T17:02:40.000Z">
-<meta property="article:modified_time" content="2020-03-16T23:02:51.593Z">
+<meta property="article:published_time" content="2020-03-16T20:37:08.000Z">
+<meta property="article:modified_time" content="2020-03-16T15:49:31.783Z">
 <meta property="article:author" content="Hyeonji Ryu">
-<meta property="article:tag" content="Julia">
-<meta property="article:tag" content="Think Julia">
-<meta property="article:tag" content="줄리아">
-<meta property="article:tag" content="기초 강의">
+<meta property="article:tag" content="mathematics">
+<meta property="article:tag" content="머신러닝">
+<meta property="article:tag" content="machine learning">
+<meta property="article:tag" content="mathematics for machine learning">
+<meta property="article:tag" content="머신러닝 수학">
+<meta property="article:tag" content="수학">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/03/17/Think-Julia-Chapter-17/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/03/17/mathematic-1/">
 
 
 <script id="page-configurations">
@@ -74,7 +76,7 @@
   };
 </script>
 
-  <title>16. 다중 디스패치 | AI & ML</title>
+  <title>1. introduction | AI & ML</title>
   
 
 
@@ -186,7 +188,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/03/17/Think-Julia-Chapter-17/">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/03/17/mathematic-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -199,7 +201,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          16. 다중 디스패치
+          1. introduction
         </h1>
 
         <div class="post-meta">
@@ -210,7 +212,7 @@
               <span class="post-meta-item-text">작성일</span>
               
 
-              <time title="Post created: 2020-03-17 02:02:40 / Updated at: 08:02:51" itemprop="dateCreated datePublished" datetime="2020-03-17T02:02:40+09:00">2020-03-17</time>
+              <time title="Post created: 2020-03-17 05:37:08 / Updated at: 00:49:31" itemprop="dateCreated datePublished" datetime="2020-03-17T05:37:08+09:00">2020-03-17</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -218,8 +220,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Think-Julia/" itemprop="url" rel="index">
-                    <span itemprop="name">Think Julia</span>
+                  <a href="/categories/mathematics-for-machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">mathematics for machine learning</span>
                   </a>
                 </span>
             </span>
@@ -236,26 +238,10 @@
 
       
         <blockquote>
-<p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
+<p>글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning를 바탕으로 작성된 글임을 알려드립니다.</p>
 </blockquote>
-<p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap17" target="_blank" rel="noopener">Multiple Dispatch</a>를 한글로 요약 정리한 글입니다.<br><a id="more"></a></p>
-<h2 id="다중-디스패치-Multiple-Dispatch"><a href="#다중-디스패치-Multiple-Dispatch" class="headerlink" title="다중 디스패치 (Multiple Dispatch)"></a>다중 디스패치 (Multiple Dispatch)</h2><p>줄리아에서는 다른 데이터 타입들에서도 작동하는 코드를 작성할 수 있으며, 해당 코드를 ‘일반화 프로그래밍(generic programming)’이라고 한다.</p>
-<p>이번 장에서는 줄리아에서 데이터 타입 선언 사용하는 방법에 설명하고 인수의 데이터 타입에 따라 다른 작동을 구현하는 함수인 다중 디스패치(Multiple Dispatch)에 대해 알아볼 것이다.</p>
-<h3 id="데이터-타입-선언-Type-Declarations"><a href="#데이터-타입-선언-Type-Declarations" class="headerlink" title="데이터 타입 선언 (Type Declarations)"></a>데이터 타입 선언 (Type Declarations)</h3><p><code>::</code> 연산자는 변수나 표현식에 ‘데이터 타입 주석(type annotations)’을 붙인다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; (<span class="number">1</span> + <span class="number">2</span>) :: <span class="built_in">Float64</span></span><br><span class="line">ERROR: <span class="built_in">TypeError</span>: <span class="keyword">in</span> typeassert, expected <span class="built_in">Float64</span>, got <span class="built_in">Int64</span></span><br><span class="line">julia&gt; (<span class="number">1</span> + <span class="number">2</span>) :: <span class="built_in">Int64</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
-<p>이런 방식은 개발자가 예측한 대로 프로그램이 작동하는지 확인하는 데 도움을 준다.</p>
-<p>또한 <code>::</code> 연산자는 변수 옆인 할당문 왼쪽 측면에도 붙을 수도 있다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; <span class="keyword">function</span> returnfloat()</span><br><span class="line">           x::<span class="built_in">Float64</span> = <span class="number">100</span></span><br><span class="line">           x</span><br><span class="line">       <span class="keyword">end</span></span><br><span class="line">returnfloat (generic <span class="keyword">function</span> with <span class="number">1</span> method)</span><br><span class="line">julia&gt; x = returnfloat()</span><br><span class="line"><span class="number">100.0</span></span><br><span class="line">julia&gt; typeof(x)</span><br><span class="line"><span class="built_in">Float64</span></span><br></pre></td></tr></table></figure>
-<p>변수 <code>x</code>는 데이터 타입이 항상 <code>Float64</code>이며, 값은 부동 소수점으로 변환된다.</p>
-<p>또한 데이터 타입 주석은 함수의 정의 헤더부분에도 불일 수 있다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> sinc(x)::<span class="built_in">Float64</span></span><br><span class="line">    <span class="keyword">if</span> x == <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    sin(x)/(x)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p><code>sinc()</code>의 반환 값은 항상 <code>Float64</code>로 변환된다.</p>
-<p>데이터 타입이 생략될 때, 줄리아에서는 항상 데이터 타입 <code>Any</code>을 값으로 사용할 수 있다.</p>
-<h3 id="메서드-Methods"><a href="#메서드-Methods" class="headerlink" title="메서드 (Methods)"></a>메서드 (Methods)</h3><p><a href="https://hyeonji-ryu.github.io/2020/03/16/chapter-16/#more">구조와 함수</a>에서 <code>MyTime</code>이라는 구조를 정의하였다. <code>printtime()</code>이라는 함수를 사용하여 작성해보자.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> Printf</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> MyTime</span><br><span class="line">    hour :: <span class="built_in">Int64</span></span><br><span class="line">    minute :: <span class="built_in">Int64</span></span><br><span class="line">    second :: <span class="built_in">Int64</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> printtime(time)</span><br><span class="line">    <span class="meta">@printf</span>(<span class="string">"%02d:%02d:%02d"</span>, time.hour, time.minute, time.second)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>보다시피, 데이터 타입 선언은 성능상의 이유로 구조 정의의 필드에 추가될 수 있다.</p>
-<p>위 함수를 호출하려면, <code>MyTime</code> 객체를 인수로 전달해야 한다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; start = MyTime(<span class="number">9</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">MyTime(<span class="number">9</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">julia&gt; printtime(start)</span><br><span class="line"><span class="number">09</span>:<span class="number">45</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="1-introduction"><a href="#1-introduction" class="headerlink" title="1. introduction"></a>1. introduction</h2><p>머신러닝(Machine learning)은 데이터로부터 유용한 정보를 자동으로 추출해주는 알고리즘을 디자인하는 것이다. 강조할 부분은 “자동(automatic)”이다. 머신러닝은 많은 데이터셋에 적용하여 의미있는 것들을 생산하는 범용 방법론(general-purpose methodology)에 관심이 있다. 머신러닝을 설명하는 세 가지의 핵심 단어가 있다. 데이터, 모델, 그리고 학습이다.</p>
 
     </div>
 
@@ -265,10 +251,12 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Julia/" rel="tag"># Julia</a>
-              <a href="/tags/Think-Julia/" rel="tag"># Think Julia</a>
-              <a href="/tags/%EC%A4%84%EB%A6%AC%EC%95%84/" rel="tag"># 줄리아</a>
-              <a href="/tags/%EA%B8%B0%EC%B4%88-%EA%B0%95%EC%9D%98/" rel="tag"># 기초 강의</a>
+              <a href="/tags/mathematics/" rel="tag"># mathematics</a>
+              <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" rel="tag"># 머신러닝</a>
+              <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+              <a href="/tags/mathematics-for-machine-learning/" rel="tag"># mathematics for machine learning</a>
+              <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%88%98%ED%95%99/" rel="tag"># 머신러닝 수학</a>
+              <a href="/tags/%EC%88%98%ED%95%99/" rel="tag"># 수학</a>
           </div>
 
         
@@ -277,13 +265,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/16/Think-Julia-Chapter-16/" rel="prev" title="15. 구조와 함수">
+    <a href="/2020/03/16/chapter-16/" rel="prev" title="15. 구조와 함수">
       <i class="fa fa-chevron-left"></i> 15. 구조와 함수
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/17/mathematic-1/" rel="next" title="1. introduction">
-      1. introduction <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -343,7 +328,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#다중-디스패치-Multiple-Dispatch"><span class="nav-number">1.</span> <span class="nav-text">다중 디스패치 (Multiple Dispatch)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#데이터-타입-선언-Type-Declarations"><span class="nav-number">1.1.</span> <span class="nav-text">데이터 타입 선언 (Type Declarations)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#메서드-Methods"><span class="nav-number">1.2.</span> <span class="nav-text">메서드 (Methods)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-introduction"><span class="nav-number">1.</span> <span class="nav-text">1. introduction</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -357,7 +342,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
