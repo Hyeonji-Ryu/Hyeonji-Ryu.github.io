@@ -48,14 +48,14 @@
 
   <meta name="description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Structs and Functions를 한글로 요약 정리한 글입니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="15. 구조와 함수">
+<meta property="og:title" content="15. 구조체와 함수">
 <meta property="og:url" content="https://hyeonji-ryu.github.io/2020/03/16/Think-Julia-Chapter-16/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 Structs and Functions를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/22.png">
 <meta property="article:published_time" content="2020-03-16T11:28:58.000Z">
-<meta property="article:modified_time" content="2020-03-16T17:05:25.834Z">
+<meta property="article:modified_time" content="2020-03-17T07:16:50.931Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -76,7 +76,7 @@
   };
 </script>
 
-  <title>15. 구조와 함수 | AI & ML</title>
+  <title>15. 구조체와 함수 | AI & ML</title>
   
 
 
@@ -201,7 +201,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          15. 구조와 함수
+          15. 구조체와 함수
         </h1>
 
         <div class="post-meta">
@@ -218,7 +218,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-17 02:05:25" itemprop="dateModified" datetime="2020-03-17T02:05:25+09:00">2020-03-17</time>
+                <time title="Updated at: 2020-03-17 16:16:50" itemprop="dateModified" datetime="2020-03-17T16:16:50+09:00">2020-03-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -247,7 +247,7 @@
 <p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
 </blockquote>
 <p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap16" target="_blank" rel="noopener">Structs and Functions</a>를 한글로 요약 정리한 글입니다.<br><a id="more"></a></p>
-<h2 id="구조와-함수-Structs-and-Functions"><a href="#구조와-함수-Structs-and-Functions" class="headerlink" title="구조와 함수 (Structs and Functions)"></a>구조와 함수 (Structs and Functions)</h2><p>저번 장에서 새로운 복합 데이터 타입을 생성하는 방법에 대해서 알아보았다면, 지금부터는 개발자가 정의한 고유 객체들을 매개 변수로 사용하여 결과로 반환하는 함수를 작성해볼 것이다. 따라서 이번 장에서는 “함수적 프로그래밍 스타일(unctional programming style)”과 새로운 두 가지 프로그램 개발 계획을 볼 것이다.</p>
+<h2 id="구조체와-함수-Structs-and-Functions"><a href="#구조체와-함수-Structs-and-Functions" class="headerlink" title="구조체와 함수 (Structs and Functions)"></a>구조체와 함수 (Structs and Functions)</h2><p>저번 장에서 새로운 복합 데이터 타입을 생성하는 방법에 대해서 알아보았다면, 지금부터는 개발자가 정의한 고유 객체들을 매개 변수로 사용하여 결과로 반환하는 함수를 작성해볼 것이다. 따라서 이번 장에서는 “함수적 프로그래밍 스타일(unctional programming style)”과 새로운 두 가지 프로그램 개발 계획을 볼 것이다.</p>
 <h3 id="시간-Time"><a href="#시간-Time" class="headerlink" title="시간 (Time)"></a>시간 (Time)</h3><p>복합 데이터 타입의 또 다른 에시로서, 시간을 기록하는 <code>MyTime</code>을 <code>struct</code>로 정의할 것이다. 코드는 아래와 같다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Represents the time of day.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">fields: hour, minute, second</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">struct</span> MyTime</span><br><span class="line">    hour</span><br><span class="line">    minute</span><br><span class="line">    second</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p><code>Time</code>이라는 이름은 이미 줄리아에서 사용 중이기 때문에, 충돌을 방지하기 위해 <code>MyTime</code>로 결정하였다. 이제 새로운 <code>MyTime</code> 객체를 생성할 수 있다.</p>
@@ -317,8 +317,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/15/Think-Julia-Chapter-15/" rel="prev" title="14. 구조와 객체">
-      <i class="fa fa-chevron-left"></i> 14. 구조와 객체
+    <a href="/2020/03/15/Think-Julia-Chapter-15/" rel="prev" title="14. 구조체와 객체">
+      <i class="fa fa-chevron-left"></i> 14. 구조체와 객체
     </a></div>
       <div class="post-nav-item">
     <a href="/2020/03/17/Think-Julia-Chapter-17/" rel="next" title="16. 다중 디스패치">
@@ -383,7 +383,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#구조와-함수-Structs-and-Functions"><span class="nav-number">1.</span> <span class="nav-text">구조와 함수 (Structs and Functions)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#시간-Time"><span class="nav-number">1.1.</span> <span class="nav-text">시간 (Time)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#순수-함수-Pure-Functions"><span class="nav-number">1.2.</span> <span class="nav-text">순수 함수 (Pure Functions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#변경자-Modifiers"><span class="nav-number">1.3.</span> <span class="nav-text">변경자 (Modifiers)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#프로토타이핑-vs-계획-Prototyping-Versus-Planning"><span class="nav-number">1.4.</span> <span class="nav-text">프로토타이핑 vs. 계획 (Prototyping Versus Planning)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#디버깅"><span class="nav-number">1.5.</span> <span class="nav-text">디버깅</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#구조체와-함수-Structs-and-Functions"><span class="nav-number">1.</span> <span class="nav-text">구조체와 함수 (Structs and Functions)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#시간-Time"><span class="nav-number">1.1.</span> <span class="nav-text">시간 (Time)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#순수-함수-Pure-Functions"><span class="nav-number">1.2.</span> <span class="nav-text">순수 함수 (Pure Functions)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#변경자-Modifiers"><span class="nav-number">1.3.</span> <span class="nav-text">변경자 (Modifiers)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#프로토타이핑-vs-계획-Prototyping-Versus-Planning"><span class="nav-number">1.4.</span> <span class="nav-text">프로토타이핑 vs. 계획 (Prototyping Versus Planning)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#디버깅"><span class="nav-number">1.5.</span> <span class="nav-text">디버깅</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
