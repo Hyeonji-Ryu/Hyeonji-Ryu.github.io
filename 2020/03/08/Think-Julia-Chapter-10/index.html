@@ -58,7 +58,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/14.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/15.png">
 <meta property="article:published_time" content="2020-03-08T14:31:08.000Z">
-<meta property="article:modified_time" content="2020-03-16T17:04:48.175Z">
+<meta property="article:modified_time" content="2020-03-18T15:12:18.031Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -221,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-17 02:04:48" itemprop="dateModified" datetime="2020-03-17T02:04:48+09:00">2020-03-17</time>
+                <time title="Updated at: 2020-03-19 00:12:18" itemprop="dateModified" datetime="2020-03-19T00:12:18+09:00">2020-03-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -327,9 +327,9 @@
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; t = uppercase.([<span class="string">"abc"</span>, <span class="string">"def"</span>, <span class="string">"ghi"</span>]);</span><br><span class="line"></span><br><span class="line">julia&gt; print(t)</span><br><span class="line">[<span class="string">"ABC"</span>, <span class="string">"DEF"</span>, <span class="string">"GHI"</span>]</span><br></pre></td></tr></table></figure>
 <p>이것은 더 깔끔하게 맵을 만드는 방법이다. <code>capitalizeall()</code>를 한 줄로 구현할 수 있다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> capitalizeall(t)</span><br><span class="line">    uppercase.(t)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<h3 id="요소-삭제와-삽입"><a href="#요소-삭제와-삽입" class="headerlink" title="요소 삭제와 삽입"></a>요소 삭제와 삽입</h3><p>배열에서 요소를 삭제하는 방법은 여러 개가 있다. 만약 삭제하고 싶은 요소의 인덱스를 알고 있다면, <code>slice!()</code>를 사용하면 된다.</p>
+<h3 id="요소-삭제와-삽입"><a href="#요소-삭제와-삽입" class="headerlink" title="요소 삭제와 삽입"></a>요소 삭제와 삽입</h3><p>배열에서 요소를 삭제하는 방법은 여러 개가 있다. 만약 삭제하고 싶은 요소의 인덱스를 알고 있다면, <code>splice!()</code>를 사용하면 된다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; t = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">julia&gt; splice!(t, <span class="number">2</span>)</span><br><span class="line"><span class="string">'b'</span>: ASCII/Unicode U+<span class="number">0062</span> (category Ll: Letter, lowercase)</span><br><span class="line">julia&gt; print(t)</span><br><span class="line">[<span class="string">'a'</span>, <span class="string">'c'</span>]</span><br></pre></td></tr></table></figure>
-<p><code>slice!()</code>는 배열을 수정하고 해당 요소가 제거된 배열을 반환한다.</p>
+<p><code>splice!()</code>는 배열을 수정하고 해당 요소가 제거된 배열을 반환한다.</p>
 <p><code>pop!()</code>은 마지막 요소를 제거한 후 반환한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; t = [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>];</span><br><span class="line"></span><br><span class="line">julia&gt; pop!(t)</span><br><span class="line"><span class="string">'c'</span>: ASCII/Unicode U+<span class="number">0063</span> (category Ll: Letter, lowercase)</span><br><span class="line">julia&gt; print(t)</span><br><span class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>]</span><br></pre></td></tr></table></figure>
 <p><code>popfirst!()</code>은 첫 번째 요소를 제거한 후 반환한다.</p>
@@ -518,7 +518,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
@@ -531,7 +531,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">25</span>
         <span class="site-state-item-name">태그</span></a>
       </div>
   </nav>
