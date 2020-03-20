@@ -46,38 +46,27 @@
   };
 </script>
 
-  <meta name="description" content="글을 시작하기에 앞서 해당 글은 Sanjoy Dasgupta, Christos Papadimitriou, Umesh 의 저서인 Algorithms를 바탕으로 요약 및 정리한 글임을 알려드립니다.">
-<meta property="og:type" content="article">
-<meta property="og:title" content="chapter 0. 시작하기">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/03/19/Algorithms-chap0/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="AI &amp; ML">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/page/3/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
-<meta property="og:description" content="글을 시작하기에 앞서 해당 글은 Sanjoy Dasgupta, Christos Papadimitriou, Umesh 의 저서인 Algorithms를 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/23.png">
-<meta property="article:published_time" content="2020-03-18T21:20:02.000Z">
-<meta property="article:modified_time" content="2020-03-20T08:34:21.527Z">
 <meta property="article:author" content="Hyeonji Ryu">
-<meta property="article:tag" content="Algorithms">
-<meta property="article:tag" content="알고리즘">
-<meta property="article:tag" content="빅오 표기법">
-<meta property="article:tag" content="피보나치">
-<meta property="article:tag" content="기초">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hyeonji-ryu.github.io/images/23.png">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/03/19/Algorithms-chap0/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/page/3/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true
+    isHome: true,
+    isPost: false
   };
 </script>
 
-  <title>chapter 0. 시작하기 | AI & ML</title>
+  <title>AI & ML</title>
   
 
 
@@ -185,11 +174,11 @@
             
 
   <div class="posts-expand">
-      
+        
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/03/19/Algorithms-chap0/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/02/27/about_hexo-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -202,7 +191,8 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          chapter 0. 시작하기
+          
+            <a href="/2020/02/27/about_hexo-0/" class="post-title-link" itemprop="url">0. Github Page와 Hexo를 이용하여 블로그 만들기</a>
         </h1>
 
         <div class="post-meta">
@@ -212,14 +202,14 @@
               </span>
               <span class="post-meta-item-text">작성일</span>
 
-              <time title="Post created: 2020-03-19 06:20:02" itemprop="dateCreated datePublished" datetime="2020-03-19T06:20:02+09:00">2020-03-19</time>
+              <time title="Post created: 2020-02-27 18:18:23" itemprop="dateCreated datePublished" datetime="2020-02-27T18:18:23+09:00">2020-02-27</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-20 17:34:21" itemprop="dateModified" datetime="2020-03-20T17:34:21+09:00">2020-03-20</time>
+                <time title="Updated at: 2020-03-17 02:05:52" itemprop="dateModified" datetime="2020-03-17T02:05:52+09:00">2020-03-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,8 +217,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithms</span>
+                  <a href="/categories/about-Hexo/" itemprop="url" rel="index">
+                    <span itemprop="name">about Hexo</span>
                   </a>
                 </span>
             </span>
@@ -244,80 +234,122 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <blockquote>
-<p>글을 시작하기에 앞서 해당 글은 Sanjoy Dasgupta, Christos Papadimitriou, Umesh 의 저서인 Algorithms를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
-</blockquote>
-<h2 id="피보나치-입문"><a href="#피보나치-입문" class="headerlink" title="피보나치 입문"></a>피보나치 입문</h2><p>피보나치는 유명한 수열로 가장 많이 알려져있다. 수열 내에서 각 숫자들은 이전 두 숫자의 합이라는 것이 피보나치 수열의 원리이다. 피보나치수 $F_n$은 다음과 같다.</p>
-<script type="math/tex; mode=display">
-fib(n) =
- \begin{cases}
-0 & \text{if n=0 $$}\\
-1 & \text{if n=1 $$}\\
-fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
-\end{cases}</script><p>피보나치 수열은 $2^n$과 거의 같은 속도로 증가한다.</p>
-<h2 id="빅오-표기법-big-O-notation"><a href="#빅오-표기법-big-O-notation" class="headerlink" title="빅오 표기법 (big-O notation)"></a>빅오 표기법 (big-O notation)</h2><p>알고리즘의 효율성은 데이터 개수인 $n$에 따라 연산되는 횟수를 의미하며, 크게 시간 복잡도(효율성)와 공간 복잡도(효율성)로 나뉜다. 이런 알고리즘의 효율성을 나타내는 방법으로는 빅오(Big-O), 빅오메가(big-Ω),빅세타(big-Θ) 표기법이 있다.</p>
-<ul>
-<li>빅오(Big-O)표기법: 상한선 기준 (≤)</li>
-<li>빅오메가(big-Ω): 하한선 기준 (≥)</li>
-<li>빅세타(big-Θ): 상한선과 하한선 사이를 기준 (≤ ≤)</li>
-</ul>
-<p>알고리즘 효율성은 그래프가 위로 향할수록(값이 클수록) 비효율적이라는 뜻이다. 빅오 표기법은 상한선을 기준으로 표기하기 때문에 알고리즘의 최악의 효율정도를 제시할 수 있어 주로 사용된다.</p>
-<p>하지만 상한선이 꼭 해당 알고리즘의 최악의 효율성과 동일한 것은 아니다. 만약 최악의 효율성은 $n$값이 1000일 때 나타난다고 가정하자. 하지만 알고리즘은 찾고자 하는 값을 5번만에도 찿을 수 있다. 따라서 최악의 효율성이 항상 그 알고리즘의 효율성을 대변하지는 않는다.</p>
-<h3 id="빅오-표기법의-수학적-정의"><a href="#빅오-표기법의-수학적-정의" class="headerlink" title="빅오 표기법의 수학적 정의"></a>빅오 표기법의 수학적 정의</h3><p>빅오 표기법의 수학적 정의는 다음과 같다.</p>
-<p>“모든 $n≥n_0≥0$ 에 대하여 $0≤f(n)≤c*g(n)$ 인 양수 $c$와 $n_0$가 존재하면 $f(n)=O(g(n))$이다.”</p>
-<p>예를 통해 개념을 정리하자.<br>내가 만든 알고리즘의 시간 효율성을 나타내는 함수 $f(n)$이고 $n$과 상수 $c$을 아래의 방정식과 같다고 가정한다.</p>
-<p>$f(n)=n^2+5n+8$<br>$g(n)=n^2+4$</p>
-<p>위의 방정식은 $0≤f(n)≤c*g(n)$을 만족하는 상수 $c$가 존재한다.<br>또한 $n_0$은 $f(n)$와 $g(n)$가 같은 값일 때를 찾으면 되는데, 예시에서는 존재한다. 여기서 같은 값이란 그래프의 비교가 시작되는 지점이다. 상수 $c$와 $n_0$를 찾았다면 빅오 표기법으로 작성할 수 있다.</p>
-<h3 id="빅오-표기법의-특징"><a href="#빅오-표기법의-특징" class="headerlink" title="빅오 표기법의 특징"></a>빅오 표기법의 특징</h3><p>빅오 표기법은 몇 가지의 특징을 가지고 있다.</p>
-<ul>
-<li><p>상수항을 무시한다.<br>빅오 표기법에서는 데이터 입력값인 $n$이 충분히 크다고 가정하며, 알고리즘의 효율성 또한 $n$값에 좌우되기 때문에 상수항처럼 사소한 부분은 무시한다.</p>
-<p>$O(3n^2)$ -&gt; $O(n^2)$</p>
-</li>
-<li><p>영향력이 크지 않은 항도 무시한다.<br>빅오 표기법에서는 가장 영향력이 큰 항을 제외한 나머지는 큰 영향력이 없다. 따라서 제외하여 판단한다.</p>
-<p>$O(3n^2+5n+15)$ -&gt; $O(n^2)$</p>
-</li>
-</ul>
-<p>아래의 그래프는 각 함수마다의 성능을 보여준다.</p>
-<p><img src="/images/23.png" alt="big-O notation"></p>
-<p>그래프에 나와있는 시간 효율성을 정리하면 다음과 같다.</p>
-<p>$O(1) &lt; O(log n) &lt; O(n) &lt; O(nlog n) &lt; O(n^2) &lt; O(2^n)$</p>
-<p>상수함수 &lt; 로그함수 &lt; 선형함수 &lt; 다항함수 &lt; 지수함수</p>
-<p>위의 순서를 보면, 상수함수가 가장 작고 지수함수가 가장 크다. 즉 상수함수는 데이터 수가 많아도 빠르게 작동하는 알고리즘이며, 지수함수는 데이터 수가 많아질수록 급격하게 느려지는 알고리즘이라는 뜻이다. 시간 효율성 관점에서는 상수함수가 더욱 우월하다.</p>
-
+          <p>Hexo 블로그를 만들기 위해서는 Github계정을 사용하는 것이 가장 편합니다. Github계정이 없는 분들은 <a href="https://github.com" target="_blank" rel="noopener">Github</a>에서 만들어 주세요! Github계정이 있는 분들이라면 바로 Hexo 블로그를 만들 수 있습니다.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/27/about_hexo-0/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
     </div>
 
     
     
     
-
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
-              <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag"># 알고리즘</a>
-              <a href="/tags/%EB%B9%85%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/" rel="tag"># 빅오 표기법</a>
-              <a href="/tags/%ED%94%BC%EB%B3%B4%EB%82%98%EC%B9%98/" rel="tag"># 피보나치</a>
-              <a href="/tags/%EA%B8%B0%EC%B4%88/" rel="tag"># 기초</a>
-          </div>
-
-        
-
-
-        
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2020/03/18/Think-Julia-Chapter-18/" rel="prev" title="17. 서브타이핑">
-      <i class="fa fa-chevron-left"></i> 17. 서브타이핑
-    </a></div>
-      <div class="post-nav-item"></div>
-    </div>
+        <div class="post-eof"></div>
       </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/02/27/Think-Julia-Chapter-0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyeonji Ryu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI & ML">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/02/27/Think-Julia-Chapter-0/" class="post-title-link" itemprop="url">0. Why Julia?</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2020-02-27 16:25:49" itemprop="dateCreated datePublished" datetime="2020-02-27T16:25:49+09:00">2020-02-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-03-17 02:03:31" itemprop="dateModified" datetime="2020-03-17T02:03:31+09:00">2020-03-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Think-Julia/" itemprop="url" rel="index">
+                    <span itemprop="name">Think Julia</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
     
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist를 바탕으로 작성된 글임을 알려드립니다.</p>
+</blockquote>
+<p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#_why_julia" target="_blank" rel="noopener">Why Julia?</a>를 한글로 요약 정리한 글입니다.<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/02/27/Think-Julia-Chapter-0/#more" rel="contents">
+                더 읽어보기 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
   </article>
   
   
   
 
   </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="이전 페이지"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
 
 
           </div>
@@ -368,7 +400,6 @@ fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#피보나치-입문"><span class="nav-number">1.</span> <span class="nav-text">피보나치 입문</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#빅오-표기법-big-O-notation"><span class="nav-number">2.</span> <span class="nav-text">빅오 표기법 (big-O notation)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#빅오-표기법의-수학적-정의"><span class="nav-number">2.1.</span> <span class="nav-text">빅오 표기법의 수학적 정의</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#빅오-표기법의-특징"><span class="nav-number">2.2.</span> <span class="nav-text">빅오 표기법의 특징</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -482,54 +513,6 @@ fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
   
 
   
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
 
