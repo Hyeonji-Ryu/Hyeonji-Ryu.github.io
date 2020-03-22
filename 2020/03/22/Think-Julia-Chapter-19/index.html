@@ -55,7 +55,7 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/25.png">
 <meta property="article:published_time" content="2020-03-22T09:27:01.000Z">
-<meta property="article:modified_time" content="2020-03-22T17:26:29.213Z">
+<meta property="article:modified_time" content="2020-03-22T17:54:08.159Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-23 02:26:29" itemprop="dateModified" datetime="2020-03-23T02:26:29+09:00">2020-03-23</time>
+                <time title="Updated at: 2020-03-23 02:54:08" itemprop="dateModified" datetime="2020-03-23T02:54:08+09:00">2020-03-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -297,7 +297,11 @@
 <h4 id="클로저-Closures"><a href="#클로저-Closures" class="headerlink" title="클로저 (Closures)"></a>클로저 (Closures)</h4><p>클로저는 함수가 함수의 호출 범위 밖에 정의된 변수를 캡쳐할 수 있게 하는 기술이다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; foo(x) = ()-&gt;x</span><br><span class="line">foo (generic <span class="keyword">function</span> with <span class="number">1</span> method)</span><br><span class="line"></span><br><span class="line">julia&gt; bar = foo(<span class="number">1</span>)</span><br><span class="line"><span class="comment">#1 (generic function with 1 method)</span></span><br><span class="line"></span><br><span class="line">julia&gt; bar()</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>이 예시에서 함수 <code>foo()</code>는 <code>foo()</code>의 인수<code>x</code>에 접근하는 익명 함수를 반환한다. <code>bar</code>는 해당 익명함수를 지정하고 <code>foo()</code>의 인수인 값을 반환한다.</p>
-<h3 id="블럭-Blocks"><a href="#블럭-Blocks" class="headerlink" title="블럭 (Blocks)"></a>블럭 (Blocks)</h3>
+<h3 id="블럭-Blocks"><a href="#블럭-Blocks" class="headerlink" title="블럭 (Blocks)"></a>블럭 (Blocks)</h3><p>블럭은 여러 명령문들을 그룹화하는 방법이다. 블럭은 키워드 <code>begin</code>로 시작하고 <code>end</code>로 끝난다.</p>
+<p><a href="https://hyeonji-ryu.github.io/2020/03/02/Think-Julia-Chapter-4/">인터페이스 디자인</a>에서 <code>@svg</code>를 소개했다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">🐢 = Turtle()</span><br><span class="line"><span class="meta">@svg</span> <span class="keyword">begin</span></span><br><span class="line">    forward(🐢, <span class="number">100</span>)</span><br><span class="line">    turn(🐢, -<span class="number">90</span>)</span><br><span class="line">    forward(🐢, <span class="number">100</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>이 예시에서 <code>@svg</code>는 3개의 함수 호출을 그룹화한 블록인 단일 인수가 있다.</p>
+<h4 id="let-블럭"><a href="#let-블럭" class="headerlink" title="let 블럭"></a><code>let</code> 블럭</h4>
     </div>
 
     
@@ -381,7 +385,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#더-좋은-문법-The-Goodies-Syntax"><span class="nav-number">1.</span> <span class="nav-text">더 좋은 문법 (The Goodies: Syntax)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#네임드-튜플-Named-Tuples"><span class="nav-number">1.1.</span> <span class="nav-text">네임드 튜플 (Named Tuples)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#함수"><span class="nav-number">1.2.</span> <span class="nav-text">함수</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#익명-함수-Anonymous-Functions"><span class="nav-number">1.2.1.</span> <span class="nav-text">익명 함수 (Anonymous Functions)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#키워드-인수-Keyword-Arguments"><span class="nav-number">1.2.2.</span> <span class="nav-text">키워드 인수 (Keyword Arguments)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#클로저-Closures"><span class="nav-number">1.2.3.</span> <span class="nav-text">클로저 (Closures)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#블럭-Blocks"><span class="nav-number">1.3.</span> <span class="nav-text">블럭 (Blocks)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#더-좋은-문법-The-Goodies-Syntax"><span class="nav-number">1.</span> <span class="nav-text">더 좋은 문법 (The Goodies: Syntax)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#네임드-튜플-Named-Tuples"><span class="nav-number">1.1.</span> <span class="nav-text">네임드 튜플 (Named Tuples)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#함수"><span class="nav-number">1.2.</span> <span class="nav-text">함수</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#익명-함수-Anonymous-Functions"><span class="nav-number">1.2.1.</span> <span class="nav-text">익명 함수 (Anonymous Functions)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#키워드-인수-Keyword-Arguments"><span class="nav-number">1.2.2.</span> <span class="nav-text">키워드 인수 (Keyword Arguments)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#클로저-Closures"><span class="nav-number">1.2.3.</span> <span class="nav-text">클로저 (Closures)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#블럭-Blocks"><span class="nav-number">1.3.</span> <span class="nav-text">블럭 (Blocks)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#let-블럭"><span class="nav-number">1.3.1.</span> <span class="nav-text">let 블럭</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
