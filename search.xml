@@ -7,8 +7,32 @@
 <p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
 </blockquote>
 <p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap19" target="_blank" rel="noopener">The Goodies: Syntax</a>를 한글로 요약 정리한 글입니다.<br><a id="more"></a></p>
-<h2 id="더-좋은-문법-The-Goodies-Syntax"><a href="#더-좋은-문법-The-Goodies-Syntax" class="headerlink" title="더 좋은 문법 (The Goodies: Syntax)"></a>더 좋은 문법 (The Goodies: Syntax)</h2><p>이 책의 목적 중 하나는</p>
-]]></content>
+<h2 id="더-좋은-문법-The-Goodies-Syntax"><a href="#더-좋은-문법-The-Goodies-Syntax" class="headerlink" title="더 좋은 문법 (The Goodies: Syntax)"></a>더 좋은 문법 (The Goodies: Syntax)</h2><p>이 책의 목적 중 하나는 가능한 적게 줄리아를 사용하는 법을 알려주는 것이었다. 만약 동일한 어떤 일을 하는 두 가지의 방법이 있다면, 그 중 하나만 이 책에 적었으며 나머지는 언급하지 않았다. 때로는 나머지 방법을 연습문제에 포함시켰다.</p>
+<p>지금부터는 언급하지 않았던 것들 중에 알아두면 좋은 것들을 소개할 것이다. 줄리아는 실제로 필수적이지는 않은 여러 가지 기능들을 제공한다. 이런 기능 없이도 좋은 코드를 작성할 수 있지만, 기능을 포함하면 더 간결하고 읽기 쉽고 효율적인 코드를 작성할 수 있다.</p>
+<p>이 장과 다음 장에서는 이전 장에서 생략한 아래의 사항들에 대해 설명할 것이다.</p>
+<ul>
+<li>문법 보충</li>
+<li><code>Base</code>에서 직접 사용 가능한 함수, 데이터 타입 및 매크로</li>
+<li>표준 라이브러리에 있는 함수, 데이터 타입 및 매크로</li>
+</ul>
+<h3 id="네임드-튜플-Named-Tuples"><a href="#네임드-튜플-Named-Tuples" class="headerlink" title="네임드 튜플 (Named Tuples)"></a>네임드 튜플 (Named Tuples)</h3><p>네임드 튜플을 만들어 튜플의 구성요소 이름을 지정할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">julia&gt; x = (a=<span class="number">1</span>, b=<span class="number">1</span>+<span class="number">1</span>)</span><br><span class="line">(a = <span class="number">1</span>, b = <span class="number">2</span>)</span><br><span class="line">julia&gt; x.a</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>네임드 튜플에서는 점 문법인 <code>(x.a)</code>을 사용하여 필드에 접근할 수 있다.</p>
+<h3 id="함수"><a href="#함수" class="headerlink" title="함수"></a>함수</h3><p>줄리아에서 함수는 간결한 문법으로 정의할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">julia&gt; f(x,y) = x + y</span><br><span class="line">f (generic <span class="keyword">function</span> with <span class="number">1</span> method)</span><br></pre></td></tr></table></figure>
+<h4 id="익명-함수-Anonymous-Functions"><a href="#익명-함수-Anonymous-Functions" class="headerlink" title="익명 함수 (Anonymous Functions)"></a>익명 함수 (Anonymous Functions)</h4><p>이름 설정 없이 함수를 정의할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">julia&gt; x -&gt; x^<span class="number">2</span> + <span class="number">2</span>x - <span class="number">1</span></span><br><span class="line"><span class="comment">#1 (generic function with 1 method)</span></span><br><span class="line">julia&gt; <span class="keyword">function</span> (x)</span><br><span class="line">           x^<span class="number">2</span> + <span class="number">2</span>x - <span class="number">1</span></span><br><span class="line">       <span class="keyword">end</span></span><br><span class="line"><span class="comment">#3 (generic function with 1 method)</span></span><br></pre></td></tr></table></figure>
+<p>위의 코드는 익명 함수의 예시이다. 익명 함수는 종종 다른 함수의 인수로 사용된다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">julia&gt; <span class="keyword">using</span> Plots</span><br><span class="line"></span><br><span class="line">julia&gt; plot(x -&gt; x^<span class="number">2</span> + <span class="number">2</span>x - <span class="number">1</span>, <span class="number">0</span>, <span class="number">10</span>, xlabel=<span class="string">"x"</span>, ylabel=<span class="string">"y"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/25.png" alt="Plot"></p>
+<p>위의 그래프는 <code>Plot</code> 명령어의 결과이다.</p>
+<h4 id="키워드-인수-Keyword-Arguments"><a href="#키워드-인수-Keyword-Arguments" class="headerlink" title="키워드 인수 (Keyword Arguments)"></a>키워드 인수 (Keyword Arguments)</h4><p>함수 인수 또한 아래와 같이 명명될 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">ulia&gt; <span class="keyword">function</span> myplot(x, y; style=<span class="string">"solid"</span>, width=<span class="number">1</span>, color=<span class="string">"black"</span>)</span><br><span class="line">           <span class="comment">###</span></span><br><span class="line">       <span class="keyword">end</span></span><br><span class="line">myplot (generic <span class="keyword">function</span> with <span class="number">1</span> method)</span><br><span class="line">julia&gt; myplot(<span class="number">0</span>:<span class="number">10</span>, <span class="number">0</span>:<span class="number">10</span>, style=<span class="string">"dotted"</span>, color=<span class="string">"blue"</span>)</span><br></pre></td></tr></table></figure>
+<p>함수에서 키워드 인수는 세미콜론(;) 뒤에 지정되며, 쉼표로 호출된다.</p>
+<h4 id="클로저-Closures"><a href="#클로저-Closures" class="headerlink" title="클로저 (Closures)"></a>클로저 (Closures)</h4><p>클로저는 함수가 함수의 호출 범위 밖에 정의된 변수를 캡쳐할 수 있게 하는 기술이다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">julia&gt; foo(x) = ()-&gt;x</span><br><span class="line">foo (generic <span class="keyword">function</span> with <span class="number">1</span> method)</span><br><span class="line"></span><br><span class="line">julia&gt; bar = foo(<span class="number">1</span>)</span><br><span class="line"><span class="comment">#1 (generic function with 1 method)</span></span><br><span class="line"></span><br><span class="line">julia&gt; bar()</span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>이 예시에서 함수 <code>foo()</code>는 <code>foo()</code>의 인수<code>x</code>에 접근하는 익명 함수를 반환한다. <code>bar</code>는 해당 익명함수를 지정하고 <code>foo()</code>의 인수인 값을 반환한다.</p>
+<h3 id="블럭-Blocks"><a href="#블럭-Blocks" class="headerlink" title="블럭 (Blocks)"></a>블럭 (Blocks)</h3>]]></content>
       <categories>
         <category>Think Julia</category>
       </categories>
