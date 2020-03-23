@@ -1,13 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>20. 디버깅</title>
+    <url>/2020/03/24/Think-Julia-Chapter-21/</url>
+    <content><![CDATA[<blockquote>
+<p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
+</blockquote>
+<p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap21" target="_blank" rel="noopener">Debugging</a>를 한글로 요약 정리한 글입니다.<br><a id="more"></a></p>
+<h2 id="디버깅-Debugging"><a href="#디버깅-Debugging" class="headerlink" title="디버깅 (Debugging)"></a>디버깅 (Debugging)</h2>]]></content>
+      <categories>
+        <category>Think Julia</category>
+      </categories>
+      <tags>
+        <tag>Julia</tag>
+        <tag>Think Julia</tag>
+        <tag>줄리아</tag>
+        <tag>기초 강의</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>19. 베이스 및 표준 라이브러리</title>
+    <url>/2020/03/24/Think-Julia-Chapter-20/</url>
+    <content><![CDATA[<blockquote>
+<p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
+</blockquote>
+<p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap20" target="_blank" rel="noopener">The Goodies: Base and Standard Library</a>를 한글로 요약 정리한 글입니다.<br><a id="more"></a></p>
+<h2 id="베이스-및-표준-라이브러리-Base-and-Standard-Library"><a href="#베이스-및-표준-라이브러리-Base-and-Standard-Library" class="headerlink" title="베이스 및 표준 라이브러리 (Base and Standard Library)"></a>베이스 및 표준 라이브러리 (Base and Standard Library)</h2>]]></content>
+      <categories>
+        <category>Think Julia</category>
+      </categories>
+      <tags>
+        <tag>Julia</tag>
+        <tag>Think Julia</tag>
+        <tag>줄리아</tag>
+        <tag>기초 강의</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>18. 기타 문법들</title>
     <url>/2020/03/22/Think-Julia-Chapter-19/</url>
     <content><![CDATA[<blockquote>
 <p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
 </blockquote>
 <p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap19" target="_blank" rel="noopener">The Goodies: Syntax</a>를 한글로 요약 정리한 글입니다.<br><a id="more"></a></p>
-<h2 id="더-좋은-문법-The-Goodies-Syntax"><a href="#더-좋은-문법-The-Goodies-Syntax" class="headerlink" title="더 좋은 문법 (The Goodies: Syntax)"></a>더 좋은 문법 (The Goodies: Syntax)</h2><p>이 책의 목적 중 하나는 가능한 적게 줄리아를 사용하는 법을 알려주는 것이었다. 만약 동일한 어떤 일을 하는 두 가지의 방법이 있다면, 그 중 하나만 이 책에 적었으며 나머지는 언급하지 않았다. 때로는 나머지 방법을 연습문제에 포함시켰다.</p>
+<h2 id="기타-문법들-Syntax"><a href="#기타-문법들-Syntax" class="headerlink" title="기타 문법들 (Syntax)"></a>기타 문법들 (Syntax)</h2><p>이 책의 목적 중 하나는 가능한 적게 줄리아를 사용하는 법을 알려주는 것이었다. 만약 동일한 어떤 일을 하는 두 가지의 방법이 있다면, 그 중 하나만 이 책에 적었으며 나머지는 언급하지 않았다. 때로는 나머지 방법을 연습문제에 포함시켰다.</p>
 <p>지금부터는 언급하지 않았던 것들 중에 알아두면 좋은 것들을 소개할 것이다. 줄리아는 실제로 필수적이지는 않은 여러 가지 기능들을 제공한다. 이런 기능 없이도 좋은 코드를 작성할 수 있지만, 기능을 포함하면 더 간결하고 읽기 쉽고 효율적인 코드를 작성할 수 있다.</p>
 <p>이 장과 다음 장에서는 이전 장에서 생략한 아래의 사항들에 대해 설명할 것이다.</p>
 <ul>
