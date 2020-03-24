@@ -58,7 +58,15 @@
 <p><code>useonly</code>는 <code>word</code>에 있는 모든 알파벳들이 <code>available</code>에 속해 있는지를 확인한다. 위의 함수를 아래와 같이 재작성할 수 있다.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> usesonly(word, available)</span><br><span class="line">    <span class="built_in">Set</span>(word) ⊆ <span class="built_in">Set</span>(available)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p><code>⊆ (\subseteq TAB)</code> 연산자는 두 개의 <code>word</code>의 단어가 <code>available</code>와 같은지의 가능성을 포함하여 한 셋이 서브셋인지를 확인한다.</p>
-<h3 id="수학-Mathematics"><a href="#수학-Mathematics" class="headerlink" title="수학 (Mathematics)"></a>수학 (Mathematics)</h3>]]></content>
+<h3 id="수학-Mathematics"><a href="#수학-Mathematics" class="headerlink" title="수학 (Mathematics)"></a>수학 (Mathematics)</h3><p>복소수(Complex numbers)는 줄리아에서 제공된다. 글로벌 상수 <code>im</code>은 복소수 $i$이며, $-1$의 제곱근을 나타낸 것이다.</p>
+<p>이제는 오일러의 등식(Euler’s identity)을 확인할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">julia&gt; ℯ^(<span class="literal">im</span>*<span class="literal">π</span>)+<span class="number">1</span></span><br><span class="line"><span class="number">0.0</span> + <span class="number">1.2246467991473532e-16</span><span class="literal">im</span></span><br></pre></td></tr></table></figure>
+<p>기호 <code>ℯ (\euler TAB)</code>는 자연로그의 기초이다.</p>
+<p>이제는 삼각함수의 식을 작성해보자.</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+cos(x)=\frac{e^{ix}+e^{-1x}}{2}
+\end{equation}</script>]]></content>
       <categories>
         <category>Think Julia</category>
       </categories>

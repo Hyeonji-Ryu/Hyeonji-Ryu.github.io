@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.  이 포스트는 The Goodies: Base and Standard Library를 한글로 요약 정리한 글입니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-23T20:47:27.000Z">
-<meta property="article:modified_time" content="2020-03-24T06:40:01.233Z">
+<meta property="article:modified_time" content="2020-03-24T08:55:08.177Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Julia">
 <meta property="article:tag" content="Think Julia">
@@ -235,7 +235,7 @@
               <span class="post-meta-item-text">작성일</span>
               
 
-              <time title="Post created: 2020-03-24 05:47:27 / Updated at: 15:40:01" itemprop="dateCreated datePublished" datetime="2020-03-24T05:47:27+09:00">2020-03-24</time>
+              <time title="Post created: 2020-03-24 05:47:27 / Updated at: 17:55:08" itemprop="dateCreated datePublished" datetime="2020-03-24T05:47:27+09:00">2020-03-24</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -297,7 +297,15 @@
 <p><code>useonly</code>는 <code>word</code>에 있는 모든 알파벳들이 <code>available</code>에 속해 있는지를 확인한다. 위의 함수를 아래와 같이 재작성할 수 있다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> usesonly(word, available)</span><br><span class="line">    <span class="built_in">Set</span>(word) ⊆ <span class="built_in">Set</span>(available)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p><code>⊆ (\subseteq TAB)</code> 연산자는 두 개의 <code>word</code>의 단어가 <code>available</code>와 같은지의 가능성을 포함하여 한 셋이 서브셋인지를 확인한다.</p>
-<h3 id="수학-Mathematics"><a href="#수학-Mathematics" class="headerlink" title="수학 (Mathematics)"></a>수학 (Mathematics)</h3>
+<h3 id="수학-Mathematics"><a href="#수학-Mathematics" class="headerlink" title="수학 (Mathematics)"></a>수학 (Mathematics)</h3><p>복소수(Complex numbers)는 줄리아에서 제공된다. 글로벌 상수 <code>im</code>은 복소수 $i$이며, $-1$의 제곱근을 나타낸 것이다.</p>
+<p>이제는 오일러의 등식(Euler’s identity)을 확인할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">julia&gt; ℯ^(<span class="literal">im</span>*<span class="literal">π</span>)+<span class="number">1</span></span><br><span class="line"><span class="number">0.0</span> + <span class="number">1.2246467991473532e-16</span><span class="literal">im</span></span><br></pre></td></tr></table></figure>
+<p>기호 <code>ℯ (\euler TAB)</code>는 자연로그의 기초이다.</p>
+<p>이제는 삼각함수의 식을 작성해보자.</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+cos(x)=\frac{e^{ix}+e^{-1x}}{2}
+\end{equation}</script>
     </div>
 
     
@@ -502,6 +510,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
