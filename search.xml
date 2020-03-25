@@ -7,7 +7,22 @@
 <p>글을 시작하기에 앞서 해당 시리즈는 Allen Downey, Ben Lauwens의 저서인 Think Julia: How to Think Like a Computer Scientist 를 바탕으로 작성된 글임을 알려드립니다.</p>
 </blockquote>
 <p>이 포스트는 <a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html#chap21" target="_blank" rel="noopener">Debugging</a>를 한글로 요약 정리한 글입니다.<br><a id="more"></a></p>
-<h2 id="디버깅-Debugging"><a href="#디버깅-Debugging" class="headerlink" title="디버깅 (Debugging)"></a>디버깅 (Debugging)</h2>]]></content>
+<h2 id="디버깅-Debugging"><a href="#디버깅-Debugging" class="headerlink" title="디버깅 (Debugging)"></a>디버깅 (Debugging)</h2><p>디버깅을 할 때, 보다 신속하게 오류를 추적하려면 여러 종류의 오류를 구분할 수 있어야 한다.</p>
+<ul>
+<li><p>소스 코드가 바이트 코드로 변환할 때 인터프리터가 ‘문법 오류(Syntax<br>errors )’을 발견하여 프로그램 구조에 문제가 있음을 나타낸다. 예시로 함수 블록 끝에 <code>end</code> 키워드를 생햑하면 아래과 같은 메시지가 생성된다.<br><code>ERROR: LoadError: syntax: incomplete: function requires end.</code></p>
+</li>
+<li><p>프로그램이 실행되는 동안 문제가 발생하면 인터프리터가 ‘런타임 오류<br>(Runtime errors)’를 생성한다. 대부분의 런타임 오류 메시지에는 오류가 발생한 위치 및 실행중인 함수에 대한 정보가 초함된다. 예시로 무한재귀로 인해 결국 런타임 오류가 발생하는 경우를 볼 수 있다. <code>ERROR: StackOverflowError.</code></p>
+</li>
+<li><p>의미 오류(Semantic errors)는 오류 메시지를 생성하지 않고 실행되지만 프로그램이 올바르게 작동하지 않는 문제이다. 예로는 표현식이 예상한 순서대로 평가되지 않아서 잘못된 결과가 발생하는 등이 있다.</p>
+</li>
+</ul>
+<p>디버깅의 첫 번째 단계는 처리중인 오류의 종류를 파악하는 것이다. 아래의 글은 오류 타입 별로 구성되어 있지만, 사실 몇몇 기술들은 둘 이상의 오류를 가진 경우도 있다.</p>
+<h3 id="문법-오류-Syntax-Errors"><a href="#문법-오류-Syntax-Errors" class="headerlink" title="문법 오류 (Syntax Errors)"></a>문법 오류 (Syntax Errors)</h3><p>문법 오류는 대부분 쉽게 찾아서 수정할 수 있다. 하지만 가끔씩 오류 메시지는 도움을 주지 않는다. 대부분의 일반적인 메시지는 <code>ERROR: LoadError: syntax: incomplete: premature end of input</code> 이나 <code>ERROR: LoadError: syntax: unexpected &quot;=&quot;, neither of which</code>으로 어느 것도 유익한 정보를 주지 않는다.</p>
+<p>반면, 메시지는 프로그램에서 문제가 발생한 위치를 알려준다. 줄리아는 문제를 발견한 위치를 전달하는데, 때때로 그 위치는 명확하지 않다. 이런 상황에서 실제 오류 위치는 대부분 오류 메시지가 알려준 위치보다 앞서 있는 경우가 많다.</p>
+<p>프로그램을 점진적으로 개발하는 경우 오류의 위치를 잘 알고 있어야 한다. 이를 위해 추가되는 코드는 아래로 붙이는 것이 좋다.</p>
+<p>책에서 코드를 복사하는 경우 본인의 코드를 책의 코드와 매우 신중하게 비교해야 한다. 되도록이면 모든 글자들을 전부 확인하는 것이 좋다. 동시에 책이 잘못되었을 수 있으므로 문법 오류처럼 보이는 것이 있다면 한번 더 확인해야 한다.</p>
+<p>가장 일반적인 문법 오류들을 피하는 방법은 다음과 같다.</p>
+]]></content>
       <categories>
         <category>Think Julia</category>
       </categories>
@@ -133,6 +148,12 @@ cos(x)=\frac{e^{ix}+e^{-1x}}{2}
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">julia&gt; <span class="meta">@code_llvm</span> squaresum(<span class="number">3.0</span>, <span class="number">4.0</span>)</span><br><span class="line">;  @ none:<span class="number">2</span> within <span class="string">`squaresum'</span></span><br><span class="line"><span class="string">define double @julia_squaresum_14821(double, double) &#123;</span></span><br><span class="line"><span class="string">top:</span></span><br><span class="line"><span class="string">; ┌ @ intfuncs.jl:243 within `</span>literal_pow'</span><br><span class="line">; │┌ @ float.jl:<span class="number">399</span> within <span class="string">`*'</span></span><br><span class="line"><span class="string">    %2 = fmul double %0, %0</span></span><br><span class="line"><span class="string">    %3 = fmul double %1, %1</span></span><br><span class="line"><span class="string">; └└</span></span><br><span class="line"><span class="string">; ┌ @ float.jl:395 within `</span>+'</span><br><span class="line">   %<span class="number">4</span> = fadd double %<span class="number">2</span>, %<span class="number">3</span></span><br><span class="line">; └</span><br><span class="line">  ret double %<span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>그러면 마지막으로 기계 코드가 생성된다.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">julia&gt; <span class="meta">@code_native</span> squaresum(<span class="number">3.0</span>, <span class="number">4.0</span>)</span><br><span class="line">	.section	__TEXT,__text,regular,pure_instructions</span><br><span class="line">; ┌ @ none:<span class="number">2</span> within <span class="string">`squaresum'</span></span><br><span class="line"><span class="string">; │┌ @ intfuncs.jl:243 within `</span>literal_pow'</span><br><span class="line">; ││┌ @ none:<span class="number">2</span> within <span class="string">`*'</span></span><br><span class="line"><span class="string">	vmulsd	%xmm0, %xmm0, %xmm0</span></span><br><span class="line"><span class="string">	vmulsd	%xmm1, %xmm1, %xmm1</span></span><br><span class="line"><span class="string">; │└└</span></span><br><span class="line"><span class="string">; │┌ @ float.jl:395 within `</span>+'</span><br><span class="line">	vaddsd	%xmm1, %xmm0, %xmm0</span><br><span class="line">; │└</span><br><span class="line">	retl</span><br><span class="line">	nopl	(%eax)</span><br><span class="line">; └</span><br></pre></td></tr></table></figure>
+<h3 id="디버깅"><a href="#디버깅" class="headerlink" title="디버깅"></a>디버깅</h3><p><code>Logging</code> 매크로는 프린트 구문의 스캐폴딩을 대체할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">julia&gt; <span class="meta">@warn</span> <span class="string">"Abandon printf debugging, all ye who enter here!"</span></span><br><span class="line">┌ Warning: Abandon printf debugging, all ye who enter here!</span><br><span class="line">└ @ Main REPL[<span class="number">1</span>]:<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>소스(source)에서 디버그 구문을 제거할 필요는 없다. 예를 들어 위의 <code>@warn</code>과 달리 아래의 코드는 기본적으로 출력이 생성되지 않는다. 이 경우 ‘디버그 로깅( debug logging)’을 사용하지 않으면 <code>sum(rand(100))</code>은 평가되지 않는다.</p>
+<p>로깅 레벨은 환경 변수인 <code>JULIA_DEBUG:</code>로 선택할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">$ JULIA_DEBUG=all julia -<span class="literal">e</span> '<span class="meta">@debug</span> <span class="string">"The sum of some values <span class="subst">$(sum(rand(<span class="number">100</span>)</span>))"</span>'</span><br><span class="line">┌ Debug: The sum of some values <span class="number">47.116520814555024</span></span><br><span class="line">└ @ Main none:<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>여기서는 모든 디버그 정보를 얻기 위해서 모두 사용햇지만 특정 파일 또는 모듈에 대한 출력만 생성하도록 선택할 수도 있다.</p>
 ]]></content>
       <categories>
         <category>Think Julia</category>
