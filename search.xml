@@ -53,7 +53,7 @@ a_{m1} & \cdots & a_{mn}
  \ \vdots\ \cdots\cdots\cdots\cdots\cdots\cdots\cdots\ \vdots\ \\
  a_{m1}x_1 + \cdots\cdots\cdots\cdot + a_{mn}x_n
  \end{bmatrix}
- =\overrightarrow{b}</script><p> 위의 공식은 행렬 A의 각 행을 행벡터로 인식하여 $A\overrightarrow{x}$와 내적을 한다. 즉, 전치행렬 $A^T$의 열들을 벡터로 내적하는 것과 같다. 그렇기에 $\overrightarrow{x}$의 길이는 행렬 A의 열 개수인 $n$이어야 하며, 결과값인 $\overrightarrow{b}$는 길이가 $m$이다.</p>
+ =\overrightarrow{b}</script><p> 위의 공식은 행렬 A의 각 행을 행벡터로 인식하여 $A$와 $\overrightarrow{x}$가 내적한다. 즉, 전치행렬 $A^T$의 열들을 벡터로 내적하는 것과 같다. 그렇기에 $\overrightarrow{x}$의 길이는 행렬 A의 열 개수인 $n$이어야 하며, 결과값인 $\overrightarrow{b}$는 길이가 $m$이다.</p>
 <script type="math/tex; mode=display">A\overrightarrow{x}= A(m \times n) \cdot \overrightarrow{x}(n \times 1) = \overrightarrow{b}(m \times 1)</script><p>직접 숫자를 넣어 예시를 풀어보자.</p>
 <script type="math/tex; mode=display">A\overrightarrow{x}=
  \begin{bmatrix}
