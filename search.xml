@@ -10,8 +10,12 @@
 \begin{bmatrix}
 X \\
 Y \\
-\end{bmatrix}</script><p>위의 열벡터는 <code>x</code>와 <code>y</code> 를 요소로 가진 2차원 벡터이다. 행벡터는 기본형인 열벡터를 전치한 형태이다.</p>
-<h2 id="벡터의-내적"><a href="#벡터의-내적" class="headerlink" title="벡터의 내적"></a>벡터의 내적</h2><h2 id="행렬-벡터의-곱"><a href="#행렬-벡터의-곱" class="headerlink" title="행렬 벡터의 곱"></a>행렬 벡터의 곱</h2><h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2>]]></content>
+\end{bmatrix}</script><p>위의 열벡터는 <code>x</code>와 <code>y</code> 를 요소로 가진 2차원 벡터이다.</p>
+<p>행벡터는 기본형인 열벡터를 전치한 형태이다.</p>
+<script type="math/tex; mode=display">\overrightarrow{A}^T=
+\begin{bmatrix}
+X Y
+\end{bmatrix}</script><h2 id="벡터의-내적"><a href="#벡터의-내적" class="headerlink" title="벡터의 내적"></a>벡터의 내적</h2><h2 id="행렬-벡터의-곱"><a href="#행렬-벡터의-곱" class="headerlink" title="행렬 벡터의 곱"></a>행렬 벡터의 곱</h2><h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2>]]></content>
       <categories>
         <category>Deep learning with Julia</category>
       </categories>
