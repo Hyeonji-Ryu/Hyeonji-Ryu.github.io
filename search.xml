@@ -20,8 +20,8 @@ X&Y
 <p>내적을 수학식으로 표현하면 아래와 같다.</p>
 <p>$\overrightarrow{a}\cdot\overrightarrow{b}=\sum_{i=1}^n a_ib_i=a_1b_1+a_2b_2+a_i3b_3+\cdots+a_nb_n$</p>
 <p>열벡터 A와 B를 내적하면 같은 위치에 있는 성분끼리 곱한 수들을 더한다. 즉, 열벡터 당 하나의 스칼라가 값으로 나오는 것이다.</p>
-<script type="math/tex; mode=display">\overrightarrow{a}=\begin{bmatrix}a_1\\a_2\\a_3\\\cdot\\\cdot\\a_n\end{bmatrix}\quad
-\overrightarrow{b}=\begin{bmatrix}b_1\\b_2\\b_3\\\cdot\\\cdot\\b_n\end{bmatrix}\quad
+<script type="math/tex; mode=display">\overrightarrow{a}=\begin{bmatrix}a_1\\a_2\\a_3\\\vdots\\a_n\end{bmatrix}\quad
+\overrightarrow{b}=\begin{bmatrix}b_1\\b_2\\b_3\\\vdots\\b_n\end{bmatrix}\quad
 \overrightarrow{a}\cdot\overrightarrow{b}=a_1b_1+a_2b_2+a_3b_3\cdots a_nb_n</script><p>이와 같은 과정을 벡터의 내적이라고 한다.</p>
 <h2 id="행렬-벡터의-곱"><a href="#행렬-벡터의-곱" class="headerlink" title="행렬 벡터의 곱"></a>행렬 벡터의 곱</h2><p>행렬이란 $m \times n$의 2차원 배열이다. 여기서 $m$은 행의 개수이고 $n$은 열의 개수이다. 아래는 $m \times n$의 행렬을 시각화한 것이다.</p>
 <script type="math/tex; mode=display">A_{mn}=
