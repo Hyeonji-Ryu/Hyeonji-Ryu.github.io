@@ -6,23 +6,23 @@
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <h2 id="벡터란"><a href="#벡터란" class="headerlink" title="벡터란"></a>벡터란</h2><p>벡터(Vector)는 ‘크기’와 ‘방향’을 모두 나타낸다. 예를 들어, 자동차가 시속 5마일로 달린다고 해보자. 여기서 5마일은 단순히 크기일뿐 방향을 나타내고 있지 않으므로 벡터라고 할 수 없다. 벡터로 나타내기 위해서는 5마일에 동쪽으로 향하는 자동차라는 ‘크기’와 ‘방향’까지 포함된 개념이어야 한다.</p>
 <p>벡터의 기호는 $\overrightarrow{A}$이며, 아래와 같은 ‘열벡터’가 기본 형태이다.</p>
-<script type="math/tex; mode=display">\overrightarrow{A}=
+<script type="math/tex; mode=display">\overrightarrow{a}=
 \begin{bmatrix}
 X \\
 Y \\
 \end{bmatrix}</script><p>벡터의 스칼라 개수와 차원은 동일하기 때문에 위의 열벡터는 성분 <code>x</code>와 <code>y</code> 를 가진 2차원 벡터이다.</p>
 <p>행벡터는 기본형인 열벡터를 ‘전치’한 형태이다. 여기서 전치란 주대각선(Main diagonal)을 대칭한 것이며, 보통 행렬에서 많이 사용된다.</p>
-<script type="math/tex; mode=display">\overrightarrow{A}^T=
+<script type="math/tex; mode=display">\overrightarrow{a}^T=
 \begin{bmatrix}
 X&Y
 \end{bmatrix}</script><p>행벡터의 경우 아래의 행렬 벡터의 곱에서 더 자세하게 설명할 것이다.</p>
 <h2 id="벡터의-내적"><a href="#벡터의-내적" class="headerlink" title="벡터의 내적"></a>벡터의 내적</h2><p>벡터의 곱셈은 크게 ‘외적(Cross product)’과 ‘내적(Dot product)’ 2가지의 방법이 사용되며, 우리는 그 중 딥러닝에서 사용 중인 내적에 대해 살펴볼 것이다.</p>
 <p>내적을 수학식으로 표현하면 아래와 같다.</p>
-<p>$\overrightarrow{A}\cdot\overrightarrow{B}=\sum_{i=1}^n A_iB_i=A_1B_1+A_2B_2+A_i3B_3+\cdots+A_nB_n$</p>
+<p>$\overrightarrow{a}\cdot\overrightarrow{b}=\sum_{i=1}^n a_ib_i=a_1b_1+a_2b_2+a_i3b_3+\cdots+a_nb_n$</p>
 <p>열벡터 A와 B를 내적하면 같은 위치에 있는 성분끼리 곱한 수들을 더한다. 즉, 스칼라가 값으로 나오는 것이다.</p>
-<script type="math/tex; mode=display">\overrightarrow{A}=\begin{bmatrix}a_1\\a_2\\a_3\\\cdot\\\cdot\\a_n\end{bmatrix}\quad
-\overrightarrow{B}=\begin{bmatrix}b_1\\b_2\\b_3\\\cdot\\\cdot\\b_n\end{bmatrix}\quad
-\overrightarrow{A}\cdot\overrightarrow{B}=a_1b_1+a_2b_2+a_3b_3\cdots a_nb_n</script><p>이와 같은 과정을 벡터의 내적이라고 한다.</p>
+<script type="math/tex; mode=display">\overrightarrow{a}=\begin{bmatrix}a_1\\a_2\\a_3\\\cdot\\\cdot\\a_n\end{bmatrix}\quad
+\overrightarrow{b}=\begin{bmatrix}b_1\\b_2\\b_3\\\cdot\\\cdot\\b_n\end{bmatrix}\quad
+\overrightarrow{a}\cdot\overrightarrow{b}=a_1b_1+a_2b_2+a_3b_3\cdots a_nb_n</script><p>이와 같은 과정을 벡터의 내적이라고 한다.</p>
 <h2 id="행렬-벡터의-곱"><a href="#행렬-벡터의-곱" class="headerlink" title="행렬 벡터의 곱"></a>행렬 벡터의 곱</h2><p>행렬이란 $m \times n$의 2차원 배열이다. 여기서 $m$은 행의 개수이고 $n$은 열의 개수이다. 아래는 $m \times n$의 행렬을 시각화한 것이다.</p>
 <script type="math/tex; mode=display">A_{mn}=
 \begin{bmatrix}
@@ -30,10 +30,57 @@ a_{11} & \cdots & a_{1n} \\
 \vdots & \ddots & \vdots \\
 a_{m1} & \cdots & a_{mn}
 \end{bmatrix}</script><p>그렇다면 위와 같은 행렬을 벡터와 곱하는 것이 가능할까?</p>
-<p><strong>NOTE</strong><br> 앞의 질문에 대답하기 전에 행렬과 벡터의 관계를 명확히 하려고 한다. 앞에서 봤던 열벡터 $\overrightarrow{A}$는 $2 \times 1$ 행렬이라고 할 수 있으며, $\overrightarrow{A}^T$는 $1 \times 2$ 행렬이라고 할 수 있다.</p>
-<p> 즉, 열벡터와 행벡터 모두 행렬로서 바라볼 수 있으며 그 반대도 가능하다.</p>
-<p>행렬과 벡터를 곱하는 과정을 살펴보자.</p>
-<h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2>]]></content>
+<p><strong>NOTE</strong><br> 앞의 질문에 대답하기 전에 행렬과 벡터의 관계를 명확히 하려고 한다. 앞에서 봤던 열벡터 $\overrightarrow{A}$는 $2 \times 1$ 행렬이라고 할 수 있으며, $\overrightarrow{A}^T$는 $1 \times 2$ 행렬이라고 할 수 있다.<br> 즉, 열벡터와 행벡터 모두 행렬로서 바라볼 수 있으며 그 반대도 가능하다.</p>
+<p>행렬과 벡터를 곱하는 방법은 2가지가 있다.</p>
+<h3 id="행-단위를-행벡터로-가정하여-내적을-한다"><a href="#행-단위를-행벡터로-가정하여-내적을-한다" class="headerlink" title="행 단위를 행벡터로 가정하여 내적을 한다"></a>행 단위를 행벡터로 가정하여 내적을 한다</h3><script type="math/tex; mode=display">A\overrightarrow{x}=
+ \begin{bmatrix}
+ a_{11} & a_{12} & \cdots & a_{1n} \\
+ a_{12} & a_{22} & \cdots & \vdots \\
+ \vdots & \cdots & \ddots & \vdots \\
+ a_{m1} & \cdots & \cdots & a_{mn}
+ \end{bmatrix}
+ \cdot
+ \begin{bmatrix}
+ x_1\\
+ x_2\\
+ \vdots\\
+ x_n\\
+ \end{bmatrix}
+ =
+ \begin{bmatrix}
+ a_{11}x_1 & a_{12}x_2 & \cdots & a_{1n}x_n \\
+ a_{12}x_1 & a_{22}x_2 & \cdots & \vdots \\
+ \vdots & \cdots & \ddots & \vdots \\
+ a_{m1}x_1 & \cdots & \cdots & a_{mn}x_n
+ \end{bmatrix}
+ =\overrightarrow{b}</script><p> 위의 공식은 행렬 A의 각 행을 행벡터로 인식하여 $A\overrightarrow{x}$와 내적을 한다. 즉, 전치행렬 A^T의 열들을 벡터로 내적하는 것과 같다. 그렇기에 $\overrightarrow{x}$의 길이는 행렬 A의 열 개수인 $n$이어야 하며, 결과값인 벡터는 길이가 $m$이다.</p>
+<script type="math/tex; mode=display">A\overrightarrow{x}= A(m \times n) \cdot \overrightarrow{x}(n \times 1) = \overrightarrow{b}(m \times 1)</script><p>  직접 숫자를 넣어 예시를 풀어보자.</p>
+<script type="math/tex; mode=display">A\overrightarrow{x}=
+ \begin{bmatrix}
+ 3 & 1 & 0 & 3 \\
+ 2 & 4 & 7 & 0 \\
+ -1 & 2 & 3 & 4 \\
+ \end{bmatrix}
+ \cdot
+ \begin{bmatrix}
+ 1\\
+ 2\\
+ 3\\
+ 4\\
+ \end{bmatrix}
+ =
+ \begin{bmatrix}
+ 3*1+1*2+0*3+3*4 \\
+ 2*1+4*2+7*3+0*4 \\
+ -1*1+2*2+3*3+4*4\quad
+ \end{bmatrix}
+ =
+ \begin{bmatrix}
+ 17\\
+ 31\\
+ 28\\
+ \end{bmatrix}</script><p> 위의 예시를 살펴보면 행렬 A의 각각의 행과 $\overrightarrow{x}$를 곱하여 더한 스칼라 값이 결과값인 것을 확인할 수 있다.</p>
+<h3 id="행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다"><a href="#행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다" class="headerlink" title="행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다"></a>행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다</h3><h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2>]]></content>
       <categories>
         <category>Deep learning with Julia</category>
       </categories>
