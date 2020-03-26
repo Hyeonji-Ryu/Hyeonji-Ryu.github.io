@@ -3,9 +3,7 @@
   <entry>
     <title>딥러닝에서 사용되는 행렬 벡터의 곱</title>
     <url>/2020/03/26/Deeplearning-1/</url>
-    <content><![CDATA[<blockquote>
-<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
-</blockquote>
+    <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <h2 id="벡터란"><a href="#벡터란" class="headerlink" title="벡터란"></a>벡터란</h2><p>벡터는 ‘크기’와 ‘방향’을 모두 나타낸다. 예를 들어, 자동차가 시속 5마일로 달린다고 해보자. 이때 5마일은 벡터인가? 여기서 5마일은 단순히 크기일뿐 방향을 나타내고 있지 않으므로 벡터라고 할 수 없다. 따라서 벡터로 나타내기 위해서는 5마일에 동쪽으로 향하는 자동차라는 ‘크기’와 ‘방향’까지 포함된 개념이어야 한다.</p>
 <p>벡터의 기호는 $\overrightarrow{A}$이며, 열벡터인 $\left[x; y\right]$</p>
 <h2 id="벡터의-내적"><a href="#벡터의-내적" class="headerlink" title="벡터의 내적"></a>벡터의 내적</h2><h2 id="행렬-벡터의-곱"><a href="#행렬-벡터의-곱" class="headerlink" title="행렬 벡터의 곱"></a>행렬 벡터의 곱</h2><h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2>]]></content>
@@ -493,9 +491,7 @@ cos(x)=\frac{e^{ix}+e^{-1x}}{2}
   <entry>
     <title>chapter 0. 시작하기</title>
     <url>/2020/03/19/Algorithms-chap0/</url>
-    <content><![CDATA[<blockquote>
-<p>글을 시작하기에 앞서 해당 글은 Sanjoy Dasgupta, Christos Papadimitriou, Umesh 의 저서인 Algorithms를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
-</blockquote>
+    <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Sanjoy Dasgupta, Christos Papadimitriou, Umesh 의 저서인 Algorithms를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
 <h2 id="피보나치-입문"><a href="#피보나치-입문" class="headerlink" title="피보나치 입문"></a>피보나치 입문</h2><p>피보나치는 유명한 수열로 가장 많이 알려져있다. 수열 내에서 각 숫자들은 이전 두 숫자의 합이라는 것이 피보나치 수열의 원리이다. 피보나치수 $F_n$은 다음과 같다.</p>
 <script type="math/tex; mode=display">
 fib(n) =
@@ -690,9 +686,7 @@ fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
   <entry>
     <title>0. introduction</title>
     <url>/2020/03/17/mathematic-1/</url>
-    <content><![CDATA[<blockquote>
-<p>글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
-</blockquote>
+    <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
 <p>머신러닝(Machine learning)은 데이터로부터 유용한 정보를 자동으로 추출해주는 알고리즘을 디자인하는 것이다. 강조할 부분은 “자동(automatic)”이다. 머신러닝은 많은 데이터셋에 적용하여 의미있는 것들을 생산하는 범용 방법론(general-purpose methodology)에 관심이 있다. 머신러닝을 설명하는 세 가지의 핵심 단어가 있다. 데이터, 모델, 그리고 학습이다.</p>
 <p>머신러닝의 목적은 데이터로부터 가치있는 패턴을 찾는 방법을 개발하는 방법을 디자인하는 것이다. 이 목적에 도달하기 위해서는 주어진 데이터를 일반화하는 프로세스를 가진 모델을 디자인한다. 이후 학습에서는 모델의 매개 변수를 최적화하여 데이터의 패턴과 구조를 자동으로 찾을 수 있게 한다. 결국 머신러닝의 최종 목표는 위의 과정을 거쳐 준비된 모델이 새로운 데이터를 받아도 패턴을 잘 찾을 수 있는 모델을 구축하는 것이다.</p>
 <p>복잡한 머신러닝이 구축되는 원리를 알기 위해서는 수학적 기초가 중요하다. 원리를 이해하는 것은 새로운 머신러닝 방법들을 생산하고, 존재하는 방법들을 디버깅할 수 있다.</p>
