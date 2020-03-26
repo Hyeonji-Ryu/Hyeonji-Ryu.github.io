@@ -18,7 +18,7 @@ X&Y
 \end{bmatrix}</script><p>행벡터의 경우 아래의 행렬 벡터의 곱에서 더 자세하게 설명할 것이다.</p>
 <h2 id="벡터의-내적"><a href="#벡터의-내적" class="headerlink" title="벡터의 내적"></a>벡터의 내적</h2><p>벡터의 곱셈은 크게 ‘외적(Cross product)’과 ‘내적(Dot product)’ 2가지의 방법이 사용되며, 우리는 그 중 딥러닝에서 사용 중인 내적에 대해 살펴볼 것이다.</p>
 <p>내적을 수학식으로 표현하면 아래와 같다.</p>
-<p>$A\cdotB=\sum_{i=1}^nA_iB_i=$</p>
+<p>$A \cdot B=\sum_{i=1}^n A_iB_i=A_1B_1+A_2B_2+A_i3B_3+\cdots+A_nB_n$</p>
 <h2 id="행렬-벡터의-곱"><a href="#행렬-벡터의-곱" class="headerlink" title="행렬 벡터의 곱"></a>행렬 벡터의 곱</h2><h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2>]]></content>
       <categories>
         <category>Deep learning with Julia</category>
