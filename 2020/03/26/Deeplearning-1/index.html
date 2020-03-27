@@ -54,7 +54,7 @@
 <meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-25T20:37:08.000Z">
-<meta property="article:modified_time" content="2020-03-27T07:34:00.804Z">
+<meta property="article:modified_time" content="2020-03-27T19:46:56.830Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-27 16:34:00" itemprop="dateModified" datetime="2020-03-27T16:34:00+09:00">2020-03-27</time>
+                <time title="Updated at: 2020-03-28 04:46:56" itemprop="dateModified" datetime="2020-03-28T04:46:56+09:00">2020-03-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -289,7 +289,7 @@ X&Y
 \overrightarrow{b}=\begin{bmatrix}b_1\\b_2\\b_3\\\vdots\\b_n\end{bmatrix}\quad
 \overrightarrow{a}\cdot\overrightarrow{b}=a_1b_1+a_2b_2+a_3b_3\cdots a_nb_n</script><p>이와 같은 과정을 벡터의 내적이라고 한다.</p>
 <h2 id="행렬과-벡터의-곱"><a href="#행렬과-벡터의-곱" class="headerlink" title="행렬과 벡터의 곱"></a>행렬과 벡터의 곱</h2><p>행렬이란 $m \times n$의 2차원 배열이다. 여기서 $m$은 행의 개수이고 $n$은 열의 개수이다. 아래는 $m \times n$의 행렬을 시각화한 것이다.</p>
-<script type="math/tex; mode=display">A_{mn}=
+<script type="math/tex; mode=display">A=
 \begin{bmatrix}
 a_{11} & \cdots & a_{1n} \\
 \vdots & \ddots & \vdots \\
@@ -362,13 +362,13 @@ a_{m1} & \cdots & a_{mn}
  \ \overrightarrow{a_n} \cdot\overrightarrow{x}\\
  \end{bmatrix}</script><h3 id="행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다"><a href="#행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다" class="headerlink" title="행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다"></a>행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다</h3><p>다음으로는 ‘열벡터’ 개념만으로 행렬 벡터 곱을 이해하는 방법이다. 어떤 방법을 사용하든 결과는 동일하지만 진행되는 논리구조는 다르다. 둘 중 어느 방법을 사용해도 상관없지만 개인적으로는 이 방법이 더 편하다고 생각한다. 먼저 아래의 행렬을 각각의 열벡터의 모음이라고 생각해보자.</p>
 <script type="math/tex; mode=display">\begin{matrix}
- \overrightarrow{v_1}\ & \overrightarrow{v_2}\ & \overrightarrow{v_3}\ & \overrightarrow{v_4}
+ \overrightarrow{v_1}\ & \overrightarrow{v_2}\ & \cdots & \overrightarrow{v_n}
  \end{matrix}</script><script type="math/tex; mode=display">\begin{bmatrix}
  a_{11} & a_{12} & \cdots & a_{1n} \\
  a_{12} & a_{22} & \cdots & \vdots \\
  \vdots & \cdots & \ddots & \vdots \\
  a_{m1} & \cdots & \cdots & a_{mn}
- \end{bmatrix}</script><p>위의 도식처럼 행렬 A의 각 열들은 $v_1$, $v_2$, $v_3$, $v_4$인 열벡터로 분리되었다. 도식에서는 보이는 열이 4개이기에 $v_4$까지 설정되었지만, $v$의 개수는 행렬 A의 열 개수와 동일하다. 그 다음 $\overrightarrow{v}$ 백터들을 각각 $\overrightarrow{x}$와 내적한 후, 결과로 나온 값들을 행 단위로 더해주면 된다.</p>
+ \end{bmatrix}</script><p>위의 도식처럼 행렬 A의 각 열들은 $v_1$, $v_2$, $\cdots$ $v_n$인 열벡터로 분리되었다. $v$의 개수는 행렬 A의 열 개수와 동일하며, 여기서는 n을 4라고 가정하자. 그 다음 $\overrightarrow{v}$ 백터들을 각각 $\overrightarrow{x}$와 내적한 후, 결과로 나온 값들을 행 단위로 더해주면 된다.</p>
 <script type="math/tex; mode=display">A\overrightarrow{x}=\begin{bmatrix}
  \overrightarrow{v_1}\\
  \overrightarrow{v_2}\\
@@ -383,7 +383,7 @@ a_{m1} & \cdots & a_{mn}
  \end{bmatrix}
  =
  \begin{matrix}[x_1\overrightarrow{v_1}+x_2\overrightarrow{v_2}+x_3\overrightarrow{v_3}+x_4\overrightarrow{v_4}]\end{matrix}</script><p>따라서 $A\overrightarrow{x}$는 $\overrightarrow{v}$ 벡터들에 $\overrightarrow{x}$의 스칼라(상수)를 곱해준 것이다. 이는 $\overrightarrow{v}$ 벡터들의 값들을 <strong>가중</strong>해준다는 의미와 같다. 마지막으로 $\overrightarrow{x}$의 스칼라(상수)를 곱해진 $\overrightarrow{v}$ 백터들을 행 단위로 더해주면 된다.</p>
-<p>원리는 파악했으니 문제를 풀어보도록 하자.</p>
+<p>이제는 원리는 파악했으니 아래의 문제를 풀어보도록 하자.</p>
 <script type="math/tex; mode=display">A\overrightarrow{x}=
  \begin{bmatrix}
  3 & 1 & 0 & 3 \\
@@ -402,7 +402,7 @@ a_{m1} & \cdots & a_{mn}
  \end{matrix}</script><script type="math/tex; mode=display">\begin{bmatrix}
  3\\
  2\\
- 0\\
+ -1\\
  \end{bmatrix}
   \begin{bmatrix}
  1\\
@@ -420,9 +420,9 @@ a_{m1} & \cdots & a_{mn}
  4\\
  \end{bmatrix}</script><script type="math/tex; mode=display">\begin{matrix}[x_1\overrightarrow{v_1}+x_2\overrightarrow{v_2}+x_3\overrightarrow{v_3}+x_4\overrightarrow{v_4}]\end{matrix}</script><p>위의 도식처럼 열벡터 단위로 분리한 후, 아래의 공식에 대입한다.</p>
 <script type="math/tex; mode=display">\begin{bmatrix}
- 3*1 & 1*2 & 0*3 & 3*4 \\
- 2*1 & 4*2 & 7*3 & 0*4 \\
- -1*1 & 2*2 & 3*3 & 4*4 \\
+3\times1+1\times2+0\times3+3\times4 \\
+ 2\times1+4\times2+7\times3+0\times4 \\
+ -1\times1+2\times2+3\times3+4\times4\quad
  \end{bmatrix}
  =
  \begin{bmatrix}
@@ -441,6 +441,15 @@ a_{m1} & \cdots & a_{mn}
  31 \\
  28 \\
  \end{bmatrix}</script><p>보다시피 첫 번째 방법과 결과는 같다.</p>
+<h2 id="행렬곱"><a href="#행렬곱" class="headerlink" title="행렬곱"></a>행렬곱</h2><h2 id="줄리아에서의-곱셈"><a href="#줄리아에서의-곱셈" class="headerlink" title="줄리아에서의 곱셈"></a>줄리아에서의 곱셈</h2><p>줄리아에서 내적을 사용하기 위해서는 아래의 코드를 입력하여 해당 패키지를 다운로드해야 한다. <code>LinearAlgebra</code> 사용법에 대해 자세히 알고 싶다면 <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/" target="_blank" rel="noopener">이 링크</a>에서 확인할 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> LinearAlgebra</span><br></pre></td></tr></table></figure>
+<p>준비가 끝났다면 줄리아에서 내적을 어떻게 계산하는지 살펴보자. 줄리아에서 함수 <code>dot()</code>은 두 개의 백터를 내적한다. 아래의 예시를 통해 확인해보자.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=ones(<span class="number">1</span>,<span class="number">3</span>)</span><br><span class="line">b=a'</span><br><span class="line">dot(a,b)</span><br><span class="line"><span class="number">3.0</span></span><br></pre></td></tr></table></figure>
+<p>위의 코드는 $1\times3$ 행렬인 a와, a의 전치행렬인 b를 생성하고 두 벡터를 내적한다. 그 결과로는 $1\times1$을 세 번하여 더한 3이 도출되었다. 그렇다면 신경망 모든 계산에 <code>dot()</code>만을 사용하면 되는 것일까? 그렇지 않다. <code>dot()</code>은 모든 배열들을 벡터화하는 문제가 있다. 아래의 예시를 통해서 알아보자.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=ones(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">b=a'</span><br><span class="line">dot(a,b)</span><br><span class="line"><span class="number">6.0</span></span><br></pre></td></tr></table></figure>
+<p>위의 예시는 $2\times3$ 행렬인 a와 a의 전치행렬을 생성한다는 점에서 같지만, 각 변수들이 2차원 배열인 매트릭스(Matrix)라는 점에서 다르다. 즉, 첫 번째 예시는 1차 배열을 다루기 때문에 벡터화되어도 상관없는 반면 두 번째 예시는 2차원 배열이기 때문에 행과 열을 보존하여 내적을 해야 하는 것이다. 따라서 이는 행렬곱을 사용하여 처리해주어야 한다. 행렬곱 연산자는 <code>*()</code>이다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a=ones(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">b=a'</span><br><span class="line">*(a,b)</span><br><span class="line"><span class="number">2</span>×<span class="number">2</span> <span class="built_in">Array</span>&#123;<span class="built_in">Float64</span>,<span class="number">2</span>&#125;:</span><br><span class="line"> <span class="number">3.0</span>  <span class="number">3.0</span></span><br><span class="line"> <span class="number">3.0</span>  <span class="number">3.0</span></span><br></pre></td></tr></table></figure>
+<p>위의 예시를 통해서</p>
 <h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2>
     </div>
 
@@ -527,7 +536,7 @@ a_{m1} & \cdots & a_{mn}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터란"><span class="nav-number">1.</span> <span class="nav-text">벡터란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터의-내적"><span class="nav-number">2.</span> <span class="nav-text">벡터의 내적</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#행렬과-벡터의-곱"><span class="nav-number">3.</span> <span class="nav-text">행렬과 벡터의 곱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#행-단위를-행벡터로-가정하여-내적한다"><span class="nav-number">3.1.</span> <span class="nav-text">행 단위를 행벡터로 가정하여 내적한다</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다"><span class="nav-number">3.2.</span> <span class="nav-text">행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#신경망-계산"><span class="nav-number">4.</span> <span class="nav-text">신경망 계산</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터란"><span class="nav-number">1.</span> <span class="nav-text">벡터란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터의-내적"><span class="nav-number">2.</span> <span class="nav-text">벡터의 내적</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#행렬과-벡터의-곱"><span class="nav-number">3.</span> <span class="nav-text">행렬과 벡터의 곱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#행-단위를-행벡터로-가정하여-내적한다"><span class="nav-number">3.1.</span> <span class="nav-text">행 단위를 행벡터로 가정하여 내적한다</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다"><span class="nav-number">3.2.</span> <span class="nav-text">행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#행렬곱"><span class="nav-number">4.</span> <span class="nav-text">행렬곱</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#줄리아에서의-곱셈"><span class="nav-number">5.</span> <span class="nav-text">줄리아에서의 곱셈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#신경망-계산"><span class="nav-number">6.</span> <span class="nav-text">신경망 계산</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
