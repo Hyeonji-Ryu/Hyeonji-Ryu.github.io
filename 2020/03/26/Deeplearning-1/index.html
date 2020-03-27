@@ -54,7 +54,7 @@
 <meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-25T20:37:08.000Z">
-<meta property="article:modified_time" content="2020-03-26T21:02:51.263Z">
+<meta property="article:modified_time" content="2020-03-27T07:34:00.804Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-27 06:02:51" itemprop="dateModified" datetime="2020-03-27T06:02:51+09:00">2020-03-27</time>
+                <time title="Updated at: 2020-03-27 16:34:00" itemprop="dateModified" datetime="2020-03-27T16:34:00+09:00">2020-03-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,8 +269,8 @@
 
       
         <p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
-<h2 id="벡터란"><a href="#벡터란" class="headerlink" title="벡터란"></a>벡터란</h2><p>벡터(Vector)는 ‘크기’와 ‘방향’을 모두 나타낸다. 예를 들어, 자동차가 시속 5마일로 달린다고 해보자. 여기서 5마일은 단순히 크기일뿐 방향을 나타내고 있지 않으므로 벡터라고 할 수 없다. 벡터로 나타내기 위해서는 5마일에 동쪽으로 향하는 자동차라는 ‘크기’와 ‘방향’까지 포함된 개념이어야 한다.</p>
-<p>벡터의 기호는 $\overrightarrow{A}$이며, 아래와 같은 ‘열벡터’가 기본 형태이다.</p>
+<h2 id="벡터란"><a href="#벡터란" class="headerlink" title="벡터란"></a>벡터란</h2><p>벡터(Vector)는 ‘크기’와 ‘방향’을 모두 나타낸다. 예를 들어, 자동차가 시속 5마일로 달린다고 해보자. 여기서 5마일은 단순히 크기일뿐 방향을 나타내고 있지 않으므로 벡터라고 할 수 없다. 벡터로 나타내기 위해서는 5마일에 동쪽으로 향하는 ‘크기’와 ‘방향’까지 포함된 개념이어야 한다.</p>
+<p>벡터의 기호는 $\overrightarrow{a}$이며, 아래와 같은 ‘열벡터’가 기본 형태이다.</p>
 <script type="math/tex; mode=display">\overrightarrow{a}=
 \begin{bmatrix}
 X \\
@@ -280,22 +280,22 @@ Y \\
 <script type="math/tex; mode=display">\overrightarrow{a}^T=
 \begin{bmatrix}
 X&Y
-\end{bmatrix}</script><p>행렬의 경우 아래의 행렬 벡터의 곱에서 더 자세하게 설명할 것이다.</p>
-<h2 id="벡터의-내적"><a href="#벡터의-내적" class="headerlink" title="벡터의 내적"></a>벡터의 내적</h2><p>벡터의 곱셈은 크게 ‘외적(Cross product)’과 ‘내적(Dot product)’ 2가지의 방법이 사용되며, 우리는 그 중 딥러닝에서 사용 중인 내적에 대해 살펴볼 것이다.</p>
+\end{bmatrix}</script><p>행렬의 경우 아래의 행렬과 벡터의 곱에서 더 자세하게 설명할 것이다.</p>
+<h2 id="벡터의-내적"><a href="#벡터의-내적" class="headerlink" title="벡터의 내적"></a>벡터의 내적</h2><p>벡터의 곱셈은 크게 ‘외적(Cross product)’과 ‘내적(Dot product)’ 2가지의 방법이 사용되며, 우리는 그 중 딥러닝에서 사용하는 내적에 대해 살펴볼 것이다.</p>
 <p>내적을 수학식으로 표현하면 아래와 같다.</p>
-<p>$\overrightarrow{a}\cdot\overrightarrow{b}=\sum_{i=1}^n a_ib_i=a_1b_1+a_2b_2+a_i3b_3+\cdots+a_nb_n$</p>
+<p>$\overrightarrow{a}\cdot\overrightarrow{b}=\sum_{i=1}^n a_ib_i=a_1b_1+a_2b_2+a_3b_3+\cdots+a_nb_n$</p>
 <p>열벡터 A와 B를 내적하면 같은 위치에 있는 성분끼리 곱한 수들을 더한다. 즉, 열벡터 당 하나의 스칼라가 값으로 나오는 것이다.</p>
 <script type="math/tex; mode=display">\overrightarrow{a}=\begin{bmatrix}a_1\\a_2\\a_3\\\vdots\\a_n\end{bmatrix}\quad
 \overrightarrow{b}=\begin{bmatrix}b_1\\b_2\\b_3\\\vdots\\b_n\end{bmatrix}\quad
 \overrightarrow{a}\cdot\overrightarrow{b}=a_1b_1+a_2b_2+a_3b_3\cdots a_nb_n</script><p>이와 같은 과정을 벡터의 내적이라고 한다.</p>
-<h2 id="행렬-벡터의-곱"><a href="#행렬-벡터의-곱" class="headerlink" title="행렬 벡터의 곱"></a>행렬 벡터의 곱</h2><p>행렬이란 $m \times n$의 2차원 배열이다. 여기서 $m$은 행의 개수이고 $n$은 열의 개수이다. 아래는 $m \times n$의 행렬을 시각화한 것이다.</p>
+<h2 id="행렬과-벡터의-곱"><a href="#행렬과-벡터의-곱" class="headerlink" title="행렬과 벡터의 곱"></a>행렬과 벡터의 곱</h2><p>행렬이란 $m \times n$의 2차원 배열이다. 여기서 $m$은 행의 개수이고 $n$은 열의 개수이다. 아래는 $m \times n$의 행렬을 시각화한 것이다.</p>
 <script type="math/tex; mode=display">A_{mn}=
 \begin{bmatrix}
 a_{11} & \cdots & a_{1n} \\
 \vdots & \ddots & \vdots \\
 a_{m1} & \cdots & a_{mn}
 \end{bmatrix}</script><p>그렇다면 위와 같은 행렬을 벡터와 곱하는 것이 가능할까?</p>
-<p><strong>NOTE</strong><br> 앞의 질문에 대답하기 전에 행렬과 벡터의 관계를 명확히 하려고 한다. 앞에서 봤던 열벡터 $\overrightarrow{A}$는 $2 \times 1$ 행렬이라고 할 수 있으며, $\overrightarrow{A}^T$는 $1 \times 2$ 행렬이라고 할 수 있다.<br> 즉, 열벡터와 행벡터 모두 행렬로서 바라볼 수 있으며 그 반대도 가능하다.</p>
+<p><strong>NOTE</strong><br> 앞의 질문에 대답하기 전에 행렬과 벡터의 관계를 명확히 하려고 한다. 앞서 백터를 설명하는 섹션에서 봤던 열벡터 $\overrightarrow{a}$는 $2 \times 1$ 행렬이라고 할 수 있으며, $\overrightarrow{a}^T$는 $1 \times 2$ 행렬이라고 할 수 있다.<br> 즉, 열벡터와 행벡터 모두 행렬로서 바라볼 수 있으며 그 반대도 가능하다.</p>
 <p>행렬과 벡터를 곱하는 방법은 2가지가 있다.</p>
 <h3 id="행-단위를-행벡터로-가정하여-내적한다"><a href="#행-단위를-행벡터로-가정하여-내적한다" class="headerlink" title="행 단위를 행벡터로 가정하여 내적한다"></a>행 단위를 행벡터로 가정하여 내적한다</h3><script type="math/tex; mode=display">A\overrightarrow{x}=
  \begin{bmatrix}
@@ -315,7 +315,7 @@ a_{m1} & \cdots & a_{mn}
  \begin{bmatrix}
  a_{11}x_1 + a_{12}x_2 + \cdots + a_{1n}x_n \\
  a_{12}x_1 + a_{22}x_2 + \cdots\cdots\cdot\ \vdots\ \\
- \ \vdots\ \cdots\cdots\cdots\cdots\cdots\cdots\cdots\ \vdots\ \\
+ \ \vdots\ \\
  a_{m1}x_1 + \cdots\cdots\cdots\cdot + a_{mn}x_n
  \end{bmatrix}
  =\overrightarrow{b}</script><p> 위의 공식은 행렬 A의 각 행을 행벡터로 인식하여 $A$와 $\overrightarrow{x}$가 내적한다. 즉, 전치행렬 $A^T$의 열들을 벡터로 내적하는 것과 같다. 그렇기에 $\overrightarrow{x}$의 길이는 행렬 A의 열 개수인 $n$이어야 하며, 결과값인 $\overrightarrow{b}$는 길이가 $m$이다.</p>
@@ -335,9 +335,9 @@ a_{m1} & \cdots & a_{mn}
  \end{bmatrix}
  =
  \begin{bmatrix}
- 3*1+1*2+0*3+3*4 \\
- 2*1+4*2+7*3+0*4 \\
- -1*1+2*2+3*3+4*4\quad
+ 3\times1+1\times2+0\times3+3\times4 \\
+ 2\times1+4\times2+7\times3+0\times4 \\
+ -1\times1+2\times2+3\times3+4\times4\quad
  \end{bmatrix}
  =
  \begin{bmatrix}
@@ -360,7 +360,7 @@ a_{m1} & \cdots & a_{mn}
  \ \overrightarrow{a_2} \cdot\overrightarrow{x}\\
  \ \vdots\\
  \ \overrightarrow{a_n} \cdot\overrightarrow{x}\\
- \end{bmatrix}</script><h3 id="행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다"><a href="#행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다" class="headerlink" title="행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다"></a>행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다</h3><p>다음으로는 ‘열벡터’ 개념만으로 행렬 벡터 곱을 이해하는 방법이다. 어떤 방법을 사용하든 결과는 동일하지만 진행되는 논리구조는 다르다. 둘중 어느 방법을 사용해도 상관없지만 개인적으로는 이 방법이 더 편하다고 생각한다. 먼저 아래의 행렬을 각각의 열벡터의 모음이라고 생각해보자.</p>
+ \end{bmatrix}</script><h3 id="행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다"><a href="#행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다" class="headerlink" title="행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다"></a>행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다</h3><p>다음으로는 ‘열벡터’ 개념만으로 행렬 벡터 곱을 이해하는 방법이다. 어떤 방법을 사용하든 결과는 동일하지만 진행되는 논리구조는 다르다. 둘 중 어느 방법을 사용해도 상관없지만 개인적으로는 이 방법이 더 편하다고 생각한다. 먼저 아래의 행렬을 각각의 열벡터의 모음이라고 생각해보자.</p>
 <script type="math/tex; mode=display">\begin{matrix}
  \overrightarrow{v_1}\ & \overrightarrow{v_2}\ & \overrightarrow{v_3}\ & \overrightarrow{v_4}
  \end{matrix}</script><script type="math/tex; mode=display">\begin{bmatrix}
@@ -527,7 +527,7 @@ a_{m1} & \cdots & a_{mn}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터란"><span class="nav-number">1.</span> <span class="nav-text">벡터란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터의-내적"><span class="nav-number">2.</span> <span class="nav-text">벡터의 내적</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#행렬-벡터의-곱"><span class="nav-number">3.</span> <span class="nav-text">행렬 벡터의 곱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#행-단위를-행벡터로-가정하여-내적한다"><span class="nav-number">3.1.</span> <span class="nav-text">행 단위를 행벡터로 가정하여 내적한다</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다"><span class="nav-number">3.2.</span> <span class="nav-text">행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#신경망-계산"><span class="nav-number">4.</span> <span class="nav-text">신경망 계산</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터란"><span class="nav-number">1.</span> <span class="nav-text">벡터란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터의-내적"><span class="nav-number">2.</span> <span class="nav-text">벡터의 내적</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#행렬과-벡터의-곱"><span class="nav-number">3.</span> <span class="nav-text">행렬과 벡터의 곱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#행-단위를-행벡터로-가정하여-내적한다"><span class="nav-number">3.1.</span> <span class="nav-text">행 단위를 행벡터로 가정하여 내적한다</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#행렬을-열벡터의-모음으로-가정하여-내적한-후-각-행들을-더해준다"><span class="nav-number">3.2.</span> <span class="nav-text">행렬을 열벡터의 모음으로 가정하여 내적한 후, 각 행들을 더해준다</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#신경망-계산"><span class="nav-number">4.</span> <span class="nav-text">신경망 계산</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
