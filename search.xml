@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>딥러닝에서 사용되는 행렬 벡터의 곱</title>
+    <title>딥러닝에서 사용되는 행렬과 벡터의 곱</title>
     <url>/2020/03/26/Deeplearning-1/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <h2 id="벡터란"><a href="#벡터란" class="headerlink" title="벡터란"></a>벡터란</h2><p>벡터(Vector)는 ‘크기’와 ‘방향’을 모두 나타낸다. 예를 들어, 자동차가 시속 5마일로 달린다고 해보자. 여기서 5마일은 단순히 크기일뿐 방향을 나타내고 있지 않으므로 벡터라고 할 수 없다. 벡터로 나타내기 위해서는 5마일에 동쪽으로 향하는 ‘크기’와 ‘방향’까지 포함된 개념이어야 한다.</p>
@@ -35,7 +35,7 @@ a_{m1} & \cdots & a_{mn}
 <h3 id="행-단위를-행벡터로-가정하여-내적한다"><a href="#행-단위를-행벡터로-가정하여-내적한다" class="headerlink" title="행 단위를 행벡터로 가정하여 내적한다"></a>행 단위를 행벡터로 가정하여 내적한다</h3><script type="math/tex; mode=display">A\overrightarrow{x}=
  \begin{bmatrix}
  a_{11} & a_{12} & \cdots & a_{1n} \\
- a_{12} & a_{22} & \cdots & \vdots \\
+ a_{21} & a_{22} & \cdots & \vdots \\
  \vdots & \cdots & \ddots & \vdots \\
  a_{m1} & \cdots & \cdots & a_{mn}
  \end{bmatrix}
@@ -100,7 +100,7 @@ a_{m1} & \cdots & a_{mn}
  \overrightarrow{v_1}\ & \overrightarrow{v_2}\ & \cdots & \overrightarrow{v_n}
  \end{matrix}</script><script type="math/tex; mode=display">\begin{bmatrix}
  a_{11} & a_{12} & \cdots & a_{1n} \\
- a_{12} & a_{22} & \cdots & \vdots \\
+ a_{21} & a_{22} & \cdots & \vdots \\
  \vdots & \cdots & \ddots & \vdots \\
  a_{m1} & \cdots & \cdots & a_{mn}
  \end{bmatrix}</script><p>위의 도식처럼 행렬 A의 각 열들은 $v_1$, $v_2$, $\cdots$ $v_n$인 열벡터로 분리되었다. $v$의 개수는 행렬 A의 열 개수와 동일하며, 여기서는 n을 4라고 가정하자. 그 다음 $\overrightarrow{v}$ 백터들을 각각 $\overrightarrow{x}$와 내적한 후, 결과로 나온 값들을 행 단위로 더해주면 된다.</p>
@@ -175,17 +175,60 @@ a_{m1} & \cdots & a_{mn}
  17 \\
  31 \\
  28 \\
- \end{bmatrix}</script><p>보다시피 첫 번째 방법과 결과는 같다.</p>
-<h2 id="행렬곱"><a href="#행렬곱" class="headerlink" title="행렬곱"></a>행렬곱</h2><h2 id="줄리아에서의-곱셈"><a href="#줄리아에서의-곱셈" class="headerlink" title="줄리아에서의 곱셈"></a>줄리아에서의 곱셈</h2><p>줄리아에서 내적을 사용하기 위해서는 아래의 코드를 입력하여 해당 패키지를 다운로드해야 한다. <code>LinearAlgebra</code> 사용법에 대해 자세히 알고 싶다면 <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/" target="_blank" rel="noopener">이 링크</a>에서 확인할 수 있다.</p>
+ \end{bmatrix}</script><p>보다시피 첫 번째 방법과 결과는 같다. 위의 예시들은 모두 행렬과 열벡터 한 개를 내적하였다. 만약 행렬과 열벡터 여러 개를 한 번에 내적하고 싶다면 어떻게 해야 하는가? 벡터를 하나씩 행렬과 내적한 결과를 순서대로 나열하면 될 것이다. 이를 한번에 진행해주는 연산방법을 ‘행렬곱’이라고 한다.</p>
+<h2 id="행렬곱"><a href="#행렬곱" class="headerlink" title="행렬곱"></a>행렬곱</h2><p>행렬곱은 여러 개의 벡터를 한번에 행렬과 곱하는 것과 동일한 결과를 제공한다. 즉, 위에서 봤던 행렬과 벡터의 곱을 여러 번 진행한 것이라고 볼 수 있다. 만약 행렬 A와 행렬 B를 곱하여 행렬 C를 도출한다고 가정해보자.</p>
+<script type="math/tex; mode=display">C = A*B \rightarrow c_{ij}=a_i^T \cdot b_j</script><p>행렬 C의 요소 $c_{ij}$는 행렬 A의 $i$번째 행과 행렬 B의  $j$번째 열을 내적한 값이다. 이를 도식으로 나타내면 다음과 같다.</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+ a_{11} & a_{12} & \cdots & a_{1n} \\
+ a_{21} & a_{22} & \cdots & \vdots \\
+ \vdots & \cdots & \ddots & \vdots \\
+ a_{m1} & \cdots & \cdots & a_{mn}
+ \end{bmatrix}
+ \begin{bmatrix}
+ b_{11} & b_{12} & \cdots & b_{1n} \\
+ b_{21} & b_{22} & \cdots & \vdots \\
+ \vdots & \cdots & \ddots & \vdots \\
+ b_{m1} & \cdots & \cdots & b_{mn}
+ \end{bmatrix}
+=
+ \begin{bmatrix}
+ (a_{11}b_{11}+a_{12}b_{21}\cdots+a_{1n}b_{m1}) &  \cdots & (a_{11}b_{m1}+a_{12}b_{m2}\cdots+a_{1n}b_{mn}) \\
+ (a_{21}b_{11}+a_{22}b_{21}\cdots+a_{2n}b_{m1}) &  \cdots & (a_{21}b_{m1}+a_{22}b_{m2}\cdots+a_{2n}b_{mn}) \\
+ \vdots &  & \vdots \\
+ (a_{m1}b_{11}+a_{m2}b_{21}\cdots+a_{mn}b_{m1}) & \cdots & (a_{m1}b_{m1}+a_{m2}b_{m2}\cdots+a_{mn}b_{mn})
+ \end{bmatrix}</script><p>행렬곱에서는 행렬 두 개가 계산되는 것이므로 결과 또한 행렬의 형태를 가진다.</p>
+<script type="math/tex; mode=display">A*B= A(m \times n)*(n \times o) = C(m \times o)</script><p>이제 예시를 풀어보자.</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+ 1 & 4 \\
+ 2 & 5 \\
+ 3 & 6 \\
+ \end{bmatrix}
+*
+ \begin{bmatrix}
+ 1 & 2 & 3\\
+ 4 & 5 & 6\\
+ \end{bmatrix}</script><p>위의 행렬들은 $3\times2$와 $2\times3$이므로 결과값 행렬은 $3\times3$행렬이어야 한다.</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+ (1\times1+4\times4) & (1\times2+4\times5) & (1\times3+4\times6) \\
+ (2\times1+5\times4) & (2\times2+5\times5) & (2\times3+5\times6) \\
+ (3\times1+6\times4) & (3\times2+6\times5) & (3\times3+6\times6) \\
+ \end{bmatrix}
+ =
+\begin{bmatrix}
+ 17 & 22 & 27 \\
+ 22 & 29 & 36 \\
+ 27 & 36 & 45 \\
+ \end{bmatrix}</script><p>문제의 답으로 $3\times3$ 행렬이 나온 것을 확인할 수 있다. 이런 행렬곱은 신경망 계산에서 벡터 단위 내적 계산을 한번에 하기 위해서 사용된다.</p>
+<h2 id="줄리아에서의-곱셈"><a href="#줄리아에서의-곱셈" class="headerlink" title="줄리아에서의 곱셈"></a>줄리아에서의 곱셈</h2><p>줄리아에서 내적을 사용하기 위해서는 아래의 코드를 입력하여 해당 패키지를 다운로드해야 한다. <code>LinearAlgebra</code> 사용법에 대해 자세히 알고 싶다면 <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/" target="_blank" rel="noopener">이 링크</a>에서 확인할 수 있다.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> LinearAlgebra</span><br></pre></td></tr></table></figure>
 <p>준비가 끝났다면 줄리아에서 내적을 어떻게 계산하는지 살펴보자. 줄리아에서 함수 <code>dot()</code>은 두 개의 백터를 내적한다. 아래의 예시를 통해 확인해보자.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">a=ones(<span class="number">1</span>,<span class="number">3</span>)</span><br><span class="line">b=a'</span><br><span class="line">dot(a,b)</span><br><span class="line"><span class="number">3.0</span></span><br></pre></td></tr></table></figure>
-<p>위의 코드는 $1\times3$ 행렬인 a와, a의 전치행렬인 b를 생성하고 두 벡터를 내적한다. 그 결과로는 $1\times1$을 세 번하여 더한 3이 도출되었다. 그렇다면 신경망 모든 계산에 <code>dot()</code>만을 사용하면 되는 것일까? 그렇지 않다. <code>dot()</code>은 모든 배열들을 벡터화하는 문제가 있다. 아래의 예시를 통해서 알아보자.</p>
+<p>위의 코드는 $1\times3$ 행렬인 a와, a의 전치행렬인 b를 생성하고 두 벡터를 내적한다. 그 결과로는 $1\times1$을 세 번하여 더한 3이 도출되었다. 그렇다면 신경망 모든 계산에 <code>dot()</code>만을 사용하면 되는 것일까? 그렇지 않다. <code>dot()</code>은 모든 배열들을 하나의 벡터로 벡터화하는 문제가 있다. 아래의 예시를 통해서 알아보자.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">a=ones(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">b=a'</span><br><span class="line">dot(a,b)</span><br><span class="line"><span class="number">6.0</span></span><br></pre></td></tr></table></figure>
 <p>위의 예시는 $2\times3$ 행렬인 a와 a의 전치행렬을 생성한다는 점에서 같지만, 각 변수들이 2차원 배열인 매트릭스(Matrix)라는 점에서 다르다. 즉, 첫 번째 예시는 1차 배열을 다루기 때문에 벡터화되어도 상관없는 반면 두 번째 예시는 2차원 배열이기 때문에 행과 열을 보존하여 내적을 해야 하는 것이다. 따라서 이는 행렬곱을 사용하여 처리해주어야 한다. 행렬곱 연산자는 <code>*()</code>이다.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">a=ones(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">b=a'</span><br><span class="line">*(a,b)</span><br><span class="line"><span class="number">2</span>×<span class="number">2</span> <span class="built_in">Array</span>&#123;<span class="built_in">Float64</span>,<span class="number">2</span>&#125;:</span><br><span class="line"> <span class="number">3.0</span>  <span class="number">3.0</span></span><br><span class="line"> <span class="number">3.0</span>  <span class="number">3.0</span></span><br></pre></td></tr></table></figure>
-<p>위의 예시를 통해서</p>
-<h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2>]]></content>
+<h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2><p>이제 신경망에서 사용되는 계산법을 모두 배웠다. 위의 지식을 바탕으로 신경망이 어떻게 작동하는지 알아보자.</p>
+]]></content>
       <categories>
         <category>Deep learning with Julia</category>
       </categories>
