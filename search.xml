@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Deeplearning-3</title>
+    <title>3. 손실 함수</title>
     <url>/2020/03/30/Deeplearning-3/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<h2 id="벡터란"><a href="#벡터란" class="headerlink" title="벡터란"></a>벡터란</h2>]]></content>
+      <categories>
+        <category>Deep learning with Julia</category>
+      </categories>
+      <tags>
+        <tag>딥러닝</tag>
+        <tag>머신러닝</tag>
+        <tag>Deeplearning</tag>
+        <tag>줄리아</tag>
+        <tag>loss</tag>
+        <tag>손실함수</tag>
+      </tags>
   </entry>
   <entry>
     <title>2. 활성화 함수</title>
@@ -73,9 +85,13 @@ x & \text{(x>0) $$}\\
         <tag>딥러닝</tag>
         <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
-        <tag>벡터</tag>
-        <tag>내적</tag>
         <tag>줄리아</tag>
+        <tag>sigmoid</tag>
+        <tag>시그모이드</tag>
+        <tag>softmax</tag>
+        <tag>소프트맥스</tag>
+        <tag>렐루</tag>
+        <tag>ReLU</tag>
       </tags>
   </entry>
   <entry>
@@ -387,8 +403,6 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
         <tag>딥러닝</tag>
         <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
-        <tag>벡터</tag>
-        <tag>내적</tag>
         <tag>줄리아</tag>
       </tags>
   </entry>
