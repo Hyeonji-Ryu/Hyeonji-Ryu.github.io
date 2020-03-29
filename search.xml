@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Deeplearning-3</title>
+    <url>/2020/03/30/Deeplearning-3/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>2. 활성화 함수</title>
     <url>/2020/03/29/Deeplearning-2/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
@@ -37,7 +42,7 @@ x & \text{(x>0) $$}\\
 <p>위의 그래프를 통해 음수는 모두 $0$으로 처리되며, 양수는 값이 그대로 출력되는 것을 확인할 수 있다.</p>
 <h4 id="세-가지-함수-비교"><a href="#세-가지-함수-비교" class="headerlink" title="세 가지 함수 비교"></a>세 가지 함수 비교</h4><p>지금까지 은닉층에서 사용하는 활성화 함수들을 살펴보았다. 이제는 배열에 직접 적용해봄으로서 각 함수들을 비교해보고자 한다.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">x=[-<span class="number">1</span> -<span class="number">2</span> -<span class="number">3</span>;<span class="number">0</span> <span class="number">3</span> <span class="number">7</span>]</span><br></pre></td></tr></table></figure>
-<p>위의 코드는 예시로 적용해 볼 $2\times3$ 2차원 배열이다. 계단 함수와 시그모이드 함수, ReLU 함수 순서로 적용해보자.</p>
+<p>위의 코드는 예시로 적용해 볼 $2\times3$ 배열이다. 계단 함수와 시그모이드 함수, ReLU 함수 순서로 적용해보자.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">step_function.(x)</span><br><span class="line"><span class="number">2</span>×<span class="number">3</span> <span class="built_in">Array</span>&#123;<span class="built_in">Int64</span>,<span class="number">2</span>&#125;:</span><br><span class="line"> <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></span><br><span class="line"> <span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>계단 함수는 음수와 $0$은 모두 ‘$0$’으로 바꾸고 양수들을 ‘$1$’로 출력하였다.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">sigmoid.(x)</span><br><span class="line"><span class="number">2</span>×<span class="number">3</span> <span class="built_in">Array</span>&#123;<span class="built_in">Float64</span>,<span class="number">2</span>&#125;:</span><br><span class="line"> <span class="number">0.268941</span>  <span class="number">0.119203</span>  <span class="number">0.0474259</span></span><br><span class="line"> <span class="number">0.5</span>       <span class="number">0.952574</span>  <span class="number">0.999089</span></span><br></pre></td></tr></table></figure>
@@ -342,6 +347,39 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">Y=*(H,W2)+B2</span><br><span class="line"><span class="number">300</span>  <span class="number">414</span>  <span class="number">528</span></span><br></pre></td></tr></table></figure>
 <p>사실 신경망을 구현하는 것은 위의 설명보다 더 복잡하다. 하지만 위의 원리를 이해하지 못한다면 신경망 자체를 파악할 수 없다.<br>다음 글에서는 신경망에 쓰이는 활성화 함수들을 살펴보고 줄리아로 구현할 것이다.</p>
 ]]></content>
+      <categories>
+        <category>Deep learning with Julia</category>
+      </categories>
+      <tags>
+        <tag>딥러닝</tag>
+        <tag>머신러닝</tag>
+        <tag>Deeplearning</tag>
+        <tag>벡터</tag>
+        <tag>내적</tag>
+        <tag>줄리아</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>0. 줄리아로 딥러닝 구현하기</title>
+    <url>/2020/03/25/Deeplearning-0/</url>
+    <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>이 시리즈는 줄리아를 사용하여 딥러닝을 구현하면서 그 원리를 이해하고자 한다.</p>
+<p> 목차는 아래와 같다.</p>
+<ol>
+<li><p>행렬과 벡터의 곱</p>
+</li>
+<li><p>활성화 함수</p>
+</li>
+<li><p>손실 함수</p>
+</li>
+<li><p>경사하강법</p>
+</li>
+<li><p>신경망 구현: 순전파</p>
+</li>
+<li><p>신경망 구현: 역전파</p>
+</li>
+</ol>
+<h2 id="수학기호-정리"><a href="#수학기호-정리" class="headerlink" title="수학기호 정리"></a>수학기호 정리</h2>]]></content>
       <categories>
         <category>Deep learning with Julia</category>
       </categories>
