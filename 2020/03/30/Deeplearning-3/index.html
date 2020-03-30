@@ -55,7 +55,7 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/35.png">
 <meta property="article:published_time" content="2020-03-29T17:19:08.000Z">
-<meta property="article:modified_time" content="2020-03-30T16:00:51.003Z">
+<meta property="article:modified_time" content="2020-03-30T16:04:44.200Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -245,7 +245,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-31 01:00:51" itemprop="dateModified" datetime="2020-03-31T01:00:51+09:00">2020-03-31</time>
+                <time title="Updated at: 2020-03-31 01:04:44" itemprop="dateModified" datetime="2020-03-31T01:04:44+09:00">2020-03-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,19 +271,19 @@
 
       
         <p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
-<h2 id="손실-함수란"><a href="#손실-함수란" class="headerlink" title="손실 함수란"></a>손실 함수란</h2><p>신경망을 사용하기 위해서는 그 전에 학습을 통해 올바른 기준을 생성해주어야 한다. 이런 과정을 ‘신경망 학습’이라고 한다. 신경망 학습에서는 훈련 데이터를 사용하며, 이를 통해 신경망이 실전 문제에서도 적절하게 접근할 수 있도록 하는 가중치를 찾는다. 그렇다면 신경망 학습이 잘 이루어지고 있는지 어떻게 알 수 있을까? 여기서 ‘손실 함수’가 사용된다. 손실 함수는 신경망을 평가하는 평가지표로서 사용되며, 오답률을 나타낸다. 즉, 손실 함수의 값이 0에 가까울수록 좋은 신경망이라는 것이다. 보통 손실 함수는 정답과 신경망이 도출한 출력값을 비교하여 나타낸다.</p>
+<h2 id="손실-함수란"><a href="#손실-함수란" class="headerlink" title="손실 함수란"></a>손실 함수란</h2><p>신경망을 사용하기 위해서는 그 전에 학습을 통해 올바른 기준을 생성해주어야 한다. 이런 과정을 ‘신경망 학습’이라고 한다. 신경망 학습에서는 훈련 데이터를 사용하며, 이를 통해 신경망이 실전 문제에서도 적절하게 접근할 수 있도록 하는 가중치를 찾는다. 그렇다면 신경망 학습이 잘 이루어지고 있는지 어떻게 알 수 있을까? 여기서 ‘손실 함수’가 사용된다. 손실 함수는 신경망을 평가하는 평가지표로서 사용되며, 오답률을 나타낸다. 즉, 손실 함수의 값이 0에 가까울수록 좋은 신경망이라는 것이다. 보통 손실 함수는 정답과 신경망이 도출한 출력 값을 비교하여 나타낸다.</p>
 <p>일반적으로 사용하는 손실 함수로는 평균 제곱 오차와 교차 엔트로피 오차가 있다.</p>
-<h3 id="평균-제곱-오차"><a href="#평균-제곱-오차" class="headerlink" title="평균 제곱 오차"></a>평균 제곱 오차</h3><p>‘평균 제곱 오차(Mean Squared Error, MSㅌ)’는 출력값에서 정답을 뺀 결과를 제곱하여 더한 값들을 비교한다. 수식은 아래와 같다.</p>
+<h3 id="평균-제곱-오차"><a href="#평균-제곱-오차" class="headerlink" title="평균 제곱 오차"></a>평균 제곱 오차</h3><p>‘평균 제곱 오차(Mean Squared Error, MSㅌ)’는 출력 값에서 정답을 뺀 결과를 제곱하여 더한 값들을 비교한다. 수식은 아래와 같다.</p>
 <script type="math/tex; mode=display">E=\frac{1}{n}\sum_{i=1}^n (y_i-t_i)^2</script><p>위의 수식에서 $y_i$는 출력 값, $t_i$는 정답이며 $n$은 원소의 개수이다. 출력 값애서 정답을 뺀 오차를 제곱하여 $n$으로 나눠줌으로써 평균을 손실 함수의 값으로 제공한다.</p>
 <p>위의 수식을 코드로 구현하면 다음과 같다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> mean_squared_error(y,t)</span><br><span class="line">    error=(y-t).^<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> sum(error)/length(y)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>좀 더 정확한 이해를 위해 예시를 확인해보자.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">t=[<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>] <span class="comment"># 정답 레이블</span></span><br><span class="line">y1=[<span class="number">0.1</span> <span class="number">0.05</span> <span class="number">0.6</span> <span class="number">0.0</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.0</span>] <span class="comment"># 출력 값 with 정답</span></span><br><span class="line">y2=[<span class="number">0.1</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.6</span> <span class="number">0.0</span> <span class="number">0.0</span>] <span class="comment"># 출력 값 with 오답</span></span><br></pre></td></tr></table></figure>
-<p>먼저 정답 배열인 <code>t</code>와 출력 배열인 <code>y1</code>, <code>y2</code>를 세팅해준다. 해당 예시는 분류 신경망이며 <code>y1</code>, <code>y2</code>는 소프트맥스 함수의 결과이다. <code>y1</code>은 정답을 맞춘 출력 값이고, <code>y2</code>는 오답인 출력값이다. 그렇다면 출력 값 <code>y1</code>, <code>y2</code>을 사용하여 오차 값을 구해보자.</p>
+<p>먼저 정답 배열인 <code>t</code>와 출력 배열인 <code>y1</code>, <code>y2</code>를 세팅해준다. 해당 예시는 분류 신경망이며 <code>y1</code>, <code>y2</code>는 소프트맥스 함수의 결과이다. <code>y1</code>은 정답을 맞춘 출력 값이고, <code>y2</code>는 오답인 출력 값이다. 그렇다면 출력 값 <code>y1</code>, <code>y2</code>을 사용하여 오차 값을 구해보자.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mean_squared_error(y1,t)</span><br><span class="line"><span class="number">0.019500000000000007</span></span><br><span class="line"></span><br><span class="line">mean_squared_error(y2,t)</span><br><span class="line"><span class="number">0.11949999999999998</span></span><br></pre></td></tr></table></figure>
 <p>정답에 높은 확률을 할당한 결과 값 <code>y1</code>은 오차로 $0.0195$이며, 오답애 높은 확률을 할당한 결과 값 <code>y2</code>는 오차로 $0.1194$가 나왔다. 즉, <code>y1</code>이 <code>y2</code>보다 더 정확히 정답을 맞춘 것이다.</p>
 <h3 id="교차-엔트로피-오차"><a href="#교차-엔트로피-오차" class="headerlink" title="교차 엔트로피 오차"></a>교차 엔트로피 오차</h3><p>‘교차 엔트로피 오차(Cross Entropy Error, CEE)’는 자연로그를 이용한 함수이다. 수식은 아래와 같다.</p>
-<script type="math/tex; mode=display">E=-\sum_{i=1}^n t_i*\ln y_i</script><p>위의 식은 정답 레이블 <code>t</code>와 출력 값을 곱한다. 여기서 정답 레이블은 오답과 정답을 <code>0</code>과 <code>1</code>로 표현한 것이기 때문에 오답인 경우는 출력 값과 <code>0</code>이 곱해진다. 즉, 정답 위치와 같은 출력값만 자연로그 값이 제공되며 나머지는 $0$으로 반환된다. 위의 수식에서는 2가지의 의문이 제기될 수 있다.</p>
+<script type="math/tex; mode=display">E=-\sum_{i=1}^n t_i*\ln y_i</script><p>위의 식은 정답 레이블 <code>t</code>와 출력 값을 곱한다. 여기서 정답 레이블은 오답과 정답을 <code>0</code>과 <code>1</code>로 표현한 것이기 때문에 오답인 경우는 출력 값과 <code>0</code>이 곱해진다. 즉, 정답 위치와 같은 출력 값만 자연로그 값이 제공되며 나머지는 $0$으로 반환된다. 위의 수식에서는 2가지의 의문이 제기될 수 있다. 참고로 위의 식에서 사용된 $\ln$은 자연로그 $log_e x$ 이다.</p>
 <p>첫 번째 의문은 “하나의 값을 제외한 나머지가 0임에도 불구하고 왜 $\sum$(시그마)를 사용하는가?”이다. 그 이유는 배열을 하나의 값으로 반환하기 위해서이다. $t_i*\ln y_i$식을 계산하면 아래와 같은 결과가 도출된다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-log.(y.+delta).*t</span><br><span class="line"><span class="number">1</span>×<span class="number">10</span> <span class="built_in">Array</span>&#123;<span class="built_in">Float64</span>,<span class="number">2</span>&#125;:</span><br><span class="line"> <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.510825</span>  <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.0</span></span><br></pre></td></tr></table></figure>
 <p>이 결과에서 0이 아닌 값만 도출하는 것은 쉬워보이지만, 정답 레이블에서 1의 위치가 계속 변하기 때문에 기술적으로 복잡하다. 그렇기 때문에 하나의 값을 도출하기 위해서 모두 더한 것이다. 한 값을 제외하고 전부 0이기 때문에 이는 배열에서 스칼라로 변한 것뿐 수학적인 문제는 없다.</p>
