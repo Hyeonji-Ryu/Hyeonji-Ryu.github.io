@@ -4,7 +4,9 @@
     <title>3. 손실 함수</title>
     <url>/2020/03/30/Deeplearning-3/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
-<h2 id="벡터란"><a href="#벡터란" class="headerlink" title="벡터란"></a>벡터란</h2>]]></content>
+<h2 id="손실-함수란"><a href="#손실-함수란" class="headerlink" title="손실 함수란"></a>손실 함수란</h2><p>신경망을 사용하기 위해서는 그 전에 학습을 통해 올바른 기준을 생성해주어야 한다. 이런 과정을 ‘신경망 학습’이라고 한다. 신경망 학습에서는 훈련 데이터를 사용하며, 이를 통해 신경망이 실전 문제에서도 적절하게 접근할 수 있도록 하는 가중치를 찾는다. 그렇다면 신경망 학습이 잘 이루어지고 있는지 어떻게 알 수 있을까? 여기서 ‘손실함수’가 사용된다.</p>
+<p>손실함수는 신경망을 평가하는 평가지표로서 사용되며, 오답률을 나타낸다.</p>
+]]></content>
       <categories>
         <category>Deep learning with Julia</category>
       </categories>
