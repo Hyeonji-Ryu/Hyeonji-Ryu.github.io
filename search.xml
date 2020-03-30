@@ -411,7 +411,7 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
     <title>0. 줄리아로 딥러닝 구현하기</title>
     <url>/2020/03/25/Deeplearning-0/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>이 시리즈는 줄리아를 사용하여 딥러닝을 구현하면서 그 원리를 이해하고자 한다.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>이 시리즈는 줄리아를 사용하여 딥러닝을 구현하면서 그 원리를 공부하는 것을 목표로 한다. 특히 신경망에서 사용되는 수학적 지식이나 수식들에 대한 설명을 덧붙이면서 딥러닝을 잘 모르는 초보자들도 이해할 수 있도록 하였다.</p>
 <p> 목차는 아래와 같다.</p>
 <ol>
 <li><p>행렬과 벡터의 곱</p>
