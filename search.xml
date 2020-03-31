@@ -389,7 +389,7 @@ a_{m1} & \cdots & a_{mn}
 \begin{bmatrix}
  w_{11} & w_{12} & w_{13}\\
  w_{21} & w_{22} & w_{23}\\
- \end{bmatrix}</script><p>다음은 편향이다. 편향은 각 층과 가중치가 곱해진 결과에 더하므로 입력층에서 은닝층 사이의 첫 번째 편향은 $1\times2$ 행렬이며, 두 번째 편향은 $1\times3$ 행렬이다.</p>
+ \end{bmatrix}</script><p>다음은 편향이다. 편향은 각 층과 가중치가 곱해진 결과에 더하므로 입력층에서 은닉층 사이의 첫 번째 편향은 $1\times2$ 행렬이며, 두 번째 편향은 $1\times3$ 행렬이다.</p>
 <script type="math/tex; mode=display">편향1:
 \begin{bmatrix}
 b_1 & b_2
