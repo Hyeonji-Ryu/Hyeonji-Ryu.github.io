@@ -55,7 +55,7 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/31.png">
 <meta property="article:published_time" content="2020-03-25T20:37:08.000Z">
-<meta property="article:modified_time" content="2020-03-31T07:11:32.461Z">
+<meta property="article:modified_time" content="2020-03-31T08:05:58.416Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -245,7 +245,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-31 16:11:32" itemprop="dateModified" datetime="2020-03-31T16:11:32+09:00">2020-03-31</time>
+                <time title="Updated at: 2020-03-31 17:05:58" itemprop="dateModified" datetime="2020-03-31T17:05:58+09:00">2020-03-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -491,15 +491,15 @@ a_{m1} & \cdots & a_{mn}
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">a = ones(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">a</span><br><span class="line"><span class="number">2</span>×<span class="number">3</span> <span class="built_in">Array</span>&#123;<span class="built_in">Float64</span>,<span class="number">2</span>&#125;:</span><br><span class="line"> <span class="number">1.0</span>  <span class="number">1.0</span>  <span class="number">1.0</span></span><br><span class="line"> <span class="number">1.0</span>  <span class="number">1.0</span>  <span class="number">1.0</span></span><br><span class="line"></span><br><span class="line">b = a'</span><br><span class="line">b</span><br><span class="line"><span class="number">3</span>×<span class="number">2</span> Adjoint&#123;<span class="built_in">Float64</span>,<span class="built_in">Array</span>&#123;<span class="built_in">Float64</span>,<span class="number">2</span>&#125;&#125;:</span><br><span class="line"> <span class="number">1.0</span>  <span class="number">1.0</span></span><br><span class="line"> <span class="number">1.0</span>  <span class="number">1.0</span></span><br><span class="line"> <span class="number">1.0</span>  <span class="number">1.0</span></span><br><span class="line"></span><br><span class="line">dot(a,b)</span><br><span class="line"><span class="number">6.0</span></span><br></pre></td></tr></table></figure>
 <p>위의 예시는 $2\times3$ 행렬인 a와 a의 전치행렬을 생성한다는 점에서 같지만, 각 변수들이 2차원 배열인 매트릭스(Matrix)라는 점에서 다르다. 즉, 첫 번째 예시는 1차 배열을 다루기 때문에 벡터화되어도 상관없는 반면 두 번째 예시는 2차원 배열이기 때문에 행과 열을 보존하여 내적을 해야 하는 것이다. 따라서 이는 행렬곱을 사용하여 처리해주어야 한다. 행렬곱 연산자는 <code>*(a,b)</code>이다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a = ones(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">b = a'</span><br><span class="line">*(a,b)</span><br><span class="line"><span class="number">2</span>×<span class="number">2</span> <span class="built_in">Array</span>&#123;<span class="built_in">Float64</span>,<span class="number">2</span>&#125;:</span><br><span class="line"> <span class="number">3.0</span>  <span class="number">3.0</span></span><br><span class="line"> <span class="number">3.0</span>  <span class="number">3.0</span></span><br></pre></td></tr></table></figure>
-<h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2><p>신경망은 입력층, 은닉층, 출력층으로 구분되며 가중치와 편향을 사용하여 계산을 한다. 이제 신경망에서 사용되는 계산법을 모두 배웠으므로 위의 지식을 바탕으로 신경망이 어떻게 작동하는지 알아보자.</p>
-<p><img src="/images/31.png" alt="출처: http://blog.skby.net/%EC%9D%B8%EA%B3%B5%EC%8B%A0%EA%B2%BD%EB%A7%9D-artificial-neural-network/"></p>
+<h2 id="신경망-계산"><a href="#신경망-계산" class="headerlink" title="신경망 계산"></a>신경망 계산</h2><p>신경망은 입력층, 은닉층, 출력층으로 구분되며 가중치와 편향을 사용하여 계산한다. 이제 신경망에서 사용되는 계산법을 모두 배웠으므로 위의 지식을 바탕으로 신경망이 어떻게 작동하는지 알아보자. 아래의 그림은 신경망 구조의 예시이다.</p>
+<p><img src="/images/31.png" alt="신경망 구조"></p>
 <p>위의 그림은 3층 신경망 구조이다. 위 그림에서 동그라미는 각 층의 성분으로 <strong>노드</strong>라고 하며, 노드끼리 연결된 화살표는 가중치인 <strong>엣지</strong>라고 한다. 지금부터는 위 신경망 구조를 코드로 구현하여 ‘행렬과 벡터 곱’, ‘행렬곱’을 사용해볼 것이다.</p>
 <p>먼저 위 구조를 분해해보도록 하자.</p>
 <p>입력층, 은닉층, 출력층은 다음과 같다.</p>
 <p>입력층: $X=[x_1,x_2,x_3,x_4]\quad$<br>은닉층: $H=[h_1,h_2]\quad$<br>출력층: $Y=[y_1,y_2,y_3]\quad$</p>
 <p>신경망을 계산하기 위해서는 가중치와 편향이 필요하다. 가중치는 각 층 사이에서 곱해지는 행렬이며, 편향은 각 층의 계산마다 더해지는 상수이다.</p>
-<p>각 층은 가중치인 $W$를 곱하고 편향 $B$를 곱하여 다음 층으로 넘어간다. 이를 수학식으로 표현하면 아래와 같다.</p>
-<p>$H=X*W+B$</p>
+<p>각 층은 가중치인 $W$를 곱하고 편향 $B$를 더하여 다음 층으로 넘어간다. 이를 수학식으로 표현하면 아래와 같다.</p>
+<p>$H=(X*W)+B$</p>
 <p>위의 신경망 구조에서 가중치와 편향은 총 2개가 필요하다. 먼저 가중치부터 살펴본다면, 첫 번째 가중치는 입력층과 은닉층 사이에 있으므로 $4\times2$ 행렬이어야 한다. 또한 두 번째는 은닉층과 출력층 사이에 있으므로 $2\times3$ 행렬이다.</p>
 <script type="math/tex; mode=display">가중치 행렬 1:
 \begin{bmatrix}
