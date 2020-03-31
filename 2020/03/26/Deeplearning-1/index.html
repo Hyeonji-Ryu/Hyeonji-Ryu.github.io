@@ -55,7 +55,7 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/31.png">
 <meta property="article:published_time" content="2020-03-25T20:37:08.000Z">
-<meta property="article:modified_time" content="2020-03-28T20:06:35.596Z">
+<meta property="article:modified_time" content="2020-03-30T21:15:06.890Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -245,7 +245,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-03-29 05:06:35" itemprop="dateModified" datetime="2020-03-29T05:06:35+09:00">2020-03-29</time>
+                <time title="Updated at: 2020-03-31 06:15:06" itemprop="dateModified" datetime="2020-03-31T06:15:06+09:00">2020-03-31</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -487,7 +487,7 @@ a_{m1} & \cdots & a_{mn}
  27 & 36 & 45 \\
  \end{bmatrix}</script><p>문제의 답으로 $3\times3$ 행렬이 나온 것을 확인할 수 있다. 이런 행렬곱은 신경망 계산에서 벡터 단위 내적 계산을 한번에 하기 위해서 사용된다.</p>
 <h2 id="줄리아에서의-곱셈"><a href="#줄리아에서의-곱셈" class="headerlink" title="줄리아에서의 곱셈"></a>줄리아에서의 곱셈</h2><p>줄리아에서 내적을 사용하기 위해서는 아래의 코드를 입력하여 해당 패키지를 다운로드해야 한다. <code>LinearAlgebra</code> 사용법에 대해 자세히 알고 싶다면 <a href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/" target="_blank" rel="noopener">이 링크</a>에서 확인할 수 있다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> LinearAlgebra</span><br></pre></td></tr></table></figure>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Pkg</span><br><span class="line">Pkg.add(<span class="string">"LinearAlgobra"</span>)</span><br><span class="line"><span class="keyword">using</span> LinearAlgebra</span><br></pre></td></tr></table></figure>
 <p>준비가 끝났다면 줄리아에서 내적을 어떻게 계산하는지 살펴보자. 줄리아에서 함수 <code>dot()</code>은 두 개의 백터를 내적한다. 아래의 예시를 통해 확인해보자.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a=ones(<span class="number">1</span>,<span class="number">3</span>)</span><br><span class="line">b=a'</span><br><span class="line">dot(a,b)</span><br><span class="line"><span class="number">3.0</span></span><br></pre></td></tr></table></figure>
 <p>위의 코드는 $1\times3$ 행렬인 a와, a의 전치행렬인 b를 생성하고 두 벡터를 내적한다. 그 결과로는 $1\times1$을 세 번하여 더한 3이 도출되었다. 그렇다면 신경망 모든 계산에 <code>dot()</code>만을 사용하면 되는 것일까? 그렇지 않다. <code>dot()</code>은 모든 배열들을 하나의 벡터로 벡터화하는 문제가 있다. 아래의 예시를 통해서 알아보자.</p>
@@ -651,7 +651,7 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">37</span>
+        <span class="site-state-item-count">40</span>
         <span class="site-state-item-name">태그</span></a>
       </div>
   </nav>
