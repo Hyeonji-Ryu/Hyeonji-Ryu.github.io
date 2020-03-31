@@ -354,8 +354,7 @@ a_{m1} & \cdots & a_{mn}
  (1\times1+4\times4) & (1\times2+4\times5) & (1\times3+4\times6) \\
  (2\times1+5\times4) & (2\times2+5\times5) & (2\times3+5\times6) \\
  (3\times1+6\times4) & (3\times2+6\times5) & (3\times3+6\times6) \\
- \end{bmatrix}
- $$=</script><script type="math/tex; mode=display">\begin{bmatrix}
+ \end{bmatrix}</script><script type="math/tex; mode=display">=</script><script type="math/tex; mode=display">\begin{bmatrix}
  17 & 22 & 27 \\
  22 & 29 & 36 \\
  27 & 36 & 45 \\
