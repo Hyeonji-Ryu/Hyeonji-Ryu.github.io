@@ -54,7 +54,7 @@
 <meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-03-30T16:52:13.000Z">
-<meta property="article:modified_time" content="2020-04-01T09:02:49.117Z">
+<meta property="article:modified_time" content="2020-04-01T09:15:01.339Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-01 18:02:49" itemprop="dateModified" datetime="2020-04-01T18:02:49+09:00">2020-04-01</time>
+                <time title="Updated at: 2020-04-01 18:15:01" itemprop="dateModified" datetime="2020-04-01T18:15:01+09:00">2020-04-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,14 +270,7 @@
       
         <p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <p>이전 장에서 우리는 손실 함수에 대해서 살펴보았다. 손실 함수는 신경망을 평가하는 판단지표로서 사용되며, 손실 함수의 값을 줄이는 방향으로 신경망을 학습시킨다고 하였다. 다른 말로, 좋은 신경망은 손실 함수 값이 작아야 한다. 그렇다면 이쯤에서 “어떻게 손실 함수의 값을 줄일 수 있을까?”라는 의문이 들 것이다. 이것이 바로 최적화의 문제이다. 이번 글에서는 손실 함수를 최소화하는 경사하강법에 대해서 살펴볼 것이다.</p>
-<h2 id="경사하강법이란"><a href="#경사하강법이란" class="headerlink" title="경사하강법이란"></a>경사하강법이란</h2><blockquote>
-<p>“경사하강법(Gradient descent)은 손실 함수를 최소화하는 가중치와 편향을 찾는 최적화 알고리즘이다.”</p>
-</blockquote>
-<p>미분은 순간변화량을 측정하기 좋은 방법이다. 수식은 다음과 같다.</p>
-<p>손실 함수의 값이 최소화되는 가중치와 편향의 값을 찾아야 한다. 그렇다면 가중치와 손실 함수는 어떻게 연결되어 있는가? 손실함수 중 하나인 평균 제곱 오차를 예시로 살펴보자.</p>
-<script type="math/tex; mode=display">Layer=(X*W)+B</script><script type="math/tex; mode=display">E=\frac{1}{n}\sum_{i=1}^n (y_i-t_i)^2</script><p>각 층의 계산과 평균 제곱 오차의 수식이다. 두 번째 식에서 $y_i$는 출력층에서 나온 값이기 때문에 이를 계산식으로 변경하면 다음과 같다.</p>
-<script type="math/tex; mode=display">E=\frac{1}{n}\sum_{i=1}^n ((Wx_i+b_i)-t_i)^2</script><p>이</p>
-
+<h2 id="경사하강법이란"><a href="#경사하강법이란" class="headerlink" title="경사하강법이란"></a>경사하강법이란</h2>
     </div>
 
     
@@ -304,8 +297,8 @@
       <i class="fa fa-chevron-left"></i> 3. 손실 함수
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/04/01/Deeplearning-5/" rel="next" title="5. 인공신경망 구현; 순전파">
-      5. 인공신경망 구현; 순전파 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/01/Deeplearning-5/" rel="next" title="5. 인공신경망 구현 - 순전파">
+      5. 인공신경망 구현 - 순전파 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
