@@ -48,9 +48,13 @@
 <p>위 식에서 $X, T$ 값은 이미 정해져 있기 때문에 상수이며, 가변적인 $W, B$를 기준으로 한다. $W^2$의 계수는 $X^2$이기 때문에 양수이며, 따라서 이를 그래프로 그리면 아래와 같은 3차원 2차 함수의 형태를 가진다. 아래의 그래프는 축의 숫자를 신경쓰지 말고 모양만 참고하자.</p>
 <p><img src="\../images/38.png" alt="손실 함수 그래프"></p>
 <p>이런 그래프에서 y축은 손실 함수의 값, x축은 가중치인 $W$, z축은 편향인 $B$이다. 위와 같은 그래프에서 가장 아래에 있는 점(W,B)를 찾는 것이 경사하강법이다.</p>
-<h2 id="편미분"><a href="#편미분" class="headerlink" title="편미분"></a>편미분</h2><p>점(W,B)를 찾는 방법은 바로 “기울기”이다. 위 그래프에서 가장 아래에 있는 점을 찾기 위해서는 임의의 점에서 기울기를 구해 이동할 방향을 잡아야 한다. 그렇다면 기울기를 구하는 방법은 무엇인가? 바로 미분이다.</p>
+<h2 id="미분"><a href="#미분" class="headerlink" title="미분"></a>미분</h2><p>점(W,B)를 찾는 방법은 바로 “기울기”이다. 위 그래프에서 가장 아래에 있는 점을 찾기 위해서는 임의의 점에서 기울기를 구해 이동할 방향을 잡아야 한다. 그렇다면 기울기를 구하는 방법은 무엇인가? 바로 미분이다.</p>
 <p>미분은 순간변화량으로 수식은 다음과 같다.</p>
-<script type="math/tex; mode=display">f'(x)=\frac{dy}{dx}=\lim_{h\to0} \frac{(x+h)-f(x)}{h}</script>]]></content>
+<script type="math/tex; mode=display">f'(x)=\frac{dy}{dx}=\lim_{h\to0} \frac{(x+h)-f(x)}{h}</script><p>위 수식은 $f(x)$에서 $x$가 아주 작은 값인 $h$만큼 이동했을 때의 변화량을 구하는 식이며, 이는 $x$의 이동이 $f(x)$를 얼마나 변화시키는지를 나타낸다.</p>
+<p>하지만 위의 식을 컴퓨터에서 구현하는 것은 반올림오차 문제떄문에 기술적으로 어렵다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">Julia&gt; h = <span class="number">1e-50</span></span><br><span class="line">Julia&gt; x = <span class="number">3</span></span><br><span class="line">Julia&gt; f(x) = x^<span class="number">2</span></span><br><span class="line">Julia&gt; (f(x+h)-f(x))/h</span><br><span class="line"><span class="number">0.0</span></span><br></pre></td></tr></table></figure>
+<p>수학적 원리로는 아주 미세한 값의 차이가 나지만, 컴퓨터는 이를 반올림하여 0으로 처리해버린다. 결국 위의 식을 이용하려면 $h$값이 커질 수밖에 없고 이는 오차를 발생시킨다. 이런 문제로 인해서 <strong>중앙 차분</strong>을 사용한다.</p>
+<script type="math/tex; mode=display">f'(x)=\frac{dy}{dx}=\lim_{h\to0} \frac{(x+h)-f(x-h)}{2h}</script>]]></content>
       <categories>
         <category>Deep learning with Julia</category>
       </categories>
