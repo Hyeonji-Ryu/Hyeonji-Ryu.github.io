@@ -40,8 +40,7 @@ W_2:
 \begin{bmatrix}
  w_{11} & w_{12} & w_{13}\\
  w_{21} & w_{22} & w_{23}\\
- \end{bmatrix}\quad
- B_1:
+ \end{bmatrix}</script><script type="math/tex; mode=display">B_1:
 \begin{bmatrix}
 b_1 & b_2
  \end{bmatrix}\quad
