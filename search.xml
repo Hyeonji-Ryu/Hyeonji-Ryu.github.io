@@ -70,7 +70,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 \end{bmatrix}</script><p>그 다음, 위의 $Z_1$을 활성화 함수에 대입하면 된다. 여기서 $Z_1$은 행렬인데 위의 수식을 $Z_1$의 요소에 각각 적용한다. 참고로 위 식에서 사용된 활성화 함수는 시그모이드 함수이다. 이 과정은 입력값이 첫 번째 은닉층에 도착한 것이다.</p>
 <script type="math/tex; mode=display">Z2 = \bigg(\cfrac{W_2}{1+e^{-Z1)}}\bigg)+b_2</script><script type="math/tex; mode=display">=
 \begin{bmatrix}
-\cfrac{w2_{11}}{1+e^{-Z1_1}}+\cfrac{w2_{21}}{1+e^{-Z1_2}}+b2_1 & \cfrac{w2_{12}}{1+e^{-Z1_1}}+\cfrac{w2_{22}}{1+e^{-Z1_2}}+b2_2 & \cfrac{w2_{13}}{1+e^{-Z1_1}}+\cfrac{w2_{23}}{1+e^{-Z1_2}}+b2_3
+\frac{w2_{11}}{1+e^{-Z1_1}}+\frac{w2_{21}}{1+e^{-Z1_2}}+b2_1 & \frac{w2_{12}}{1+e^{-Z1_1}}+\frac{w2_{22}}{1+e^{-Z1_2}}+b2_2 & \frac{w2_{13}}{1+e^{-Z1_1}}+\frac{w2_{23}}{1+e^{-Z1_2}}+b2_3
 \end{bmatrix}</script><p>$A1$의 값은 행렬로 반환된다. $A1$을 다시 두 번째 은닉층으로 보내기 위해 두 번째 가중치인 $W_2$를 곱하고 두 번째 편향인 $b_2$를 더한다. 여기서도 행렬곱과 행렬덧셈이 사용된다. 행렬 단위로 계산되는 수식은 $Z1$과 동일하다.</p>
 <script type="math/tex; mode=display">A2 = \cfrac{1}{1+e^{-Z2}}</script><script type="math/tex; mode=display">A2 =
 \begin{bmatrix}
@@ -81,8 +81,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 \cfrac{e^{A2_1}}{\sum_{i=1}^n e^{A2_i}} & \cfrac{e^{A2_2}}{\sum_{i=1}^n e^{A2_i}} & \cfrac{e^{A2_3}}{\sum_{i=1}^n e^{A2_i}}
 \end{bmatrix}</script><p>은닉층 계산 이후 마지막으로 출력층 활성화 함수인 소프트맥스 함수를 적용하여 예측값 $\hat{y}$을 얻었다.</p>
 <p>위의 식을 토대로 우리는 예측값을 아래와 같은 형태로 정의할 수 있다.</p>
-<p>$$\hat{y}=</p>
-]]></content>
+<script type="math/tex; mode=display">\hat{y}=</script>]]></content>
       <categories>
         <category>Deep learning with Julia</category>
       </categories>
