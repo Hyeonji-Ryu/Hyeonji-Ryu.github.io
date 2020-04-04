@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/36.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/37.png">
 <meta property="article:published_time" content="2020-04-01T08:59:47.000Z">
-<meta property="article:modified_time" content="2020-04-04T20:04:55.836Z">
+<meta property="article:modified_time" content="2020-04-04T20:37:41.166Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -246,7 +246,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-05 05:04:55" itemprop="dateModified" datetime="2020-04-05T05:04:55+09:00">2020-04-05</time>
+                <time title="Updated at: 2020-04-05 05:37:41" itemprop="dateModified" datetime="2020-04-05T05:37:41+09:00">2020-04-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -341,9 +341,15 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 <li>도출된 예측값과 정답을 비교해야 한다. 손실 함수를 사용하여 오차값을 구한다. 이 예시에서는 손실 함수 중 하나인 ‘평균 제곱 오차’를 사용할 것이다.</li>
 </ol>
 <script type="math/tex; mode=display">E=\frac{1}{n}\sum_{i=1}^n (\hat{y}-t_i)^2</script><ol>
-<li>기존의 오차값을 확인한 후, 오차값을 줄이기 위해 경사하강법 알고리즘을 사용한다. 경사하강법 알고리즘은 손실함수와 각각의 가중치와 편향들을 편미분하여 기울기를 구한 후, 기존의 가중치와 편향을 갱신하였다.</li>
+<li>기존의 오차값을 확인한 후, 오차값을 줄이기 위해 경사하강법 알고리즘을 사용한다. 경사하강법 알고리즘은 손실함수와 각각의 가중치와 편향들을 편미분하여 기울기를 구한 후, 기존의 가중치와 편향을 갱신하였다. 그렇다면 위의 손실함수 수식을 해체해야 한다. 가중치와 편향을 기준으로 편미분하기 위해서는 손실함수의 식에서 $W$와 $B$를 찾아야 하기 때문이다. 가중치와 편향이 배열인 경우에는 편미분이 각각의 요소 단위로 진행된다. 아래의 배열은 손실함수와 가중치가 어떻게 편미분이 진행되는지 예시를 보여준다.</li>
 </ol>
-
+<script type="math/tex; mode=display">\frac{\partial L}{\partial W} =
+\begin{bmatrix}
+ \frac{\partial L}{\partial w_{11}} & \frac{\partial L}{\partial w_{12}} & \frac{\partial L}{\partial w_{13}}\\
+ \frac{\partial L}{\partial w_{21}} & \frac{\partial L}{\partial w_{22}} & \frac{\partial L}{\partial w_{23}}\\
+ \end{bmatrix}</script><p>지금부터 아래의 식에 사용되는 $w<em>{ij}$와 $b</em>{ij}$는 배열 형태인 $W$와 $B$의 요소라는 점을 강조한다.</p>
+<script type="math/tex; mode=display">E = \frac{1}{n}\sum_{i=1}^n (\hat{y}-t_i)^2 \\
+= \frac{1}{n}\sum_{i=1}^n (\hat{y}^2 + 2\hat{y}t_i + t_i^2)</script>
     </div>
 
     
