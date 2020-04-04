@@ -47,8 +47,8 @@ b1_1 & b1_2
  B_2:
 \begin{bmatrix}
  b2_1 & b2_2 & b2_3
- \end{bmatrix}</script><p>먼저 입력값인 $X$와 가중치 $W_1, W_2$, 편향 $b_1, b_2$가 배열로 전제된다. 여기서 가중치와 편향은 뒤의 경사하강법으로 조정할 것이기에 무작위 값을 사용한다.</p>
-<script type="math/tex; mode=display">Z1 = XW_1+b_1</script><script type="math/tex; mode=display">Z1=
+ \end{bmatrix}</script><p>먼저 입력값인 $X$와 가중치 $W_1, W_2$, 편향 $b_1, b_2$를 설정한다. 예시이기 때문에 입력층, 은닉층, 출력층의 노드 개수를 임의로 설정하였다. (실제로는 훨씬 많은 노드들이 사용된다.)</p>
+<script type="math/tex; mode=display">Z1 = XW_1+B_1</script><script type="math/tex; mode=display">Z1=
 \begin{bmatrix}
  x_1 & x_2 \\
  \end{bmatrix}
@@ -63,7 +63,7 @@ b1_1 & b1_2
  \end{bmatrix}\\</script><script type="math/tex; mode=display">=
 \begin{bmatrix}
 x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
-\end{bmatrix}</script><p>먼저 입력값에 첫 번째 가중치인 $W_1$을 곱하고 첫 번째 편향인 $B_1$ 더한다. 입력값과 가중치, 편향 모두 배열이기에 이 계산은 배열 단위로 이루어진다. 즉, 행렬곱과 행렬덧셈이 사용되는 것이다. 이 과정은 입력값이 첫 번째 활성화 함수로 넘어가기 전에 이루어진다.</p>
+\end{bmatrix}</script><p>먼저 입력값에 첫 번째 가중치인 $W_1$을 곱하고 첫 번째 편향인 $B_1$ 더한다. 입력값과 가중치, 편향 모두 배열이기에 이 계산은 배열 단위로 이루어진다. 즉, 행렬곱과 행렬덧셈이 사용되는 것이다. 이 과정은 입력값이 첫 번째 활성화 함수 $h(x)$로 넘어가기 전에 이루어진다.</p>
 <script type="math/tex; mode=display">A1 = \cfrac{1}{1+e^{-Z1}}</script><script type="math/tex; mode=display">A1 =
 \begin{bmatrix}
 \cfrac{1}{1+e^{-Z1_1}} & \cfrac{1}{1+e^{-Z1_2}}
@@ -80,8 +80,10 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 \begin{bmatrix}
 \cfrac{e^{A2_1}}{\sum_{i=1}^n e^{A2_i}} & \cfrac{e^{A2_2}}{\sum_{i=1}^n e^{A2_i}} & \cfrac{e^{A2_3}}{\sum_{i=1}^n e^{A2_i}}
 \end{bmatrix}</script><p>은닉층 계산 이후 마지막으로 출력층 활성화 함수인 소프트맥스 함수를 적용하여 예측값 $\hat{y}$을 얻었다.</p>
-<p>위의 식을 토대로 우리는 예측값을 아래와 같은 형태로 정의할 수 있다.</p>
-<script type="math/tex; mode=display">\hat{y}=</script>]]></content>
+<p>위의 식을 토대로 우리는 예측값을 아래와 같은 식로 정의할 수 있다.</p>
+<script type="math/tex; mode=display">\hat{y}=\sigma(h(h(XW_1+B_1)\times W_2+B_2))</script><p>위의 식을 살펴보면 $Z1$인 $XW_1+B_1$을 활성화 함수 $h(x)$에 대입하고, 활성화 함수의 결과 값을 다시 $Z2$의 입력값으로 받는다. 그렇게 $Z2$를 계산한 후 이를 다시 활성화 함수 $h(x)$에 대입한다. 그리고 마지막으로 출력층의 활성화 함수인 $\sigma(x)$에 대입하여 나온 값이 예측값 $\hat{y}$이다.</p>
+<h2 id="인공신경망-학습-과정-수학식-풀이"><a href="#인공신경망-학습-과정-수학식-풀이" class="headerlink" title="인공신경망 학습 과정 수학식 풀이"></a>인공신경망 학습 과정 수학식 풀이</h2><p>위에서는 신경망이 어떻게 작동하는지 하나의 신경망을 예시로 들어 수학식으로 정리하였다. 지금부터는 인공신경망을 학습하는 과정이 어떻게 진행되는지 수학식으로 정리할 것이다. 인공신경망은 실제 사용되기 전에 학습 데이터셋을 통해 학습시킨다. 여기서 ‘학습’이란 뜻은 신경망에 적절한 가중치와 편향을 찾는 과정을 의미한다. </p>
+]]></content>
       <categories>
         <category>Deep learning with Julia</category>
       </categories>
