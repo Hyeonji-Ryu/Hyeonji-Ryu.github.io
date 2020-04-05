@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/36.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/37.png">
 <meta property="article:published_time" content="2020-04-01T08:59:47.000Z">
-<meta property="article:modified_time" content="2020-04-05T13:52:10.291Z">
+<meta property="article:modified_time" content="2020-04-05T13:54:35.682Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -246,7 +246,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-05 22:52:10" itemprop="dateModified" datetime="2020-04-05T22:52:10+09:00">2020-04-05</time>
+                <time title="Updated at: 2020-04-05 22:54:35" itemprop="dateModified" datetime="2020-04-05T22:54:35+09:00">2020-04-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -341,7 +341,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 \begin{bmatrix}
  \frac{\partial E}{\partial w_{11}} & \frac{\partial E}{\partial w_{12}} & \frac{\partial E}{\partial w_{13}}\\
  \frac{\partial E}{\partial w_{21}} & \frac{\partial E}{\partial w_{22}} & \frac{\partial E}{\partial w_{23}}\\
- \end{bmatrix}</script><p>지금부터 아래의 식에 사용되는 $w<em>{ij}$와 $b</em>{ij}$는 배열 형태인 $W$와 $B$의 요소라는 점을 강조한다.</p>
+ \end{bmatrix}</script><p>지금부터 아래의 식에 사용되는 $w<em>{ij}, b</em>{ij}$는 배열 형태인 $W, B$의 요소라는 점을 강조한다.</p>
 <script type="math/tex; mode=display">E = \frac{1}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)^2 \\
 = \frac{1}{3}\sum_{k=1}^3 ((\sigma(h(h(XW_1+B_1)\times W_2+B_2)))-t_k)^2</script><p>위의 식에서 $\hat{y}$는 여러 활성화 함수들의 합성 함수로 구성되어 있다. 보기만 해도 복잡하고 머리가 아프다. 하지만 이 식 안에서 $w<em>{ij},b</em>{ij}$와 같은 값들을 도출해야 한다. 하나의 요소를 정해서 식을 해체하는 방법이 더 빠를 것 같기에 우리는 $w1_{11}$와 손실함수의 편미분 값을 찾아보자.</p>
 <p><strong>목표: $\frac{\partial E}{\partial w1_{11}}$을 식으로 풀이하기</strong></p>
