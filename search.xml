@@ -95,9 +95,9 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 \begin{bmatrix}
  \frac{\partial E}{\partial w_{11}} & \frac{\partial E}{\partial w_{12}} & \frac{\partial E}{\partial w_{13}}\\
  \frac{\partial E}{\partial w_{21}} & \frac{\partial E}{\partial w_{22}} & \frac{\partial E}{\partial w_{23}}\\
- \end{bmatrix}</script><p>지금부터 아래의 식에 사용되는 $w<em>{ij}, b</em>{ij}$는 배열 형태인 $W, B$의 요소라는 점을 강조한다.</p>
+ \end{bmatrix}</script><p>지금부터 아래의 식에 사용되는 $w<em>{ij}$와 $b</em>{ij}$는 배열 형태인 $W$와 $B$의 요소라는 점을 강조한다.</p>
 <script type="math/tex; mode=display">E = \frac{1}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)^2 \\
-= \frac{1}{3}\sum_{k=1}^3 ((\sigma(h(h(XW_1+B_1)\times W_2+B_2)))-t_k)^2</script><p>위의 식에서 $\hat{y}$는 여러 활성화 함수들의 합성 함수로 구성되어 있다. 보기만 해도 복잡하고 머리가 아프다. 하지만 이 식 안에서 $w<em>{ij},b</em>{ij}$와 같은 값들을 도출해야 한다. 하나의 요소를 정해서 식을 해체하는 방법이 더 빠를 것 같기에 우리는 $w1_{11}$와 손실함수의 편미분 값을 찾아보자.</p>
+= \frac{1}{3}\sum_{k=1}^3 ((\sigma(h(h(XW_1+B_1)\times W_2+B_2)))-t_k)^2</script><p>위의 식에서 $\hat{y}$는 여러 활성화 함수들의 합성 함수로 구성되어 있다. 보기만 해도 복잡하고 머리가 아프다. 하지만 이 식 안에서 $w<em>{ij}$, $b</em>{ij}$와 같은 값들을 도출해야 한다. 하나의 요소를 정해서 식을 해체하는 방법이 더 빠를 것 같기에 우리는 $w1_{11}$와 손실함수의 편미분 값을 찾아보자.</p>
 <p><strong>목표: $\frac{\partial E}{\partial w1_{11}}$을 식으로 풀이하기</strong></p>
 <script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}
 = \frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)</script><p>$w1_{11}$는 $\hat{y_k}$ 안에 있기 때문에 위의 수식은 합성 함수의 미분이다. 따라서 식 내부에 있는 $(\hat{y_k}-t_k)$를 미분하여 곱해줘야 하는데, $t_k$의 경우 상수이기 때문에 미분했을 때 제거된다. 따라서 남은 $\hat{y_k}$는 $\sigma(A2_k)$와 같으므로 이어지는 식은 다음과 같다.</p>
