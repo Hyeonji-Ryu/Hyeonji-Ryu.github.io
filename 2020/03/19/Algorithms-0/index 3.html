@@ -46,25 +46,26 @@
   };
 </script>
 
-  <meta name="description" content="글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.">
+  <meta name="description" content="글을 시작하기에 앞서 해당 글은 Sanjoy Dasgupta, Christos Papadimitriou, Umesh 의 저서인 Algorithms를 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="0. introduction">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/03/17/mathematic-0/index.html">
+<meta property="og:title" content="chapter 0. 시작하기">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/03/19/Algorithms-0/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
-<meta property="og:description" content="글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.">
+<meta property="og:description" content="글을 시작하기에 앞서 해당 글은 Sanjoy Dasgupta, Christos Papadimitriou, Umesh 의 저서인 Algorithms를 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2020-03-16T20:37:08.000Z">
-<meta property="article:modified_time" content="2020-04-06T03:20:35.820Z">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/23.png">
+<meta property="article:published_time" content="2020-03-18T21:20:02.000Z">
+<meta property="article:modified_time" content="2020-03-30T08:59:55.741Z">
 <meta property="article:author" content="Hyeonji Ryu">
-<meta property="article:tag" content="머신러닝">
-<meta property="article:tag" content="mathematics">
-<meta property="article:tag" content="machine learning">
-<meta property="article:tag" content="mathematics for machine learning">
-<meta property="article:tag" content="머신러닝 수학">
-<meta property="article:tag" content="수학">
+<meta property="article:tag" content="Algorithms">
+<meta property="article:tag" content="알고리즘">
+<meta property="article:tag" content="빅오 표기법">
+<meta property="article:tag" content="피보나치">
+<meta property="article:tag" content="기초">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyeonji-ryu.github.io/images/23.png">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/03/17/mathematic-0/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/03/19/Algorithms-0/">
 
 
 <script id="page-configurations">
@@ -76,7 +77,7 @@
   };
 </script>
 
-  <title>0. introduction | AI & ML</title>
+  <title>chapter 0. 시작하기 | AI & ML</title>
   
 
 
@@ -213,7 +214,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/03/17/mathematic-0/">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/03/19/Algorithms-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -226,7 +227,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          0. introduction
+          chapter 0. 시작하기
         </h1>
 
         <div class="post-meta">
@@ -236,14 +237,14 @@
               </span>
               <span class="post-meta-item-text">작성일</span>
 
-              <time title="Post created: 2020-03-17 05:37:08" itemprop="dateCreated datePublished" datetime="2020-03-17T05:37:08+09:00">2020-03-17</time>
+              <time title="Post created: 2020-03-19 06:20:02" itemprop="dateCreated datePublished" datetime="2020-03-19T06:20:02+09:00">2020-03-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-06 12:20:35" itemprop="dateModified" datetime="2020-04-06T12:20:35+09:00">2020-04-06</time>
+                <time title="Updated at: 2020-03-30 17:59:55" itemprop="dateModified" datetime="2020-03-30T17:59:55+09:00">2020-03-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -251,8 +252,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/mathematics-for-machine-learning/" itemprop="url" rel="index">
-                    <span itemprop="name">mathematics for machine learning</span>
+                  <a href="/categories/Algorithms/" itemprop="url" rel="index">
+                    <span itemprop="name">Algorithms</span>
                   </a>
                 </span>
             </span>
@@ -268,25 +269,46 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
-<p>머신러닝(Machine learning)은 데이터로부터 유용한 정보를 자동으로 추출해주는 알고리즘을 디자인하는 것이다. 강조할 부분은 “자동(automatic)”이다. 머신러닝은 많은 데이터셋에 적용하여 의미있는 것들을 생산하는 범용 방법론(general-purpose methodology)에 관심이 있다. 머신러닝을 설명하는 세 가지의 핵심 단어가 있다. 데이터, 모델, 그리고 학습이다.</p>
-<p>머신러닝의 목적은 데이터로부터 가치있는 패턴을 찾는 방법을 개발하는 방법을 디자인하는 것이다. 이 목적에 도달하기 위해서는 주어진 데이터를 일반화하는 프로세스를 가진 모델을 디자인한다. 이후 학습에서는 모델의 매개 변수를 최적화하여 데이터의 패턴과 구조를 자동으로 찾을 수 있게 한다. 결국 머신러닝의 최종 목표는 위의 과정을 거쳐 준비된 모델이 새로운 데이터를 받아도 패턴을 잘 찾을 수 있는 모델을 구축하는 것이다.</p>
-<p>복잡한 머신러닝이 구축되는 원리를 알기 위해서는 수학적 기초가 중요하다. 원리를 이해하는 것은 새로운 머신러닝 방법들을 생산하고, 기존의 방법들을 디버깅할 수 있다. 머신러닝은 크게 회귀(Regression), 차원 축소(Dimemsionality Reduction), 밀도 추정(Density Estimation), 분류(Classification)로 나눌 수 있으며, 이를 위해 필요한 수학적 지식은 벡터 계산(Vector Calculus), 확률 분포(Probability &amp; Distributions), 최적화(Optimization), 선형 대수(Linear Algebra), 기하학(Analytic Geometry), 행렬 분해(Matrix Decomposition)가 있다. 책에서는 이와 같은 전반적인 수학적 지식을 다룰 예정이다.</p>
-<p>파트 1에서는 머신러닝을 배우기에 앞서 필요한 수학적 기초들을 볼 예정이다. 파트 1의 목차는 다음과 같다.</p>
+        <p>글을 시작하기에 앞서 해당 글은 Sanjoy Dasgupta, Christos Papadimitriou, Umesh 의 저서인 Algorithms를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
+<h2 id="피보나치-입문"><a href="#피보나치-입문" class="headerlink" title="피보나치 입문"></a>피보나치 입문</h2><p>피보나치는 유명한 수열로 가장 많이 알려져있다. 수열 내에서 각 숫자들은 이전 두 숫자의 합이라는 것이 피보나치 수열의 원리이다. 피보나치수 $F_n$은 다음과 같다.</p>
+<script type="math/tex; mode=display">
+fib(n) =
+ \begin{cases}
+0 & \text{if n=0 $$}\\
+1 & \text{if n=1 $$}\\
+fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
+\end{cases}</script><h3 id="지수적-알고리즘"><a href="#지수적-알고리즘" class="headerlink" title="지수적 알고리즘"></a>지수적 알고리즘</h3><p>피보나치 수열은 $2^n$과 거의 같은 속도로 증가한다. 일반적으로 $F_n$≈$2^{0.694n}$ 이다. 따라서 피보나치 함수 fib(n)의 수행속도는 $2^{0.694n}$인 $(1.6)^n$에 비례한다. 즉, $F_n+1$을 계산하는 것은 $F_n$을 계산하는 시간의 1.6배가 더 걸린다는 것이다.</p>
+<p>지수함수를 기반으로 한 피보나치 수열을 구하는 공식은 $n$에서 $0$이 될 때까지 스스로를 반복해야 하기 때문에 $n$이 크면 클수록 엄청나게 많은 시간이 소요된다. 그렇다면 좀 더 빠르게 만들 수는 없을까? 피보나치에서 나온 값들을 배열에 저장한다면, 더 빠르게 작동할 것이다.</p>
+<h3 id="다항-시간-알고리즘"><a href="#다항-시간-알고리즘" class="headerlink" title="다항 시간 알고리즘"></a>다항 시간 알고리즘</h3><p>다항함수는 지수함수보다 훨씬 빠르게 작동한다. 따라서 다항함수를 기반으로 작성된 코드가 훨씬 효율적이다. 코드는 먼저 $0$부터 $n$까지의 배열을 만든 후, 해당 배열의 인수를 다항식인 $f(X)=f(x-2)+f(x-1)$ 넣는 프로세스로 진행된다. 물론 $f(0)$과 $f(1)$은 $0$과 $1$로 값을 따로 지정한다. 이 방식은 지수함수를 기반으로 작성했을 때보다 훨씬 빠르고 효율적으로 작동한다.</p>
+<h3 id="좀-더-정확한-분석"><a href="#좀-더-정확한-분석" class="headerlink" title="좀 더 정확한 분석"></a>좀 더 정확한 분석</h3><p>위의 지수적 알고리즘과 다항 시간 알고리즘을 좀 더 정확하게 알아보고자 한다. 뒤의 1장에서 배우겠지만, $n$비트의 두 숫자를 더하는 데 걸리는 시간은 $n$에 비례한다. 따라서 지수적 알고리즘은 $F_n$을 $n$의 수만큼 반복하여 더했기 때문에 연산 개수는 $n*F_n$이라고 할 수 있다. 또한 다항 시간 알고리즘의 연산 개수는 $n$의 개수에 따른 결과값들을 더하기 때문에 $n^2$에 비례한다. 정확하게 분석해도 다항시간 알고리즘이 훨씬 빠르다.</p>
+<h2 id="빅오-표기법-big-O-notation"><a href="#빅오-표기법-big-O-notation" class="headerlink" title="빅오 표기법 (big-O notation)"></a>빅오 표기법 (big-O notation)</h2><p>알고리즘의 효율성은 데이터 개수인 $n$에 따라 연산되는 횟수를 의미하며, 크게 시간 복잡도(효율성)와 공간 복잡도(효율성)로 나뉜다. 이런 알고리즘의 효율성을 나타내는 방법으로는 빅오(Big-O), 빅오메가(big-Ω),빅세타(big-Θ) 표기법이 있다.</p>
 <ul>
-<li><p><strong>Chapter 1: 선형 대수(Linear Algebra)</strong><br>숫자 데이터를 벡터나 행렬로 나타내며, 이런 벡터나 행렬에 대한 연구들을 선형 대수라고 한다. 벡터의 모음인 행렬에 대한 내용도 이 장에서 확인할 수 있다.</p>
+<li>빅오(Big-O)표기법: 상한선 기준 (≤)</li>
+<li>빅오메가(big-Ω): 하한선 기준 (≥)</li>
+<li>빅세타(big-Θ): 상한선과 하한선 사이를 기준 (≤ ≤)</li>
+</ul>
+<p>알고리즘 효율성은 그래프가 위로 향할수록(값이 클수록) 비효율적이라는 뜻이다. 빅오 표기법은 상한선을 기준으로 표기하기 때문에 알고리즘의 최악의 효율정도를 제시할 수 있어 주로 사용된다.</p>
+<p>하지만 상한선이 꼭 해당 알고리즘의 최악의 효율성과 동일한 것은 아니다. 만약 최악의 효율성은 $n$값이 $1000$일 때 나타난다고 가정하자. 하지만 알고리즘은 찾고자 하는 값을 5번만에도 찿을 수 있다. 따라서 최악의 효율성이 항상 그 알고리즘의 효율성을 대변하지는 않는다.</p>
+<h3 id="빅오-표기법의-수학적-정의"><a href="#빅오-표기법의-수학적-정의" class="headerlink" title="빅오 표기법의 수학적 정의"></a>빅오 표기법의 수학적 정의</h3><p>빅오 표기법의 수학적 정의는 다음과 같다.</p>
+<p>“모든 $n≥n_0≥0$ 에 대하여 $0≤f(n)≤c*g(n)$ 인 양수 $c$와 $n_0$가 존재하면 $f(n)=O(g(n))$이다.”</p>
+<p>예를 통해 개념을 정리하자.<br>내가 만든 알고리즘의 시간 효율성을 나타내는 함수 $f(n)$이고 $n$과 상수 $c$을 아래의 방정식과 같다고 가정한다.</p>
+<p>$f(n)=n^2+5n+8$<br>$g(n)=n^2+4$</p>
+<p>위의 방정식은 $0≤f(n)≤c*g(n)$을 만족하는 상수 $c$가 존재한다.<br>또한 $n_0$은 $f(n)$와 $g(n)$가 같은 값일 때를 찾으면 되는데, 예시에서는 존재한다. 여기서 같은 값이란 그래프의 비교가 시작되는 지점이다. 상수 $c$와 $n_0$를 찾았다면 빅오 표기법으로 작성할 수 있다.</p>
+<h3 id="빅오-표기법의-특징"><a href="#빅오-표기법의-특징" class="headerlink" title="빅오 표기법의 특징"></a>빅오 표기법의 특징</h3><p>빅오 표기법은 몇 가지의 특징을 가지고 있다.</p>
+<ul>
+<li><p>상수항을 무시한다.<br>빅오 표기법에서는 데이터 입력값인 $n$이 충분히 크다고 가정하며, 알고리즘의 효율성 또한 $n$값에 좌우되기 때문에 상수항처럼 사소한 부분은 무시한다.</p>
+<p>$O(3n^2)$ -&gt; $O(n^2)$</p>
 </li>
-<li><p><strong>Chapter 2: 기하학(Analytic Geometry)</strong><br>실제 세계에 있는 두 개의 물체를 나타내는 두 개의 벡터가 있다면, 유사성에 대해 논의할 수 있다. 즉, 비슷한 두 벡터가 주어지면 예측 알고리즘에 의해서 나온 결과 값도 비슷해야 한다는 것이다. 벡터 간의 유사성 개념을 공식화하려면 벡터를 입력으로 사용하고 유사성을 나타내는 숫자값을 반환하는 연산을 도입해야 한다. 유사성과 거리에 대한 개념들은 이 장에서 확인할 수 있다.</p>
-</li>
-<li><p><strong>Chapter 3: 행렬 분해(Matrix Decomposition)</strong><br>이 장에서는 행렬에 대한 기초적인 개념을 배우고 행렬 분해에 대해 공부할 것이다. 행렬에 대한 연산들은 머신러닝에서 매우 유용하게 사용되며, 실제로 직관적인 데이터 분석을 가능하게 하고 또한 머신러닝이 효율적으로 학습할 수 있도록 해준다.</p>
-</li>
-<li><p><strong>Chapter 4: 벡터 계산(Vector Calculus)</strong></p>
-</li>
-<li><p><strong>Chapter 5: 확률 이론(probability theory)</strong><br>데이터는 종종 소음(noise)와 같은</p>
-</li>
-<li><p><strong>Chapter 6: 최적화(Optimization)</strong></p>
+<li><p>영향력이 크지 않은 항도 무시한다.<br>빅오 표기법에서는 가장 영향력이 큰 항을 제외한 나머지는 큰 영향력이 없다. 따라서 제외하여 판단한다.</p>
+<p>$O(3n^2+5n+15)$ -&gt; $O(n^2)$</p>
 </li>
 </ul>
+<p>아래의 그래프는 각 함수마다의 성능을 보여준다.</p>
+<p><img src="/images/23.png" alt="big-O notation"></p>
+<p>그래프에 나와있는 시간 효율성을 정리하면 다음과 같다.</p>
+<p>$O(1) &lt; O(log n) &lt; O(n) &lt; O(nlog n) &lt; O(n^2) &lt; O(2^n)$</p>
+<p>상수함수 &lt; 로그함수 &lt; 선형함수 &lt; 다항함수 &lt; 지수함수</p>
+<p>위의 순서를 보면, 상수함수가 가장 작고 지수함수가 가장 크다. 즉 상수함수는 데이터 수가 많아도 빠르게 작동하는 알고리즘이며, 지수함수는 데이터 수가 많아질수록 급격하게 느려지는 알고리즘이라는 뜻이다. 시간 효율성 관점에서는 상수함수가 더욱 우월하다.</p>
 
     </div>
 
@@ -296,12 +318,11 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" rel="tag"># 머신러닝</a>
-              <a href="/tags/mathematics/" rel="tag"># mathematics</a>
-              <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
-              <a href="/tags/mathematics-for-machine-learning/" rel="tag"># mathematics for machine learning</a>
-              <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%88%98%ED%95%99/" rel="tag"># 머신러닝 수학</a>
-              <a href="/tags/%EC%88%98%ED%95%99/" rel="tag"># 수학</a>
+              <a href="/tags/Algorithms/" rel="tag"># Algorithms</a>
+              <a href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/" rel="tag"># 알고리즘</a>
+              <a href="/tags/%EB%B9%85%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/" rel="tag"># 빅오 표기법</a>
+              <a href="/tags/%ED%94%BC%EB%B3%B4%EB%82%98%EC%B9%98/" rel="tag"># 피보나치</a>
+              <a href="/tags/%EA%B8%B0%EC%B4%88/" rel="tag"># 기초</a>
           </div>
 
         
@@ -310,12 +331,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/17/Think-Julia-Chapter-17/" rel="prev" title="16. 다중 디스패치">
-      <i class="fa fa-chevron-left"></i> 16. 다중 디스패치
+    <a href="/2020/03/18/Think-Julia-Chapter-18/" rel="prev" title="17. 서브타이핑">
+      <i class="fa fa-chevron-left"></i> 17. 서브타이핑
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/03/18/Think-Julia-Chapter-18/" rel="next" title="17. 서브타이핑">
-      17. 서브타이핑 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/03/22/Think-Julia-Chapter-19/" rel="next" title="18. 기타 문법들">
+      18. 기타 문법들 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -376,6 +397,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#피보나치-입문"><span class="nav-number">1.</span> <span class="nav-text">피보나치 입문</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#지수적-알고리즘"><span class="nav-number">1.1.</span> <span class="nav-text">지수적 알고리즘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#다항-시간-알고리즘"><span class="nav-number">1.2.</span> <span class="nav-text">다항 시간 알고리즘</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#좀-더-정확한-분석"><span class="nav-number">1.3.</span> <span class="nav-text">좀 더 정확한 분석</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#빅오-표기법-big-O-notation"><span class="nav-number">2.</span> <span class="nav-text">빅오 표기법 (big-O notation)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#빅오-표기법의-수학적-정의"><span class="nav-number">2.1.</span> <span class="nav-text">빅오 표기법의 수학적 정의</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#빅오-표기법의-특징"><span class="nav-number">2.2.</span> <span class="nav-text">빅오 표기법의 특징</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -493,6 +515,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
