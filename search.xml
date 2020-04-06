@@ -109,7 +109,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
  \frac{\partial E}{\partial w_{21}} & \frac{\partial E}{\partial w_{22}} & \frac{\partial E}{\partial w_{23}}\\
  \end{bmatrix}</script><p>지금부터 아래의 식에 사용되는 $w<em>{ij}$와 $b</em>{ij}$는 배열 형태인 $W$와 $B$의 요소라는 점을 강조한다.</p>
 <script type="math/tex; mode=display">E = \frac{1}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)^2 \\
-= \frac{1}{3}\sum_{k=1}^3 ((\sigma(h(h(XW_1+B_1)\times W_2+B_2)))-t_k)^2</script><p>위의 식에서 $\hat{y}$는 여러 활성화 함수들의 합성 함수로 구성되어 있다. 보기만 해도 복잡하고 머리가 아프다. 하지만 이 식 안에서 $w<em>{ij}$, $b</em>{ij}$와 같은 값들을 도출해야 한다. 하나의 요소를 정해서 식을 해체하는 방법이 더 빠를 것 같기에 우리는 $w1_{11}$와 손실함수의 편미분 값을 찾아보자.</p>
+= \frac{1}{3}\sum_{k=1}^3 ((\sigma(h(h(XW_1+B_1)\times W_2+B_2)))-t_k)^2</script><p>위의 식에서 $\hat{y}$는 여러 활성화 함수들의 합성 함수로 구성되어 있다. 보기만 해도 복잡하고 머리가 아프다. 하지만 이 식 안에서 $w<em>{ij}, b</em>{ij}$와 같은 값들을 도출해야 한다. 하나의 요소를 정해서 식을 해체하는 방법이 더 빠를 것 같기에 우리는 $w1_{11}$와 손실함수의 편미분 값을 찾아보자.</p>
 <p><strong>목표: $\frac{\partial E}{\partial w1_{11}}$을 식으로 풀이하기</strong></p>
 <script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}
 = \frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)</script><p>$w1_{11}$는 $\hat{y_k}$ 안에 있기 때문에 위의 수식은 합성 함수의 미분이다. 따라서 식 내부에 있는 $(\hat{y_k}-t_k)$를 미분하여 곱해줘야 하는데, $t_k$의 경우 상수이기 때문에 미분했을 때 제거된다. 따라서 남은 $\hat{y_k}$는 $\sigma(A2_k)$와 같으므로 이어지는 식은 다음과 같다.</p>
@@ -330,13 +330,13 @@ x & \text{(x>0) $$}\\
         <tag>딥러닝</tag>
         <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
-        <tag>줄리아</tag>
         <tag>sigmoid</tag>
         <tag>시그모이드</tag>
         <tag>softmax</tag>
         <tag>소프트맥스</tag>
         <tag>렐루</tag>
         <tag>ReLU</tag>
+        <tag>줄리아</tag>
       </tags>
   </entry>
   <entry>
@@ -1359,7 +1359,22 @@ fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
     <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
 <p>머신러닝(Machine learning)은 데이터로부터 유용한 정보를 자동으로 추출해주는 알고리즘을 디자인하는 것이다. 강조할 부분은 “자동(automatic)”이다. 머신러닝은 많은 데이터셋에 적용하여 의미있는 것들을 생산하는 범용 방법론(general-purpose methodology)에 관심이 있다. 머신러닝을 설명하는 세 가지의 핵심 단어가 있다. 데이터, 모델, 그리고 학습이다.</p>
 <p>머신러닝의 목적은 데이터로부터 가치있는 패턴을 찾는 방법을 개발하는 방법을 디자인하는 것이다. 이 목적에 도달하기 위해서는 주어진 데이터를 일반화하는 프로세스를 가진 모델을 디자인한다. 이후 학습에서는 모델의 매개 변수를 최적화하여 데이터의 패턴과 구조를 자동으로 찾을 수 있게 한다. 결국 머신러닝의 최종 목표는 위의 과정을 거쳐 준비된 모델이 새로운 데이터를 받아도 패턴을 잘 찾을 수 있는 모델을 구축하는 것이다.</p>
-<p>복잡한 머신러닝이 구축되는 원리를 알기 위해서는 수학적 기초가 중요하다. 원리를 이해하는 것은 새로운 머신러닝 방법들을 생산하고, 기존의 방법들을 디버깅할 수 있다.</p>
+<p>복잡한 머신러닝이 구축되는 원리를 알기 위해서는 수학적 기초가 중요하다. 원리를 이해하는 것은 새로운 머신러닝 방법들을 생산하고, 기존의 방법들을 디버깅할 수 있다. 머신러닝은 크게 회귀(Regression), 차원 축소(Dimemsionality Reduction), 밀도 추정(Density Estimation), 분류(Classification)로 나눌 수 있으며, 이를 위해 필요한 수학적 지식은 벡터 계산(Vector Calculus), 확률 분포(Probability &amp; Distributions), 최적화(Optimization), 선형 대수(Linear Algebra), 기하학(Analytic Geometry), 행렬 분해(Matrix Decomposition)가 있다. 책에서는 이와 같은 전반적인 수학적 지식을 다룰 예정이다.</p>
+<p>파트 1에서는 머신러닝을 배우기에 앞서 필요한 수학적 기초들을 볼 예정이다. 파트 1의 목차는 다음과 같다.</p>
+<ul>
+<li><p>Chapter 1: 선형 대수(Linear Algebra)<br>숫자 데이터를 벡터나 행렬로 나타내며, 이런 벡터나 행렬에 대한 연구들을 선형 대수라고 한다. 벡터의 모음인 행렬에 대한 내용도 이 장에서 확인할 수 있다.</p>
+</li>
+<li><p>Chapter 2: 기하학(Analytic Geometry)<br>실제 세계에 있는 두 개의 물체를 나타내는 두 개의 벡터가 있다면, 유사성에 대해 논의할 수 있다. 즉, 비슷한 두 벡터가 주어지면 예측 알고리즘에 의해서 나온 결과 값도 비슷해야 한다는 것이다. 벡터 간의 유사성 개념을 공식화하려면 벡터를 입력으로 사용하고 유사성을 나타내는 숫자값을 반환하는 연산을 도입해야 한다. 유사성과 거리에 대한 개념들은 이 장에서 확인할 수 있다.</p>
+</li>
+<li><p>Chapter 3: 행렬 분해(Matrix Decomposition)<br>이 장에서는 행렬에 대한 기초적인 개념을 배우고 행렬 분해에 대해 공부할 것이다. 행렬에 대한 연산들은 머신러닝에서 매우 유용하게 사용되며, 실제로 직관적인 데이터 분석을 가능하게 하고 또한 머신러닝이 효율적으로 학습할 수 있도록 해준다.</p>
+</li>
+<li><p>Chapter 4: 벡터 계산(Vector Calculus)</p>
+</li>
+<li><p>Chapter 5: 확률 이론(probability theory)<br>데이터는 종종 소음(noise)와 같은</p>
+</li>
+<li><p>Chapter 6: 최적화(Optimization)</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>mathematics for machine learning</category>
