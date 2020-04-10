@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/36.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/37.png">
 <meta property="article:published_time" content="2020-04-01T08:59:47.000Z">
-<meta property="article:modified_time" content="2020-04-10T00:12:46.798Z">
+<meta property="article:modified_time" content="2020-04-10T00:16:55.140Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -246,7 +246,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-10 09:12:46" itemprop="dateModified" datetime="2020-04-10T09:12:46+09:00">2020-04-10</time>
+                <time title="Updated at: 2020-04-10 09:16:55" itemprop="dateModified" datetime="2020-04-10T09:16:55+09:00">2020-04-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -343,7 +343,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
  \frac{\partial E}{\partial w_{21}} & \frac{\partial E}{\partial w_{22}} & \frac{\partial E}{\partial w_{23}}\\
  \end{bmatrix}</script><p>지금부터 아래의 식에 사용되는 $w_{ij}$는 배열 형태인 $W$의 요소라는 점을 강조한다.</p>
 <script type="math/tex; mode=display">E = \frac{1}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)^2 \\
-= \frac{1}{3}\sum_{k=1}^3 ((\sigma(h(h(XW_1+B_1)\times W_2+B_2)))-t_k)^2</script><p>위의 식에서 $\hat{y}$는 여러 활성화 함수들의 합성 함수로 구성되어 있다. 보기만 해도 복잡하고 머리가 아프다. 하지만 편미분하는 과정을 파악하기 위해서는 수식으로 한번 풀어보는 것이 좋다. 하나의 변수를 특정하여 식을 전개하는 것이 이해에 도움이 될 것 같아서 지금부터 $w_{11}$와 손실함수의 편미분을 수식으로 풀어보자.</p>
+= \frac{1}{3}\sum_{k=1}^3 ((\sigma(h(h(XW_1+B_1)\times W_2+B_2)))-t_k)^2</script><p>위의 식에서 $\hat{y}$는 여러 활성화 함수들의 합성 함수로 구성되어 있다. 보기만 해도 복잡하고 머리가 아프다. 하지만 편미분하는 과정을 파악하기 위해서는 수식으로 한번 풀어보는 것이 좋다. 하나의 변수를 특정하여 식을 전개하는 것이 이해에 도움이 될 것 같아서 지금부터 $w1_{11}$와 손실함수의 편미분을 수식으로 풀어보자.</p>
 <p><strong>목표: $\frac{\partial E}{\partial w1_{11}}$을 식으로 풀이하기</strong></p>
 <script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}
 = \frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)</script><p>$w1_{11}$는 $\hat{y_k}$ 안에 있기 때문에 위의 수식은 합성 함수의 미분이다. 따라서 식 내부에 있는 $(\hat{y_k}-t_k)$를 미분하여 곱해줘야 하는데, $t_k$의 경우 상수이기 때문에 미분했을 때 제거된다. 따라서 남은 $\hat{y_k}$는 $\sigma(A2_k)$와 같으므로 이어지는 식은 다음과 같다.</p>
@@ -357,10 +357,10 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 <script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)\ \hat{y_k}(1-\hat{y_k})\ A2_k(1-A2_k) \frac{\partial Z2_k}{\partial w1_{11}}</script><p>현재 미분해야 하는 $Z2$는 $A1_k\times W2+B2$이다.</p>
 <script type="math/tex; mode=display">\frac{\partial Z2_k}{\partial w1_{11}} = \frac{\partial (A1_k\times W2+B2)}{\partial w1_{11}}</script><p>여기서 우리는 편미분을 진행하고 있기 때문에 $W1$을 포함하지 않는 $W2$와 $B2$는 상수이다. 따라서 미분 결과는 다음과 같다.</p>
 <script type="math/tex; mode=display">\frac{\partial Z2_k}{\partial w1_{11}} = W2 \times \frac{\partial A1_k}{\partial w1_{11}}</script><p>미분대상을 가지고 있는 $A1_k$와 곱으로 연결된 $W2$는 상수로 남고 더하기로 연결된 $B$는 0이 되어 사라진다.</p>
-<p>따라서 $\frac{\partial A1<em>k}{\partial w1</em>{11}}$만 계산하면 된다. $A1_k$는 시그모이드 함수의 결과 값이므로 $h(Z1_k)$과 동일하다.</p>
+<p>따라서 $\frac{\partial A1<em>k}{\partial w1</em>{11}}$만 계산하면 된다. 편미분의 대상인 $A1_k$는 시그모이드 함수의 결과 값이므로 $h(Z1_k)$과 동일하다.</p>
 <script type="math/tex; mode=display">\frac{\partial Z2_k}{\partial w1_{11}} = W2 \times \frac{\partial A1_k}{\partial w1_{11}} = W2 \times \frac{\partial h(Z1_k)}{\partial w1_{11}}</script><p>앞서 시그모이드 함수의 미분을 확인했기 때문에 바로 $h(x)(1-h(x))$를 대입한다.</p>
 <script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)\ \hat{y_k}(1-\hat{y_k})\ A2_k(1-A2_k) \times W2 \times  h(Z1_k)(1-h(Z1_k))\frac{\partial Z2_k}{\partial w1_{11}}</script><p>위 식에서 $h(Z1_k)$는 $A1_k$와 동일하기 때문에 변경할 수 있다.</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)\ \hat{y_k}(1-\hat{y_k})\ A2_k(1-A2_k) \times W2 \times  A1_k(1-A1_k))\frac{\partial Z1_k}{\partial w1_{11}}</script><p>현재 미분해야 하는 $Z1$는 $X\times W1+B1$이다. 해당 수식 안에 $w1<em>{11}$이 들어간 식은 배열의 첫 번째 요소인 $x_1w1</em>{11}+x<em>2w1</em>{21}+b1_1$ 이며, 나머지 값들은 전부 상수화된다.</p>
+<script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)\ \hat{y_k}(1-\hat{y_k})\ A2_k(1-A2_k) \times W2 \times  A1_k(1-A1_k))\frac{\partial Z1_k}{\partial w1_{11}}</script><p>현재 미분해야 하는 $Z1$는 $(X \times W1+B1)$이다. 해당 수식 안에 $w1<em>{11}$이 들어간 식은 배열의 첫 번째 요소인 $(x_1w1</em>{11}+x<em>2w1</em>{21}+b1_1)$ 이며, 나머지 값들은 전부 상수화된다.</p>
 <script type="math/tex; mode=display">\frac{\partial Z1_k}{\partial w1_{11}} = \frac{\partial (x_1w1_{11}+x_2w1_{21}+b1_1)}{\partial w1_{11}}</script><p>위 편미분은 $w1<em>{11}$의 계수인 $x_1$만 남는다. 따라서 $\frac{\partial E}{\partial w1</em>{11}}$을 구하는 수식은 다음과 같다.</p>
 <script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 \bigl\{ (\hat{y_k}-t_k)\ \hat{y_k}(1-\hat{y_k})\ A2_k(1-A2_k) \times W2 \times  A1_k(1-A1_k))\times x_1 \bigr\}</script><p>드디어 예시로 봤던 4층 신경망의 편미분을 수식으로 완성하였다. 위의 수식을 통해 $w1_{11}$의 편미분 값을 구할 수 있다.</p>
 <p>(4) 마지막으로 해당 미분값에 학습률을 곱해 기존 가중치에서 뺀 후, 다시 할당해준다.</p>
