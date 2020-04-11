@@ -4,6 +4,7 @@
     <title>7. 신경망 구현 - 역전파</title>
     <url>/2020/04/05/Deeplearning-7/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
 <h2 id="역전파란"><a href="#역전파란" class="headerlink" title="역전파란"></a>역전파란</h2>]]></content>
       <categories>
         <category>Deep learning in Julia</category>
@@ -41,6 +42,7 @@
     <title>5. 인공신경망 구현 - 수학식 풀이</title>
     <url>/2020/04/01/Deeplearning-5/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
 <h2 id="인공신경망이란"><a href="#인공신경망이란" class="headerlink" title="인공신경망이란"></a>인공신경망이란</h2><script type="math/tex; mode=display">Layer=(X*W)+B</script><p>위 수식은 각 층을 계산하는 식이며, 입력 데이터의 값들인 배열 $X$에 가중치 $W$를 곱한 후 편향 $B$를 더한다. 이 식은 신경망이 작동하는 방식에서 가져온 알고리즘이다. 생물학에서의 신경망은 수많은 뉴런(신경 세포)이 연결되어 있으며, 이들은 전기 신호를 전달한다. 각각의 뉴런들은 수상돌기를 통해 들어오는 전기 신호를 받고 세포체에서 종합한 후 축삭돌기를 통해 전기 신호를 다른 뉴런으로 내보낸다. 이때 축삭돌기 끝 부분인 시냅스에서 전기 신호에 따라 신경전달물질을 분비하여 다른 뉴런의 시냅스로 전달하는데 이런 과정을 신경이라고 부르는 것이다.</p>
 <p><img src="\../images/36.png" alt="신경 세포 구조"></p>
 <p>그렇다면 뉴런들은 왜 전기 신호들을 전달하는 것일까? 이유는 간단하다. 우리 몸에서 필요한 생활 기능들을 ‘적절’하게 조절하기 위해서이다. 뉴런은 수상돌기에서 전기 신호를 생산하라는 흥분성 신호와 전기 신호를 생산하지 말라는 억제성 신호를 받아들인다. 그후 세포체에서 이를 종합하여 다른 뉴런으로 해당 전기 신호를 보낼지 말지 결정한다. 이런 뉴런의 원리를 바탕으로 살펴봤을 때 가중치를 곱하는 것은 뉴런에서 각각의 고유한 흥분성과 억제성 신호를 받아들이는 과정을 표현했다고 볼 수 있다.<br>물론 실제 생물학에서의 뉴런은 세포체에서 전기 신호를 보내거나(1), 보내지 않거나(0)라는 계단 함수의 개념으로 작동한다는 차이점이 있지만, 가중치의 원리는 동일하다. 또한 편향은 뉴런이 가지고 있는 ‘임계값’을 표현한 것이다. 세포체는 받은 전기 신호가 어느 임계값 이상이 되어야 전기 신호를 내보내는 데, 이를 나타낸 것이다.</p>
@@ -192,6 +194,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
     <title>3. 손실 함수</title>
     <url>/2020/03/30/Deeplearning-3/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
 <h2 id="손실-함수란"><a href="#손실-함수란" class="headerlink" title="손실 함수란"></a>손실 함수란</h2><p>신경망을 사용하기 위해서는 그 전에 학습을 통해 올바른 기준을 생성해주어야 한다. 이런 과정을 ‘신경망 학습’이라고 한다. 신경망 학습에서는 훈련 데이터를 사용하며, 이를 통해 신경망이 실전 문제에서도 적절하게 접근할 수 있도록 하는 가중치를 찾는다. 그렇다면 신경망 학습이 잘 이루어지고 있는지 어떻게 알 수 있을까? 여기서 ‘손실 함수’가 사용된다. 손실 함수(loss function)는 신경망을 평가하는 평가지표로서 사용되며, 오답률을 나타낸다. 즉, 손실 함수의 값이 0에 가까울수록 좋은 신경망이라는 것이다. 보통 손실 함수는 정답과 신경망이 도출한 출력 값을 비교하여 나타낸다.</p>
 <p>일반적으로 사용하는 손실 함수로는 평균 제곱 오차와 교차 엔트로피 오차가 있다.</p>
 <h3 id="평균-제곱-오차"><a href="#평균-제곱-오차" class="headerlink" title="평균 제곱 오차"></a>평균 제곱 오차</h3><p>‘평균 제곱 오차(Mean Squared Error, MSE)’는 출력 값에서 정답을 뺀 결과를 제곱하여 더한 값들을 비교한다. 수식은 아래와 같다.</p>
@@ -236,6 +239,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
     <title>2. 활성화 함수</title>
     <url>/2020/03/29/Deeplearning-2/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
 <h2 id="활성화-함수"><a href="#활성화-함수" class="headerlink" title="활성화 함수"></a>활성화 함수</h2><p>활성화 함수란 신경망 노드에 위치해 있는 함수로서 입력값들을 출력 신호의 여부로 변환해주는 함수이다. 보통 은닉층에서 사용하는 활성화 함수와 출력층에서 사용하는 활성화 함수로 나눠져 있으며, $h(x)$로 표기한다.</p>
 <h3 id="은닉층에서-사용하는-활성화-함수"><a href="#은닉층에서-사용하는-활성화-함수" class="headerlink" title="은닉층에서 사용하는 활성화 함수"></a>은닉층에서 사용하는 활성화 함수</h3><p>은닉층에서 사용되는 기본적인 활성화 함수로는 3가지 정도가 있다.</p>
 <h4 id="계단-함수"><a href="#계단-함수" class="headerlink" title="계단 함수"></a>계단 함수</h4><p>계단 함수는 입력값이 $0$이하이면 $0$, $0$을 초과하면 $1$로 변환해주는 함수이다. 수식으로는 다음과 같다.</p>
@@ -314,6 +318,7 @@ x & \text{(x>0) $$}\\
     <title>1. 행렬과 벡터의 곱</title>
     <url>/2020/03/26/Deeplearning-1/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
 <h2 id="벡터란"><a href="#벡터란" class="headerlink" title="벡터란"></a>벡터란</h2><p>벡터(Vector)는 ‘크기’와 ‘방향’을 모두 나타낸다. 예를 들어, 자동차가 시속 5마일로 달린다고 해보자. 여기서 5마일은 단순히 크기일뿐 방향을 나타내고 있지 않으므로 벡터라고 할 수 없다. 벡터로 나타내기 위해서는 5마일에 동쪽으로 향하는 ‘크기’와 ‘방향’까지 포함된 개념이어야 한다.</p>
 <p>벡터의 기호는 $\overrightarrow{a}$이며, 아래와 같은 ‘열벡터’가 기본 형태이다.</p>
 <script type="math/tex; mode=display">\overrightarrow{a}=
@@ -593,6 +598,7 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
     <title>0. 줄리아로 딥러닝 구현하기</title>
     <url>/2020/03/25/Deeplearning-0/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>이 시리즈는 줄리아를 사용하여 딥러닝의 알고리즘을 이해하고 구현하는 것을 목표로 한다. 특히 신경망에서 사용되는 수학적 지식이나 수식들에 대한 설명을 덧붙이면서 딥러닝을 잘 모르는 초보자들도 이해할 수 있도록 하였다.</p>
 <p> 목차는 아래와 같다.</p>
 <ol>
@@ -1328,6 +1334,7 @@ fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
     <title>0. introduction</title>
     <url>/2020/03/17/mathematic-0/</url>
     <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
+<hr>
 <p>머신러닝(Machine learning)은 데이터로부터 유용한 정보를 자동으로 추출해주는 알고리즘을 디자인하는 것이다. 강조할 부분은 “자동(automatic)”이다. 머신러닝은 많은 데이터셋에 적용하여 의미있는 것들을 생산하는 범용 방법론(general-purpose methodology)에 관심이 있다. 머신러닝을 설명하는 세 가지의 핵심 단어가 있다. 데이터, 모델, 그리고 학습이다.</p>
 <p>머신러닝의 목적은 데이터로부터 가치있는 패턴을 찾는 방법을 개발하는 방법을 디자인하는 것이다. 이 목적에 도달하기 위해서는 주어진 데이터를 일반화하는 프로세스를 가진 모델을 디자인한다. 이후 학습에서는 모델의 매개 변수를 최적화하여 데이터의 패턴과 구조를 자동으로 찾을 수 있게 한다. 결국 머신러닝의 최종 목표는 위의 과정을 거쳐 준비된 모델이 새로운 데이터를 받아도 패턴을 잘 찾을 수 있는 모델을 구축하는 것이다.</p>
 <p>복잡한 머신러닝이 구축되는 원리를 알기 위해서는 수학적 기초가 중요하다. 원리를 이해하는 것은 새로운 머신러닝 방법들을 생산하고, 기존의 방법들을 디버깅할 수 있다. 머신러닝은 크게 회귀(Regression), 차원 축소(Dimemsionality Reduction), 밀도 추정(Density Estimation), 분류(Classification)로 나눌 수 있으며, 이를 위해 필요한 수학적 지식은 벡터 계산(Vector Calculus), 확률 분포(Probability &amp; Distributions), 최적화(Optimization), 선형 대수(Linear Algebra), 기하학(Analytic Geometry), 행렬 분해(Matrix Decomposition)가 있다. 책에서는 이와 같은 전반적인 수학적 지식을 다룰 예정이다.</p>
@@ -2380,6 +2387,7 @@ fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
     <content><![CDATA[<p>Hexo 블로그를 만든 다음 NexT 테마를 적용하고자 합니다.</p>
 <p>아직 블로그를 만들지 않았다면 <a href="https://hyeonji-ryu.github.io/2020/02/27/test/">이전 글</a>을 참고해주시기 바랍니다.</p>
 <a id="more"></a>
+<hr>
 <p>만들어진 블로그에 테마를 적용하는 방법은 간단합니다.</p>
 <ul>
 <li><p>우선 <a href="https://github.com/theme-next/hexo-theme-next/releases" target="_blank" rel="noopener">NexT</a> 사이트에 들어가서 원하는 버전의 소스 코드(source code)를 다운받아 주세요.<br><strong>Tip</strong><br>다운받을 수 있는 버전 중에서 가장 최신 버전을 다운받는 것이 좋습니다. 제 경우엔 <code>v7.7.2</code>를 다운받았습니다.</p>
@@ -3238,6 +3246,7 @@ fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
     <url>/2020/02/27/about_hexo-0/</url>
     <content><![CDATA[<p>Hexo 블로그를 만들기 위해서는 Github계정을 사용하는 것이 가장 편합니다. Github계정이 없는 분들은 <a href="https://github.com" target="_blank" rel="noopener">Github</a>에서 만들어 주세요! Github계정이 있는 분들이라면 바로 Hexo 블로그를 만들 수 있습니다.</p>
 <a id="more"></a>
+<hr>
 <p>Hexo 블로그를 만들기 위해서는 크게 2가지의 과정이 필요합니다.</p>
 <h2 id="Github-repository-만들기"><a href="#Github-repository-만들기" class="headerlink" title="Github repository 만들기"></a>Github repository 만들기</h2><p>Github repository 만드는 방법은 다음과 같습니다.</p>
 <ul>
