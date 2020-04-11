@@ -6,7 +6,7 @@
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <h2 id="역전파란"><a href="#역전파란" class="headerlink" title="역전파란"></a>역전파란</h2>]]></content>
       <categories>
-        <category>Deep learning with Julia</category>
+        <category>Deep learning in Julia</category>
       </categories>
       <tags>
         <tag>딥러닝</tag>
@@ -23,7 +23,7 @@
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <h2 id="순전파란"><a href="#순전파란" class="headerlink" title="순전파란"></a>순전파란</h2>]]></content>
       <categories>
-        <category>Deep learning with Julia</category>
+        <category>Deep learning in Julia</category>
       </categories>
       <tags>
         <tag>딥러닝</tag>
@@ -102,7 +102,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 <h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>아번 글에서는 신경망을 구현하기에 앞서 신경망의 원리를 수학식으로 풀이하였다. 이 과정은 이해를 위함이며, 다음 글에서는 손글씨 인식하는 신경망을 구현하면서 코드로 작동하는 과정을 살펴볼 것이다.</p>
 ]]></content>
       <categories>
-        <category>Deep learning with Julia</category>
+        <category>Deep learning in Julia</category>
       </categories>
       <tags>
         <tag>딥러닝</tag>
@@ -173,7 +173,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 <p>오차값이 거의 0에 도달하였다. 최적화에 성공한 것이다. 신경망은 이런 경사하강법을 통해서 적절한 가중치와 편향을 찾는다. 이제는 신경망을 구현하기 위한 모든 재료들을 살펴보았다. 다음 포스트에서는 지금까지 만들었던 함수들을 바탕으로 신경망을 직접 구현해보자.</p>
 ]]></content>
       <categories>
-        <category>Deep learning with Julia</category>
+        <category>Deep learning in Julia</category>
       </categories>
       <tags>
         <tag>딥러닝</tag>
@@ -217,7 +217,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 <p>위의 결과를 보면 잘 예측한 <code>y1</code>이 잘못 예측한 <code>y2</code>보다 더 작은 것을 확인할 수 있다. 이처럼 손실 함수는 오차를 계산하여 오차율을 나타내며, 값이 0에 가까울수록 오차가 없다고 판단한다. 즉, 손실 함수의 값이 0에 가까울수록 해당 신경망은 잘 학습되었다고 평가되는 것이다.</p>
 ]]></content>
       <categories>
-        <category>Deep learning with Julia</category>
+        <category>Deep learning in Julia</category>
       </categories>
       <tags>
         <tag>딥러닝</tag>
@@ -291,7 +291,7 @@ x & \text{(x>0) $$}\\
 <p>요소들의 합이 $1$임을 확인할 수 있다.</p>
 ]]></content>
       <categories>
-        <category>Deep learning with Julia</category>
+        <category>Deep learning in Julia</category>
       </categories>
       <tags>
         <tag>딥러닝</tag>
@@ -574,7 +574,7 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
 <p>사실 신경망을 구현하는 것은 위의 설명보다 더 복잡하다. 하지만 위의 원리를 이해하지 못한다면 신경망 자체를 파악할 수 없다.<br>다음 글에서는 신경망에 쓰이는 활성화 함수들을 살펴보고 줄리아로 구현할 것이다.</p>
 ]]></content>
       <categories>
-        <category>Deep learning with Julia</category>
+        <category>Deep learning in Julia</category>
       </categories>
       <tags>
         <tag>딥러닝</tag>
@@ -647,7 +647,7 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
 <p>지금까지 신경망을 배우기 위한 기본적인 배열 처리 방법에 대해서 알아보았다. 이제는 본격적으로 신경망에 대해 알아보자.</p>
 ]]></content>
       <categories>
-        <category>Deep learning with Julia</category>
+        <category>Deep learning in Julia</category>
       </categories>
       <tags>
         <tag>딥러닝</tag>
