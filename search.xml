@@ -85,7 +85,7 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 \begin{bmatrix}
 \cfrac{1}{1+e^{-Z1_1}} & \cfrac{1}{1+e^{-Z1_2}}
 \end{bmatrix}</script><p>그 다음, 위의 $Z_1$을 활성화 함수에 대입하면 된다. 여기서 $Z_1$은 행렬인데 위의 수식을 $Z_1$의 요소에 각각 적용한다. 참고로 위 식에서 사용된 활성화 함수는 시그모이드 함수이다. 이 과정은 입력값이 첫 번째 은닉층에 도착한 것이다.</p>
-<script type="math/tex; mode=display">Z2 = \bigg(\cfrac{1}{1+e^{-Z1)}}\bigg)\times W_2+b_2</script><script type="math/tex; mode=display">=
+<script type="math/tex; mode=display">Z2 = A1 \times W_2+b_2</script><script type="math/tex; mode=display">=
 \begin{bmatrix}
 \frac{w2_{11}}{1+e^{-Z1_1}}+\frac{w2_{21}}{1+e^{-Z1_2}}+b2_1 & \frac{w2_{12}}{1+e^{-Z1_1}}+\frac{w2_{22}}{1+e^{-Z1_2}}+b2_2 & \frac{w2_{13}}{1+e^{-Z1_1}}+\frac{w2_{23}}{1+e^{-Z1_2}}+b2_3
 \end{bmatrix}</script><p>$A1$의 값은 행렬로 반환된다. $A1$을 다시 두 번째 은닉층으로 보내기 위해 두 번째 가중치인 $W_2$를 곱하고 두 번째 편향인 $b_2$를 더한다. 여기서도 행렬곱과 행렬덧셈이 사용된다. 행렬 단위로 계산되는 수식은 $Z1$과 동일하다.</p>
@@ -98,41 +98,8 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
 \cfrac{e^{A2_1}}{\sum_{i=1}^3 e^{A2_i}} & \cfrac{e^{A2_2}}{\sum_{i=1}^3 e^{A2_i}} & \cfrac{e^{A2_3}}{\sum_{i=1}^3 e^{A2_i}}
 \end{bmatrix}</script><p>은닉층 계산 이후 마지막으로 출력층 활성화 함수인 소프트맥스 함수를 적용하여 예측값 $\hat{y}$을 얻었다.</p>
 <p>위의 식을 토대로 우리는 예측값을 아래와 같은 식로 정의할 수 있다.</p>
-<script type="math/tex; mode=display">\hat{y}=\sigma(h(h(XW_1+B_1)\times W_2+B_2))</script><p>위의 식을 살펴보면 $Z1$인 $XW_1+B_1$을 활성화 함수 $h(x)$에 대입하고, 활성화 함수의 결과 값을 다시 $Z2$의 입력값으로 받는다. 그렇게 $Z2$를 계산한 후 이를 다시 활성화 함수 $h(x)$에 대입한다. 그리고 마지막으로 출력층의 활성화 함수인 $\sigma(x)$에 대입하여 나온 값이 예측값 $\hat{y}$이다.</p>
-<h2 id="인공신경망-학습-과정-수학식-풀이"><a href="#인공신경망-학습-과정-수학식-풀이" class="headerlink" title="인공신경망 학습 과정 수학식 풀이"></a>인공신경망 학습 과정 수학식 풀이</h2><p>위에서는 하나의 신경망을 예시로 들어 신경망이 어떻게 작동하는지 수학식으로 정리하였다. 지금부터는 인공신경망을 학습하는 과정이 어떻게 진행되는지 수학식으로 정리할 것이다. 인공신경망은 실제 사용되기 전에 훈련 데이터셋을 통해 학습시킨다. 여기서 ‘학습’이란 뜻은 신경망에 적절한 가중치와 편향을 찾는 과정을 의미한다. 우리는 <a href="https://hyeonji-ryu.github.io/2020/03/31/Deeplearning-4/#more">이전 글</a>에서 신경망 학습 알고리즘 중 하나인 경사하강법을 살펴보았다. 따라서 지금부터 경사하강법 알고리즘을 사용하여 위에서 풀이한 신경망 모델을 학습하는 과정을 수학식으로 풀이해보고자 한다.</p>
-<p>(1) 먼저 학습을 하기 위해서는 학습 때 사용할 훈련 데이터셋과 무작위 값으로 구성된 가중치, 편향이 필요하다. 이를 준비한 후 예측값을 도출한다. 여기서 예측값은 $1\times 3$ 배열이다.</p>
-<script type="math/tex; mode=display">\hat{y}=\sigma(h(h(XW_1+B_1)\times W_2+B_2))</script><p>(2) 도출된 예측값과 정답을 비교해야 한다. 손실 함수를 사용하여 예측값과 정답 사이의 오차를 구한다. 이 예시에서는 손실 함수 중 하나인 ‘평균 제곱 오차’를 사용할 것이다.</p>
-<script type="math/tex; mode=display">E=\frac{1}{n}\sum_{k=1}^n (\hat{y_k}-t_k)^2</script><p>(3) 오차를 확인한 후, 이를 줄이기 위해 경사하강법 알고리즘을 사용한다. 경사하강법 알고리즘은 손실함수와 각각의 가중치와 편향들을 편미분하여 기울기를 구한 후, 기존의 가중치와 편향을 갱신하였다. 그렇다면 위의 손실함수 수식을 해체해야 한다. 가중치와 편향을 기준으로 편미분하기 위해서는 손실함수의 식에서 $W$와 $B$를 찾아야 하기 때문이다. 가중치와 편향이 배열인 경우에는 편미분이 각각의 요소 단위로 진행된다. 아래의 배열은 손실함수와 가중치가 어떻게 편미분이 진행되는지 예시를 보여준다.</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial W} =
-\begin{bmatrix}
- \frac{\partial E}{\partial w_{11}} & \frac{\partial E}{\partial w_{12}} & \frac{\partial E}{\partial w_{13}}\\
- \frac{\partial E}{\partial w_{21}} & \frac{\partial E}{\partial w_{22}} & \frac{\partial E}{\partial w_{23}}\\
- \end{bmatrix}</script><p>지금부터 아래의 식에 사용되는 $w_{ij}$는 배열 형태인 $W$의 요소라는 점을 강조한다.</p>
-<script type="math/tex; mode=display">E = \frac{1}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)^2 \\
-= \frac{1}{3}\sum_{k=1}^3 ((\sigma(h(h(XW_1+B_1)\times W_2+B_2)))-t_k)^2</script><p>위의 식에서 $\hat{y}$는 여러 활성화 함수들의 합성 함수로 구성되어 있다. 보기만 해도 복잡하고 머리가 아프다. 하지만 편미분하는 과정을 파악하기 위해서는 수식으로 한번 풀어보는 것이 좋다. 하나의 변수를 특정하여 식을 전개하는 것이 이해에 도움이 될 것 같아서 지금부터 $w1_{11}$와 손실함수의 편미분을 수식으로 풀어보자.</p>
-<p><strong>목표: $\frac{\partial E}{\partial w1_{11}}$을 식으로 풀이하기</strong></p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}
-= \frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)</script><p>$w1_{11}$는 $\hat{y_k}$ 안에 있기 때문에 위의 수식은 합성 함수의 미분이다. 따라서 식 내부에 있는 $(\hat{y_k}-t_k)$를 미분하여 곱해줘야 하는데, $t_k$의 경우 상수이기 때문에 미분했을 때 제거된다. 따라서 남은 $\hat{y_k}$는 $\sigma(A2_k)$와 같으므로 이어지는 식은 다음과 같다.</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}} = \frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k) \frac{\partial \hat{y}}{\partial w1_{11}}\\
-=\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k) \frac{\partial}{\partial w1_{11}}\sigma(A2_k)\\</script><p>출력층에서 사용된 소프트맥스는 확률로 해석하기 위한 기술적인 도구로 여러 개의 시그모이드값들을 모두 더한 후 각각의 시그모이드 값을 나눈 식이다. 여기서 잠깐 소프트맥스 함수를 미분하면 어떤 결과가 나오는지 확인하고 넘어가자.</p>
-<script type="math/tex; mode=display">\frac{\partial\sigma(A2_k)}{\partial A2_k} = \frac{e^{A2_k}(\sum_{i=1}^3 e^{A2_i})-e^{A2_k}e^{A2_k}}{(\sum_{i=1}^3 e^{A2_i})^2}</script><script type="math/tex; mode=display">\quad \quad \quad  = \frac{e^{A2_k}\{(\sum_{i=1}^3 e^{A2_i})-e^{A2_k}\}}{(\sum_{i=1}^3 e^{A2_i})^2}</script><script type="math/tex; mode=display">\quad \quad \quad \quad \ \ = \frac{e^{A2_k}}{\sum_{i=1}^3 e^{A2_i}} \frac{(\sum_{i=1}^3 e^{A2_i})-e^{A2_k}}{\sum_{i=1}^3 e^{A2_i}}</script><script type="math/tex; mode=display">\quad \quad \quad \quad = \frac{e^{A2_k}}{\sum_{i=1}^3 e^{A2_i}}\Bigg(1-\frac{e^{A2_k}}{\sum_{i=1}^3 e^{A2_i}}\Bigg)</script><script type="math/tex; mode=display">\ \ = \sigma(A2_k)(1-\sigma(A2_k))</script><p>소프트맥스 함수 미분한 결과를 $\frac{\partial E}{\partial w1_{11}}$에 대입하면 아래와 같은 결과를 도출한다.</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)\sigma(A2_k)(1-\sigma(A2_k))\frac{\partial A2_k}{\partial w1_{11}}</script><p>위 식에서 $\sigma(A2_k)$는 $\hat{y_k}$과 동일함으로 변경해줄 수 있다.</p>
-<script type="math/tex; mode=display">\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)\hat{y_k}(1-\hat{y_k})\frac{\partial A2_k}{\partial w1_{11}}</script><p>이제 $w1<em>{11}$을 포함하고 있는 $\frac{\partial A2_k}{\partial w1</em>{11}}$를 풀어야 한다. 편미분의 대상인 $A2_k$는 시그모이드 함수이기 때문에 $Z2_k$를 값으로 가진 시그모이드 함수를 미분하는 과정을 살펴보자.</p>
-<script type="math/tex; mode=display">=\frac{\partial h(Z2_k)}{\partial Z2_k} = \frac{0\times(1+e^{-Z2_k})-1\times (0+e^{(-Z2_k)})(-1) }{(1+e^{-Z2_k})^2}</script><script type="math/tex; mode=display">\quad =\frac{e^{(-Z2_k)}}{(1+e^{-Z2_k})^2}= \frac{1+e^{(-Z2_k)}-1}{(1+e^{-Z2_k})^2}</script><script type="math/tex; mode=display">=\frac{(1+e^{(-Z2_k)})}{(1+e^{-Z2_k})^2}-\frac{1}{(1+e^{-Z2_k})^2}</script><script type="math/tex; mode=display">= \frac{1}{(1+e^{-Z2_k})}-\frac{1}{(1+e^{-Z2_k})^2}</script><script type="math/tex; mode=display">\quad = \frac{1}{(1+e^{-Z2_k})}\Big(1-\frac{1}{(1+e^{-Z2_k})}\Big)</script><script type="math/tex; mode=display">= h(Z2_k)(1-h(Z2_k))</script><p>따라서 시그모이드 함수를 미분한 결과를 $\frac{\partial E}{\partial w1_{11}}$에 대입하면 아래와 같은 결과를 도출한다.</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)\ \hat{y_k}(1-\hat{y_k})\ h(Z2_k)(1-h(Z2_k)) \frac{\partial Z2_k}{\partial w1_{11}}</script><p>위 식에서 $h(Z2_k)$는 $A2_k$와 동일하기 때문에 변경할 수 있다.</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)\ \hat{y_k}(1-\hat{y_k})\ A2_k(1-A2_k) \frac{\partial Z2_k}{\partial w1_{11}}</script><p>현재 미분해야 하는 $Z2$는 $(A1_k\times W2+B2)$이다.</p>
-<script type="math/tex; mode=display">\frac{\partial Z2_k}{\partial w1_{11}} = \frac{\partial (A1_k\times W2+B2)}{\partial w1_{11}}</script><p>여기서 우리는 편미분을 진행하고 있기 때문에 $W1$을 포함하지 않는 $W2$와 $B2$는 상수이다. 따라서 미분 결과는 다음과 같다.</p>
-<script type="math/tex; mode=display">\frac{\partial Z2_k}{\partial w1_{11}} = W2 \times \frac{\partial A1_k}{\partial w1_{11}}</script><p>미분대상을 가지고 있는 $A1_k$와 곱으로 연결된 $W2$는 상수로 남고 더하기로 연결된 $B$는 0이 되어 사라진다.</p>
-<p>따라서 $\frac{\partial A1<em>k}{\partial w1</em>{11}}$만 계산하면 된다.<br>편미분의 대상인 $A1_k$는 시그모이드 함수의 결과 값이므로 $h(Z1_k)$과 동일하다.</p>
-<script type="math/tex; mode=display">\frac{\partial Z2_k}{\partial w1_{11}} = W2 \times \frac{\partial A1_k}{\partial w1_{11}} = W2 \times \frac{\partial h(Z1_k)}{\partial w1_{11}}</script><p>앞서 시그모이드 함수의 미분을 확인했기 때문에 바로 $h(x)(1-h(x))$를 대입한다.</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)\ \hat{y_k}(1-\hat{y_k})\ A2_k(1-A2_k) \times W2 \times  h(Z1_k)(1-h(Z1_k))\frac{\partial Z2_k}{\partial w1_{11}}</script><p>위 식에서 $h(Z1_k)$는 $A1_k$와 동일하기 때문에 변경할 수 있다.</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 (\hat{y_k}-t_k)\ \hat{y_k}(1-\hat{y_k})\ A2_k(1-A2_k) \times W2 \times  A1_k(1-A1_k))\frac{\partial Z1_k}{\partial w1_{11}}</script><p>현재 미분해야 하는 $Z1$는 $(X \times W1+B1)$이다. 해당 수식 안에 편미분을 진행해야 할 수식만 제외하고 나머지는 전부 상수화된다.<br>따라서 $w1<em>{11}$가 포함된 $Z1$ 배열의 첫 번째 요소인 $(x_1w1</em>{11}+x<em>2w1</em>{21}+b1_1)$ 만 수식으로 남고 나머지는 상수화되어 제거된다.</p>
-<script type="math/tex; mode=display">\frac{\partial Z1_k}{\partial w1_{11}} = \frac{\partial (x_1w1_{11}+x_2w1_{21}+b1_1)}{\partial w1_{11}}</script><p>위의 편미분을 진행하면 입력값 중 하나인 $x<em>1$만 남는다. 따라서 $\frac{\partial E}{\partial w1</em>{11}}$을 구하는 수식은 다음과 같다.</p>
-<script type="math/tex; mode=display">\frac{\partial E}{\partial w1_{11}}=\frac{2}{3}\sum_{k=1}^3 \bigl\{ (\hat{y_k}-t_k)\ \hat{y_k}(1-\hat{y_k})\ A2_k(1-A2_k) \times W2 \times  A1_k(1-A1_k))\times x_1 \bigr\}</script><p>드디어 예시로 봤던 4층 신경망의 편미분을 수식으로 완성하였다. 위의 수식을 통해 $w1_{11}$의 편미분 값을 구할 수 있다.</p>
-<p>(4) 마지막으로 해당 미분값에 학습률을 곱해 기존 가중치에서 뺀 후, 다시 할당해준다.</p>
-<script type="math/tex; mode=display">w1_{11}=w1_{11}-\eta \frac{\partial E}{\partial w1_{11}}</script><p>(5) 새로운 가중치로 손실 함수 값을 도출한 후, 오차를 확인한다.</p>
-<p>(6) 3~6번 과정을 일정 이상 반복한다.</p>
-<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>아번 글에서는 신경망을 구현하기에 앞서 신경망의 원리와 학습 과정을 수학식으로 풀이하였다. 이 과정은 이해를 위함이며, 실제 코드는 약간 다르게 작동한다. 다음 글에서는 손글씨 인식하는 신경망을 구현하면서 코드로 작동하는 과정을 살펴볼 것이다.</p>
+<script type="math/tex; mode=display">\hat{y}=\sigma(h(h(XW1+B1)\times W2+B2))</script><p>위의 식을 살펴보면 $Z1$인 $XW_1+B_1$을 활성화 함수 $h(x)$에 대입하고, 활성화 함수의 결과 값을 다시 $Z2$의 입력값으로 받는다. 그렇게 $Z2$를 계산한 후 이를 다시 활성화 함수 $h(x)$에 대입한다. 그리고 마지막으로 출력층의 활성화 함수인 $\sigma(x)$에 대입하여 나온 값이 예측값 $\hat{y}$이다.</p>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>아번 글에서는 신경망을 구현하기에 앞서 신경망의 원리를 수학식으로 풀이하였다. 이 과정은 이해를 위함이며, 다음 글에서는 손글씨 인식하는 신경망을 구현하면서 코드로 작동하는 과정을 살펴볼 것이다.</p>
 ]]></content>
       <categories>
         <category>Deep learning with Julia</category>
