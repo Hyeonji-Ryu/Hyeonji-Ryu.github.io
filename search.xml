@@ -27,7 +27,9 @@
 <h2 id="순전파란"><a href="#순전파란" class="headerlink" title="순전파란"></a>순전파란</h2><p>순전파는 학습 과정이 입력값에서 예측값으로 진행되는 것을 의미한다. 앞서 본 인공신경망의 도식 또한 순전파 알고리즘이다. 인공신경망 도식을 확인하고 싶다면 <a href="https://hyeonji-ryu.github.io/2020/04/01/Deeplearning-5/#more">이전 글</a>에서 볼 수 있다. 하지만 순전파는 경사하강법을 진행할 때 너무 느리다. 매개 변수인 가중치와 편향을 업데이트한 후 다시 처음부터 신경망을 계산하여 손실함수 값을 갱신하기 때문이다. 다음 글에서는 이를 좀 더 빨리 진행할 수 있는 역전파를 살펴볼 것이다.</p>
 <p>아래의 수식은 이전 글에서 우리가 만들었던 인공신경망의 프로세스를 나타낸 것이다.</p>
 <script type="math/tex; mode=display">\hat{y}=\sigma(h(h(XW1+B1)\times W2+B2))</script><p>순전파는 위의 수식에서 헙성 함수들 가장 안쪽에 위치한 입력값부터 계산이 진행된다. 즉, 안쪽에서 바깥쪽으로 계산된다고도 볼 수 있다. 도식에서는 왼쪽에서 오른쪽으로 이동하며, 수식에서는 안쪽에서 바깥쪽으로 이동한다.</p>
-<h2 id="‘MNIST’-Project"><a href="#‘MNIST’-Project" class="headerlink" title="‘MNIST’ Project"></a>‘MNIST’ Project</h2><p>‘MNIST’는 손글씨로 쓴 숫자를 예측하는 인공신경망을 만드는 프로젝트이다. 대부분의</p>
+<h2 id="‘MNIST’-Project"><a href="#‘MNIST’-Project" class="headerlink" title="‘MNIST’ Project"></a>‘MNIST’ Project</h2><p>‘MNIST’는 손글씨로 쓴 숫자를 예측하는 인공신경망을 만드는 프로젝트이다. 대부분의 교재에서 사용하는 예시 중 하나이며, 해당 데이터셋이 패키지 안에 준비되어 있다. 먼저 아래의 코드를 입력해서 데이터를 가져오자.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="comment">#import Pkg           # 패키지를 처음 사용할 때 입력해야 한다.</span></span><br><span class="line">Pkg.add(<span class="string">"MNIST"</span>)</span><br><span class="line"><span class="keyword">using</span> MLDatasets</span><br><span class="line">train_x, train_y = MNIST.traindata()</span><br><span class="line">test_x,  test_y  = MNIST.testdata()</span><br></pre></td></tr></table></figure>
+<p>해당 데이터의 입력값 <code>train_x</code>는 $28 \times 28$ 이미지 데이터가 60000개 들어 있다.</p>
 ]]></content>
       <categories>
         <category>Deep learning in Julia</category>
