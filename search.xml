@@ -24,6 +24,8 @@
 \mathbb{R}^3</script></li>
 </ul>
 <p>위의 예시 $a$는 삼항이고, 따라서 $\mathbb{R}^3$에 속한다. 이 벡터를 다른 벡터 $b$와 더해도 그 결과값이 $\mathbb{R}^3$에 속하며, 스칼라 $\lambda$와 곱해도 그 결과값이 $\mathbb{R}^3$에 속한다. 따라서 이 또한 벡터이다. $\mathbb{R}^n$의 요소들을 벡터로 전제하면 배열을 사용하여 벡터 연산이 가능하기에 훨씬 편리하다. 선형대수의 알고리즘 대부분이 $\mathbb{R}^n$로 공식화되기 때문에 우리는 $\mathbb{R}^n$안에서의 벡터에 집중할 것이다.</p>
+<h2 id="벡터-공간-vector-space"><a href="#벡터-공간-vector-space" class="headerlink" title="벡터 공간 (vector space)"></a>벡터 공간 (vector space)</h2><p>수학의 주요 아이디어 중 하나는 폐포(closure)이다. 폐포의 의미는 주어진 작업에서 발생할 수 있는 모든 것들은 무엇인지이다. 즉, 어떤 연산를 통해 발생할 수 있는 모든 결과들을 보여주는 것이다. 이를 벡터 개념에서 적용한다면 의미는 다음과 같다. 작은 벡터들을 더하고 크기를 조정할 때 어떤 벡터가 만들어지는가? 이 질문에 대한 답이 ‘벡터 공간’이다. 아래의 그림은 이번 장에서 보여주는 개념들을 요약한 도식이다.</p>
+<p><img src="/images/39.png" alt="벡터 도식"></p>
 ]]></content>
       <categories>
         <category>mathematics for machine learning</category>
