@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/39.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/40.png">
 <meta property="article:published_time" content="2020-04-12T10:31:36.000Z">
-<meta property="article:modified_time" content="2020-04-13T19:04:36.362Z">
+<meta property="article:modified_time" content="2020-04-13T19:32:47.604Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="머신러닝">
 <meta property="article:tag" content="mathematics">
@@ -255,7 +255,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-14 04:04:36" itemprop="dateModified" datetime="2020-04-14T04:04:36+09:00">2020-04-14</time>
+                <time title="Updated at: 2020-04-14 04:32:47" itemprop="dateModified" datetime="2020-04-14T04:32:47+09:00">2020-04-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -380,7 +380,7 @@ a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn}
 <script type="math/tex; mode=display">c_{ij}=\sum_{l=1}^n a_{il}b_{lj} \quad\quad  i=1 \cdots m,\quad  j= 1 \cdots k</script><p>행렬 $A$와 $B$의 곱인 $C$의 요소는 $A$의 행과 $B$의 열의 곱과 같다. 행렬의 행과 열을 곱하는 것을 ‘내적(dot product)’이라고 부르며, 자세한 내용은 2장에서 다룰 것이다. 내적은 기호 $”\dot”$로 나타낸다.</p>
 <p>다시 한번 강조하지만 두 행렬의 곱은 이웃하는 차원이 동일해야 가능하다. $m \times n$인 행렬 $A$는 $n \times k$인 행렬 $B$와 곱할 수 있으며, 그 결과는 $m \times k$행렬이다. 즉, $AB$는 가능하다. 하지만 $BA$의 경우는 이웃하는 차원이 동일하지 않기 때문에 곱할 수 없다.</p>
 <p>하지만 프로그래밍에서는 지금까지 봤던 곱의 원리와는 다르게 행렬의 요소끼리 곱셈을 하는 ‘아다마르 곱(Hadamard product)’도 가능하다. 아다마르 곱은 같은 $m \times n$크기의 두 행렬이 같은 위치에 있는 요소끼리 곱해지는 것이며, 행렬 덧셈의 원리와 같다.</p>
-<p>‘항등 행렬(Identity Matrix)’은 $n \times n$ 행렬로 $\mathbb R^{n \times n}$에 속한다. 항등 행렬의 요소는 행과 열의 위치가 같은 경우만 1이고, 나머지는 0이다. 도식화하면 다음과 같다.</p>
+<p>‘항등 행렬(Identity Matrix)’은 $n \times n$ 행렬로 $\mathbb R^{n \times n}$에 속한다. 항등 행렬의 요소는 행과 열의 위치가 같은 주대각선(main diagonal)만 1이고, 나머지는 0이다. 도식화하면 다음과 같다.</p>
 <script type="math/tex; mode=display">I_n=\begin{bmatrix}
 1 & 0 & \cdots & 0 & \cdots & 0\\
 0 & 1 & \cdots & 0 & \cdots & 0\\
@@ -404,7 +404,7 @@ a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn}
 </ul>
 <p>$A \in \mathbb R^{m \times n} \ :\ I_mA = AI_n = A$</p>
 <h3 id="역행렬과-전치행렬"><a href="#역행렬과-전치행렬" class="headerlink" title="역행렬과 전치행렬"></a>역행렬과 전치행렬</h3><p>행렬 $A \in \mathbb R^{n \times n}$와 행렬 $B \in \mathbb R^{n \times n}$가 있다. 만약 행렬 $A, B$에 대해서 $AB = I_n = BA$가 성립한다면, $B$는 $A$의 ‘역행렬(inverse matrix)’이다. $A$에 대한 역행렬의 기호는 $A^{-1}$이다.</p>
-<p>모든 행렬이 역행렬을 가진 것은 아니다. 역행렬이 존재하는 경우 해당 행렬을 가역, 복수라고 하며, 존재하지 않는 경우 비가역, 단수라고 한다.</p>
+<p>모든 행렬이 역행렬을 가진 것은 아니다. 역행렬이 존재하는 경우 해당 행렬을 가역 행렬 또는 비특이 행렬이라고 하며, 존재하지 않는 경우 비가역 행렬이라고 한다.</p>
 <script type="math/tex; mode=display">A:=\begin{bmatrix}
 a_{11} & a_{12}\\
 a_{21} & a_{22}\\
@@ -425,11 +425,39 @@ a_{11}a_{22}-a_{12}a_{21} & 0\\
 (a_{11}a_{22}-a_{12}a_{21})I</script><p>두 행렬을 곱한 후, 항등 행렬 기준으로 식을 정리한다.</p>
 <script type="math/tex; mode=display">A^{-1}= \frac{1}{a_{11}a_{22}-a_{12}a_{21}}
 \begin{bmatrix}
-a_{11} & -a_{12}\\
--a_{21} & a_{22}\\
+a_{22} & -a_{12}\\
+-a_{21} & a_{11}\\
 \end{bmatrix}</script><p>그 결과 행렬 $A$의 역행렬을 구할 수 있다.</p>
 <p>정리하면 다음과 같다. 행렬 $A$와 곱해서 항등 행렬 $I$가 나온다면 그 행렬은 역행렬 $A^{-1}$이다.</p>
-
+<p>일반적으로 전치행렬 $A^T$은 행렬 $A$의 행과 열이 바뀐다. 즉, 행렬 $A$가 $m \times n$이라면 전치행렬인 $A^T$는 $n \times m$인 것이다. 전치행렬은 주대각선(main diagonal)을 기준으로 뒤집힌 행렬을 말한다.</p>
+<script type="math/tex; mode=display">A=\begin{bmatrix}
+\mathbf{a_{11}} & a_{12}\\
+a_{21} & \mathbf{a_{22}}\\
+\end{bmatrix}
+\quad
+A^T=\begin{bmatrix}
+\mathbf{a_{11}} & a_{21}\\
+a_{12} & \mathbf{a_{22}}\\
+\end{bmatrix}</script><p>지금까지 역행렬과 전치행렬의 정의에 대해서 살펴보았다. 역행렬과 전치행렬은 아래와 같은 특징을 가진다.</p>
+<ol>
+<li>역행렬</li>
+</ol>
+<ul>
+<li>$AA^{-1} = I = A^{-1}A$</li>
+<li>$(AB)^{-1} = A^{-1}B^{-1}$</li>
+<li>$(A+B)^{-1} \ne A^{-1} + B^{-1}$</li>
+</ul>
+<ol>
+<li>전치행렬</li>
+</ol>
+<ul>
+<li>$(A^T)^T = A$</li>
+<li>$(A+B)^T = A^T + B^T$</li>
+<li>$(AB)^T = B^TA^T$</li>
+</ul>
+<p>역행렬은 $n \times n$ 형태의 가역 행렬일 때만 존재한다. 따라서 행렬 $A$가 가역 행렬이고 역행렬 $A^{-1}$가 존재한다면, 아래와 같은 식도 성립한다.</p>
+<p>$(A^{-1})^T = (A^{T})^-1 =: A^{-T}$</p>
+<h3 id="행렬과-스칼라의-곱"><a href="#행렬과-스칼라의-곱" class="headerlink" title="행렬과 스칼라의 곱"></a>행렬과 스칼라의 곱</h3>
     </div>
 
     
@@ -515,7 +543,7 @@ a_{11} & -a_{12}\\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터-vector-란"><span class="nav-number">1.</span> <span class="nav-text">벡터(vector)란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#연립-일차-방정식-Systems-of-Linear-Equations"><span class="nav-number">2.</span> <span class="nav-text">연립 일차 방정식 (Systems of Linear Equations)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#행렬-Matrices"><span class="nav-number">3.</span> <span class="nav-text">행렬 (Matrices)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#행렬의-덧셈과-곱셈"><span class="nav-number">3.1.</span> <span class="nav-text">행렬의 덧셈과 곱셈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#역행렬과-전치행렬"><span class="nav-number">3.2.</span> <span class="nav-text">역행렬과 전치행렬</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터-vector-란"><span class="nav-number">1.</span> <span class="nav-text">벡터(vector)란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#연립-일차-방정식-Systems-of-Linear-Equations"><span class="nav-number">2.</span> <span class="nav-text">연립 일차 방정식 (Systems of Linear Equations)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#행렬-Matrices"><span class="nav-number">3.</span> <span class="nav-text">행렬 (Matrices)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#행렬의-덧셈과-곱셈"><span class="nav-number">3.1.</span> <span class="nav-text">행렬의 덧셈과 곱셈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#역행렬과-전치행렬"><span class="nav-number">3.2.</span> <span class="nav-text">역행렬과 전치행렬</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#행렬과-스칼라의-곱"><span class="nav-number">3.3.</span> <span class="nav-text">행렬과 스칼라의 곱</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
