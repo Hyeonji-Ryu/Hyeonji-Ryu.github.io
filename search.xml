@@ -82,7 +82,77 @@ x_n
 b_{1}\\
 \vdots\\
 b_{m}
-\end{bmatrix}</script>]]></content>
+\end{bmatrix}</script><h2 id="행렬-Matrices"><a href="#행렬-Matrices" class="headerlink" title="행렬 (Matrices)"></a>행렬 (Matrices)</h2><p>행렬은 선형대수에서 가장 중요한 원리이다. 연립 일차 방정식을 간단하게 나타내기 위해 사용하기도 하며, 이후 자세히 다룰 ‘선형 변환 (linear mapping)’에서도 사용된다. 행렬에 대한 흥미로운 주제를 다루기 전에 행렬이 무엇인지 간단히 살펴보자.</p>
+<p>$m, n \in \mathbb N$(자연수)인 행렬 A는 행이 $m$이고 열이 $n$인 튜플(tuple)이며, $i=1\cdots m$이고 $j=1 \cdots n$인 $a_{ij}$를 요소로 가진다. 해당 정의를 수식으로 표현하면 다음과 같다.</p>
+<script type="math/tex; mode=display">A=\begin{bmatrix}
+a_{11} & a_{12} & \cdots & a_{1n}\\
+a_{21} & a_{22} & \cdots & a_{2n}\\
+\vdots & \vdots & & \vdots\\
+a_{m1} & a_{m2} & \cdots & a_{mn}
+\end{bmatrix}
+,
+a_{ij} \in \mathbb R</script><p>행렬의 각각 행과 열은 행벡터 또는 열벡터이며, $\mathbb R^{m\times n}$은 모든 $m \times n$행렬을 포함한다. 위의 예시인 $A$ 또한 $m \times n$에 포함된다. 행렬 $A$는 긴 벡터형태인 $a$로 나타낼 수 있으며, $a \in \mathbb R^{mn}$이다. 예로 행렬 $A$가 $\mathbb R^{4\times 2}$에 포함된다면, $a$는 $\mathbb R^8$에 포함된다.</p>
+<h3 id="행렬의-덧셈과-곱셈"><a href="#행렬의-덧셈과-곱셈" class="headerlink" title="행렬의 덧셈과 곱셈"></a>행렬의 덧셈과 곱셈</h3><p>행렬 $A$와 $B$ 모두가 $\mathbb R^{m \times n}$에 속한다면, 두 행렬은 더할 수 있다.</p>
+<script type="math/tex; mode=display">A+B:=\begin{bmatrix}
+a_{11}+b_{11} & \cdots & a_{1n}+b_{1n}\\
+\vdots & & \vdots\\
+a_{m1}+b_{m1} & \cdots & a_{mn}+b_{mn}
+\end{bmatrix}
+\in
+\mathbb R^{m \times n}</script><p>행렬 $A$가 $\mathbb R^{m \times n}$에 속하고, 행렬 $B$가 $\mathbb R^{n \times k}$에 속한다면, $C=AB\in\mathbb R^{n \times k}$이다.</p>
+<script type="math/tex; mode=display">c_{ij}=\sum_{l=1}^n a_{il}b_{lj} \quad\quad  i=1 \cdots m,\quad  j= 1 \cdots k</script><p>행렬 $A$와 $B$의 곱인 $C$의 요소는 $A$의 행과 $B$의 열의 곱과 같다. 행렬의 행과 열을 곱하는 것을 ‘내적(dot product)’이라고 부르며, 자세한 내용은 2장에서 다룰 것이다. 내적은 기호 $”\dot”$로 나타낸다.</p>
+<p>다시 한번 강조하지만 두 행렬의 곱은 이웃하는 차원이 동일해야 가능하다. $m \times n$인 행렬 $A$는 $n \times k$인 행렬 $B$와 곱할 수 있으며, 그 결과는 $m \times k$행렬이다. 즉, $AB$는 가능하다. 하지만 $BA$의 경우는 이웃하는 차원이 동일하지 않기 때문에 곱할 수 없다.</p>
+<p>하지만 프로그래밍에서는 지금까지 봤던 곱의 원리와는 다르게 행렬의 요소끼리 곱셈을 하는 ‘아다마르 곱(Hadamard product)’도 가능하다. 아다마르 곱은 같은 $m \times n$크기의 두 행렬이 같은 위치에 있는 요소끼리 곱해지는 것이며, 행렬 덧셈의 원리와 같다.</p>
+<p>‘항등 행렬(Identity Matrix)’은 $n \times n$ 행렬로 $\mathbb R^{n \times n}$에 속한다. 항등 행렬의 요소는 행과 열의 위치가 같은 경우만 1이고, 나머지는 0이다. 도식화하면 다음과 같다.</p>
+<script type="math/tex; mode=display">I_n=\begin{bmatrix}
+1 & 0 & \cdots & 0 & \cdots & 0\\
+0 & 1 & \cdots & 0 & \cdots & 0\\
+\vdots & \vdots & \ddots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 1 & \cdots &0\\
+\vdots & \vdots & \ddots & \vdots & \ddots & \vdots\\
+0 & 0 & \cdots & 0 & \cdots &1
+\end{bmatrix}
+\in
+\mathbb R^{n \times n}</script><p>지금까지 행렬의 덧셈과 곱셈에 대해 살펴보았다. 행렬은 다음과 같은 특징을 가진다.</p>
+<ul>
+<li>결합법칙(Associativity)</li>
+</ul>
+<p>$A \in \mathbb R^{m \times n},\quad B \in \mathbb R^{n \times q},\quad C \in \mathbb R^{q \times p} \ :\ (AB)C = A(BC)$</p>
+<ul>
+<li>분배법칙(Distributivity)</li>
+</ul>
+<p>$A \in \mathbb R^{m \times n},\quad B, C \in \mathbb R^{n \times q} \ :\ A(B+C) = AB + AC$</p>
+<ul>
+<li>항등행렬과의 곱</li>
+</ul>
+<p>$A \in \mathbb R^{m \times n} \ :\ I_mA = AI_n = A$</p>
+<h3 id="역행렬과-전치행렬"><a href="#역행렬과-전치행렬" class="headerlink" title="역행렬과 전치행렬"></a>역행렬과 전치행렬</h3><p>행렬 $A \in \mathbb R^{n \times n}$와 행렬 $B \in \mathbb R^{n \times n}$가 있다. 만약 행렬 $A, B$에 대해서 $AB = I_n = BA$가 성립한다면, $B$는 $A$의 ‘역행렬(inverse matrix)’이다. $A$에 대한 역행렬의 기호는 $A^{-1}$이다.</p>
+<p>모든 행렬이 역행렬을 가진 것은 아니다. 역행렬이 존재하는 경우 해당 행렬을 가역, 복수라고 하며, 존재하지 않는 경우 비가역, 단수라고 한다.</p>
+<script type="math/tex; mode=display">A:=\begin{bmatrix}
+a_{11} & a_{12}\\
+a_{21} & a_{22}\\
+\end{bmatrix}
+\in
+\mathbb R^{2 \times 2}</script><p>행렬 $A$를 $2 \times 2$행렬로 정의한다.</p>
+<script type="math/tex; mode=display">B:=\begin{bmatrix}
+a_{22} & -a_{12}\\
+-a_{21} & a_{11}\\
+\end{bmatrix}
+\in
+\mathbb R^{2 \times 2}</script><p>행렬 $A$와 곱해서 항등 행렬이 나올 수 있는 행렬 $B$를 정의한다.</p>
+<script type="math/tex; mode=display">AB=\begin{bmatrix}
+a_{11}a_{22}-a_{12}a_{21} & 0\\
+0 & a_{11}a_{22}-a_{12}a_{21}\\
+\end{bmatrix}
+=
+(a_{11}a_{22}-a_{12}a_{21})I</script><p>두 행렬을 곱한 후, 항등 행렬 기준으로 식을 정리한다.</p>
+<script type="math/tex; mode=display">A^{-1}= \frac{1}{a_{11}a_{22}-a_{12}a_{21}}
+\begin{bmatrix}
+a_{11} & -a_{12}\\
+-a_{21} & a_{22}\\
+\end{bmatrix}</script><p>그 결과 행렬 $A$의 역행렬을 구할 수 있다.</p>
+<p>정리하면 다음과 같다. 행렬 $A$와 곱해서 항등 행렬 $I$가 나온다면 그 행렬은 역행렬 $A^{-1}$이다.</p>
+]]></content>
       <categories>
         <category>mathematics for machine learning</category>
       </categories>
