@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>1. Linear Algebra (2)</title>
+    <url>/2020/04/14/mathematic-2/</url>
+    <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="연립-일차-방정식-풀기"><a href="#연립-일차-방정식-풀기" class="headerlink" title="연립 일차 방정식 풀기"></a>연립 일차 방정식 풀기</h2><p>이전 글에서 연립 일차 방정식을 행렬로 나타내는 과정을 살펴보았다. 이제는 행렬로 표현된 연립 일차 방정식을 풀어보자. 참고로 연립 일차 방정식은 다양한 풀이를 가진다.</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+1 & 0 & 8 & -4\\
+0 & 1 & 2 & 12\\
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\
+x_2\\
+x_3\\
+x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+42\\
+8\\
+\end{bmatrix}</script><p>위의 행렬곱은 4개의 변수를 가진 2개의 일차 방정식으로 이루어져 있다. 위의 행렬곱을 수식으로 정리하면 다음과 같다. 우리는 위의 식에서 4개의 변수 해(solution)를 찾는 것이 목표이다.</p>
+<script type="math/tex; mode=display">\sum_{i=1}^4 x_ic_i = b</script><p>해당 식에서 $c_i$는 첫 번째 행렬의 $i$번째 열이며, $b$는 두 행렬곱의 결과이다. $b$는 $c_1 \times 42$과 $c_2 \times 8$로 나타낼 수 있다.</p>
+<script type="math/tex; mode=display">b =
+\begin{bmatrix}
+42\\
+8\\
+\end{bmatrix}
+=
+42
+\begin{bmatrix}
+1\\
+0\\
+\end{bmatrix}
++
+8
+\begin{bmatrix}
+0\\
+1\\
+\end{bmatrix}</script><p>따라서 변수 4개의 해(solution)로 $[42, 8, 0, 0]^T$를 도출할 수 있다. 이와 같이 결과값 $b$를 역추하여 변수를 추정한 해를 ‘특정 해(special solution’라고 한다. 하지만 연립 일차 방정식에는 더 많은 해가 존재한다. 모든 해를 도출하기 위해서 우리는 열에 0을 추가하는 방식을 고려해야 한다. 첫 번째 행렬의 세 번째 열인 $c_3$은 다음과 같이 풀어서 쓸 수 있다.</p>
+<p>$$c_3=<br>\begin{bmatrix}<br>8\<br>2\<br>\end{bmatrix}<br>=<br>8 \begin{bmatrix}<br>1\<br>0\<br>\end{bmatrix}<br>+<br>2 \begin{bmatrix}<br>0\<br>1\<br>\end{bmatrix}</p>
+]]></content>
+      <categories>
+        <category>mathematics for machine learning</category>
+      </categories>
+      <tags>
+        <tag>머신러닝</tag>
+        <tag>mathematics</tag>
+        <tag>machine learning</tag>
+        <tag>mathematics for machine learning</tag>
+        <tag>머신러닝 수학</tag>
+        <tag>수학</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1. Linear Algebra (1)</title>
     <url>/2020/04/12/mathematic-1/</url>
     <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
@@ -65,7 +118,7 @@ b_{1}\\
 \vdots\\
 b_{m}
 \end{bmatrix}</script><ul>
-<li>3단계: 변수도 행렬(matrix)로 변경하기</li>
+<li>3단계: 변수도 행렬(matrix)로 변경하기 ($Ax=b$)</li>
 </ul>
 <script type="math/tex; mode=display">\begin{bmatrix}
 a_{11} & \cdots & a_{1n}\\
