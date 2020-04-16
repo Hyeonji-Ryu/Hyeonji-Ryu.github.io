@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-04-14T12:45:33.000Z">
-<meta property="article:modified_time" content="2020-04-14T22:23:17.156Z">
+<meta property="article:modified_time" content="2020-04-16T12:01:59.491Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="머신러닝">
 <meta property="article:tag" content="mathematics">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-15 07:23:17" itemprop="dateModified" datetime="2020-04-15T07:23:17+09:00">2020-04-15</time>
+                <time title="Updated at: 2020-04-16 21:01:59" itemprop="dateModified" datetime="2020-04-16T21:01:59+09:00">2020-04-16</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -303,8 +303,89 @@ x_4
 \begin{bmatrix}
 0\\
 1\\
-\end{bmatrix}</script><p>따라서 변수 4개의 해(solution)로 $[42, 8, 0, 0]^T$를 도출할 수 있다. 이와 같이 결과값 $b$를 역추하여 변수를 추정한 해를 ‘특정 해(special solution’라고 한다. 하지만 연립 일차 방정식에는 더 많은 해가 존재한다. 모든 해를 도출하기 위해서 우리는 열에 0을 추가하는 방식을 고려해야 한다. 첫 번째 행렬의 세 번째 열인 $c_3$은 다음과 같이 풀어서 쓸 수 있다.</p>
-<p>$$c_3=<br>\begin{bmatrix}<br>8\<br>2\<br>\end{bmatrix}<br>=<br>8 \begin{bmatrix}<br>1\<br>0\<br>\end{bmatrix}<br>+<br>2 \begin{bmatrix}<br>0\<br>1\<br>\end{bmatrix}</p>
+\end{bmatrix}</script><p>따라서 변수 4개의 해(solution)로 $[42, 8, 0, 0]^T$를 도출할 수 있다. 이와 같이 결과값 $b$를 역추하여 변수를 추정한 해를 ‘특수 해(special solution’라고 한다. 하지만 연립 일차 방정식에는 더 많은 해가 존재한다. 특정 해를 찾는 방법은 $Ax=b$에 해당하는 $x$값을 찾는 것이다. 다음으로 살펴볼 방법은 $Ax=0$으로 만드는 $x$값을 찾는 것이다. 첫 번째 행렬의 세 번째 열인 $c_3$은 다음과 같이 풀어서 쓸 수 있다.</p>
+<script type="math/tex; mode=display">c_3=
+\begin{bmatrix}
+8\\
+2\\
+\end{bmatrix}
+=
+8 \begin{bmatrix}
+1\\
+0\\
+\end{bmatrix}
++
+2 \begin{bmatrix}
+0\\
+1\\
+\end{bmatrix}</script><p>위의 식은 $c_1$과 $c_2$를 사용하여 $c_3$을 나타낸 것이다. 따라서 $c_3$는 $8c_1 + 2c_2$로 표현할 수 있다. 우리의 목표는 행렬 A와 변수 x를 곱했을 때 0이 나오는 해를 찾는 것이므로 $c_3$에 -1를 곱하여 앞의 $8c_1 + 2c_2$을 제거하고 $c_4$에 0을 곱하여 결과를 0으로 맞춰준다. 그렇게 하면 식은 다음과 같다.</p>
+<script type="math/tex; mode=display">8c_1 + 2c_2 + -1c_3 + 0c_4 =0</script><p>따라서 $Ax=0$의 결과를 만족시키는 변수 $(x_1,x_2,x_3,x_4)$는 $(8,2,-1,0)$이다. 위의 식은 무작위 실수 $\lambda_1 \in \mathbb R$를 곱해도 값은 0이다.</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+1 & 0 & 8 & -4\\
+0 & 1 & 2 & 12\\
+\end{bmatrix}
+\left (
+\lambda_1\begin{bmatrix}
+8\\
+2\\
+-1\\
+0
+\end{bmatrix}
+\right )
+=
+\lambda_1
+\big (
+8c_1 + 2c_2 - c_3
+\big )
+=0</script><p>위 흐름과 같이 $c_4$도 $c_1, c_2$을 사용하여 $-4c_1 + 12c_2$로 나타낼 수 있고, 이를 이용하여 $Ax=0$을 도출할 수 있다.</p>
+<script type="math/tex; mode=display">\begin{bmatrix}
+1 & 0 & 8 & -4\\
+0 & 1 & 2 & 12\\
+\end{bmatrix}
+\left (
+\lambda_2\begin{bmatrix}
+-4\\
+12\\
+0\\
+-1
+\end{bmatrix}
+\right )
+=
+\lambda_2
+\big (
+-4c_1 + 12c_2 - c_4
+\big )
+=0</script><p>$\lambda_1$과 마찬가지로 $\lambda_2$도 어떤 실수든지 가능하다.</p>
+<p>지금까지 구한 변수 $x$를 종합하면, 우리는 해당 일차 연립 방정식의 ‘일반 해( general solution)’를 구할 수 있다.</p>
+<script type="math/tex; mode=display">x \in \mathbb R^4 : x=\begin{bmatrix}
+42\\
+8\\
+0\\
+0
+\end{bmatrix}
++
+\lambda_1\begin{bmatrix}
+8\\
+2\\
+-1\\
+0
+\end{bmatrix}
++
+\lambda_2\begin{bmatrix}
+-4\\
+12\\
+0\\
+-1
+\end{bmatrix}
+\quad
+\lambda_1,\lambda_2 \in \mathbb R</script><p><strong>Remark</strong><br>일반 해를 구하는 접근 방식은 세 단계로 구성되며, 다음과 같다.</p>
+<ul>
+<li>$Ax=b$의 특수 해를 찾기</li>
+<li>$Ax=0$의 모든 해 찾기</li>
+<li>찾은 모든 해들을 결합하기 (일반 해 완성)</li>
+</ul>
+<p>지금까지 예시를 통해서 연립 일차 방정식을 풀어보았다. 예시는 간단한 형식의 행렬이었기에 해를 구하기 편했지만, 실제 사용되는 일차식들은 매우 복잡하다.<br>운좋게도 우리는 매우 편리한 알고리즘인 ‘가우시안 소거법(Gaussian elimination)’이 있다. 가우시안 소거법은 복잡한 방정식 시스템을 간단한 형태로 변환해준다. 그후 위에서 배운 세 단계를 적용할 수 있다.</p>
+<h3 id="요소-변환-elementary-transformations"><a href="#요소-변환-elementary-transformations" class="headerlink" title="요소 변환 (elementary transformations)"></a>요소 변환 (elementary transformations)</h3><p>선형 방정식을 쉽게 해결하는 핵심 방법은 바로 ‘요소 변환 (elementary transformations)’이다. 요소를 변환하는 것은 해는 동일하지만 일차 방정식의 식을 더 간편하게 만들어준다.</p>
 
     </div>
 
@@ -391,7 +472,7 @@ x_4
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#연립-일차-방정식-풀기"><span class="nav-number">1.</span> <span class="nav-text">연립 일차 방정식 풀기</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#연립-일차-방정식-풀기"><span class="nav-number">1.</span> <span class="nav-text">연립 일차 방정식 풀기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#요소-변환-elementary-transformations"><span class="nav-number">1.1.</span> <span class="nav-text">요소 변환 (elementary transformations)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
