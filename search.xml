@@ -121,6 +121,11 @@ x_4
 </ul>
 <p>지금까지 예시를 통해서 연립 일차 방정식을 풀어보았다. 예시는 간단한 형식의 행렬이었기에 해를 구하기 편했지만, 실제 사용되는 일차식들은 매우 복잡하다.<br>운좋게도 우리는 매우 편리한 알고리즘인 ‘가우시안 소거법(Gaussian elimination)’이 있다. 가우시안 소거법은 복잡한 방정식 시스템을 간단한 형태로 변환해준다. 그후 위에서 배운 세 단계를 적용할 수 있다.</p>
 <h3 id="요소-변환-elementary-transformations"><a href="#요소-변환-elementary-transformations" class="headerlink" title="요소 변환 (elementary transformations)"></a>요소 변환 (elementary transformations)</h3><p>선형 방정식을 쉽게 해결하는 핵심 방법은 바로 ‘요소 변환 (elementary transformations)’이다. 요소를 변환하는 것은 해는 동일하지만 일차 방정식의 식을 더 간편하게 만들어준다.</p>
+<ul>
+<li>방정식 2개(행 단위)의 위치를 바꾸기</li>
+<li>한 방정식에 $0$을 제외한 실수 $\lambda$ 곱하기</li>
+<li>두 방정식을 합치기</li>
+</ul>
 ]]></content>
       <categories>
         <category>mathematics for machine learning</category>
