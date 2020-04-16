@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-04-14T12:45:33.000Z">
-<meta property="article:modified_time" content="2020-04-16T12:47:45.088Z">
+<meta property="article:modified_time" content="2020-04-16T15:05:42.988Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="머신러닝">
 <meta property="article:tag" content="mathematics">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-16 21:47:45" itemprop="dateModified" datetime="2020-04-16T21:47:45+09:00">2020-04-16</time>
+                <time title="Updated at: 2020-04-17 00:05:42" itemprop="dateModified" datetime="2020-04-17T00:05:42+09:00">2020-04-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -391,7 +391,21 @@ x_4
 <li>한 방정식에 $0$을 제외한 실수 $\lambda$ 곱하기</li>
 <li>두 방정식을 합치기</li>
 </ul>
-
+<p>제시된 3개가 요소를 변환하는 방법이다. 아래의 예시를 통해서 하나씩 알아보자.</p>
+<script type="math/tex; mode=display">\begin{matrix}
+-2x_1&+&4x_2&-&2x_3&-&x_4&+&4x_5&=& -3\\
+4x_1&-&8x_2&+&3x_3&-&3x_4&+&x_5&=& 2\\
+x_1&-&2x_2&+&x_3&-&x_4&+&x_5&=& 0\\
+x_1&-&2x_2& & &-&3x_4&+&4x_5&=& a
+\end{matrix}</script><p>위의 수식은 5개의 변수를 가진 연립 일차방정식이다. 총 4개의 수식이 포함되어 있으며, 우리는 위 문제에서 $a \in \mathbb R$일 때의 모든 해를 찾으려 한다.</p>
+<p>먼저 $Ax=b$인 특수 해를 찾아보자. 지금부터는 변수 $x$를 명시하지 않고 설명하는 방법을 사용할 것이다. 이 방법을 ‘첨가 행렬(augmented matrix)’이라고 하며, $[A\ |\ b]$의 형태이다.</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+-2 & 4 & -2 & -1 & 4\ \Big|-3\\
+4 & -8 & 3 & -3 & 1\ \Big|\quad \  2\\
+1 & -2 & 1 & -1 & 1\ \Big|\quad \ 0\\
+1 & -2 & 0 & -3 & 4\ \Big|\quad \ a
+\end{bmatrix}</script>
     </div>
 
     

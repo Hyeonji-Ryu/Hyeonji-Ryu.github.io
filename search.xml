@@ -126,7 +126,21 @@ x_4
 <li>한 방정식에 $0$을 제외한 실수 $\lambda$ 곱하기</li>
 <li>두 방정식을 합치기</li>
 </ul>
-]]></content>
+<p>제시된 3개가 요소를 변환하는 방법이다. 아래의 예시를 통해서 하나씩 알아보자.</p>
+<script type="math/tex; mode=display">\begin{matrix}
+-2x_1&+&4x_2&-&2x_3&-&x_4&+&4x_5&=& -3\\
+4x_1&-&8x_2&+&3x_3&-&3x_4&+&x_5&=& 2\\
+x_1&-&2x_2&+&x_3&-&x_4&+&x_5&=& 0\\
+x_1&-&2x_2& & &-&3x_4&+&4x_5&=& a
+\end{matrix}</script><p>위의 수식은 5개의 변수를 가진 연립 일차방정식이다. 총 4개의 수식이 포함되어 있으며, 우리는 위 문제에서 $a \in \mathbb R$일 때의 모든 해를 찾으려 한다.</p>
+<p>먼저 $Ax=b$인 특수 해를 찾아보자. 지금부터는 변수 $x$를 명시하지 않고 설명하는 방법을 사용할 것이다. 이 방법을 ‘첨가 행렬(augmented matrix)’이라고 하며, $[A\ |\ b]$의 형태이다.</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}
+-2 & 4 & -2 & -1 & 4\ \Big|-3\\
+4 & -8 & 3 & -3 & 1\ \Big|\quad \  2\\
+1 & -2 & 1 & -1 & 1\ \Big|\quad \ 0\\
+1 & -2 & 0 & -3 & 4\ \Big|\quad \ a
+\end{bmatrix}</script>]]></content>
       <categories>
         <category>mathematics for machine learning</category>
       </categories>
