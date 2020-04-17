@@ -415,8 +415,8 @@ a_{12} & \mathbf{a_{22}}\\
       </tags>
   </entry>
   <entry>
-    <title>7. 신경망 구현 - 역전파</title>
-    <url>/2020/04/05/Deeplearning-7/</url>
+    <title>8. 신경망 구현 - 역전파</title>
+    <url>/2020/04/05/Deeplearning-8/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="역전파란"><a href="#역전파란" class="headerlink" title="역전파란"></a>역전파란</h2>]]></content>
@@ -433,8 +433,8 @@ a_{12} & \mathbf{a_{22}}\\
       </tags>
   </entry>
   <entry>
-    <title>6. 신경망 구현 - 순전파</title>
-    <url>/2020/04/04/Deeplearning-6/</url>
+    <title>7. 신경망 구현 - 순전파</title>
+    <url>/2020/04/04/Deeplearning-7/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
 <p>이전 글에서 인공신경망이 작동되는 과정을 수식으로 확인하였다. 이번에는 인공신경망을 직접 설계하고 학습하여 손글씨 숫자를 분류하는 인공신경망을 만들 것이다. 인공신경망을 설계하는 것은 앞전에 살펴봤던 도식을 만드는 것이다. 은닉층 개수를 정하여 인공신경망의 깊이를 설정하고, 사용되는 활성화 함수들을 정한다. <strong>그 후 인공신경망을 ‘어떻게’ 학습시킬 것인가를 정해야 한다.</strong> 오늘 같이 구현할 ‘순전파’는 학습 방법 중 하나이다.</p>
@@ -448,7 +448,13 @@ a_{12} & \mathbf{a_{22}}\\
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> making_one_hot_label(x, y)</span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">    원-핫 인코딩 레이블을 만드는 함수</span></span><br><span class="line"><span class="string">    예를 들어 0~9까지의 숫자 중 3을 원-핫 레이블로 만들면</span></span><br><span class="line"><span class="string">    [0  0  0  1  0  0  0  0  0  0]과 같이 출력할 것이다.</span></span><br><span class="line"><span class="string">    x : 만들려는 숫자</span></span><br><span class="line"><span class="string">    y: 메트릭스의 길이, 주의할 점은 이것은 0부터 시작한다!</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line">    temp = x + <span class="number">1</span></span><br><span class="line">    temp_matrix = zeros(<span class="built_in">Int8</span>, <span class="number">1</span>, y)</span><br><span class="line">    temp_matrix[temp] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span>(temp_matrix)</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> making_one_hot_labels(y_train)</span><br><span class="line">    t = making_one_hot_label.(y_train, <span class="number">10</span>)</span><br><span class="line">    <span class="keyword">return</span> (reduce(vcat, t))</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>위의 함수를 사용하면 숫자로 입력된 <code>train_y</code>가 원-핫 레이블로 변경된다.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 훈련데이터 입력값 전처리</span></span><br><span class="line">train_x = reshape(train_x,<span class="number">784</span>, <span class="number">60000</span>)</span><br><span class="line">train_x = <span class="built_in">Array</span>&#123;<span class="built_in">Float64</span>&#125;(train_x)</span><br><span class="line">train_x=train_x'</span><br><span class="line"></span><br><span class="line"><span class="comment"># 실제 실험데이터 입력값 전처리</span></span><br><span class="line">test_x = reshape(test_x,<span class="number">784</span>, <span class="number">10000</span>)</span><br><span class="line">test_x = <span class="built_in">Array</span>&#123;<span class="built_in">Float64</span>&#125;(test_x)</span><br><span class="line">test_x=test_x'</span><br><span class="line"></span><br><span class="line"><span class="comment"># 훈련데이터 정답 레이블 전처리 (원-핫 인코딩)</span></span><br><span class="line">t = making_one_hot_labels(train_y)</span><br><span class="line">typeof(t), size(t)</span><br></pre></td></tr></table></figure>
-<p>이제 신경망 모델을 학습하기 위해서 필요한 데이터는 모두 준비되었다. 우리가 만들 </p>
+<p>이제 신경망 모델을 학습하기 위해 필요한 데이터는 모두 준비되었다. 우리가 만들 신경망은 이전 글에서 정리했던 ‘2층 신경망(TwoLayerNet)’이다. 신경망 모델에서는 가중치와 편향이 계속 업데이트되어야 하기 때문에 구조체(struct)로 정의한다. 구조체는 복합 데이터 타입을 정의하는 것이다. 만약 구조체에 대해서 모르거나 더 알고 싶다면 <a href="https://hyeonji-ryu.github.io/2020/03/15/Think-Julia-Chapter-15/">이 글</a>을 참고하자.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">TwoLayerNet를 mutable struct로 만들기</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">mutable struct</span> init_network</span><br><span class="line">    W1</span><br><span class="line">    b1</span><br><span class="line">    W2</span><br><span class="line">    b2</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>위의 구조체를 정의했으니 이제 가중치와 편향의 초기값을 생성하는 함수를 정의하자.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> making_network(input_size, hidden_size, output_size, weight_init_std =<span class="number">0.01</span>)</span><br><span class="line">    W1 = weight_init_std * randn(<span class="built_in">Float64</span>, input_size, hidden_size)</span><br><span class="line">    b1 = zeros(<span class="built_in">Float32</span>, <span class="number">1</span>, hidden_size)</span><br><span class="line">    W2 = weight_init_std * randn(<span class="built_in">Float64</span>, hidden_size, output_size)</span><br><span class="line">    b2 = zeros(<span class="built_in">Float32</span>, <span class="number">1</span>, output_size)</span><br><span class="line">    <span class="keyword">return</span>(init_network(W1, b1, W2, b2))</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>위의 함수는 입력 데이터의 행렬 크기, 은닉층의 행렬 크기, 결과값의 행렬 크기를 받아서 그에 알맞는 가중치와 편향 행렬을 생성해준다. 가중치는 오버피팅을 막기 위해 가장 작게 셋팅하는 것이 좋기 때문에 <code>weight_init_std</code>을 곱해준다. 가중치인 <code>W1</code>, <code>W2</code>는 정규분포를 따라 랜덤 수를 생성해주는 <code>randn()</code>를 사용하였으며, 편향인 <code>b1</code>, <code>b2</code>는 초기값인 크기에 맞게 제로 행렬로 만들어준다. 제로 행렬을 만드는 방법은 <code>zeros()</code>를 사용한다.</p>
+<p>우리가 사용하는 데이터는 입력값이 $60000 \times 784$이며, 결과값은 $60000 \times 10$이다. 따라서 <code>W1</code>은 $784 \times 50$이며, <code>W2</code>는 $50 \times 10$이다. <code>b1</code>은 $1 \times 50$이고, <code>b2</code>는 $1 \times 10$이다. 따라서 다음과 같이 함수를 사용하면 알맞은 가중치와 행렬 초기값을 만들 수 있다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">TwoLayerNet = making_network(<span class="number">784</span>, <span class="number">50</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Deep learning in Julia</category>
@@ -463,8 +469,8 @@ a_{12} & \mathbf{a_{22}}\\
       </tags>
   </entry>
   <entry>
-    <title>5. 인공신경망 구현 - 수학식 풀이</title>
-    <url>/2020/04/01/Deeplearning-5/</url>
+    <title>6. 인공신경망 구현 - 수학식 풀이</title>
+    <url>/2020/04/01/Deeplearning-6/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="인공신경망이란"><a href="#인공신경망이란" class="headerlink" title="인공신경망이란"></a>인공신경망이란</h2><script type="math/tex; mode=display">Layer=(X*W)+B</script><p>위 수식은 각 층을 계산하는 식이며, 입력 데이터의 값들인 배열 $X$에 가중치 $W$를 곱한 후 편향 $B$를 더한다. 이 식은 신경망이 작동하는 방식에서 가져온 알고리즘이다. 생물학에서의 신경망은 수많은 뉴런(신경 세포)이 연결되어 있으며, 이들은 전기 신호를 전달한다. 각각의 뉴런들은 수상돌기를 통해 들어오는 전기 신호를 받고 세포체에서 종합한 후 축삭돌기를 통해 전기 신호를 다른 뉴런으로 내보낸다. 이때 축삭돌기 끝 부분인 시냅스에서 전기 신호에 따라 신경전달물질을 분비하여 다른 뉴런의 시냅스로 전달하는데 이런 과정을 신경이라고 부르는 것이다.</p>
@@ -543,8 +549,8 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
       </tags>
   </entry>
   <entry>
-    <title>4. 경사하강법</title>
-    <url>/2020/03/31/Deeplearning-4/</url>
+    <title>5. 경사하강법</title>
+    <url>/2020/03/31/Deeplearning-5/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
 <p>앞 포스팅에서 우리는 손실 함수에 대해서 살펴보았다. 손실 함수는 신경망을 평가하는 판단지표로서 사용되며, 손실 함수의 값을 줄이는 방향으로 신경망을 학습시킨다고 하였다. 다른 말로, 좋은 신경망 모델은 손실 함수 값이 작아야 한다. 그렇다면 이쯤에서 “어떻게 손실 함수의 값을 줄일 수 있을까?”라는 의문이 들 것이다. 이것이 바로 최적화의 문제이다. 이번 글에서는 손실 함수를 최소화하는 경사하강법에 대해서 살펴볼 것이다.</p>
@@ -615,8 +621,8 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
       </tags>
   </entry>
   <entry>
-    <title>3. 손실 함수</title>
-    <url>/2020/03/30/Deeplearning-3/</url>
+    <title>4. 손실 함수</title>
+    <url>/2020/03/30/Deeplearning-4/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="손실-함수란"><a href="#손실-함수란" class="headerlink" title="손실 함수란"></a>손실 함수란</h2><p>신경망을 사용하기 위해서는 그 전에 학습을 통해 올바른 기준을 생성해주어야 한다. 이런 과정을 ‘신경망 학습’이라고 한다. 신경망 학습에서는 훈련 데이터를 사용하며, 이를 통해 신경망이 실전 문제에서도 적절하게 접근할 수 있도록 하는 가중치를 찾는다. 그렇다면 신경망 학습이 잘 이루어지고 있는지 어떻게 알 수 있을까? 여기서 ‘손실 함수’가 사용된다. 손실 함수(loss function)는 신경망을 평가하는 평가지표로서 사용되며, 오답률을 나타낸다. 즉, 손실 함수의 값이 0에 가까울수록 좋은 신경망이라는 것이다. 보통 손실 함수는 정답과 신경망이 도출한 출력 값을 비교하여 나타낸다.</p>
@@ -657,6 +663,28 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
         <tag>줄리아</tag>
         <tag>loss</tag>
         <tag>손실함수</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>3. 신경망 모델 학습</title>
+    <url>/2020/03/29/Deeplearning-3/</url>
+    <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
+<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1>]]></content>
+      <categories>
+        <category>Deep learning in Julia</category>
+      </categories>
+      <tags>
+        <tag>딥러닝</tag>
+        <tag>머신러닝</tag>
+        <tag>Deeplearning</tag>
+        <tag>줄리아</tag>
+        <tag>네트워크</tag>
+        <tag>가중치</tag>
+        <tag>편향</tag>
+        <tag>딥러닝학습</tag>
+        <tag>학습</tag>
+        <tag>신경망모델</tag>
       </tags>
   </entry>
   <entry>
@@ -1029,6 +1057,8 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
 <li><p>행렬과 벡터의 곱</p>
 </li>
 <li><p>활성화 함수</p>
+</li>
+<li><p>신경망 모델 학습</p>
 </li>
 <li><p>손실 함수</p>
 </li>
