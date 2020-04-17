@@ -487,6 +487,28 @@ a_{12} & \mathbf{a_{22}}\\
       </tags>
   </entry>
   <entry>
+    <title>6. 인공신경망 구현 - 모델 학습</title>
+    <url>/2020/04/02/Deeplearning-6/</url>
+    <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
+<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1>]]></content>
+      <categories>
+        <category>Deep learning in Julia</category>
+      </categories>
+      <tags>
+        <tag>딥러닝</tag>
+        <tag>머신러닝</tag>
+        <tag>Deeplearning</tag>
+        <tag>줄리아</tag>
+        <tag>네트워크</tag>
+        <tag>가중치</tag>
+        <tag>편향</tag>
+        <tag>딥러닝학습</tag>
+        <tag>학습</tag>
+        <tag>신경망모델</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>5. 인공신경망 구현 - 수학식 풀이</title>
     <url>/2020/04/01/Deeplearning-5/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
@@ -681,28 +703,6 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
         <tag>줄리아</tag>
         <tag>loss</tag>
         <tag>손실함수</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>6. 인공신경망 구현 - 모델 학습</title>
-    <url>/2020/03/29/Deeplearning-6/</url>
-    <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
-<hr>
-<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1>]]></content>
-      <categories>
-        <category>Deep learning in Julia</category>
-      </categories>
-      <tags>
-        <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
-        <tag>Deeplearning</tag>
-        <tag>줄리아</tag>
-        <tag>네트워크</tag>
-        <tag>가중치</tag>
-        <tag>편향</tag>
-        <tag>딥러닝학습</tag>
-        <tag>학습</tag>
-        <tag>신경망모델</tag>
       </tags>
   </entry>
   <entry>
