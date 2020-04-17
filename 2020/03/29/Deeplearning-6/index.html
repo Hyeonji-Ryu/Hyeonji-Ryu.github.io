@@ -48,25 +48,27 @@
 
   <meta name="description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4. 손실 함수">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/03/30/Deeplearning-4/index.html">
+<meta property="og:title" content="6. 인공신경망 구현 - 모델 학습">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/03/29/Deeplearning-6/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
 <meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/35.png">
-<meta property="article:published_time" content="2020-03-29T17:19:08.000Z">
-<meta property="article:modified_time" content="2020-04-17T09:36:55.979Z">
+<meta property="article:published_time" content="2020-03-29T00:53:05.000Z">
+<meta property="article:modified_time" content="2020-04-17T18:40:43.288Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
 <meta property="article:tag" content="Deeplearning">
 <meta property="article:tag" content="줄리아">
-<meta property="article:tag" content="loss">
-<meta property="article:tag" content="손실함수">
+<meta property="article:tag" content="네트워크">
+<meta property="article:tag" content="가중치">
+<meta property="article:tag" content="편향">
+<meta property="article:tag" content="딥러닝학습">
+<meta property="article:tag" content="학습">
+<meta property="article:tag" content="신경망모델">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hyeonji-ryu.github.io/images/35.png">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/03/30/Deeplearning-4/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/03/29/Deeplearning-6/">
 
 
 <script id="page-configurations">
@@ -78,7 +80,7 @@
   };
 </script>
 
-  <title>4. 손실 함수 | AI & ML</title>
+  <title>6. 인공신경망 구현 - 모델 학습 | AI & ML</title>
   
 
 
@@ -215,7 +217,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/03/30/Deeplearning-4/">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/03/29/Deeplearning-6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -228,7 +230,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          4. 손실 함수
+          6. 인공신경망 구현 - 모델 학습
         </h1>
 
         <div class="post-meta">
@@ -238,14 +240,14 @@
               </span>
               <span class="post-meta-item-text">작성일</span>
 
-              <time title="Post created: 2020-03-30 02:19:08" itemprop="dateCreated datePublished" datetime="2020-03-30T02:19:08+09:00">2020-03-30</time>
+              <time title="Post created: 2020-03-29 09:53:05" itemprop="dateCreated datePublished" datetime="2020-03-29T09:53:05+09:00">2020-03-29</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-17 18:36:55" itemprop="dateModified" datetime="2020-04-17T18:36:55+09:00">2020-04-17</time>
+                <time title="Updated at: 2020-04-18 03:40:43" itemprop="dateModified" datetime="2020-04-18T03:40:43+09:00">2020-04-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -272,34 +274,7 @@
       
         <p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="손실-함수란"><a href="#손실-함수란" class="headerlink" title="손실 함수란"></a>손실 함수란</h2><p>신경망을 사용하기 위해서는 그 전에 학습을 통해 올바른 기준을 생성해주어야 한다. 이런 과정을 ‘신경망 학습’이라고 한다. 신경망 학습에서는 훈련 데이터를 사용하며, 이를 통해 신경망이 실전 문제에서도 적절하게 접근할 수 있도록 하는 가중치를 찾는다. 그렇다면 신경망 학습이 잘 이루어지고 있는지 어떻게 알 수 있을까? 여기서 ‘손실 함수’가 사용된다. 손실 함수(loss function)는 신경망을 평가하는 평가지표로서 사용되며, 오답률을 나타낸다. 즉, 손실 함수의 값이 0에 가까울수록 좋은 신경망이라는 것이다. 보통 손실 함수는 정답과 신경망이 도출한 출력 값을 비교하여 나타낸다.</p>
-<p>일반적으로 사용하는 손실 함수로는 평균 제곱 오차와 교차 엔트로피 오차가 있다.</p>
-<h3 id="평균-제곱-오차"><a href="#평균-제곱-오차" class="headerlink" title="평균 제곱 오차"></a>평균 제곱 오차</h3><p>‘평균 제곱 오차(Mean Squared Error, MSE)’는 출력 값에서 정답을 뺀 결과를 제곱하여 더한 값들을 비교한다. 수식은 아래와 같다.</p>
-<script type="math/tex; mode=display">E=\frac{1}{n}\sum_{i=1}^n (y_i-t_i)^2</script><p>위의 수식에서 $y_i$는 출력 값, $t_i$는 정답이며 $n$은 원소의 개수이다. 출력 값에서 정답을 뺀 오차를 제곱하여 $n$으로 나눠줌으로써 평균을 손실 함수의 값으로 제공한다.</p>
-<p>위의 수식을 코드로 구현하면 다음과 같다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> mean_squared_error(y,t)</span><br><span class="line">    error = (y-t).^<span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> sum(error) / length(y)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>좀 더 정확한 이해를 위해 예시를 확인해보자.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Julia&gt; t = [<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>] <span class="comment"># 정답 레이블</span></span><br><span class="line">Julia&gt; y1 = [<span class="number">0.1</span> <span class="number">0.05</span> <span class="number">0.6</span> <span class="number">0.0</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.0</span>] <span class="comment"># 출력 값 with 정답</span></span><br><span class="line">Julia&gt; y2 = [<span class="number">0.1</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.6</span> <span class="number">0.0</span> <span class="number">0.0</span>] <span class="comment"># 출력 값 with 오답</span></span><br></pre></td></tr></table></figure>
-<p>먼저 정답 배열인 <code>t</code>와 출력 배열인 <code>y1</code>, <code>y2</code>를 세팅해준다. 해당 예시는 예측값이며 <code>y1</code>, <code>y2</code>는 소프트맥스 함수의 결과이다. <code>y1</code>은 정답을 맞춘 출력 값이고, <code>y2</code>는 오답인 출력 값이다. 그렇다면 출력 값 <code>y1</code>, <code>y2</code>을 사용하여 오차 값을 구해보자.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Julia&gt; mean_squared_error(y1,t)</span><br><span class="line"><span class="number">0.019500000000000007</span></span><br><span class="line"></span><br><span class="line">Julia&gt; mean_squared_error(y2,t)</span><br><span class="line"><span class="number">0.11949999999999998</span></span><br></pre></td></tr></table></figure>
-<p>정답에 높은 확률을 할당한 결과 값 <code>y1</code>은 오차로 $0.0195$이며, 오답에 높은 확률을 할당한 결과 값 <code>y2</code>는 오차로 $0.1194$가 나왔다. 즉, <code>y1</code>이 <code>y2</code>보다 더 잘 예측했음을 알 수 있다.</p>
-<h3 id="교차-엔트로피-오차"><a href="#교차-엔트로피-오차" class="headerlink" title="교차 엔트로피 오차"></a>교차 엔트로피 오차</h3><p>‘교차 엔트로피 오차(Cross Entropy Error, CEE)’는 자연로그를 이용한 함수이다. 수식은 아래와 같다.</p>
-<script type="math/tex; mode=display">E=-\sum_{i=1}^n (t_i\times\ln y_i)</script><p>위의 식은 정답 레이블 <code>t</code>와 출력 값을 곱한다. 여기서 정답 레이블은 오답과 정답을 <code>0</code>과 <code>1</code>로 표현한 것이기 때문에 오답인 경우는 출력 값과 <code>0</code>이 곱해진다. 즉, 정답 위치와 같은 출력 값만 자연로그 값이 제공되며 나머지는 $0$으로 반환된다. 위의 수식에서는 2가지의 의문이 제기될 수 있다.</p>
-<p>첫 번째 의문은 “하나의 값을 제외한 나머지가 0임에도 불구하고 왜 $\sum$(시그마)를 사용하는가?”이다. 그 이유는 배열을 하나의 값으로 반환하기 위해서이다. $t_i*\ln y_i$식을 계산하면 아래와 같은 결과가 도출된다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Julia&gt; delta = <span class="number">1e-7</span></span><br><span class="line">Julia&gt; -log.(y1.+ delta).* t</span><br><span class="line"><span class="number">1</span>×<span class="number">10</span> <span class="built_in">Array</span>&#123;<span class="built_in">Float64</span>,<span class="number">2</span>&#125;:</span><br><span class="line"> <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.510825</span>  <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.0</span>  <span class="number">0.0</span></span><br></pre></td></tr></table></figure>
-<p>이 결과에서 0이 아닌 값만 도출하는 것은 쉬워보이지만, 정답 레이블에서 1의 위치가 계속 변하기 때문에 기술적으로 복잡하다. 그렇기 때문에 하나의 값을 도출하기 위해서 모두 더한 것이다. 한 값을 제외하고 전부 0이기 때문에 이는 배열에서 스칼라로 변한 것뿐 수학적인 문제는 없다.</p>
-<p>두 번째 의문은 “왜 자연로그를 이용하는가?”이다. 먼저 자연로그 그래프를 살펴보자.</p>
-<p><img src="/images/35.png" alt="자연로그"></p>
-<p>위의 그래프에서는 $x$축이 1일 때 $y$축이 0이며, $x$축이 1 미만일 때에는 $-e$에 가까운 값으로 향한다. 즉, 0부터 1 사이의 수들은 전부 음수로 반환되는 것이다. 이런 원리를 이용하여 정답레이블 1에 위치한 소프트맥스 함수의 확률 값이 1에 가까울수록 작은 수로 변환되며, 이를 통해서 판단지표의 역할을 하는 것이다. 음수로 나오는 결과를 양수로 변환하기 위해서 $log$ 앞에 $-$ 를 곱한다.</p>
-<p>해당 수식을 코드로 구현하면 다음과 같다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> cross_entropy_error(y, t)</span><br><span class="line">    delta = <span class="number">1e-7</span></span><br><span class="line">    <span class="keyword">return</span> -sum(log.(y.+ delta)).* t</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>위의 정의에서 <code>delta</code> 또한 기술적인 이유로 포함되었다. 그래프에서도 확인할 수 있듯이 자연로그는 $x$축이 0인 경우의 $y$값이 마이너스 무한대이다. 따라서 $log_e 0$은 <code>-inf</code>이기 때문에 계산 오류가 바로 발생한다. 이를 막기 위해 아주 작은 값인 $1e-7$을 더해주는 것이다. $1e-7$은 지수 표기법으로 $0.0000001$을 의미한다.</p>
-<p>지금부터 예시에 교차 엔트로피 오차를 적용해보자.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Julia&gt; t = [<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>] <span class="comment"># 정답 레이블</span></span><br><span class="line">Julia&gt; y1 = [<span class="number">0.1</span> <span class="number">0.05</span> <span class="number">0.6</span> <span class="number">0.0</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.0</span>] <span class="comment"># 출력 값 with 정답</span></span><br><span class="line">Julia&gt; y2 = [<span class="number">0.1</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.6</span> <span class="number">0.0</span> <span class="number">0.0</span>] <span class="comment"># 출력 값 with 오답</span></span><br></pre></td></tr></table></figure>
-<p>예시 데이터셋은 평균 제곱 오차에서 사용했던 것을 그대로 사용할 것이다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Julia&gt; cross_entropy_error(y1,t)</span><br><span class="line"><span class="number">0.510825457099338</span></span><br><span class="line"></span><br><span class="line">Julia&gt; cross_entropy_error(y2,t)</span><br><span class="line"><span class="number">2.302584092994546</span></span><br></pre></td></tr></table></figure>
-<p>위의 결과를 보면 잘 예측한 <code>y1</code>이 잘못 예측한 <code>y2</code>보다 더 작은 것을 확인할 수 있다. 이처럼 손실 함수는 오차를 계산하여 오차율을 나타내며, 값이 0에 가까울수록 오차가 없다고 판단한다. 즉, 손실 함수의 값이 0에 가까울수록 해당 신경망은 잘 학습되었다고 평가되는 것이다.</p>
-
+<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1>
     </div>
 
     
@@ -312,8 +287,12 @@
               <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" rel="tag"># 머신러닝</a>
               <a href="/tags/Deeplearning/" rel="tag"># Deeplearning</a>
               <a href="/tags/%EC%A4%84%EB%A6%AC%EC%95%84/" rel="tag"># 줄리아</a>
-              <a href="/tags/loss/" rel="tag"># loss</a>
-              <a href="/tags/%EC%86%90%EC%8B%A4%ED%95%A8%EC%88%98/" rel="tag"># 손실함수</a>
+              <a href="/tags/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC/" rel="tag"># 네트워크</a>
+              <a href="/tags/%EA%B0%80%EC%A4%91%EC%B9%98/" rel="tag"># 가중치</a>
+              <a href="/tags/%ED%8E%B8%ED%96%A5/" rel="tag"># 편향</a>
+              <a href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D%ED%95%99%EC%8A%B5/" rel="tag"># 딥러닝학습</a>
+              <a href="/tags/%ED%95%99%EC%8A%B5/" rel="tag"># 학습</a>
+              <a href="/tags/%EC%8B%A0%EA%B2%BD%EB%A7%9D%EB%AA%A8%EB%8D%B8/" rel="tag"># 신경망모델</a>
           </div>
 
         
@@ -322,12 +301,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/29/Deeplearning-3/" rel="prev" title="3. 신경망 모델 학습">
-      <i class="fa fa-chevron-left"></i> 3. 신경망 모델 학습
+    <a href="/2020/03/29/Deeplearning-2/" rel="prev" title="2. 활성화 함수">
+      <i class="fa fa-chevron-left"></i> 2. 활성화 함수
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/03/31/Deeplearning-5/" rel="next" title="5. 경사하강법">
-      5. 경사하강법 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/03/30/Deeplearning-3/" rel="next" title="3. 손실 함수">
+      3. 손실 함수 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -388,7 +367,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#손실-함수란"><span class="nav-number">1.</span> <span class="nav-text">손실 함수란</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#평균-제곱-오차"><span class="nav-number">1.1.</span> <span class="nav-text">평균 제곱 오차</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#교차-엔트로피-오차"><span class="nav-number">1.2.</span> <span class="nav-text">교차 엔트로피 오차</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#null"><span class="nav-number">1.</span> <span class="nav-text">#</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
