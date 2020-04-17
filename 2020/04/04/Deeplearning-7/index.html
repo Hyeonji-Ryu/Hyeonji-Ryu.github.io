@@ -54,7 +54,7 @@
 <meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-04-03T17:22:48.000Z">
-<meta property="article:modified_time" content="2020-04-17T19:40:52.089Z">
+<meta property="article:modified_time" content="2020-04-17T20:04:11.831Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-18 04:40:52" itemprop="dateModified" datetime="2020-04-18T04:40:52+09:00">2020-04-18</time>
+                <time title="Updated at: 2020-04-18 05:04:11" itemprop="dateModified" datetime="2020-04-18T05:04:11+09:00">2020-04-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -289,12 +289,13 @@
 <p>우리가 사용하는 데이터는 입력값이 $60000 \times 784$이며, 결과값은 $60000 \times 10$이다. 따라서 <code>W1</code>은 $784 \times 50$이며, <code>W2</code>는 $50 \times 10$이다. <code>b1</code>은 $1 \times 50$이고, <code>b2</code>는 $1 \times 10$이다. 따라서 다음과 같이 함수를 사용하면 알맞은 가중치와 행렬 초기값을 만들 수 있다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TwoLayerNet = making_network(<span class="number">784</span>, <span class="number">50</span>, <span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <p>초기값 설정이 끝났다면 이제 신경망을 학습할 차례이다. 학습을 진행하기 전에 필요한 변수들을 미리 세팅해준다. <code>TwoLayerNet</code>은 구조체 <code>init_network</code>의 인스턴스이다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">train_loss_list = <span class="built_in">Float64</span>[]</span><br><span class="line">accuracy = <span class="built_in">Float64</span>[]</span><br><span class="line">train_size = size(train_x)[<span class="number">1</span>]</span><br><span class="line">batch_size = <span class="number">100</span></span><br><span class="line">learning_rate = <span class="number">0.1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_loss_list = <span class="built_in">Float64</span>[]</span><br><span class="line">accuracy = <span class="built_in">Float64</span>[]</span><br></pre></td></tr></table></figure>
 <p><code>train_loss_list</code>는 학습이 진행되는 동안 제공되는 손실 함수의 값을 저장할 리스트이다. 모델의 정확도 또한 <code>accuracy</code>에 저장하여 값이 변화하는 과정을 살펴볼 예정이다.</p>
 <p>지금부터는 순전파 알고리즘에 사용되는 함수들을 정의할 것이다. 대부분의 함수들은 우리가 이전 글들에서 살펴봤던 원리와 같으며, 단지 신경망 모델에 맞게 부분적인 수정이 이루어졌다.</p>
 <p>먼저 기본적인 활성화 함수를 정의한다. 우리는 이번 신경망 모델에 시그모이드와 소프트맥스를 사용할 예정이다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> sigmoid(x)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>/(<span class="number">1</span>+exp(-x))</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> softmax_single(a)</span><br><span class="line">    c = maximum(a)</span><br><span class="line">    exp.(a .- c) / sum(exp.(a .- c))</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 배치 데이터에 사용하는 소프트맥스</span></span><br><span class="line"><span class="keyword">function</span> softmax(a)</span><br><span class="line">    temp = map(softmax_single, eachrow(a))</span><br><span class="line">    <span class="keyword">return</span>(transpose(hcat(temp ...)))</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>시그모이드 함수는 그대로 사용하며, 소프트맥스의 경우는 배치 데이터에 사용하는 함수를 따로 생성해준다. 배치 데이터는 각 행이 하나의 이미지이기 때문에 행 하나의 요소 합이 1이어야 한다. 위의 <code>softmax()</code>는 각 행 별로 <code>softmax_single()</code>를 계산하여 배열로 반환한다.</p>
+<p><strong>Note</strong><br>배치(batch)란?<br>배치는 모델이 한번에 처리하는 데이터의 개수를 의미한다. 예를 들어 MNIST 데이터를 본다면, 입력데이터 $1 \times 784$는 하나의 이미지이다. 만약 모델에 투입하는 입력데이터가 $100 \times 784$라면 이미지 100개를 한번에 사용한 것이며, 이는 배치 데이터이다.</p>
 <p>그 다음 예측값 $\hat{y}$을 반환하는 <code>predict()</code>를 정의한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> predict(x)</span><br><span class="line">    a1 = (x * TwoLayerNet.W1) .+ TwoLayerNet.b1</span><br><span class="line">    z1 = sigmoid.(a1)</span><br><span class="line">    a2 = (z1 * TwoLayerNet.W2) .+ TwoLayerNet.b2</span><br><span class="line">    <span class="keyword">return</span> softmax(a2)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p><code>predict()</code>는 가중치와 편향이 <code>TwoLayerNet</code>의 필드로 변경되었다. 그 외의 원리는 이전 함수와 동일하다.</p>
@@ -305,7 +306,28 @@
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> TwoLayerNet_numerical_gradient(f, x, t)</span><br><span class="line">    W1 = numerical_gradient(f, x, t,TwoLayerNet.W1)</span><br><span class="line">    W2 = numerical_gradient(f, x, t,TwoLayerNet.W2)</span><br><span class="line">    b1 = numerical_gradient(f, x, t,TwoLayerNet.b1)</span><br><span class="line">    b2 = numerical_gradient(f, x, t,TwoLayerNet.b2)</span><br><span class="line">    <span class="keyword">return</span>(init_network(W1, b1, W2, b2))</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>위의 <code>TwoLayerNet_numerical_gradient()</code>는 가중치와 편향을 모두 편미분하여 값을 저장한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> evaluate(x, t)</span><br><span class="line">    temp = (sum((argmax.(eachrow(predict(test_x))).-<span class="number">1</span>) .== test_y)/size(test_x)[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> (temp * <span class="number">100</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-<p>마지막으로 정의할 함수는 정확도를 계산한다. 정확도란 실제 실험데이터들을 사용하여 해당 신경망 모델이 얼마나 맞추는지를 확률로 반환한다. 이후 신경망을 직접 학습시키고 정확도를 확인할 것이다.</p>
+<p>마지막으로 정의할 함수 <code>evaluate()</code>는 정확도를 계산한다. 정확도란 실제 실험데이터들을 사용하여 해당 신경망 모델이 얼마나 맞추는지를 확률로 반환한다. 이후 신경망을 직접 학습시키고 정확도를 확인할 것이다.</p>
+<p>이제 순전파 알고리즘을 진행하기 전에 배치 사이즈와 학습률, 반복 횟수를 지정한다. 보통 학습률은 0.01이나 0.1을 사용한다. 또한 배치 사이즈는 입력 데이터의 형태에 따라 최적화된 크기가 다르지만 이번에는 임의로 배치사이즈를 100으로 지정할 것이다. 그리고 반복 횟수는 1에폭(epoch)인 600을 지정하였다.</p>
+<p><strong>Note</strong><br>에폭이란?<br>에폭(epoch)은 훈련데이터 전체의 개수를 의미한다. MNIST 데이터를 예시로 본다면 훈련데이터는 60000개이다. 배치 사이즈가 100인 경우 한번에 100개의 훈련데이터가 사용되므로 모델에 1에폭을 훈련시키려면 600번을 반복해야 한다.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">train_size = size(train_x)[<span class="number">1</span>]</span><br><span class="line">batch_size = <span class="number">100</span></span><br><span class="line">learning_rate = <span class="number">0.1</span></span><br><span class="line">iters_num = <span class="number">600</span></span><br></pre></td></tr></table></figure>
+<p>이제 모든 준비가 완료되었다. 아래의 코드를 입력하여 순전파 알고리즘을 실행해보자.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@time</span> <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> iters_num:</span><br><span class="line">        batch_mask = rand(<span class="number">1</span>:train_size, <span class="number">100</span>)</span><br><span class="line">        x_batch = train_x[batch_mask, :]</span><br><span class="line">        t_batch = t[batch_mask, :]</span><br><span class="line">        grad = TwoLayerNet_numerical_gradient(loss, x_batch, t_batch)</span><br><span class="line"></span><br><span class="line">        TwoLayerNet.W1 -= (learning_rate * grad.W1)</span><br><span class="line">        TwoLayerNet.W2 -= (learning_rate * grad.W2)</span><br><span class="line">        TwoLayerNet.b1 -= (learning_rate * grad.b1)</span><br><span class="line">        TwoLayerNet.b2 -= (learning_rate * grad.b2)</span><br><span class="line"></span><br><span class="line">        temp_loss = loss(x_batch, t_batch)</span><br><span class="line">        print(<span class="string">"NO.<span class="variable">$i</span>: "</span>)</span><br><span class="line">        println(temp_loss)</span><br><span class="line">        append!(train_loss_list, temp_loss)</span><br><span class="line">        append!(accuracy, evaluate(test_x, test_y))</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>위의 코드는 순전파 알고리즘을 구현한 것이다. 프로세스는 다음과 같다.</p>
+<ul>
+<li><p>먼저 입력 데이터 60000개 중에 100개를 무작위로 뽑아서 배치 데이터셋을 생성한다.</p>
+</li>
+<li><p>그 다음 가중치와 편향을 편미분한다. <code>grad</code>는 구조체의 인스턴스로 가중치와 편향의 편미분 값들을 저장한다.</p>
+</li>
+<li><p>기존 신경망의 가중치와 편향에서 ‘학습률 $\times$ 편미분값’을 빼서 갱신한다.</p>
+</li>
+<li><p>갱신한 가중치와 편향으로 다시 손실 함수의 값을 구한 후 <code>train_loss_list</code>에 추가한다.</p>
+</li>
+<li><p>해당 모델을 사용하여 실제 실험데이터를 얼마나 맞추는지 확률을 계산하고, <code>accuracy</code>에 추가한다.</p>
+</li>
+<li><p><code>iters_num</code>만큼 위의 프로세스를 반복한다.</p>
+</li>
+</ul>
+<p>순전파는 역전파보다 시간이 매우 많이 소요된다. 따라서 비교적 시간이 여유로울 때 코드를 진행하기를 추천한다.</p>
 
     </div>
 
