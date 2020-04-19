@@ -507,7 +507,7 @@ a_{12} & \mathbf{a_{22}}\\
 <p>저장된 정확도 또한 계속 상승하는 것을 볼 수 있다. 가장 높은 정확도는 아래의 코드를 통해 확인하자.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">argmax(accuracy)   <span class="comment"># 최대값 인덱스 반환</span></span><br><span class="line"><span class="number">598</span></span><br><span class="line">accuracy[<span class="number">598</span>]</span><br><span class="line"><span class="number">80.15</span></span><br></pre></td></tr></table></figure>
 <p>정확도는 80%를 웃돈다. 여기서 에폭을 더 추가로 학습하면 정확도는 90%도 넘을 수 있다.</p>
-<p>순전파는 사용되는 함수들의 미분을 반복되는 매 횟수마다 진행하기 때문에 시간이 오래 걸린다. 그렇기 때문에 실상 사용되는 알고리즘은 아니지만, 신경망의 원리를 파악하기 위해서는 알아야 한다. 다음 글에서는 5시간을 3분으로 줄여주는 마법같은 역전파를 살펴볼 것이다.</p>
+<p>순전파는 반복되는 매 횟수마다 활성화 함수를 미분하기 때문에 시간이 오래 걸린다. 그렇기에 실상 사용되는 알고리즘은 아니지만, 신경망의 원리를 파악하기 위해서는 알아야 한다. 다음 글에서는 5시간을 3분으로 줄여주는 마법같은 역전파를 살펴볼 것이다.</p>
 ]]></content>
       <categories>
         <category>Deep learning in Julia</category>
@@ -526,7 +526,7 @@ a_{12} & \mathbf{a_{22}}\\
     <url>/2020/04/02/Deeplearning-6/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
-<h1 id=""><a href="#" class="headerlink" title="#"></a>#</h1>]]></content>
+<h2 id="신경망-학습이란"><a href="#신경망-학습이란" class="headerlink" title="신경망 학습이란"></a>신경망 학습이란</h2>]]></content>
       <categories>
         <category>Deep learning in Julia</category>
       </categories>
