@@ -54,7 +54,7 @@
 <meta property="og:description" content="NexT 테마에서 카테고리와 태그를 생성하고자 합니다. 아직 블로그를 만들지 않았다면 이전 글을 참고해주시기 바랍니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-04-20T06:58:10.000Z">
-<meta property="article:modified_time" content="2020-04-20T07:39:57.212Z">
+<meta property="article:modified_time" content="2020-04-21T06:37:59.620Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="Github">
@@ -243,10 +243,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">작성일</span>
-              
 
-              <time title="Post created: 2020-04-20 15:58:10 / Updated at: 16:39:57" itemprop="dateCreated datePublished" datetime="2020-04-20T15:58:10+09:00">2020-04-20</time>
+              <time title="Post created: 2020-04-20 15:58:10" itemprop="dateCreated datePublished" datetime="2020-04-20T15:58:10+09:00">2020-04-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2020-04-21 15:37:59" itemprop="dateModified" datetime="2020-04-21T15:37:59+09:00">2020-04-21</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -279,12 +285,12 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">menu:</span><br><span class="line">  home: / || home</span><br><span class="line">  <span class="comment">#about: /about/ || user</span></span><br><span class="line">  tags: /tags/ || tags      <span class="comment"># `#` 제거</span></span><br><span class="line">  categories: /categories/ || th    <span class="comment"># `#` 제거</span></span><br><span class="line">  archives: /archives/ || archive</span><br><span class="line">  <span class="comment">#schedule: /schedule/ || calendar</span></span><br><span class="line">  <span class="comment">#sitemap: /sitemap.xml || sitemap</span></span><br><span class="line">  <span class="comment">#commonweal: /404/ || heartbeat</span></span><br></pre></td></tr></table></figure>
 <p>이후 배포를 하면 블로그에 카테고리와 태그가 생긴 것을 확인할 수 있습니다.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo generate</span><br><span class="line">hexo deploy</span><br></pre></td></tr></table></figure>
-<p> 하지만 아직 페이지를 생성하지 않았기 때문에 카테로기와 태그를 누르면 404 오류가 발생합니다. 이제 해당 페이지들을 만들어봅시다.</p>
+<p> 하지만 아직 페이지를 생성하지 않았기 때문에 카테고리와 태그를 누르면 404 오류가 발생합니다. 이제 해당 페이지들을 만들어봅시다.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo new page categories</span><br><span class="line">hexo new page tags</span><br></pre></td></tr></table></figure>
 <p>이후 배포하면 카테고리와 태그에 빈 페이지가 생성된 것을 확인할 수 있습니다. 생성된 카테고리와 태그 페이지 폴더에 들어가시면 각각 <code>index.md</code> 파일이 있습니다. 이 파일을 오픈하여 아래와 같이 입력 후 저장해주세요.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 카테고리 index</span></span><br><span class="line">---</span><br><span class="line">title: Categories</span><br><span class="line">date: 2020-03-02 14:27:00</span><br><span class="line"><span class="built_in">type</span>: categories</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="comment"># 태그 index</span></span><br><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line">date: 2020-03-03 22:25:24</span><br><span class="line"><span class="built_in">type</span>: tags</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p>이제 카테고리와 태그 준비가 완료되었습니다. 지금부터는 글을 생성한 후 해당 카테고리에 넣고 태그를 달아보겠습니다.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 새로운 포스트 생성 </span></span><br><span class="line">hexo new post <span class="string">"post_name"</span> <span class="comment"># 이름은 원하는대로 넣기</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 새로운 포스트 생성</span></span><br><span class="line">hexo new post <span class="string">"post_name"</span> <span class="comment"># 이름은 원하는대로 넣기</span></span><br></pre></td></tr></table></figure>
 <p>위의 코드를 입력하면 <code>source &gt; post</code>에 <code>post_name.md</code>퍄일이 생성됩니다. 이 파일을 클릭하면 다음과 같은 결과가 보입니다.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: post_name</span><br><span class="line">date: 2020.04.20</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
 <p>여기서 카테고리와 태그를 추가합니다.</p>
