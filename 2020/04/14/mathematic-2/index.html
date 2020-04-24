@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-04-14T12:45:33.000Z">
-<meta property="article:modified_time" content="2020-04-24T05:35:56.121Z">
+<meta property="article:modified_time" content="2020-04-24T16:27:25.890Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="머신러닝">
 <meta property="article:tag" content="mathematics">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-24 14:35:56" itemprop="dateModified" datetime="2020-04-24T14:35:56+09:00">2020-04-24</time>
+                <time title="Updated at: 2020-04-25 01:27:25" itemprop="dateModified" datetime="2020-04-25T01:27:25+09:00">2020-04-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
       
         <p>글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="연립-일차-방정식-풀기"><a href="#연립-일차-방정식-풀기" class="headerlink" title="연립 일차 방정식 풀기"></a>연립 일차 방정식 풀기</h2><p>이전 글에서 연립 일차 방정식을 행렬로 나타내는 과정을 살펴보았다. 이제는 행렬로 표현된 연립 일차 방정식을 풀어보자. 참고로 연립 일차 방정식은 다양한 풀이를 가진다.</p>
+<h2 id="연립-선형방정식-풀기"><a href="#연립-선형방정식-풀기" class="headerlink" title="연립 선형방정식 풀기"></a>연립 선형방정식 풀기</h2><p>이전 글에서 연립 선형방정식을 행렬로 나타내는 과정을 살펴보았다. 이제는 행렬로 표현된 연립 선형방정식을 풀어보자. 참고로 연립 선형방정식은 다양한 풀이를 가진다.</p>
 <script type="math/tex; mode=display">\begin{bmatrix}
 1 & 0 & 8 & -4\\
 0 & 1 & 2 & 12\\
@@ -285,7 +285,7 @@ x_4
 \begin{bmatrix}
 42\\
 8\\
-\end{bmatrix}</script><p>위의 행렬곱은 4개의 변수를 가진 2개의 일차 방정식으로 이루어져 있다. 위의 행렬곱을 수식으로 정리하면 다음과 같다. 우리는 위의 식에서 4개의 변수 해(solution)를 찾는 것이 목표이다.</p>
+\end{bmatrix}</script><p>위의 행렬곱은 4개의 변수를 가진 2개의 선형방정식으로 이루어져 있다. 위의 행렬곱을 수식으로 정리하면 다음과 같다. 우리는 위의 식에서 4개의 변수 해(solution)를 찾는 것이 목표이다.</p>
 <script type="math/tex; mode=display">\sum_{i=1}^4 x_ic_i = b</script><p>해당 식에서 $c_i$는 첫 번째 행렬의 $i$번째 열이며, $b$는 두 행렬곱의 결과이다. $b$는 $c_1 \times 42$과 $c_2 \times 8$로 나타낼 수 있다.</p>
 <script type="math/tex; mode=display">b =
 \begin{bmatrix}
@@ -303,7 +303,7 @@ x_4
 \begin{bmatrix}
 0\\
 1\\
-\end{bmatrix}</script><p>따라서 변수 4개의 해(solution)로 $[42, 8, 0, 0]^T$를 도출할 수 있다. 이와 같이 결과값 $b$를 역추하여 변수를 추정한 해를 ‘특수 해(special solution)’라고 한다. 하지만 연립 일차 방정식에는 더 많은 해가 존재한다. 특수 해를 찾는 방법은 $Ax=b$에 해당하는 $x$값을 찾는 것이다. 다음으로 살펴볼 방법은 $Ax=0$으로 만드는 $x$값을 찾는 것이다. 첫 번째 행렬의 세 번째 열인 $c_3$은 다음과 같이 풀어서 쓸 수 있다.</p>
+\end{bmatrix}</script><p>따라서 변수 4개의 해(solution)로 $[42, 8, 0, 0]^T$를 도출할 수 있다. 이와 같이 결과값 $b$를 역추하여 변수를 추정한 해를 ‘특수 해(special solution)’라고 한다. 하지만 연립 선형방정식에는 더 많은 해가 존재하기도 한다. 특수 해를 찾는 방법은 $Ax=b$에 해당하는 $x$값을 찾는 것이다. 다음으로 살펴볼 방법은 $Ax=0$으로 만드는 $x$값을 찾는 것이다. $Ax=0$에 해당하는 방정식을 ‘동차(homogeneous) 연립 선형방정식’이라고 한다. 첫 번째 행렬의 세 번째 열인 $c_3$은 다음과 같이 풀어서 쓸 수 있다.</p>
 <script type="math/tex; mode=display">c_3=
 \begin{bmatrix}
 8\\
@@ -356,7 +356,7 @@ x_4
 -4c_1 + 12c_2 - c_4
 \big )
 =0</script><p>$\lambda_1$과 마찬가지로 $\lambda_2$도 어떤 실수든지 가능하다.</p>
-<p>지금까지 구한 변수 $x$를 종합하면, 우리는 해당 일차 연립 방정식의 ‘일반 해( general solution)’를 구할 수 있다.</p>
+<p>지금까지 구한 변수 $x$를 종합하면, 우리는 해당 연립 선형방정식의 ‘일반 해( general solution)’를 구할 수 있다.</p>
 <script type="math/tex; mode=display">x \in \mathbb R^4 : x=\begin{bmatrix}
 42\\
 8\\
@@ -384,8 +384,8 @@ x_4
 <li>$Ax=0$의 모든 해 찾기</li>
 <li>찾은 모든 해들을 결합하기 (일반 해 완성)</li>
 </ul>
-<p>지금까지 예시를 통해서 연립 일차 방정식을 풀어보았다. 예시는 간단한 형식의 행렬이었기에 해를 구하기 편했지만, 실제 사용되는 일차식들은 매우 복잡하다.<br>운좋게도 우리는 매우 편리한 알고리즘인 ‘가우시안 소거법(Gaussian elimination)’이 있다. 가우시안 소거법은 복잡한 방정식 시스템을 간단한 형태로 변환해준다. 그후 위에서 배운 세 단계를 적용할 수 있다.</p>
-<h3 id="요소-변환-elementary-transformations"><a href="#요소-변환-elementary-transformations" class="headerlink" title="요소 변환 (elementary transformations)"></a>요소 변환 (elementary transformations)</h3><p>선형 방정식을 쉽게 해결하는 핵심 방법은 바로 ‘요소 변환 (elementary transformations)’이다. 요소를 변환하는 것은 해는 동일하지만 일차 방정식의 식을 더 간편하게 만들어준다.</p>
+<p>지금까지 예시를 통해서 연립 선형방정식을 풀어보았다. 예시는 간단한 형식의 행렬이었기에 해를 구하기 편했지만, 실제 사용되는 선형식들은 매우 복잡하다.<br>운좋게도 우리는 매우 편리한 알고리즘인 ‘가우시안 소거법(Gaussian elimination)’이 있다. 가우시안 소거법은 복잡한 방정식 시스템을 간단한 형태로 변환해준다. 그후 위에서 배운 세 단계를 적용할 수 있다.</p>
+<h3 id="요소-변환-elementary-transformations"><a href="#요소-변환-elementary-transformations" class="headerlink" title="요소 변환 (elementary transformations)"></a>요소 변환 (elementary transformations)</h3><p>선형 방정식을 쉽게 해결하는 핵심 방법은 바로 ‘요소 변환 (elementary transformations)’이다. 요소를 변환하는 것은 해는 동일하지만 선형방정식의 식을 더 간편하게 만들어준다.</p>
 <ul>
 <li>방정식 2개(행 단위)의 위치를 바꾸기</li>
 <li>한 방정식에 $0$을 제외한 실수 $\lambda$ 곱하기</li>
@@ -397,7 +397,7 @@ x_4
 4x_1&-&8x_2&+&3x_3&-&3x_4&+&x_5&=& 2\\
 x_1&-&2x_2&+&x_3&-&x_4&+&x_5&=& 0\\
 x_1&-&2x_2& & &-&3x_4&+&4x_5&=& a
-\end{matrix}</script><p>위의 수식은 5개의 변수를 가진 연립 일차방정식이다. 총 4개의 수식이 포함되어 있으며, 우리는 위 문제에서 $a \in \mathbb R$일 때의 모든 해를 찾으려 한다.</p>
+\end{matrix}</script><p>위의 수식은 5개의 변수를 가진 연립 선형방정식이다. 총 4개의 수식이 포함되어 있으며, 우리는 위 문제에서 $a \in \mathbb R$일 때의 모든 해를 찾으려 한다.</p>
 <p>먼저 $Ax=b$인 특수 해를 찾아보자. 특수 해를 찾기 위해서는 각 방정식의 변수들을 최소화해야 한다. 변수를 최소화하기 위해서 방정식들의 요소를 변환해야 한다. 지금부터는 변수 $x$를 명시하지 않고 설명하는 방법을 사용할 것이다. 이 방법을 ‘확장 행렬(augmented matrix)’이라고 하며, $[A\ |\ b]$의 형태이다.</p>
 <script type="math/tex; mode=display">\left[
 \begin{array}{ccccc|c}
@@ -433,7 +433,7 @@ x_1&-&2x_2& & &-&3x_4&+&4x_5&=& a
 0 & 0 & 0 & -3 & 6 & -3\\
 0 & 0 & -1 & -2 & 3 & a
 \end{array}
-\right]</script><p>변수 $x_1, x_2$의 계수는 $\mathbb R_1$에만 남은 것을 확인할 수 있다. 이와 같은 방법으로 연립 일차 방정식을 정리하면 다음과 같다.</p>
+\right]</script><p>변수 $x_1, x_2$의 계수는 $\mathbb R_1$에만 남은 것을 확인할 수 있다. 이와 같은 방법으로 연립 선형방정식을 정리하면 다음과 같다.</p>
 <p>-네 번째 행에 $-\mathbb R_2 -\mathbb R_3$을 더해준다.</p>
 <script type="math/tex; mode=display">\left[
 \begin{array}{ccccc|c}
@@ -453,7 +453,7 @@ x_1&-&2x_2& & &-&3x_4&+&4x_5&=& a
 0 & 0 & 0 & 0 & 0 & a+1
 \end{array}
 \right]</script><ul>
-<li>위의 식을 연립 일차 방정식으로 표현하면 다음과 같다.</li>
+<li>위의 식을 연립 선형방정식으로 표현하면 다음과 같다.</li>
 </ul>
 <script type="math/tex; mode=display">\begin{matrix}
 x_1&-&2x_2&+&x_3&-&x_4&+&x_5&=& 0\\
@@ -467,7 +467,7 @@ x_1&-&2x_2&+&x_3&-&x_4&+&x_5&=& 0\\
 <li>0만 포함하는 열은 행렬의 가장 아래에 위치한다.</li>
 <li>주성분에 속하는 변수를 ‘기본 변수(basic variables)’라고 하며, 그 외의 변수들은 ‘자유 변수(free variables)’라고 한다. 예로 위의 행 사다리꼴은 보면 변수 $x_1, x_3, x_4$는 기본 변수이며, $x_2, x_5$는 자유 변수이다.</li>
 </ul>
-<p>이제 위의 행 사다리꼴로 $a=-1$일 때의 특수 해를 찾아보자. 해당 연립 일차 방정식은 $a=-1$일 때만 특수 해를 구할 수 있다.</p>
+<p>이제 위의 행 사다리꼴로 $a=-1$일 때의 특수 해를 찾아보자. 해당 연립 선형방정식은 $a=-1$일 때만 특수 해를 구할 수 있다.</p>
 <p>자유 변수는 행 사다리꼴에서 주성분이 없다. 따라서 임의적으로 자유 변수를 0으로 처리한다. 그럼 위의 행 사다리꼴의 자유 변수인 $x_2, x_5$은 0으로 처리된다. 그 다음 주성분이 존재하는 기본 변수의 값을 구하면 된다.</p>
 <p>위의 확장 행렬을 다시 살펴보자.</p>
 <script type="math/tex; mode=display">\left[
@@ -504,19 +504,19 @@ x_4\begin{bmatrix}
 -2\\
 1\\
 0
-\end{bmatrix}</script><p>위의 행렬을 다시 연립 일차 방정식으로 나타내면 다음과 같다.</p>
+\end{bmatrix}</script><p>위의 행렬을 다시 연립 선형방정식으로 나타내면 다음과 같다.</p>
 <script type="math/tex; mode=display">\begin{matrix}
 x_1&+&x_3&-&x_4&=& 0\\
 &&x_3&-&x_4&=& -2\\
 &&&&x_4&=& 1\\
-\end{matrix}</script><p>따라서 이를 정리하면 $x_4 = 1, x_3 = -1, x_1 = 2$를 구할 수 있다. 따라서 위의 연립 일차 방정식의 특수 해는 $[2, 0, -1, 1, 0]^T$인 것이다.</p>
-<p>이제 헤당 연립 일차 방정식의 일반 해를 구해보자. 일반 해를 구하기 위해서는 ‘기약 행 사다리꼴(educed row-echelon form, RREF)를 알아야 한다. 기약 행 사다리꼴의 특징은 다음과 같다.</p>
+\end{matrix}</script><p>따라서 이를 정리하면 $x_4 = 1, x_3 = -1, x_1 = 2$를 구할 수 있다. 따라서 위의 연립 선형방정식의 특수 해는 $[2, 0, -1, 1, 0]^T$인 것이다.</p>
+<p>이제 헤당 연립 선형방정식의 일반 해를 구해보자. 일반 해를 구하기 위해서는 ‘기약 행 사다리꼴(educed row-echelon form, RREF)를 알아야 한다. 기약 행 사다리꼴의 특징은 다음과 같다.</p>
 <ul>
 <li>행 사다리꼴이다.</li>
 <li>모든 주성분(pivot)이 1이다.</li>
 <li>주성분이 포함된 열에서는 주성분을 제외한 모든 수가 0이다.</li>
 </ul>
-<p>기약 행 사다리꼴은 선형방정식들의 일반 해를 간단하게 구할 수 있게 해주기에 매우 중요한 개념이다. 또한 우리는 앞서 ‘가우시안 소거법(Gaussian Elimination)’을 복잡한 방정식 시스템을 간단한 형태로 변환해준다고 언급한 적이 있었다. 이제 기약 행 사다리꼴의 개념을 이해했으니 가우시안 소거법의 정의를 더 정확하게 할 수 있다. <strong>가우시안 소거법은 일반 선형 방정식을 기약 행 사다리꼴로 만들어주는 알고리즘이다.</strong></p>
+<p>기약 행 사다리꼴은 선형방정식들의 일반 해를 간단하게 구할 수 있게 해주기에 매우 중요한 개념이다. 또한 우리는 앞서 ‘가우시안 소거법(Gaussian Elimination)’을 복잡한 방정식 시스템을 간단한 형태로 변환해준다고 언급한 적이 있었다. 이제 기약 행 사다리꼴의 개념을 이해했으니 가우시안 소거법의 정의를 더 정확하게 할 수 있다. <strong>가우시안 소거법은 일반 선형방정식을 기약 행 사다리꼴로 만들어주는 알고리즘이다.</strong></p>
 <p>그럼 우리가 예시로 사용하는 확장행렬을 기약 행 사다리꼴로 변환해보자.</p>
 <script type="math/tex; mode=display">\left[
 \begin{array}{ccccc|c}
@@ -577,7 +577,7 @@ x_1&+&x_3&-&x_4&=& 0\\
 1
 \end{bmatrix}
 \quad
-\lambda_1,\lambda_2 \in \mathbb R</script><h3 id="‘마이너스-1’-트릭-The-Minus-1-Trick"><a href="#‘마이너스-1’-트릭-The-Minus-1-Trick" class="headerlink" title="‘마이너스 1’ 트릭 (The Minus-1 Trick)"></a>‘마이너스 1’ 트릭 (The Minus-1 Trick)</h3><p>지금까지 우리는 연립 일차 방정식의 일반 해를 구하는 방법을 살펴보았다. 물론 수식으로 푸는 것보다는 위의 방식이 편리하지만 우리는 더 쉽게 $Ax =0$일 때의 해를 구할 수 있다. 먼저 기약 행 사다리꼴을 다시 보자.</p>
+\lambda_1,\lambda_2 \in \mathbb R</script><h3 id="‘마이너스-1’-트릭-The-Minus-1-Trick"><a href="#‘마이너스-1’-트릭-The-Minus-1-Trick" class="headerlink" title="‘마이너스 1’ 트릭 (The Minus-1 Trick)"></a>‘마이너스 1’ 트릭 (The Minus-1 Trick)</h3><p>지금까지 우리는 연립 선형방정식의 일반 해를 구하는 방법을 살펴보았다. 물론 수식으로 푸는 것보다는 위의 방식이 편리하지만 우리는 더 쉽게 $Ax =0$일 때의 해를 구할 수 있다. 먼저 기약 행 사다리꼴을 다시 보자.</p>
 <script type="math/tex; mode=display">\left[
 \begin{array}{ccccc|c}
 1 & -2 & 0 & 0 & -2 & 2\\
@@ -692,7 +692,7 @@ x_1&+&x_3&-&x_4&=& 0\\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#연립-일차-방정식-풀기"><span class="nav-number">1.</span> <span class="nav-text">연립 일차 방정식 풀기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#요소-변환-elementary-transformations"><span class="nav-number">1.1.</span> <span class="nav-text">요소 변환 (elementary transformations)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#‘마이너스-1’-트릭-The-Minus-1-Trick"><span class="nav-number">1.2.</span> <span class="nav-text">‘마이너스 1’ 트릭 (The Minus-1 Trick)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#역행렬-계산"><span class="nav-number">1.3.</span> <span class="nav-text">역행렬 계산</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#연립-선형방정식-풀기"><span class="nav-number">1.</span> <span class="nav-text">연립 선형방정식 풀기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#요소-변환-elementary-transformations"><span class="nav-number">1.1.</span> <span class="nav-text">요소 변환 (elementary transformations)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#‘마이너스-1’-트릭-The-Minus-1-Trick"><span class="nav-number">1.2.</span> <span class="nav-text">‘마이너스 1’ 트릭 (The Minus-1 Trick)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#역행렬-계산"><span class="nav-number">1.3.</span> <span class="nav-text">역행렬 계산</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
