@@ -633,6 +633,16 @@ Z2=A1W2 + B2\\
 &=& 2(x+2) \times 1 \\
 &=& 2x+4\\
 \end{matrix}</script><p>이 방식을 2층 신경망 역전파 알고리즘에 대입하여 미분식을 구할 수 있다. 미분식은 아래와 같다.</p>
+<script type="math/tex; mode=display">\begin{matrix}
+\frac{\partial \hat{y}}{\partial W1}& = & \frac{\partial \hat{y}}{\partial Z2} &\times& \frac{\partial Z2}{\partial A1} &\times& \frac{\partial A1}{\partial Z1} &\times& \frac{\partial Z1}{\partial W1}\\
+&&\\
+\frac{\partial \hat{y}}{\partial W2}& = & \frac{\partial \hat{y}}{\partial Z2} &\times& \frac{\partial Z2}{\partial W2}\\
+&&\\
+\frac{\partial \hat{y}}{\partial b1}& = & \frac{\partial \hat{y}}{\partial Z2} &\times& \frac{\partial Z2}{\partial A1} &\times& \frac{\partial A1}{\partial Z1} &\times& \frac{\partial Z1}{\partial b1}\\
+&&\\
+\frac{\partial \hat{y}}{\partial b2}& = & \frac{\partial \hat{y}}{\partial Z2} &\times& \frac{\partial Z2}{\partial b2}\\
+\end{matrix}</script><p>위의 공식을 비교해보면 각각 매개 변수에 동일하게 적용되는 미분이 있을 것이다. 이를 알고리즘으로 구현하여 좀 더 빠르게 미분값을 구할 수 있도록 고안한 것이 역전파 알고리즘이다.</p>
+<h2 id="역전파-알고리즘-구현"><a href="#역전파-알고리즘-구현" class="headerlink" title="역전파 알고리즘 구현"></a>역전파 알고리즘 구현</h2><p>이제 이전 글에서 순전파 알고리즘을 사용하여 구현했던 ‘MNIST’ 프로젝트를 역전파로 구현할 것이다. ‘MNIST’ 프로젝트에 대한 자세한 사항은 <a href="https://hyeonji-ryu.github.io/2020/04/04/Deeplearning-7/">이전 글</a>에 있으니 먼저 읽어보고 오자. 특히 줄리아에서 MNIST 데이터셋을 불러오는 방법도 이전 글에 있으니 참고하기를 바란다.</p>
 ]]></content>
       <categories>
         <category>Deep learning in Julia</category>

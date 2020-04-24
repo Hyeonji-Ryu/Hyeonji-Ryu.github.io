@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/43.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/44.png">
 <meta property="article:published_time" content="2020-04-05T13:56:01.000Z">
-<meta property="article:modified_time" content="2020-04-24T06:16:04.824Z">
+<meta property="article:modified_time" content="2020-04-24T06:47:46.214Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -246,7 +246,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-24 15:16:04" itemprop="dateModified" datetime="2020-04-24T15:16:04+09:00">2020-04-24</time>
+                <time title="Updated at: 2020-04-24 15:47:46" itemprop="dateModified" datetime="2020-04-24T15:47:46+09:00">2020-04-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -298,6 +298,16 @@ Z2=A1W2 + B2\\
 &=& 2(x+2) \times 1 \\
 &=& 2x+4\\
 \end{matrix}</script><p>이 방식을 2층 신경망 역전파 알고리즘에 대입하여 미분식을 구할 수 있다. 미분식은 아래와 같다.</p>
+<script type="math/tex; mode=display">\begin{matrix}
+\frac{\partial \hat{y}}{\partial W1}& = & \frac{\partial \hat{y}}{\partial Z2} &\times& \frac{\partial Z2}{\partial A1} &\times& \frac{\partial A1}{\partial Z1} &\times& \frac{\partial Z1}{\partial W1}\\
+&&\\
+\frac{\partial \hat{y}}{\partial W2}& = & \frac{\partial \hat{y}}{\partial Z2} &\times& \frac{\partial Z2}{\partial W2}\\
+&&\\
+\frac{\partial \hat{y}}{\partial b1}& = & \frac{\partial \hat{y}}{\partial Z2} &\times& \frac{\partial Z2}{\partial A1} &\times& \frac{\partial A1}{\partial Z1} &\times& \frac{\partial Z1}{\partial b1}\\
+&&\\
+\frac{\partial \hat{y}}{\partial b2}& = & \frac{\partial \hat{y}}{\partial Z2} &\times& \frac{\partial Z2}{\partial b2}\\
+\end{matrix}</script><p>위의 공식을 비교해보면 각각 매개 변수에 동일하게 적용되는 미분이 있을 것이다. 이를 알고리즘으로 구현하여 좀 더 빠르게 미분값을 구할 수 있도록 고안한 것이 역전파 알고리즘이다.</p>
+<h2 id="역전파-알고리즘-구현"><a href="#역전파-알고리즘-구현" class="headerlink" title="역전파 알고리즘 구현"></a>역전파 알고리즘 구현</h2><p>이제 이전 글에서 순전파 알고리즘을 사용하여 구현했던 ‘MNIST’ 프로젝트를 역전파로 구현할 것이다. ‘MNIST’ 프로젝트에 대한 자세한 사항은 <a href="https://hyeonji-ryu.github.io/2020/04/04/Deeplearning-7/">이전 글</a>에 있으니 먼저 읽어보고 오자. 특히 줄리아에서 MNIST 데이터셋을 불러오는 방법도 이전 글에 있으니 참고하기를 바란다.</p>
 
     </div>
 
@@ -387,7 +397,7 @@ Z2=A1W2 + B2\\
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#역전파란"><span class="nav-number">1.</span> <span class="nav-text">역전파란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#역전파의-원리-합성함수의-미분"><span class="nav-number">2.</span> <span class="nav-text">역전파의 원리: 합성함수의 미분</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#역전파란"><span class="nav-number">1.</span> <span class="nav-text">역전파란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#역전파의-원리-합성함수의-미분"><span class="nav-number">2.</span> <span class="nav-text">역전파의 원리: 합성함수의 미분</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#역전파-알고리즘-구현"><span class="nav-number">3.</span> <span class="nav-text">역전파 알고리즘 구현</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
