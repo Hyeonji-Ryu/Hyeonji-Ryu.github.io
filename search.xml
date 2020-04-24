@@ -626,13 +626,13 @@ Z2=A1W2 + B2\\
 \partial A1 = \partial h(Z1)\\
 \partial Z1 = \partial(XW1+B1)</script><p>위 순서는 합성함수의 미분이다. 합성함수는 변수가 두개 이상의 함수에 둘러싸인 경우를 의미한다. 예시로 아래의 사례를 보자.</p>
 <script type="math/tex; mode=display">y = t^2 , t = x+2</script><p>위의 식 $y$에서 $x$를 미분하기 위해서는 중간의 $t$를 미분해야 한다. 따라서 다음과 같은 방법으로 미분된다.</p>
-<script type="math/tex; mode=display">\frac{dy}{dx}= \frac{dy}{dt} \cdot \frac{dz}{dx}</script><p>위의 미분식에서 $dz$는 약분되기 때문에 결국 $\frac{dy}{dx}$가 남는 것이다. 이를 정리하면 다음과 같다.</p>
+<script type="math/tex; mode=display">\frac{dy}{dx}= \frac{dy}{dt} \cdot \frac{dt}{dx}</script><p>위의 미분식에서 $dt$는 약분되기 때문에 결국 $\frac{dy}{dx}$가 남는 것이다. 이를 정리하면 다음과 같다.</p>
 <script type="math/tex; mode=display">\begin{matrix}
 \frac{\partial y}{\partial x}& = & \partial (t^2) \times \partial t\\
 &=& 2t \times \partial (x+2) \\
 &=& 2(x+2) \times 1 \\
 &=& 2x+4\\
-\end{matrix}</script><p>이 방식을 역전파 알고리즘에 대입하여 미분식을 구할 수 있다.</p>
+\end{matrix}</script><p>이 방식을 2층 신경망 역전파 알고리즘에 대입하여 미분식을 구할 수 있다. 미분식은 아래와 같다.</p>
 ]]></content>
       <categories>
         <category>Deep learning in Julia</category>
