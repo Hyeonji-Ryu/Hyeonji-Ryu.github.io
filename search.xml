@@ -783,13 +783,13 @@ Z2=A1W2+B2\\
 \end{bmatrix}
 
 W=\begin{bmatrix}
-\color{OrangeRed}{w_{11}} & \color{Orange}{w_{12}} & \color{YellowOrange}{w_{13}}\\
-\color{OrangeRed}{w_{21}} & \color{Orange}{w_{22}} & \color{YellowOrange}{w_{23}}
+\color{OrangeRed}{w_{11}} & \color{Orange}{w_{12}} & \color{Salmon}{w_{13}}\\
+\color{OrangeRed}{w_{21}} & \color{Orange}{w_{22}} & \color{Salmon}{w_{23}}
 \end{bmatrix}</script><p>두 행렬을 곱할 때는 열 단위로 내적되는 것이 아니라 X가 행벡터로 변환되어 내적된다. 즉, 수식으로 표현하면 다음과 같다.</p>
 <script type="math/tex; mode=display">X \cdot W = X^TW</script><p>따라서 $X \cdot W$인 식이 결과값 $Y$라고 했을 때, $Y$는 다음과 같다.</p>
 <script type="math/tex; mode=display">Y=\begin{bmatrix}
-\color{ForestGreen}{x_{11}}\color{OrangeRed}{w_{11}}+ \color{ForestGreen}{x_{21}}\color{OrangeRed}{w_{21}}& \color{ForestGreen}{x_{11}}\color{Orange}{w_{12}} +\color{ForestGreen}{x_{21}}\color{Orange}{w_{22}}& \color{ForestGreen}{x_{11}}\color{Yellow}{w_{13}}+\color{ForestGreen}{x_{21}}\color{Yellow}{w_{23}}\\
-\color{LimeGreen}{x_{12}}\color{OrangeRed}{w_{11}}+ \color{LimeGreen}{x_{22}}\color{OrangeRed}{w_{21}}& \color{LimeGreen}{x_{12}}\color{Orange}{w_{12}}+ \color{LimeGreen}{x_{22}}\color{Orange}{w_{22}}& \color{LimeGreen}{x_{12}}\color{Yellow}{w_{13}}+\color{LimeGreen}{x_{22}}\color{Yellow}{w_{23}}
+\color{ForestGreen}{x_{11}}\color{OrangeRed}{w_{11}}+ \color{ForestGreen}{x_{21}}\color{OrangeRed}{w_{21}}& \color{ForestGreen}{x_{11}}\color{Orange}{w_{12}} +\color{ForestGreen}{x_{21}}\color{Orange}{w_{22}}& \color{ForestGreen}{x_{11}}\color{Salmon}{w_{13}}+\color{ForestGreen}{x_{21}}\color{Salmon}{w_{23}}\\
+\color{LimeGreen}{x_{12}}\color{OrangeRed}{w_{11}}+ \color{LimeGreen}{x_{22}}\color{OrangeRed}{w_{21}}& \color{LimeGreen}{x_{12}}\color{Orange}{w_{12}}+ \color{LimeGreen}{x_{22}}\color{Orange}{w_{22}}& \color{LimeGreen}{x_{12}}\color{Salmon}{w_{13}}+\color{LimeGreen}{x_{22}}\color{Salmon}{w_{23}}
 \end{bmatrix}</script><p>위의 행렬을 벡터의 곱으로 표현해보자.</p>
 <script type="math/tex; mode=display">Y=\begin{bmatrix}
 X_1W_1 & X_1W_2 & X_1W_3\\
