@@ -772,18 +772,44 @@ Z2=A1W2+B2\\
 <script type="math/tex; mode=display">\quad \quad \quad =-\frac{Y_k}{Z_k}Z_k(1-Z_k)-\sum_{n \ne k}\frac{Y_n}{Z_n}(-Z_kZ_n)</script><script type="math/tex; mode=display">=-Y_k(1-Z_k)-\sum_{n \ne k}-Y_nZ_k</script><script type="math/tex; mode=display">=-Y_k+Y_kZ_k+\sum_{n \ne k}Y_nZ_k</script><script type="math/tex; mode=display">=-Y_k+Z_k\sum_{n}yY_n</script><p>여기서 $\sum_{n}Y_n$는 기존 소프트맥스 확률의 합이기 때문에 1이 된다.</p>
 <script type="math/tex; mode=display">=-Y_k+Z_k \times 1</script><script type="math/tex; mode=display">=Z_k-Y_k</script><p>결론적으로 ‘Softmax with Loss’는 위와 같은 간단한 수식이다. 어차피 우리는 결론인 위의 간단한 수식만 사용할 것이기 때문에 만약 위의 수식들이 어렵다면 결론만 봐도 무방하다.</p>
 <h3 id="Dense-Layer"><a href="#Dense-Layer" class="headerlink" title="Dense Layer"></a>Dense Layer</h3><p>‘Dense Layer’는 들어온 입력값에 가중치를 곱하고 편향을 더하는 방정식이다. 수식으로 쓰면 아래와 같다.</p>
-<script type="math/tex; mode=display">Z=XW+B</script><p>위 수식을 미분해보자. 참고로 Dense Layer에서 사용되는 모든 변수들은 행렬을 기본으로 하고 있다. 즉, $XW$은 행렬곱이다. 그렇다면 행렬곱은 어떻게 미분되는가?<br>기본적으로 신경망에서 사용되는 헹렬은 벡터 단위이다. 즉, 행렬도 벡터가 여러 개 합쳐져 있는 형태로 바라본다는 것이다. 따라서 $XW$의 미분은 각각의 벡터의 미분이라고 볼 수 있다. 이는 각 1차식의 편미분이며, 그 결과를 ‘자코비안 행렬(Jacobian Matrix)’이라고 한다. 자코비안 행렬은 벡터함수를 벡터변수로 미분해서 생기는 행렬의 전치행렬이다.</p>
+<script type="math/tex; mode=display">Z=XW+B</script><p>위 수식을 미분해보자. 참고로 Dense Layer에서 사용되는 모든 변수들은 행렬을 기본으로 하고 있다. 즉, $XW$은 행렬곱이다. 그렇다면 행렬곱은 어떻게 미분되는가?<br>기본적으로 신경망에서 사용되는 헹렬은 벡터 단위이다. 즉, 행렬도 벡터가 여러 개 합쳐져 있는 형태로 바라본다는 것이다.</p>
 <p>미분을 이해하기 위해서 간단하게 예시를 보자.</p>
-<p>입력값인 행렬 $X$와 가중치인 행렬 $W$를 다음과 같이 설정한다.</p>
-<script type="math/tex; mode=display">X=\begin{bmatrix}
-x_11 & x_12\\
-x_21 & x_22
+<p>입력값인 행렬 $X$와 가중치인 행렬 $W$를 다음과 같이 설정한다. 벡터는 열벡터 형태가 기본이기 때문에 아래의 행렬은 벡터 별 색깔을 다르게 설정하였다.</p>
+<script type="math/tex; mode=display">\begin{matrix}
+\quad \quad X_1 & X_2 &&&& W_1 & W_2 &W_3
+\end{matrix}</script><script type="math/tex; mode=display">X=\begin{bmatrix}
+\color{ForestGreen}{x_{11}} &\color{LimeGreen}{x_{12}}\\
+\color{ForestGreen}{x_{21}} & \color{LimeGreen}{x_{22}}
 \end{bmatrix}
 
 W=\begin{bmatrix}
-x_11 & x_12\\
-x_21 & x_22
-\end{bmatrix}</script><h3 id="Sigmoid-Layer"><a href="#Sigmoid-Layer" class="headerlink" title="Sigmoid Layer"></a>Sigmoid Layer</h3><p>시그모이드 함수의 미분은 간단하다. 아래의 식을 확인하자.</p>
+\color{OrangeRed}{w_{11}} & \color{Orange}{w_{12}} & \color{Yellow}{w_{13}}\\
+\color{OrangeRed}{w_{21}} & \color{Orange}{w_{22}} & \color{Yellow}{w_{23}}
+\end{bmatrix}</script><p>두 행렬을 곱할 때는 열 단위로 내적되는 것이 아니라 X가 행벡터로 변환되어 내적된다. 즉, 수식으로 표현하면 다음과 같다.</p>
+<script type="math/tex; mode=display">X \cdot W = X^TW</script><p>따라서 $X \cdot W$인 식이 결과값 $Y$라고 했을 때, $Y$는 다음과 같다.</p>
+<script type="math/tex; mode=display">Y=\begin{bmatrix}
+\color{ForestGreen}{x_{11}}\color{OrangeRed}{w_{11}}+ \color{ForestGreen}{x_{21}}\color{OrangeRed}{w_{21}}& \color{ForestGreen}{x_{11}}\color{Orange}{w_{12}} +\color{ForestGreen}{x_{21}}\color{Orange}{w_{22}}& \color{ForestGreen}{x_{11}}\color{Yellow}{w_{13}}+\color{ForestGreen}{x_{21}}\color{Yellow}{w_{23}}\\
+\color{LimeGreen}{x_{12}}\color{OrangeRed}{w_{11}}+ \color{LimeGreen}{x_{22}}\color{OrangeRed}{w_{21}}& \color{LimeGreen}{x_{12}}\color{Orange}{w_{12}}+ \color{LimeGreen}{x_{22}}\color{Orange}{w_{22}}& \color{LimeGreen}{x_{12}}\color{Yellow}{w_{13}}+\color{LimeGreen}{x_{22}}\color{Yellow}{w_{23}}
+\end{bmatrix}</script><p>위의 행렬을 벡터의 곱으로 표현해보자.</p>
+<script type="math/tex; mode=display">Y=\begin{bmatrix}
+X_1W_1 & X_1W_2 & X_1W_3\\
+X_2W_1 & X_2W_2 & X_2W_3\\
+\end{bmatrix}</script><p>위 식은 행렬 $W$가 행렬 $X^T$와 곱한 형태라는 것을 증명한다. 위의 행렬을 $W_1~ or~ W_2~ or~ W_3$로 각각 미분해도 결과는 동일하다.</p>
+<script type="math/tex; mode=display">\frac{\partial Y}{\partial W} =
+\begin{bmatrix}
+X_1\\
+X_2\\
+\end{bmatrix}</script><p>이를 행렬로 풀면 다음과 같다.</p>
+<script type="math/tex; mode=display">\frac{\partial Y}{\partial W} =
+\begin{bmatrix}
+\color{ForestGreen}{x_{11}} &\color{ForestGreen} {x_{21}}\\
+\color{LimeGreen}{x_{12}} & \color{LimeGreen}{x_{22}}\\
+\end{bmatrix}
+=
+X^T</script><p>위와 같은 원리로 다음과 같은 결론을 낼 수 있다.</p>
+<script type="math/tex; mode=display">\frac{\partial Y}{\partial W} = X^T</script><script type="math/tex; mode=display">\frac{\partial Y}{\partial X} = W^T</script><p>우리는 역전파 알고리즘에서 입력값과 가중치의 미분값으로 위의 식을 사용할 것이다.</p>
+<p>편향의 경우, 신경망 계산 시에 모든 원소에 더해지기 때문에 미분값을 열 기준으로 전부 더하면 된다.</p>
+<h3 id="Sigmoid-Layer"><a href="#Sigmoid-Layer" class="headerlink" title="Sigmoid Layer"></a>Sigmoid Layer</h3><p>시그모이드 함수의 미분은 간단하다. 아래의 식을 확인하자.</p>
 <script type="math/tex; mode=display">\frac{\partial h(Z_k)}{\partial Z_k} = \frac{0\times(1+e^{-Z_k})-1\times (0+e^{(-Z_k)})(-1) }{(1+e^{-Z_k})^2}</script><script type="math/tex; mode=display">\quad =\frac{e^{(-Z_k)}}{(1+e^{-Z_k})^2}= \frac{1+e^{(-Z_k)}-1}{(1+e^{-Z_k})^2}</script><script type="math/tex; mode=display">=\frac{(1+e^{(-Z_k)})}{(1+e^{-Z_k})^2}-\frac{1}{(1+e^{-Z_k})^2}</script><script type="math/tex; mode=display">= \frac{1}{(1+e^{-Z_k})}-\frac{1}{(1+e^{-Z_k})^2}</script><script type="math/tex; mode=display">\quad = \frac{1}{(1+e^{-Z_k})}\Big(1-\frac{1}{(1+e^{-Z_k})}\Big)</script><script type="math/tex; mode=display">= h(Z_k)(1-h(Z_k))</script><p>시그모이드 함수를 미분하여 정리하면 $h(Z_k)(1-h(Z_k))$ 이 도출된다. 따라서 역전파 알고리즘에 사용되는 시그모이드 함수는 위의 수식을 사용하여 구현될 것이다.</p>
 <h3 id="ReLU-Layer"><a href="#ReLU-Layer" class="headerlink" title="ReLU Layer"></a>ReLU Layer</h3><p>ReLU 함수는 입력값 $x$가 음수인 경우만 0으로 변경하고 그대로 출력한다. 이를 수식으로 표현하면 다음과 같다.</p>
 <script type="math/tex; mode=display">
