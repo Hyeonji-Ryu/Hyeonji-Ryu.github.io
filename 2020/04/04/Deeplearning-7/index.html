@@ -58,7 +58,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/46.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/45.png">
 <meta property="article:published_time" content="2020-04-03T17:22:48.000Z">
-<meta property="article:modified_time" content="2020-05-01T06:34:02.443Z">
+<meta property="article:modified_time" content="2020-05-01T09:02:59.070Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -248,7 +248,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-05-01 15:34:02" itemprop="dateModified" datetime="2020-05-01T15:34:02+09:00">2020-05-01</time>
+                <time title="Updated at: 2020-05-01 18:02:59" itemprop="dateModified" datetime="2020-05-01T18:02:59+09:00">2020-05-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -322,7 +322,7 @@
 <p>위의 <code>TwoLayerNet_numerical_gradient()</code>는 가중치와 편향을 모두 편미분하여 <code>grads</code>에 값을 저장한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> SGD(params,grads)</span><br><span class="line">    <span class="keyword">for</span> key <span class="keyword">in</span> keys(params)</span><br><span class="line">        params[key] -= learning_rate * grads[key]</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">return</span> params</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p><code>SGD()</code>는 ‘확률적 경사하강법’으로 기존 가중치와 편향에서 ‘학습률 $\times$ 편미분값’을 빼서 갱신한다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> evaluate(x, t)</span><br><span class="line">    temp = (sum((argmax.(eachrow(predict(test_x))).-<span class="number">1</span>) .== test_y)/size(test_x)[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> (temp * <span class="number">100</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> evaluate(test_x,test_y)</span><br><span class="line">    temp = (sum((argmax.(eachrow(predict(test_x))).-<span class="number">1</span>) .== test_y)/size(test_x)[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">return</span> (temp * <span class="number">100</span>)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>마지막으로 정의할 함수 <code>evaluate()</code>는 정확도를 계산한다. 정확도란 실제 실험데이터들을 사용하여 해당 신경망 모델이 얼마나 맞추는지를 확률로 반환한다. 이후 신경망을 직접 학습시키고 정확도를 확인할 것이다.</p>
 <p>이제 학습을 진행하기 전에 배치 사이즈와 학습률, 반복 횟수를 지정한다. 보통 학습률은 0.01이나 0.1을 사용한다. 또한 배치 사이즈는 입력 데이터의 형태에 따라 최적화된 크기가 다르지만 이번에는 임의로 배치사이즈를 100으로 지정할 것이다. 그리고 반복 횟수는 100개의 배치데이터 기준으로 1에폭(epoch)인 600을 지정하였다. 에폭이라는 기준에 대해 자세히 알고 싶다면 아래 Note를 확인해보자.</p>
 <p><strong>Note</strong><br>에폭이란?<br>에폭(epoch)은 훈련데이터 전체의 개수를 의미한다. MNIST 데이터를 예시로 본다면 훈련데이터는 60000개이다. 배치 사이즈가 100인 경우 한번에 100개의 훈련데이터가 사용되므로 모델에 1에폭을 훈련시키려면 600번을 반복해야 한다.</p>
