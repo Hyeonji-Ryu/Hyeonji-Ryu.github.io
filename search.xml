@@ -1016,7 +1016,7 @@ x & \text{(x>0) $$}\\
       </tags>
   </entry>
   <entry>
-    <title>5. 인공신경망 구현 - 수학식 풀이</title>
+    <title>5. 2층 인공신경망 구현 - 수학식 풀이</title>
     <url>/2020/04/01/Deeplearning-5/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
