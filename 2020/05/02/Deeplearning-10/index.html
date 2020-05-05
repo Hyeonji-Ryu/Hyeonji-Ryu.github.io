@@ -54,8 +54,9 @@
 <meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/52.png">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/53.png">
 <meta property="article:published_time" content="2020-05-02T05:50:52.000Z">
-<meta property="article:modified_time" content="2020-05-05T13:26:49.206Z">
+<meta property="article:modified_time" content="2020-05-05T14:39:00.857Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -245,7 +246,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-05-05 22:26:49" itemprop="dateModified" datetime="2020-05-05T22:26:49+09:00">2020-05-05</time>
+                <time title="Updated at: 2020-05-05 23:39:00" itemprop="dateModified" datetime="2020-05-05T23:39:00+09:00">2020-05-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -313,6 +314,7 @@ x & \text{(x>0) $$}\\
 <p><img src="\../images/52.png" alt="순전파 정확도"></p>
 <p>정확도를 비교해보면 ReLU 함수가 더 높은 것을 확인할 수 있다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x3 = range(<span class="number">1</span>,length(relu_for_acc),step=<span class="number">1</span>)</span><br><span class="line">data3 = [relu_for_loss sig_for_loss]</span><br><span class="line">labels = [<span class="string">"ReLU_loss"</span> <span class="string">"sigmoid_loss"</span>]</span><br><span class="line">markercolors = [:red :blue]</span><br><span class="line"></span><br><span class="line">for_acc=plot(</span><br><span class="line">    x3,</span><br><span class="line">    data3,</span><br><span class="line">    label = labels,</span><br><span class="line">    color = markercolors,</span><br><span class="line">    markersize = <span class="number">2</span>,</span><br><span class="line">    title = <span class="string">"Loss in Forward propagation"</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="\../images/53.png" alt="순전파 손실함수"></p>
 <p>손실함수 또한 ReLU가 더 낮다. 즉 순전파에서 ReLU의 완벽한 승리이다.</p>
 <h3 id="비교-in-역전파-알고리즘"><a href="#비교-in-역전파-알고리즘" class="headerlink" title="비교 in 역전파 알고리즘"></a>비교 in 역전파 알고리즘</h3><p>지금부터는 이전 글에서 만들었던 역전파 알고리즘을 사용하여 신경망 모델을 학습시킬 것이다. 역전파 알고리즘 구현 방법에 대해서 알고 싶다면 <a href="https://hyeonji-ryu.github.io/2020/04/20/Deeplearning-9/">인공신경망 구현 - 역전파 알고리즘</a>에서 살펴볼 수 있다. 또한 역전파의 경우 개념이 추상적이라서 원리를 더 정확히 이해하고 싶다면 <a href="https://hyeonji-ryu.github.io/2020/04/15/Deeplearning-8/">인공신경망 구현 - 역전파 설명</a>을 읽어보기를 추천한다.</p>
 <p>순전파와 마찬가지로 두 활성화 함수를 비교하기 위해서는 신경망 모델 생성에 필요한 함수와 구조체들을 정의해야 한다. <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia/tree/master/Deep_Learning" target="_blank" rel="noopener">깃허브 페이지</a>에 들어가면 코드를 확인할 수 있다. 참고로 순전파 알고리즘을 작동시키기 위해서는 <code>MNSIT_data.jl</code>과 <code>backward_propagation.jl</code>에 있는 코드를 정의해야 한다.</p>
