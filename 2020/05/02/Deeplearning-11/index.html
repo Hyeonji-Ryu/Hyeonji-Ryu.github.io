@@ -54,7 +54,7 @@
 <meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-05-02T10:51:05.000Z">
-<meta property="article:modified_time" content="2020-05-05T17:48:32.590Z">
+<meta property="article:modified_time" content="2020-05-09T16:51:45.247Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -243,7 +243,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-05-06 02:48:32" itemprop="dateModified" datetime="2020-05-06T02:48:32+09:00">2020-05-06</time>
+                <time title="Updated at: 2020-05-10 01:51:45" itemprop="dateModified" datetime="2020-05-10T01:51:45+09:00">2020-05-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,8 +270,18 @@
       
         <p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="인공신경망-최적화란"><a href="#인공신경망-최적화란" class="headerlink" title="인공신경망 최적화란"></a>인공신경망 최적화란</h2><p>인공신경망은 학습을 통해서 적절한 매개 변수를 찾는다.</p>
-
+<h2 id="인공신경망-최적화란"><a href="#인공신경망-최적화란" class="headerlink" title="인공신경망 최적화란"></a>인공신경망 최적화란</h2><p>무작위값으로 가중치와 편향이 주어진 인공신경망은 바보이다. 따라서 신경망은 학습을 통해서 데이터에 적절한 가중치와 편향 값을 찾아야 한다. <strong>인공신경망 최적화란 데이터에 따라 더 적절한 학습 방법을 찾는 과정을 의미한다.</strong> 즉, 적절한 매개 변수 값을 찾기 위한 학습을 좀 더 효율적으로 하고 싶은 사람들이 만든 기술이라는 것이다. 이번 글부터는 최적화에 대해서 다룰 것이며, 어떤 부분들을 최적화할 수 있는지 알아보자.</p>
+<p>신경망 학습을 최적화하기 위해서는 몇 가지의 설정이 필요하다. 필요한 설정은 다음과 같다.</p>
+<ul>
+<li>미분을 어떻게 구할 것인가? (순전파 또는 역전파)</li>
+<li>매개 변수 갱신을 어떻게 할 것인가? (optimizers)</li>
+<li>가중치의 초기값을 어떻게 설정할 것인가? (std, Xavier, He)</li>
+<li>오버피팅을 어떻게 막을 것인가? (가중치 감소 또는 Dropout)</li>
+<li>배치 정규화를 사용할 것인가?</li>
+</ul>
+<p>위의 질문 중에서 첫 번째는 이전 글들에서 직접 확인하였다. 따라서 첫 번째 질문에 대한 답변은 <a href="https://hyeonji-ryu.github.io/2020/04/04/Deeplearning-7/">순전파 알고리즘</a>과 <a href="https://hyeonji-ryu.github.io/2020/04/20/Deeplearning-9/">역전파 알고리즘</a>으로 대신할 것이다.</p>
+<p>다음 질문은 매개 변수 갱신 방법에 대한 논의이며, 이번 글에서 우리가 다룰 주제이다.</p>
+<h2 id="Optimizers"><a href="#Optimizers" class="headerlink" title="Optimizers"></a>Optimizers</h2>
     </div>
 
     
@@ -357,7 +367,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#인공신경망-최적화란"><span class="nav-number">1.</span> <span class="nav-text">인공신경망 최적화란</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#인공신경망-최적화란"><span class="nav-number">1.</span> <span class="nav-text">인공신경망 최적화란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Optimizers"><span class="nav-number">2.</span> <span class="nav-text">Optimizers</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
