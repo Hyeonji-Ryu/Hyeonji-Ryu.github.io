@@ -152,8 +152,12 @@ x & \text{(x>0) $$}\\
         <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
         <tag>줄리아</tag>
+        <tag>시그모이드</tag>
+        <tag>렐루</tag>
+        <tag>ReLU</tag>
         <tag>신경망</tag>
-        <tag>역전파</tag>
+        <tag>Sigmoid</tag>
+        <tag>활성화 함수</tag>
       </tags>
   </entry>
   <entry>
