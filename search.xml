@@ -60,7 +60,13 @@
         <tag>Deeplearning</tag>
         <tag>줄리아</tag>
         <tag>신경망</tag>
-        <tag>역전파</tag>
+        <tag>optimizer</tag>
+        <tag>옵티마이저</tag>
+        <tag>Adam</tag>
+        <tag>AdaGrad</tag>
+        <tag>SGD</tag>
+        <tag>Momentum</tag>
+        <tag>RMSProp</tag>
       </tags>
   </entry>
   <entry>
