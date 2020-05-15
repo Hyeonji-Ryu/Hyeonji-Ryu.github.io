@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>12. 가중치 초기값 설정</title>
+    <title>12. 인공신경망 최적화 - 가중치 초기값</title>
     <url>/2020/05/15/Deeplearning-12/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
@@ -1805,6 +1805,8 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
 <li><p>ReLU vs. Sigmoid 성능 비교</p>
 </li>
 <li><p>인공신경망 최적화 - Optimizer</p>
+</li>
+<li><p>인공신경망 최적화 - 가중치 초기값</p>
 </li>
 </ol>
 <h2 id="줄리아-사용법"><a href="#줄리아-사용법" class="headerlink" title="줄리아 사용법"></a>줄리아 사용법</h2><p>위 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)를 사용한다. 그렇다면 왜 파이썬이 아니라 줄리아로 구현하는가? 그 이유는 간단하다. 머신러닝을 구현하는 데 있어 줄리아는 오로지 내장 함수만을 사용하여 모든 구현이 가능하다. 만약 줄리아 언어 자체를 배우고 싶다면 블로그 내에 <a href="https://hyeonji-ryu.github.io/categories/Think-Julia/">“Think Julia”</a>을 정리한 시리즈가 있다.</p>
