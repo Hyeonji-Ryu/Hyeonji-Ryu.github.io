@@ -39,7 +39,7 @@
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">params = making_network(W,b,<span class="number">784</span>,hidden_size,<span class="number">10</span>,<span class="string">"He"</span>)</span><br></pre></td></tr></table></figure>
 <p><code>making_network()</code>는 매개 변수들의 초기값을 담은 딕셔너리를 도출한다. 이를 네트워크로 사용하고 싶은 이름에 할당하자. 여기서 할당되는 딕셔너리는 학습 후에 해당 신경망의 매개 변수들을 담고 있는 ‘핵심’이 될 것이다. 새롭게 튜닝된 <code>making_network()</code>는 어떤 구조의 신경망이라도 가중치와 편향 초기값을 생성하기에 이전의 버전보다 훨씬 사용하기 편리하다.</p>
 <h2 id="가중치-초기값-별-결과"><a href="#가중치-초기값-별-결과" class="headerlink" title="가중치 초기값 별 결과"></a>가중치 초기값 별 결과</h2><p>위에서 설명한 <code>making_network()</code>을 통해서 각 초기값들을 신경망에 적용해보고자 한다. 이번에 학습시킬 신경망의 구조는 다음과 같다.</p>
-<p><img src="/images/58.png" alt="4층 신경망"></p>
+<p><img src="/images/.png" alt="4층 신경망"></p>
 <ul>
 <li>4층 구조</li>
 <li>MNIST 데이터셋</li>
