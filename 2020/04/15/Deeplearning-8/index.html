@@ -57,7 +57,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/44.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/51.png">
 <meta property="article:published_time" content="2020-04-15T13:56:01.000Z">
-<meta property="article:modified_time" content="2020-06-08T03:49:20.952Z">
+<meta property="article:modified_time" content="2020-06-08T03:56:50.790Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -247,7 +247,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-06-08 12:49:20" itemprop="dateModified" datetime="2020-06-08T12:49:20+09:00">2020-06-08</time>
+                <time title="Updated at: 2020-06-08 12:56:50" itemprop="dateModified" datetime="2020-06-08T12:56:50+09:00">2020-06-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -325,10 +325,10 @@ Z2=A1W2+B2\\
 <p>소프트맥스 함수는 미분될 때 동일한 변수와 동일하지 않은 변수를 모두 미분해야 한다. 그 이유는 손실 함수에서 $n$개의 변수를 미분하는데 $n$에는 편미분 변수인 $k$도 들어가지만 편미분 변수가 아닌 $j$도 포함되기 때문이다.</p>
 <p>위의 미분식들을 활용하여 역전파 알고리즘에 사용되는 함수를 정리해보자.</p>
 <script type="math/tex; mode=display">\frac{\partial L}{\partial Z_k} = \frac{\partial L}{\partial \sigma(Z_n)}\frac{\partial\sigma(Z_n)}{\partial Z_k}</script><script type="math/tex; mode=display">\quad \quad \ \ =-\sum_{n}\frac{Y_n}{Z_n}\frac{\partial\sigma(Z_n)}{\partial Z_k}</script><p>$\frac{\partial\sigma(Z_n)}{\partial Z_k}$은 $k$에 대한 미분과 $j$에 대한 미분을 모두 포함한다. 따라서 분리하여 미분을 진행한다.</p>
-<script type="math/tex; mode=display">\quad \quad \quad =-\frac{Y_k}{Z_k}Z_k(1-Z_k)-\sum_{n \ne k}\frac{Y_n}{Z_n}(-Z_kZ_n)</script><script type="math/tex; mode=display">=-Y_k(1-Z_k)-\sum_{n \ne k}-Y_nZ_k</script><script type="math/tex; mode=display">=-Y_k+Y_kZ_k+\sum_{n \ne k}Y_nZ_k</script><script type="math/tex; mode=display">=-Y_k+Z_k\sum_{n}yY_n</script><p>여기서 $\sum_{n}Y_n$는 기존 소프트맥스 확률의 합이기 때문에 1이 된다.</p>
+<script type="math/tex; mode=display">\quad \quad \quad =-\frac{Y_k}{Z_k}Z_k(1-Z_k)-\sum_{n \ne k}\frac{Y_n}{Z_n}(-Z_kZ_n)</script><script type="math/tex; mode=display">=-Y_k(1-Z_k)-\sum_{n \ne k}-Y_nZ_k</script><script type="math/tex; mode=display">=-Y_k+Y_kZ_k+\sum_{n \ne k}Y_nZ_k</script><script type="math/tex; mode=display">=-Y_k+Z_k\sum_{n}Y_n</script><p>여기서 $\sum_{n}Y_n$는 기존 소프트맥스 확률의 합이기 때문에 1이 된다.</p>
 <script type="math/tex; mode=display">=-Y_k+Z_k \times 1</script><script type="math/tex; mode=display">=Z_k-Y_k</script><p>결론적으로 ‘Softmax with Loss’는 위와 같은 간단한 수식이다. 어차피 우리는 결론인 위의 간단한 수식만 사용할 것이기 때문에 만약 위의 수식들이 어렵다면 결론만 봐도 무방하다.</p>
 <h3 id="Dense-Layer"><a href="#Dense-Layer" class="headerlink" title="Dense Layer"></a>Dense Layer</h3><p>‘Dense Layer’는 들어온 입력값에 가중치를 곱하고 편향을 더하는 방정식이다. 수식으로 쓰면 아래와 같다.</p>
-<script type="math/tex; mode=display">Z=XW+B</script><p>위 수식을 미분해보자. 참고로 Dense Layer에서 사용되는 모든 변수들은 행렬을 기본으로 하고 있다. 즉, $XW$은 행렬곱이다. 그렇다면 행렬곱은 어떻게 미분되는가?<br>기본적으로 신경망에서 사용되는 헹렬은 벡터 단위이다. 즉, 행렬도 벡터가 여러 개 합쳐져 있는 형태로 바라본다는 것이다.</p>
+<script type="math/tex; mode=display">Z=XW+B</script><p>위 수식을 미분해보자. 참고로 Dense Layer에서 사용되는 모든 변수들은 행렬을 기본으로 하고 있다. 즉, $XW$은 행렬곱이다. 그렇다면 행렬곱은 어떻게 미분되는가?<br>기본적으로 신경망에서 사용되는 행렬은 벡터 단위이다. 즉, 행렬도 벡터가 여러 개 합쳐져 있는 형태로 바라본다는 것이다.</p>
 <p>미분을 이해하기 위해서 간단하게 예시를 보자.</p>
 <p>입력값인 행렬 $X$와 가중치인 행렬 $W$를 다음과 같이 설정한다. 벡터는 열벡터 형태가 기본이기 때문에 아래의 행렬은 벡터 별 색깔을 다르게 설정하였다.</p>
 <script type="math/tex; mode=display">\begin{matrix}
