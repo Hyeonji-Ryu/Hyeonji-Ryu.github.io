@@ -122,8 +122,21 @@
 </li>
 <li><p>$(\mathbb{R}$ \ {0}, $\cdot)$은 아벨군이다. $\rightarrow$ 0을 제외한 실수는 아벨군의 모든 요건을 충족한다.</p>
 </li>
-<li><p>$(\mathbb{R}^n, +),(\mathbb{Z}^n, +),n \in \mathbb(R)$은 $+$가 성분별로 정의된 경우에 아벨군이다.<br>예를 들어, </p>
+<li><p>$(\mathbb{R}^n, +),(\mathbb{Z}^n, +),n \in \mathbb{N}$은 $+$가 성분별로 정의된 경우에 아벨군이다.</p>
 </li>
+<li><p>$(\mathbb{R}^{m \times n},+)$, $m \times n$ 행렬은 성분별로 더했을 때 아벨군이다.</p>
+</li>
+<li><p>$(\mathbb{R}^{n\times n}, \cdot)$인 경우를 예시를 통해 확인하자.<br>$n \times n$ 행렬의 곱은 다음 식으로 정의된다.</p>
+<script type="math/tex; mode=display">c_{ij} = \sum_{l=1}^n a_{il}b_{lj}, \qquad i = 1,\dots,m,\quad j = 1,\dots,k.</script><p>위 식에 따르면, $n \times n$ 행렬의 곱은 $n \times n$ 행렬의 형태이기에 곱셈에 닫혀 있고 결합 법칙도 성립한다. 또한 항등 행렬인 $I_n$ 또한 곱셈 결과가 $n \times n$ 행렬을 만족하기에 성립한다. 마지막으로 해당 행렬이 가역행렬이라서 역행렬이 존재한다면, 그 역행렬 또한 $n \times n$ 행렬형태이다. 위 조건을 모두 만족하기에 $(\mathbb{R}^{n\times n}, \cdot)$는 군이라고 할 수 있으며, 이를 ‘일반선형군(general linear group)’이라고 부른다.</p>
+</li>
+</ul>
+<p>일반선형군(general linear group)은 가역행렬 A가 $\mathbb{R}^{n \times n}$에 포함될 때, 행렬곱셈에 대한 군을 의미하며, 기호는 $GL(n,\mathbb{R})$을 사용한다. 행렬곱은 교환법칙이 성립하지 않기 때문에 일반셩형군은 아벨군이 아니라는 점을 기억하자.</p>
+<h3 id="벡터-공간-Vector-spaces"><a href="#벡터-공간-Vector-spaces" class="headerlink" title="벡터 공간 (Vector spaces)"></a>벡터 공간 (Vector spaces)</h3><p>이전까지는 집합 $\mathcal G$와 $\mathcal G$ 요소끼리의 내부 연산에 대해서 알아보았다. 지금부터는 집합 ‘내부 연산자(inner operation)’와 집합끼리의 ‘외부 연산자(outer operation)’ 모두 살펴볼 것이다.</p>
+<p>먼저 벡터 $x \in \mathcal G$가 내부 연산자로 $+$이 사용하고, 외부 연산자로 $\cdot$을 사용하여 $\lambda \in \mathbb{R}$과 곱한다고 가정하자. 이떄 우리는 내부 연산을 덧셈의 형태로, 또 외부 연산을 스케일링(스칼라 곱)으로 생각할 수 있다. 각 연산들은 서로의 결과에 어떠한 영향도 주지않는다는 점을 기억하자.</p>
+<p>실제 값의 벡터 공간 $V = (V,+,\cdot)$은 집합 $V$와 두 연산자를 의미한다.</p>
+<script type="math/tex; mode=display">+: V \times V \rightarrow V</script><script type="math/tex; mode=display">\cdot : \mathbb{R} \times V \rightarrow V</script><ul>
+<li>$(V,+)$은 아벨군이다.</li>
+<li>분배법칙<br>$\forall \lambda \in \mathbb{R}, x,y \in V: \lambda\cdot(x+y) = \lambda\cdot x + \lambda\cdot y$</li>
 </ul>
 ]]></content>
       <categories>
