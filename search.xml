@@ -9,6 +9,13 @@
 <h2 id="CNN-Convolutional-Neural-Network-이란"><a href="#CNN-Convolutional-Neural-Network-이란" class="headerlink" title="CNN (Convolutional Neural Network) 이란"></a>CNN (Convolutional Neural Network) 이란</h2><p>‘합성곱 신경망(CNN, Convolutional Neural Network)’은 3차원의 이미지 데이터를 그대로 입력받아 학습하는 신경망이다. 완전연결신경망과 다른 점은 ‘합성곱(convolution)’과 ‘풀링(pooling)’이라는 레이어가 추가된다는 것이다. 따라서 CNN을 이해하기 위해서는 두 레이어의 원리를 알아야 한다.</p>
 <h2 id="합성곱-Convolution"><a href="#합성곱-Convolution" class="headerlink" title="합성곱 (Convolution)"></a>합성곱 (Convolution)</h2><p>합성곱은 하나의 이미지를 여러 조각으로 나누어 각 조각의 특성을 전달하는 방식이다. 아래의 그림은 합성곱의 원리를 보여준다.</p>
 <p><img src="/images/65.png" alt="합성곱"></p>
+<p>먼저 그림에서 <code>Input_data</code>는 입력된 이미지이고, <code>Filter_1</code> 와 <code>Filter_2</code>는 가중치이다. 합성곱층에서는 가중치 크기에 맞게 조각난 입력데이터들을 곱하여 합한 후 결과값 요소로 반환한다. 위의 예시는 다음과 같은 셋팅이다.</p>
+<ul>
+<li><p>입력데이터: $5 \times 5 \times 1 \times 1$ 4차원 데이터이다.<br>기본적으로 이미지 데이터는 3차원으로 구성되어 있지만, 보통 베치데이터로 훈련하기 때문에 4차원이라고 보는 것이 더 좋다. 줄리아에서 행렬의 순서는 <strong>행 $\times$ 열 $\times$ 색(차원) $\times$ 개수</strong> 이다. 여기서 <strong>색</strong>은 흑백인 경우 <code>1</code>, 컬러인 경우 RGB로 나뉘어 <code>3</code>이 된다.</p>
+</li>
+<li><p>가중치(필터): $3 \times 3 \times 1 \times 2$ 4차원 데이터이다.<br>가중치는 입력데이터와 곱해진다. 가중치의 행렬 순서는 <strong>행 $\times$ 열 $\times$ 색(차원) $\times$ 개수</strong>으로 입력데이터와 동일하다. 참고로 가중치의 개수는 결과값의 차원이 된다.</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>Deep learning in Julia</category>
