@@ -27,7 +27,8 @@
 <li>합성곱 결과 형상: $3 \times 3 \times 2 \times 1$</li>
 </ul>
 <p>합성곱 결과의 배열 순서는 <strong>행 $\times$ 열 $\times$ 가중치 개수 $\times$ 입력값 개수</strong>이다. 즉, 가중치의 개수가 결과값의 차원이 되는 것이다.</p>
-<h2 id="풀링-pooling"><a href="#풀링-pooling" class="headerlink" title="풀링 (pooling)"></a>풀링 (pooling)</h2>]]></content>
+<h2 id="풀링-pooling"><a href="#풀링-pooling" class="headerlink" title="풀링 (pooling)"></a>풀링 (pooling)</h2><p>풀링은 데이터의 크기를 줄여주는 방법이다. 데이터가 큰 경우 파라미터가 기하급수적으로 증가하여 연산 시간이 많이 소요된다. 이를 방지하고자 중간에 풀링 계층을 넣어 데이터의 크기를 줄여준다. 풀링은 크게 ‘최대값 풀링(Maxpooling)’과 ‘평균 풀링(average pooling)’이 있다. 보통 최대값 풀링이 많이 사용된다.</p>
+<h3 id="최대값-풀링-Maxpooling"><a href="#최대값-풀링-Maxpooling" class="headerlink" title="최대값 풀링 (Maxpooling)"></a>최대값 풀링 (Maxpooling)</h3>]]></content>
       <categories>
         <category>Deep learning in Julia</category>
       </categories>
