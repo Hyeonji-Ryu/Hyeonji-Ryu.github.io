@@ -8,7 +8,7 @@
 <p>지금까지 우리는 다층퍼셉트론(MLP) 기반의 완전연결신경망(Fully Connected network)을 구현하면서 원리를 알아보았다. 하지만 이미지 데이터를 기반으로 신경망을 구현할 때, 완전연결신경망은 이미지 데이터를 일자로 펴서 학습하므로 데이터의 공간적 특성을 이해하기 어렵다. 이를 해결하기 위해 등장한 개념이 바로 합성곱(convolution)이다.</p>
 <h2 id="CNN-Convolutional-Neural-Network-이란"><a href="#CNN-Convolutional-Neural-Network-이란" class="headerlink" title="CNN (Convolutional Neural Network) 이란"></a>CNN (Convolutional Neural Network) 이란</h2><p>‘합성곱 신경망(CNN, Convolutional Neural Network)’은 3차원의 이미지 데이터를 그대로 입력받아 학습하는 신경망이다. 완전연결신경망과 다른 점은 ‘합성곱(convolution)’과 ‘풀링(pooling)’이라는 레이어가 추가된다는 것이다. 따라서 CNN을 이해하기 위해서는 두 레이어의 원리를 알아야 한다.</p>
 <h2 id="합성곱-Convolution"><a href="#합성곱-Convolution" class="headerlink" title="합성곱 (Convolution)"></a>합성곱 (Convolution)</h2><p>합성곱은 하나의 이미지를 여러 조각으로 나누어 각 조각의 특성을 전달하는 방식이다. 아래의 그림은 합성곱의 원리를 보여준다.</p>
-<p><img src="/images/65.jpg" alt="합성곱"></p>
+<p><img src="/images/65.png" alt="합성곱"></p>
 ]]></content>
       <categories>
         <category>Deep learning in Julia</category>
