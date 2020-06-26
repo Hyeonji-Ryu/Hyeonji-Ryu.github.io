@@ -55,7 +55,7 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/35.png">
 <meta property="article:published_time" content="2020-03-29T17:19:08.000Z">
-<meta property="article:modified_time" content="2020-04-17T18:39:50.507Z">
+<meta property="article:modified_time" content="2020-06-19T06:16:09.822Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="머신러닝">
@@ -245,7 +245,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-04-18 03:39:50" itemprop="dateModified" datetime="2020-04-18T03:39:50+09:00">2020-04-18</time>
+                <time title="Updated at: 2020-06-19 15:16:09" itemprop="dateModified" datetime="2020-06-19T15:16:09+09:00">2020-06-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -292,7 +292,7 @@
 <p><img src="/images/35.png" alt="자연로그"></p>
 <p>위의 그래프에서는 $x$축이 1일 때 $y$축이 0이며, $x$축이 1 미만일 때에는 $-e$에 가까운 값으로 향한다. 즉, 0부터 1 사이의 수들은 전부 음수로 반환되는 것이다. 이런 원리를 이용하여 정답레이블 1에 위치한 소프트맥스 함수의 확률 값이 1에 가까울수록 작은 수로 변환되며, 이를 통해서 판단지표의 역할을 하는 것이다. 음수로 나오는 결과를 양수로 변환하기 위해서 $log$ 앞에 $-$ 를 곱한다.</p>
 <p>해당 수식을 코드로 구현하면 다음과 같다.</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> cross_entropy_error(y, t)</span><br><span class="line">    delta = <span class="number">1e-7</span></span><br><span class="line">    <span class="keyword">return</span> -sum(log.(y.+ delta)).* t</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> cross_entropy_error(y, t)</span><br><span class="line">    delta = <span class="number">1e-7</span></span><br><span class="line">    <span class="keyword">return</span> -sum(log.(y.+ delta).* t)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>위의 정의에서 <code>delta</code> 또한 기술적인 이유로 포함되었다. 그래프에서도 확인할 수 있듯이 자연로그는 $x$축이 0인 경우의 $y$값이 마이너스 무한대이다. 따라서 $log_e 0$은 <code>-inf</code>이기 때문에 계산 오류가 바로 발생한다. 이를 막기 위해 아주 작은 값인 $1e-7$을 더해주는 것이다. $1e-7$은 지수 표기법으로 $0.0000001$을 의미한다.</p>
 <p>지금부터 예시에 교차 엔트로피 오차를 적용해보자.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Julia&gt; t = [<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span>] <span class="comment"># 정답 레이블</span></span><br><span class="line">Julia&gt; y1 = [<span class="number">0.1</span> <span class="number">0.05</span> <span class="number">0.6</span> <span class="number">0.0</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.0</span>] <span class="comment"># 출력 값 with 정답</span></span><br><span class="line">Julia&gt; y2 = [<span class="number">0.1</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.05</span> <span class="number">0.1</span> <span class="number">0.0</span> <span class="number">0.6</span> <span class="number">0.0</span> <span class="number">0.0</span>] <span class="comment"># 출력 값 with 오답</span></span><br></pre></td></tr></table></figure>
@@ -402,7 +402,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
@@ -415,7 +415,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">72</span>
+        <span class="site-state-item-count">79</span>
         <span class="site-state-item-name">태그</span></a>
       </div>
   </nav>
