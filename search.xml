@@ -34,14 +34,17 @@
 <h3 id="평균-풀링-Average-pooling"><a href="#평균-풀링-Average-pooling" class="headerlink" title="평균 풀링 (Average pooling)"></a>평균 풀링 (Average pooling)</h3><p>평균 풀링은 풀링 크기의 요소들의 평균을 결과값으로 반환한다. 그림으로는 다음과 같다.</p>
 <p><img src="/images/67.png" alt="평균 풀링"></p>
 <h2 id="Simple-CNN-구현"><a href="#Simple-CNN-구현" class="headerlink" title="Simple CNN 구현"></a>Simple CNN 구현</h2><p>지금까지 합성곱층과 풀링층의 원리에 대해서 알아보았다. 이제 실제 코드로 구현하여 신경망을 학습해보자.</p>
-<p>먼저 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia" target="_blank" rel="noopener">깃허브</a>에 들어가서 해당 <code>clone</code>이나 <code>Download zip</code>을 하여 코드들을 저장해야 한다.<br>만약 이에 대해 잘 모르거나 어려운 사람들은 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia/tree/master/CNN" target="_blank" rel="noopener">해당 페이지</a>에서 코드를 직접 복사해서 입력할 수도 있다.</p>
+<h3 id="준비-단계"><a href="#준비-단계" class="headerlink" title="준비 단계"></a>준비 단계</h3><p>먼저 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia" target="_blank" rel="noopener">깃허브</a>에 들어가서 해당 <code>clone</code>이나 <code>Download zip</code>을 하여 코드들을 저장해야 한다.<br>만약 이에 대해 잘 모르거나 어려운 사람들은 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia/tree/master/CNN" target="_blank" rel="noopener">해당 페이지</a>에서 코드를 직접 복사해서 입력할 수도 있다.</p>
 <p>깃허브 데스트탑에 코드를 클론하거나 저장한 분들은 현재 사용하고 있는 커맨드의 경로를 <code>CNN</code> 파일로 변경해야 한다.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">pwd <span class="comment"># 현재 경로 확인</span></span><br><span class="line">cd 코드가 있는 파일 경로 입력/Machine_Learning_in_Julia/CNN</span><br></pre></td></tr></table></figure>
-<p>다시 <code>pwd</code>를 입력했을 때 아래와 같이 변경되어 있으면 준비가 완료된 것이다.</p>
+<p>다시 <code>pwd</code>를 입력했을 때 아래와 같이 변경되어 있으면 변경이 완료된 것이다.</p>
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">/Users/코드가 있는 파일 경로/Machine_Learning_in_Julia/CNN</span><br></pre></td></tr></table></figure>
-<p>준비가 완료되었다면 아래의 코드를 입력하자.</p>
-<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">include(<span class="string">"MNIST_data.jl"</span>)</span><br><span class="line">include(<span class="string">"functions.jl"</span>)</span><br><span class="line">include(<span class="string">"layers.jl"</span>)</span><br><span class="line">include(<span class="string">"making_network.jl"</span>)</span><br><span class="line">include(<span class="string">"optimizers.jl"</span>)</span><br></pre></td></tr></table></figure>
+<p>변경이 완료된 후 아래의 코드를 입력하자.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">include(<span class="string">"MNIST_data.jl"</span>)</span><br><span class="line">include(<span class="string">"functions.jl"</span>)</span><br><span class="line">include(<span class="string">"layers_without_im2col.jl"</span>)</span><br><span class="line">include(<span class="string">"making_network.jl"</span>)</span><br><span class="line">include(<span class="string">"optimizers.jl"</span>)</span><br></pre></td></tr></table></figure>
 <p>위 코드는 파일에 들어 있는 모든 코드들을 작동시킨다. 만약 코드를 복사하여 사용할 분들은 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia/tree/master/CNN" target="_blank" rel="noopener">해당 페이지</a>에서 위의 파일들의 코드를 복사하여 입력해주면 된다.</p>
+<p>이제 간단한 CNN 모델을 만들 준비가 끝났다.</p>
+<h3 id="모델-설계"><a href="#모델-설계" class="headerlink" title="모델 설계"></a>모델 설계</h3><p>합성곱 신경망 1층과 완견연결 신경망 2층을 사용하여 모델을 구성하고자 한다. 모델의 순서는 다음과 같다.</p>
+<p><img src="/images/68.png" alt="simple_CNN"></p>
 ]]></content>
       <categories>
         <category>Deep learning in Julia</category>
