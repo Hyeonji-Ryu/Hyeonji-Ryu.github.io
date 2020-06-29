@@ -58,7 +58,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/67.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/68.png">
 <meta property="article:published_time" content="2020-06-26T06:04:49.000Z">
-<meta property="article:modified_time" content="2020-06-29T19:15:23.553Z">
+<meta property="article:modified_time" content="2020-06-29T19:16:14.528Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="Deeplearning">
@@ -253,7 +253,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-06-30 04:15:23" itemprop="dateModified" datetime="2020-06-30T04:15:23+09:00">2020-06-30</time>
+                <time title="Updated at: 2020-06-30 04:16:14" itemprop="dateModified" datetime="2020-06-30T04:16:14+09:00">2020-06-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -340,7 +340,7 @@
 <p>위 모델의 정확도는 다음과 같다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1에폭: 96.8</span></span><br><span class="line"><span class="comment"># 2에폭: 97.73</span></span><br><span class="line"><span class="comment"># 3에폭: 98.35</span></span><br><span class="line"><span class="comment"># 4에폭: 98.39</span></span><br><span class="line"><span class="comment"># 5에폭: 98.50999999999999</span></span><br></pre></td></tr></table></figure>
 <p>확실히 MLP보다 학습이 잘 된다는 것을 확인할 수 있다.</p>
-<p>위 코드는 1에폭(600)에 1시간 정도 소요된다. 이전까지 배웠던 MLP 모델을 작동시켜봤다면 ‘이 모델이 역전파를 사용한 것이 맞는가?’ 라는 의문이 들 수 있다.<br>사실 위 모델에 사용된 방식의 합성곱층과 풀링층은 이론적으로는 맞지만, 아무도 사용하지 않는다. 그 이유는 너무 느려서이다. 4차원 데이터를 가공하지 않고 인덱스를 잡아 함수를 실행하는 것은 컴퓨터의 입장에서 엄청난 노동이다. 그래서 우리는 기술적으로 4차원 데이터를 2차원으로 변환헌 뒤, 계산을 하고 다시 4차원으로 조립하는 과정을 사용한다.<br>이 방법은 아~~주 느린 합성곱층과 풀링층을 훨씬 빠르게 작동하게 만들어준다.</p>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>위 코드는 1에폭(600)에 1시간 정도 소요된다. 이전까지 배웠던 MLP 모델을 작동시켜봤다면 ‘이 모델이 역전파를 사용한 것이 맞는가?’ 라는 의문이 들 수 있다.<br>사실 위 모델에 사용된 방식의 합성곱층과 풀링층은 이론적으로는 맞지만, 아무도 사용하지 않는다. 그 이유는 너무 느려서이다. 4차원 데이터를 가공하지 않고 인덱스를 잡아 함수를 실행하는 것은 컴퓨터의 입장에서 엄청난 노동이다. 그래서 우리는 기술적으로 4차원 데이터를 2차원으로 변환헌 뒤, 계산을 하고 다시 4차원으로 조립하는 과정을 사용한다.<br>이 방법은 아~~주 느린 합성곱층과 풀링층을 훨씬 빠르게 작동하게 만들어준다.</p>
 <p>만약 위 코드를 1에폭이라도 돌려봤다면 그 필요성을 실감할 것이기에, 한 번쯤 돌려보기를 권장한다. 앞서 설명했던 차원을 변경해주는 함수는 일반적으로 동일한 이름으로 쓰인다. 순방향에서는 <code>im2col()</code>, 역방향에서는 <code>col2im()</code>이다. 의미는 이미지에서 행렬로, 또 행렬에서 이미지로 변경해준다는 의미이다. 즉, 4차원 데이터를 2차원으로, 2차원 데이터를 4차원으로 변경해준다는 의미와 동일하다.</p>
 <p>다음 글에서는 <code>im2col()</code>과  <code>col2im()</code>의 원리를 설명하고, 줄리아로 구현해볼 것이다. 또한 이를 바탕으로 합성곱층과 풀링층의 함수를 구현할 것이다.</p>
 
@@ -434,7 +434,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CNN-Convolutional-Neural-Network-이란"><span class="nav-number">1.</span> <span class="nav-text">CNN (Convolutional Neural Network) 이란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#합성곱-Convolution"><span class="nav-number">2.</span> <span class="nav-text">합성곱 (Convolution)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#풀링-pooling"><span class="nav-number">3.</span> <span class="nav-text">풀링 (pooling)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#최대값-풀링-Max-pooling"><span class="nav-number">3.1.</span> <span class="nav-text">최대값 풀링 (Max pooling)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#평균-풀링-Average-pooling"><span class="nav-number">3.2.</span> <span class="nav-text">평균 풀링 (Average pooling)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Simple-CNN-구현"><span class="nav-number">4.</span> <span class="nav-text">Simple CNN 구현</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#준비-단계"><span class="nav-number">4.1.</span> <span class="nav-text">준비 단계</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#모델-설계"><span class="nav-number">4.2.</span> <span class="nav-text">모델 설계</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#학습-구현"><span class="nav-number">4.3.</span> <span class="nav-text">학습 구현</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CNN-Convolutional-Neural-Network-이란"><span class="nav-number">1.</span> <span class="nav-text">CNN (Convolutional Neural Network) 이란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#합성곱-Convolution"><span class="nav-number">2.</span> <span class="nav-text">합성곱 (Convolution)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#풀링-pooling"><span class="nav-number">3.</span> <span class="nav-text">풀링 (pooling)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#최대값-풀링-Max-pooling"><span class="nav-number">3.1.</span> <span class="nav-text">최대값 풀링 (Max pooling)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#평균-풀링-Average-pooling"><span class="nav-number">3.2.</span> <span class="nav-text">평균 풀링 (Average pooling)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Simple-CNN-구현"><span class="nav-number">4.</span> <span class="nav-text">Simple CNN 구현</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#준비-단계"><span class="nav-number">4.1.</span> <span class="nav-text">준비 단계</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#모델-설계"><span class="nav-number">4.2.</span> <span class="nav-text">모델 설계</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#학습-구현"><span class="nav-number">4.3.</span> <span class="nav-text">학습 구현</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#결론"><span class="nav-number">5.</span> <span class="nav-text">결론</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
