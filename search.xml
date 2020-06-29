@@ -53,13 +53,13 @@
         <tag>딥러닝</tag>
         <tag>Deeplearning</tag>
         <tag>줄리아</tag>
-        <tag>Julia</tag>
         <tag>CNN</tag>
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
         <tag>flatten</tag>
         <tag>convolution</tag>
+        <tag>Julia</tag>
         <tag>모델</tag>
       </tags>
   </entry>
@@ -197,11 +197,11 @@
         <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
         <tag>줄리아</tag>
-        <tag>가중치</tag>
         <tag>신경망</tag>
         <tag>std</tag>
         <tag>Xavier</tag>
         <tag>He</tag>
+        <tag>가중치</tag>
         <tag>초기값</tag>
         <tag>가중치초기값</tag>
         <tag>비교</tag>
@@ -425,10 +425,10 @@ x & \text{(x>0) $$}\\
         <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
         <tag>줄리아</tag>
-        <tag>시그모이드</tag>
-        <tag>렐루</tag>
-        <tag>ReLU</tag>
         <tag>신경망</tag>
+        <tag>ReLU</tag>
+        <tag>렐루</tag>
+        <tag>시그모이드</tag>
         <tag>Sigmoid</tag>
         <tag>활성화 함수</tag>
       </tags>
@@ -1452,8 +1452,8 @@ a_{12} & \mathbf{a_{22}}\\
         <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
         <tag>줄리아</tag>
-        <tag>네트워크</tag>
         <tag>가중치</tag>
+        <tag>네트워크</tag>
         <tag>편향</tag>
         <tag>딥러닝학습</tag>
         <tag>학습</tag>
@@ -1724,12 +1724,12 @@ x & \text{(x>0) $$}\\
         <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
         <tag>줄리아</tag>
-        <tag>sigmoid</tag>
+        <tag>ReLU</tag>
+        <tag>렐루</tag>
         <tag>시그모이드</tag>
+        <tag>sigmoid</tag>
         <tag>softmax</tag>
         <tag>소프트맥스</tag>
-        <tag>렐루</tag>
-        <tag>ReLU</tag>
       </tags>
   </entry>
   <entry>
