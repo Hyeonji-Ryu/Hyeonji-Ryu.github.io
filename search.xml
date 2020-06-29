@@ -44,7 +44,7 @@
 <p>위 코드는 파일에 들어 있는 모든 코드들을 작동시킨다. 만약 코드를 복사하여 사용할 분들은 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia/tree/master/CNN" target="_blank" rel="noopener">해당 페이지</a>에서 위의 파일들의 코드를 복사하여 입력해주면 된다.</p>
 <p>이제 간단한 CNN 모델을 만들 준비가 끝났다.</p>
 <h3 id="모델-설계"><a href="#모델-설계" class="headerlink" title="모델 설계"></a>모델 설계</h3><p>합성곱 신경망 1층과 완견연결 신경망 2층을 사용하여 모델을 구성하고자 한다. 모델의 순서는 다음과 같다.</p>
-<p><img src="/images/68.png" alt="simple_CNN"></p>
+<p><img src="/images/68.png" alt="simple CNN"></p>
 ]]></content>
       <categories>
         <category>Deep learning in Julia</category>
