@@ -56,7 +56,7 @@
 <figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">grads = <span class="built_in">Dict</span>()</span><br><span class="line">train_loss_list= []</span><br></pre></td></tr></table></figure>
 <p>이제 모델을 작동시켜보자. 해당 모델의 구성은 다음과 같다.</p>
 <ul>
-<li>Algoriithm: backpropagation</li>
+<li>Algorithm: backpropagation</li>
 <li>Optimizer: Adam</li>
 <li>batch_size: 100</li>
 <li>one_epoch: 600</li>
