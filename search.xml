@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>15. im2col()과 col2im()</title>
+    <title>15. &#39;im2col&#39;과 &#39;col2im&#39;</title>
     <url>/2020/07/01/Deeplearning-15/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
+<p>이전 글에서 CNN의 원리를 살펴보고 줄리아로 구현하였다. CNN은 4차원 데이터를 다루기 때문에 시간이 매우 오래걸린다. 지난 글에서 학습했던 모델은 그나마 간단한 형태라서 학습을 진행했지만, 더 복잡하고 깊은 신경망에서는 1에폭 학습하는 데 하루 종일 학습해야 할 것이다. 이런 문제로 인해 우리는 좀 더 빠르게 연산처리를 할 수 있는 방법을 구상해야 했고, 그 결과가 <code>im2col()</code>과 <code>col2im</code>이다. 이번 글에서는 CNN 모델의 학습 속도를 높여줄 <code>im2col()</code>과 <code>col2im</code>의 원리를 살펴보고 줄리아로 구현할 것이다.</p>
+<h2 id="im2col-의-원리"><a href="#im2col-의-원리" class="headerlink" title="im2col()의 원리"></a><code>im2col()</code>의 원리</h2><p><code>im2col()</code>은 4차원의 데이터를 2차원의 데이터로 변경해준다. 해당 설명이 <code>im2col()</code>의 역할 전부이지만, 차원에 익숙하지 않은 사람은 데이터가 어떻게 변화하는지 이해하기 어려울 수 있다. <code>im2col()</code>의 원리를 그림으로 살펴보자.</p>
 ]]></content>
       <categories>
         <category>Deep learning in Julia</category>
