@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>15. im2col()과 col2im()</title>
+    <url>/2020/07/01/Deeplearning-15/</url>
+    <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>Deep learning in Julia</category>
+      </categories>
+      <tags>
+        <tag>딥러닝</tag>
+        <tag>Deeplearning</tag>
+        <tag>줄리아</tag>
+        <tag>CNN</tag>
+        <tag>합성곱</tag>
+        <tag>이미지신경망</tag>
+        <tag>풀링</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
+        <tag>im2col</tag>
+        <tag>col2im</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>14. CNN 시작하기</title>
     <url>/2020/06/26/Deeplearning-14/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
