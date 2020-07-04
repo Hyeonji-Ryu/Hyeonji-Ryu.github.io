@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/69.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/70.png">
 <meta property="article:published_time" content="2020-07-01T09:55:21.000Z">
-<meta property="article:modified_time" content="2020-07-04T18:11:47.745Z">
+<meta property="article:modified_time" content="2020-07-04T18:16:32.929Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="Deeplearning">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-07-05 03:11:47" itemprop="dateModified" datetime="2020-07-05T03:11:47+09:00">2020-07-05</time>
+                <time title="Updated at: 2020-07-05 03:16:32" itemprop="dateModified" datetime="2020-07-05T03:16:32+09:00">2020-07-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -287,7 +287,8 @@
 <p>위 코드에서 이해하기 어려운 개념이 등장한다. 바로 6차원 배열이다. <code>col</code>이라는 배열은 6차원이며, 이는 합성곱을 진행할 때 필요한 데이터들을 모두 저장한다. 참고로 6차원은 인간이 이미지화할 수 없다. 따라서 데이터가 어떻게 저장되는지 완벽하게 표현할 수는 없지만, 최선을 다하여 그림으로 표현하였다. 아래의 그림을 참고하자.</p>
 <p><img src="\../images/70.png" alt="6-D array"></p>
 <p>위 그림은 <code>im2col()</code> 그림에서 사용했던 예시를 그대로 가져왔다. 6차원 배열에서 <code>out_r, out_c</code>은 결과값이다. 위 예시에서는 $3 \times 3$이며, 요소는 총 9개이다. 각 요소는 필터와 입력데이터 해당 위치의 곱들의 합이다. 이를 좀 더 편하게 계산하기 위해서 필터의 크기에 맞춰서 입력데이터들을 쪼개어 저장해두는 것이다. 즉, <code>filter_r,filter_c</code>는 필터의 요소에 따라서 곱해져야 하는 입력데이터들을 저장한다. 해당 배열에 데이터를 다 쪼갠 후에는 차원 변경을 통해 첫 번째 배치데이터의 첫 번째 합성곱 대상이 나올 수 있도록 수정한다. 그리고 <code>reshape()</code>을 사용하여 이를 $1 \times n$ 의 형태로 변환하여 반환한다.</p>
-
+<h2 id="im2col을-사용한-layers"><a href="#im2col을-사용한-layers" class="headerlink" title="im2col을 사용한 layers"></a>im2col을 사용한 layers</h2><p>CNN에서 <code>im2col()</code>을 사용하는 계층은 합성곱층과 풀링층이다. 사실 이전 글에서 사용했던 합성곱층과 풀링층은 사람이 이해하는 방식과 같이 인덱스를 잡아 일일이 곱하고 합한 후 할당하는 방식이었다. 이 방식은 컴퓨터가 인덱스에 따른 데이터를 계속 호출해야 하기에 느려질 수밖에 없다. 하지만 <code>im2col()</code>을 사용하면 한번에 데이터를 호출하여 연산을 끝낼 수 있다.</p>
+<h3 id="합성곱-Convolution"><a href="#합성곱-Convolution" class="headerlink" title="합성곱 (Convolution)"></a>합성곱 (Convolution)</h3>
     </div>
 
     
@@ -378,7 +379,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#im2col-의-원리"><span class="nav-number">1.</span> <span class="nav-text">im2col 의 원리</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#im2col-의-원리"><span class="nav-number">1.</span> <span class="nav-text">im2col 의 원리</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#im2col을-사용한-layers"><span class="nav-number">2.</span> <span class="nav-text">im2col을 사용한 layers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#합성곱-Convolution"><span class="nav-number">2.1.</span> <span class="nav-text">합성곱 (Convolution)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
