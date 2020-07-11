@@ -5,7 +5,7 @@
     <url>/2020/07/01/Deeplearning-16/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
-<p>이전 글에서는 순전파에서 사용되는 <code>im2col()</code>에 대해서 알아보았다. <code>im2col()</code>은 4차원의 데이터를 2차원으로 변경하여 계산을 더 빠르고 쉽게 할 수 있도록 만들어주는 역할이었다. 그와 반대로 <code>col2im()</code>은 2차원 데이터를 4차원으로 변경하여 반환하며, 보통 역전파 알고리즘에서 사용된다.  따라서 이번 글에서는 CNN 모델의 학습 속도를 높여줄 <code>col2im()</code>의 원리를 살펴보고 줄리아로 구현하며, 동시에 합성곱 계층과 풀링 계층의 역전파에 대해서도 알아볼 것이다.</p>
+<p>이전 글에서는 <code>im2col()</code>에 대해서 알아보았다. <code>im2col()</code>은 4차원의 데이터를 2차원으로 변경하며, 보통 순전파에서 사용된다. 그와 반대로 <code>col2im()</code>은 2차원 데이터를 4차원으로 변경하여 반환하며, 보통 역전파 알고리즘에서 사용된다.  따라서 이번 글에서는 CNN 모델의 학습 속도를 높여줄 <code>col2im()</code>의 원리를 살펴보고 줄리아로 구현하며, 동시에 합성곱 계층과 풀링 계층의 역전파에 대해서도 알아볼 것이다.</p>
 <h2 id="col2im-의-원리"><a href="#col2im-의-원리" class="headerlink" title="col2im 의 원리"></a>col2im 의 원리</h2>]]></content>
       <categories>
         <category>Deep learning in Julia</category>
