@@ -46,15 +46,30 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="AI &amp; ML">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/tags/%EB%B9%85%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/index.html">
+  <meta name="description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="17. col2im을 적용한 합성곱과 풀링">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/07/14/Deeplearning-17/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
+<meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2020-07-14T08:50:32.000Z">
+<meta property="article:modified_time" content="2020-07-14T09:57:44.973Z">
 <meta property="article:author" content="Hyeonji Ryu">
+<meta property="article:tag" content="딥러닝">
+<meta property="article:tag" content="Deeplearning">
+<meta property="article:tag" content="줄리아">
+<meta property="article:tag" content="CNN">
+<meta property="article:tag" content="합성곱">
+<meta property="article:tag" content="이미지신경망">
+<meta property="article:tag" content="풀링">
+<meta property="article:tag" content="Julia">
+<meta property="article:tag" content="모델">
+<meta property="article:tag" content="im2col">
+<meta property="article:tag" content="col2im">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/tags/%EB%B9%85%EC%98%A4-%ED%91%9C%EA%B8%B0%EB%B2%95/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/07/14/Deeplearning-17/">
 
 
 <script id="page-configurations">
@@ -62,11 +77,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>태그: 빅오 표기법 | AI & ML</title>
+  <title>17. col2im을 적용한 합성곱과 풀링 | AI & ML</title>
   
 
 
@@ -198,50 +213,103 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">빅오 표기법
-          <small>태그</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/07/14/Deeplearning-17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyeonji Ryu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI & ML">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          17. col2im을 적용한 합성곱과 풀링
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+              
+
+              <time title="Post created: 2020-07-14 17:50:32 / Updated at: 18:57:44" itemprop="dateCreated datePublished" datetime="2020-07-14T17:50:32+09:00">2020-07-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Deep-learning-in-Julia/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep learning in Julia</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+        <p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-19T06:20:02+09:00"
-              content="2020-03-19">
-          03-19
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/" rel="tag"># 딥러닝</a>
+              <a href="/tags/Deeplearning/" rel="tag"># Deeplearning</a>
+              <a href="/tags/%EC%A4%84%EB%A6%AC%EC%95%84/" rel="tag"># 줄리아</a>
+              <a href="/tags/CNN/" rel="tag"># CNN</a>
+              <a href="/tags/%ED%95%A9%EC%84%B1%EA%B3%B1/" rel="tag"># 합성곱</a>
+              <a href="/tags/%EC%9D%B4%EB%AF%B8%EC%A7%80%EC%8B%A0%EA%B2%BD%EB%A7%9D/" rel="tag"># 이미지신경망</a>
+              <a href="/tags/%ED%92%80%EB%A7%81/" rel="tag"># 풀링</a>
+              <a href="/tags/Julia/" rel="tag"># Julia</a>
+              <a href="/tags/%EB%AA%A8%EB%8D%B8/" rel="tag"># 모델</a>
+              <a href="/tags/im2col/" rel="tag"># im2col</a>
+              <a href="/tags/col2im/" rel="tag"># col2im</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/19/Algorithms-0/" itemprop="url">
-            <span itemprop="name">chapter 0. 시작하기</span>
-          </a>
-      </h2>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/01/Deeplearning-16/" rel="prev" title="16. col2im의 원리">
+      <i class="fa fa-chevron-left"></i> 16. col2im의 원리
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -409,6 +477,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 

@@ -48,14 +48,13 @@
 
   <meta name="description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="15. col2im의 원리">
+<meta property="og:title" content="16. col2im의 원리">
 <meta property="og:url" content="https://hyeonji-ryu.github.io/2020/07/01/Deeplearning-16/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
 <meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/73.png">
 <meta property="article:published_time" content="2020-07-01T09:55:21.000Z">
-<meta property="article:modified_time" content="2020-07-13T03:38:40.821Z">
+<meta property="article:modified_time" content="2020-07-14T09:56:40.914Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="Deeplearning">
@@ -69,7 +68,6 @@
 <meta property="article:tag" content="im2col">
 <meta property="article:tag" content="col2im">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hyeonji-ryu.github.io/images/73.png">
 
 <link rel="canonical" href="https://hyeonji-ryu.github.io/2020/07/01/Deeplearning-16/">
 
@@ -83,7 +81,7 @@
   };
 </script>
 
-  <title>15. col2im의 원리 | AI & ML</title>
+  <title>16. col2im의 원리 | AI & ML</title>
   
 
 
@@ -233,7 +231,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          15. col2im의 원리
+          16. col2im의 원리
         </h1>
 
         <div class="post-meta">
@@ -250,7 +248,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-07-13 12:38:40" itemprop="dateModified" datetime="2020-07-13T12:38:40+09:00">2020-07-13</time>
+                <time title="Updated at: 2020-07-14 18:56:40" itemprop="dateModified" datetime="2020-07-14T18:56:40+09:00">2020-07-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,8 +276,8 @@
         <p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
 <p>이전 글에서는 <code>im2col()</code>에 대해서 알아보았다. <code>im2col()</code>은 4차원의 데이터를 2차원으로 변경하며, 보통 순전파에서 사용된다. 그와 반대로 <code>col2im()</code>은 2차원 데이터를 4차원으로 변경하여 반환하며, 보통 역전파 알고리즘에서 사용된다.  따라서 이번 글에서는 CNN 모델의 학습 속도를 높여줄 <code>col2im()</code>의 원리를 살펴보고 줄리아로 구현하며, 동시에 합성곱 계층과 풀링 계층의 역전파에 대해서도 알아볼 것이다.</p>
-<h2 id="col2im-의-원리"><a href="#col2im-의-원리" class="headerlink" title="col2im 의 원리"></a>col2im 의 원리</h2><p><code>col2im()</code>은 역전파에서 계산이 완료된 2차원 데이터를 받아 4차원으로 변경한다. <code>col2im()</code> 역시 차원에 익숙하지 않은 사람은 데이터가 어떻게 변화하는지 이해하기 어려울 수 있다. <code>col2im()</code>을 그림으로 살펴보자.</p>
-<p><img src="\../images/73.png" alt="col2im"></p>
+<h2 id="col2im-이란"><a href="#col2im-이란" class="headerlink" title="col2im 이란"></a>col2im 이란</h2><p><code>col2im()</code>은 <code>im2col()</code>과 달리 차원을 변경하는 용도로만 쓰이지는 않는다. 간단하게 설명한다면 <code>col2im()</code>은 차원 변경과 동시에 미분값들을 최종적으로 도출해주는 역할을 같이 한다. 그렇기에 <code>col2im</code>을 이해하기 위해서는 합성곱이나 풀링의 역전파 미분 과정을 먼저 알아야 한다.</p>
+<h2 id="합성곱의-역전파-미분-과정"><a href="#합성곱의-역전파-미분-과정" class="headerlink" title="합성곱의 역전파 미분 과정"></a>합성곱의 역전파 미분 과정</h2><p>먼저 합성곱을 미분하는 과정을 살펴보자. </p>
 
     </div>
 
@@ -311,7 +309,10 @@
     <a href="/2020/06/26/Deeplearning-15/" rel="prev" title="15. im2col의 원리">
       <i class="fa fa-chevron-left"></i> 15. im2col의 원리
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/14/Deeplearning-17/" rel="next" title="17. col2im을 적용한 합성곱과 풀링">
+      17. col2im을 적용한 합성곱과 풀링 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -371,7 +372,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#col2im-의-원리"><span class="nav-number">1.</span> <span class="nav-text">col2im 의 원리</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#col2im-이란"><span class="nav-number">1.</span> <span class="nav-text">col2im 이란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#합성곱의-역전파-미분-과정"><span class="nav-number">2.</span> <span class="nav-text">합성곱의 역전파 미분 과정</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -385,7 +386,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
