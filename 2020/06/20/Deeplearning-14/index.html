@@ -58,7 +58,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/67.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/68.png">
 <meta property="article:published_time" content="2020-06-20T06:04:49.000Z">
-<meta property="article:modified_time" content="2020-07-11T14:42:29.471Z">
+<meta property="article:modified_time" content="2020-07-16T18:28:42.805Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="Deeplearning">
@@ -253,7 +253,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-07-11 23:42:29" itemprop="dateModified" datetime="2020-07-11T23:42:29+09:00">2020-07-11</time>
+                <time title="Updated at: 2020-07-17 03:28:42" itemprop="dateModified" datetime="2020-07-17T03:28:42+09:00">2020-07-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -310,7 +310,7 @@
 <p><img src="/images/67.png" alt="평균 풀링"></p>
 <h2 id="Simple-CNN-구현"><a href="#Simple-CNN-구현" class="headerlink" title="Simple CNN 구현"></a>Simple CNN 구현</h2><p>지금까지 합성곱층과 풀링층의 원리에 대해서 알아보았다. 이제 실제 코드로 구현하여 신경망을 학습해보자.</p>
 <h3 id="준비-단계"><a href="#준비-단계" class="headerlink" title="준비 단계"></a>준비 단계</h3><p>먼저 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia" target="_blank" rel="noopener">깃허브</a>에 들어가서 해당 <code>clone</code>이나 <code>Download zip</code>을 하여 코드들을 저장해야 한다.<br>만약 이에 대해 잘 모르거나 어려운 사람들은 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia/tree/master/CNN" target="_blank" rel="noopener">해당 페이지</a>에서 코드를 직접 복사해서 입력할 수도 있다.</p>
-<p>깃허브 데스트탑에 코드를 클론하거나 저장한 분들은 현재 사용하고 있는 커맨드의 경로를 <code>CNN</code> 파일로 변경해야 한다.</p>
+<p>깃허브 데스크탑에 코드를 클론하거나 저장한 분들은 현재 사용하고 있는 커맨드의 경로를 <code>CNN</code> 파일로 변경해야 한다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pwd <span class="comment"># 현재 경로 확인</span></span><br><span class="line">cd 코드가 있는 파일 경로 입력/Machine_Learning_in_Julia/CNN</span><br></pre></td></tr></table></figure>
 <p>다시 <code>pwd</code>를 입력했을 때 아래와 같이 변경되어 있으면 변경이 완료된 것이다.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Users/코드가 있는 파일 경로/Machine_Learning_in_Julia/CNN</span><br></pre></td></tr></table></figure>
