@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/78.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/79.png">
 <meta property="article:published_time" content="2020-07-14T08:50:32.000Z">
-<meta property="article:modified_time" content="2020-07-20T06:25:56.636Z">
+<meta property="article:modified_time" content="2020-07-20T06:42:07.415Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="Deeplearning">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-07-20 15:25:56" itemprop="dateModified" datetime="2020-07-20T15:25:56+09:00">2020-07-20</time>
+                <time title="Updated at: 2020-07-20 15:42:07" itemprop="dateModified" datetime="2020-07-20T15:42:07+09:00">2020-07-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,7 +286,10 @@
 <p>위 그림과 같이 미분값은 행은 데이터의 개수, 열은 차원의 개수를 기준으로 2차원 배열로 변경된다. 이를 열을 기준으로 합산하면 편향의 미분값인 <code>db</code>가 완성된다. 또한 순전파 계산에서 사용되었던 입력데이터에 <code>im2col()</code>을 적용한 <code>col</code> 변수를 <code>dense</code>에 저장해두었다가 <code>dw</code>를 구할 때 불러와 사용한다. <code>dw</code>는 <code>col</code>과 <code>dout</code>을 곱한 후, <code>dense.w</code>의 형상으로 변경한다. 마지막으로 남은 것은 <code>dx</code>이다. <code>grads</code>로 저장되어 이후 가중치와 편향을 갱신할 때 사용되는 <code>dw</code>, <code>db</code>와 달리 <code>dx</code>는 다음 층으로 넘어갈 미분값을 구하는 것이다. 다르게 말하자면, <code>dx</code>는 다음 계층의 <code>dout</code>이 되는 것이다. <code>dx</code>를 구하는 과정에서 <code>col2im()</code>이 사용된다. 이 모든 과정을 그림으로 나타내면 아래와 같다.</p>
 <p><img src="\../images/79.png" alt="dwdb"></p>
 <p>만약 <code>col2im()</code>이 어떻게 계산되는지 궁금하다면, 이전 글에서 해당 정보를 찾을 수 있다. 합성곱 역전파 계산에 대해서는 이게 전부이다. 이제는 풀링의 역전파에 대해 살펴보자.</p>
-<h2 id="최대값-풀링-with-col2im"><a href="#최대값-풀링-with-col2im" class="headerlink" title="최대값 풀링 with col2im"></a>최대값 풀링 with col2im</h2>
+<h2 id="최대값-풀링-with-col2im"><a href="#최대값-풀링-with-col2im" class="headerlink" title="최대값 풀링 with col2im"></a>최대값 풀링 with col2im</h2><p>최대값 풀링은 어떠한 사칙연산도 사용되지 않는다. 단순히 지정된 범위에서 최대값을 뽑아 더 작은 크기의 결과값을 도출한다. 그렇다면 이를 되돌린다는 것은 어떤 의미인가? 바로 미분값을 입력 데이터에서의 최대값 위치로 보내주는 것이다. 최대값 풀링의 역전파는 이것이 전부이다. 이 과정을 구현한 코드를 확인해보자.</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> Maxpooling_backward(pool,dout,pool_h,pool_w,stride,pad)</span><br><span class="line"></span><br><span class="line">    dout = permutedims(dout,(<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">4</span>))</span><br><span class="line">    pool_size = pool_h * pool_w</span><br><span class="line"></span><br><span class="line">    dmax = zeros(pool_size,length(dout))</span><br><span class="line">    dmax_ex = zeros(pool_size,length(dout))</span><br><span class="line">    dmax[reshape(pool.mask,length(dout),<span class="number">1</span>)] = reshape(dout,length(dout),<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 1234에서 1324순으로 변환</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>:size(dmax)[<span class="number">1</span>]</span><br><span class="line">        dmax_ex[i,:] = dmax[pool.count[i],:]</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    dmax_ex = <span class="built_in">Array</span>(dmax_ex')</span><br><span class="line">    dx = col2im(pool, dmax_ex, pool_h, pool_w, stride, pad)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> dx</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p>이제 위 코드의 작동 과정을 하나씩 살펴보자. 먼저 <code>dout</code>을 차원변경한 후, 이 길이에 맞는 <code>dmax</code> 행렬을 생성한다. <code>dmax</code> 최대값을 원래 위치에 할당할 때 사용된다. 위 코드에서 <code>pool</code> 또한 순전파 과정에서 최대값 풀링의 최대값 위치를 표현한 인덱스 모음이다. 이를 사용하여 <code>dout</code>에 있는 미분값들을 최대값 위치에 할당하는 것이다. 그 후에 <code>col2im</code>을 사용하여 원래 형태로 변경해준다. for문의 경우에는 Julia의 인덱스 순서 특성으로 인해 추가된 것이다. Julia의 경우, 인덱스를 모두 세로를 기준으로 잡기 떄문에 이를 가로로 변경해주어야 한다. 그 과정을 거치면 <code>dmax</code>가 가로정렬된 인덱스를 가진 <code>dmax_ex</code>로 변경된다.</p>
+
     </div>
 
     
