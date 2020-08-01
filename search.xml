@@ -5,8 +5,18 @@
     <url>/2020/08/01/Deeplearning-18/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
-<p>이제 CNN 모델을 만들기 위한 기본적인 공부는 모두 끝났다. 이번 글에서는 <code>MNIST</code> 데이터를 사용하여 지금까지 만든 계층들을 가지고 직접 간단한 모델을 만들어 볼 것이다.</p>
-<h2 id="CNN-모델-설계"><a href="#CNN-모델-설계" class="headerlink" title="CNN 모델 설계"></a>CNN 모델 설계</h2><p><code>MNIST</code> 데이터는 간단하게 손글씨로 쓴 숫자이기에 비교적 얕은 모델로도 높은 성능의 분류기를 만들 수 있다. 아래의 그림을 참고해보자.</p>
+<p>지금까지 <code>im2col()</code>, <code>col2im()</code>을 적용한 새로운 합성곱과 풀링에 대해 알아보았다. 이번 글에서는 새로운 합성곱과 풀링을 사용하여 새로운 <code>simpleNet</code>을 구현할 것이다. <code>im2col()</code>, <code>col2im()</code>을 적용하지 않은 기존 <code>simpleNet</code>은 1에폭에 1시간이 걸린 반면 새로운 <code>simpleNet</code>은 1에폭에 5분이면 학습이 완료된다.</p>
+<h2 id="CNN-모델-구현-및-학습"><a href="#CNN-모델-구현-및-학습" class="headerlink" title="CNN 모델 구현 및 학습"></a>CNN 모델 구현 및 학습</h2><h3 id="준비-단계"><a href="#준비-단계" class="headerlink" title="준비 단계"></a>준비 단계</h3><p>이제 설계한 모델을 직접 구현해보자. 먼저 모델을 생성하고 학습하는데 필요한 재료들을 가져와야 한다. <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia" target="_blank" rel="noopener">해당 깃허브 사이트</a>에 가서 코드를 다운받으면 바로 학습을 진행할 수 있다. 만약 다운받기 싫다면 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia/tree/master/CNN" target="_blank" rel="noopener">이 사이트</a>에서 아래의 파일들의 코드를 모두 복사해서 사용해도 된다.</p>
+<p>깃허브 데스크탑에 코드를 클론하거나 저장한 분들은 현재 사용하고 있는 커맨드의 경로를 <code>CNN</code> 파일로 변경해야 한다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">pwd <span class="comment"># 현재 경로 확인</span></span><br><span class="line">cd 코드가 있는 파일 경로 입력/Machine_Learning_in_Julia/CNN</span><br></pre></td></tr></table></figure>
+<p>다시 <code>pwd</code>를 입력했을 때 아래와 같이 변경되어 있으면 변경이 완료된 것이다.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">/Users/코드가 있는 파일 경로/Machine_Learning_in_Julia/CNN</span><br></pre></td></tr></table></figure>
+<p>변경이 완료된 후 아래의 코드를 입력하자.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">include(<span class="string">"MNIST_data.jl"</span>)</span><br><span class="line">include(<span class="string">"functions.jl"</span>)</span><br><span class="line">include(<span class="string">"layers.jl"</span>)</span><br><span class="line">include(<span class="string">"making_network.jl"</span>)</span><br><span class="line">include(<span class="string">"optimizers.jl"</span>)</span><br></pre></td></tr></table></figure>
+<p><strong>Note</strong><br>만약 터미널 변경에는 성공했는데 위 코드가 작동하지 않는다면 해당 터미널이 줄리아 언어로 세팅되어 있는지를 확인해보자. 줄리아 언어로 변경하는 방법은 줄리아가 저장되어 있는 경로를 찾아서 입력하면 사용할 수 있다.</p>
+<p>위 코드는 파일에 들어 있는 모든 코드들을 작동시킨다. 만약 코드를 복사하여 사용할 분들은 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia/tree/master/CNN" target="_blank" rel="noopener">해당 페이지</a>에서 위의 파일들의 코드를 복사하여 입력해주면 된다.</p>
+<p>이제 간단한 CNN 모델을 만들 준비가 끝났다.</p>
+<h3 id="CNN-모델-설계"><a href="#CNN-모델-설계" class="headerlink" title="CNN 모델 설계"></a>CNN 모델 설계</h3><p><code>MNIST</code> 데이터는 간단하게 손글씨로 쓴 숫자이기에 비교적 얕은 모델로도 높은 성능의 분류기를 만들 수 있다. 아래의 그림을 참고해보자.</p>
 <p><img src="\../images/81.png" alt="model"></p>
 <p>위의 각 계층들에 대한 세부적인 정보는 아래와 같다.</p>
 <ul>
@@ -28,17 +38,17 @@
 <li>optimizer: Adam</li>
 <li>weight initialization: std</li>
 </ul>
-<h2 id="CNN-모델-구현-및-학습"><a href="#CNN-모델-구현-및-학습" class="headerlink" title="CNN 모델 구현 및 학습"></a>CNN 모델 구현 및 학습</h2><h3 id="준비-단계"><a href="#준비-단계" class="headerlink" title="준비 단계"></a>준비 단계</h3><p>이제 설계한 모델을 직접 구현해보자. 먼저 모델을 생성하고 학습하는데 필요한 재료들을 가져와야 한다. <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia" target="_blank" rel="noopener">해당 깃허브 사이트</a>에 가서 코드를 다운받으면 바로 학습을 진행할 수 있다. 만약 다운받기 싫다면 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia/tree/master/CNN" target="_blank" rel="noopener">이 사이트</a>에서 아래의 파일들의 코드를 모두 복사해서 사용해도 된다.</p>
-<p>깃허브 데스크탑에 코드를 클론하거나 저장한 분들은 현재 사용하고 있는 커맨드의 경로를 <code>CNN</code> 파일로 변경해야 한다.</p>
-<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">pwd <span class="comment"># 현재 경로 확인</span></span><br><span class="line">cd 코드가 있는 파일 경로 입력/Machine_Learning_in_Julia/CNN</span><br></pre></td></tr></table></figure>
-<p>다시 <code>pwd</code>를 입력했을 때 아래와 같이 변경되어 있으면 변경이 완료된 것이다.</p>
-<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">/Users/코드가 있는 파일 경로/Machine_Learning_in_Julia/CNN</span><br></pre></td></tr></table></figure>
-<p>변경이 완료된 후 아래의 코드를 입력하자.</p>
-<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line">include(<span class="string">"MNIST_data.jl"</span>)</span><br><span class="line">include(<span class="string">"functions.jl"</span>)</span><br><span class="line">include(<span class="string">"layers.jl"</span>)</span><br><span class="line">include(<span class="string">"making_network.jl"</span>)</span><br><span class="line">include(<span class="string">"optimizers.jl"</span>)</span><br></pre></td></tr></table></figure>
-<p><strong>Note</strong><br>만약 터미널 변경에는 성공했는데 위 코드가 작동하지 않는다면 해당 터미널이 줄리아 언어로 세팅되어 있는지를 확인해보자. 줄리아 언어로 변경하는 방법은 줄리아가 저장되어 있는 경로를 찾아서 입력하면 사용할 수 있다.</p>
-<p>위 코드는 파일에 들어 있는 모든 코드들을 작동시킨다. 만약 코드를 복사하여 사용할 분들은 <a href="https://github.com/Hyeonji-Ryu/Machine_Learning_in_Julia/tree/master/CNN" target="_blank" rel="noopener">해당 페이지</a>에서 위의 파일들의 코드를 복사하여 입력해주면 된다.</p>
-<p>이제 간단한 CNN 모델을 만들 준비가 끝났다.</p>
-<h3 id="학습-구현"><a href="#학습-구현" class="headerlink" title="학습 구현"></a>학습 구현</h3>]]></content>
+<h3 id="학습-구현"><a href="#학습-구현" class="headerlink" title="학습 구현"></a>학습 구현</h3><p>학습을 구현하기 위해서는 총 3가지의 과정을 거쳐야 한다.</p>
+<ul>
+<li><code>predict()</code> 및 각 저장소 설정</li>
+<li>가중치와 편향 초기값 설정</li>
+<li>모델 계층 쌓기</li>
+</ul>
+<p>먼저 <code>predict()</code>를 위의 모델 설계에 따라 구성해보자.</p>
+<figure class="highlight julia"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span>  predict(input)</span><br><span class="line"></span><br><span class="line">    pconv_1 = convolution2D_forward(pre_dense,input, params[<span class="string">"W1"</span>], params[<span class="string">"b1"</span>],<span class="number">1</span>,<span class="number">0</span>)</span><br><span class="line">    pconv_Re = relu.(pconv_1)</span><br><span class="line">    ppool_1 = Maxpooling_forward(pre_pool,pconv_Re, <span class="number">2</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">0</span>)</span><br><span class="line">    flatten_1 = flatten_forward_batch(pre_flatten,ppool_1)</span><br><span class="line">    dense_1 = (flatten_1 * params[<span class="string">"W2"</span>]) .+ params[<span class="string">"b2"</span>]</span><br><span class="line">    dense_relu = relu.(dense_1)</span><br><span class="line">    dense_2 = (dense_relu * params[<span class="string">"W3"</span>]) .+ params[<span class="string">"b3"</span>]</span><br><span class="line">    result = softmax(dense_2)</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<p><code>predict()</code>는 손실 값을 구할 때 사용되는 함수이다. 모델의 구성과 동일하며, 이때 사용되는 저장소들은 실제 필요한 데이터들이 아니라 함수의 작동을 위해 기술해둔 것이다.</p>
+<p>```Julia</p>
+]]></content>
       <categories>
         <category>Deep learning in Julia</category>
       </categories>
