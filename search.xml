@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>18. 간단한 CNN 모델 구현</title>
+    <url>/2020/08/01/Deeplearning-18/</url>
+    <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
+<p>이제 CNN 모델을 만들기 위한 기본적인 공부는 모두 끝났다. 이번 글에서는 <code>MNIST</code> 데이터를 사용하여 지금까지 만든 layer들을 가지고 직접 간단한 모델을 만들어 볼 것이다.</p>
+<h2 id="CNN-모델-설계"><a href="#CNN-모델-설계" class="headerlink" title="CNN 모델 설계"></a>CNN 모델 설계</h2><p><code>MNIST</code> 데이터는 간단하게 손글씨로 쓴 숫자이기에 비교적 얕은 모델로도 높은 성능의 분류기를 만들 수 있다. 아래의 그림을 참고해보자.</p>
+<p><img src="\../images/81.png" alt="model"></p>
+<p>CNN 모델은 합성곱과 풀링 계층을 포함하고 있다.</p>
+]]></content>
+      <categories>
+        <category>Deep learning in Julia</category>
+      </categories>
+      <tags>
+        <tag>딥러닝</tag>
+        <tag>Deeplearning</tag>
+        <tag>줄리아</tag>
+        <tag>CNN</tag>
+        <tag>합성곱</tag>
+        <tag>이미지신경망</tag>
+        <tag>풀링</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
+        <tag>im2col</tag>
+        <tag>col2im</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>17. col2im을 적용한 합성곱과 풀링</title>
     <url>/2020/07/14/Deeplearning-17/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
