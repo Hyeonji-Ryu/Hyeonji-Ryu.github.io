@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>0. AWS project</title>
+    <url>/2020/09/12/AWS-project-0/</url>
+    <content><![CDATA[<p>해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2>]]></content>
+      <categories>
+        <category>AWS project</category>
+      </categories>
+      <tags>
+        <tag>딥러닝</tag>
+        <tag>Deeplearning</tag>
+        <tag>AWS</tag>
+        <tag>Amazon</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>18. 간단한 CNN 모델 구현</title>
     <url>/2020/08/01/Deeplearning-18/</url>
     <content><![CDATA[<p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
