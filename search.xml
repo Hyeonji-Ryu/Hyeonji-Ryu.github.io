@@ -14,7 +14,8 @@
 <h3 id="Elastic-Compute-Cloud-EC2"><a href="#Elastic-Compute-Cloud-EC2" class="headerlink" title="Elastic Compute Cloud (EC2)"></a>Elastic Compute Cloud (EC2)</h3><p>EC2는 클라우드 기반의 가상 서버를 제공하는 서비스이다. 보통 EC2의 인스턴스를 만들어 가상 서버 환경을 구축한다. EC2를 통해 가상 환경을 구축하기 위해서는 AMI를 선택하고, 해당 서버에서 운용할 데이터를 넣어둘 저장장치(볼륨)를 선택해야 한다.</p>
 <h3 id="Amazon-Machine-Image-AMI"><a href="#Amazon-Machine-Image-AMI" class="headerlink" title="Amazon Machine Image (AMI)"></a>Amazon Machine Image (AMI)</h3><p>AMI는 서버 바로 위에 구축해야 하는 환경들을 조합해둔 템플릿이다. 아마존에는 딥러닝을 위한 이미지(Deep Learning AMI)도 존재하며, 해당 이미지에는 텐서플로우, 파이토치 등 구현에 필요한 프레임워크까지 모두 포함되어 있다. 즉, 해당 이미지를 선택하여 EC2에 올리면 바로 딥러닝 모델 학습을 시작할 수 있는 것이다.</p>
 <h3 id="Elastic-Block-Storage-EBS"><a href="#Elastic-Block-Storage-EBS" class="headerlink" title="Elastic Block Storage (EBS)"></a>Elastic Block Storage (EBS)</h3><p>EBS는 EC2에서 사용될 데이터나 학습 이후의 결과물 등을 저장하고 사용할 수 있는 임시 저장장치이다. 흔히 하드웨어에서 HDD나 SSD와 같은 역할을 한다. 다만, 가상 서버인 EC2가 멈추면 EBS에 있던 자료도 제거되기 때문에 주의해야 한다. 물론 EBS도 영구적으로 만들어 사용할 수는 있지만 있지만, 가격이 비싸기 때문에 보통 가상 서버에서만 사용한다.</p>
-<h3 id="Simple-Storage-Service-S3"><a href="#Simple-Storage-Service-S3" class="headerlink" title="Simple Storage Service (S3)"></a>Simple Storage Service (S3)</h3>]]></content>
+<h3 id="Simple-Storage-Service-S3"><a href="#Simple-Storage-Service-S3" class="headerlink" title="Simple Storage Service (S3)"></a>Simple Storage Service (S3)</h3><p>S3 또한 데이터를 저장할 수 있는 저장장치이며, EBS보다 저렴하고 데이터를 무한대로 저장할 수 있다는 장점이 있다. S3는 데이터를 저장한 용량에 대비하여 저렴한 비용이 청구되지만 EBS는 선택한 용량 전체에 대해서 비용이 청구되기 떄문에 가상 서버를 돌리지 않을 때에는 데이터들을 S3에 저장해두는 것이 훨씬 저렴하다.</p>
+]]></content>
       <categories>
         <category>AWS project</category>
       </categories>
