@@ -6,10 +6,12 @@
     <content><![CDATA[<p>해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.<br><a id="more"></a></p>
 <hr>
 <p>이전 글에서는 AWS에 대해서 간단하게 알아보고 계정을 생성하였다. 이번 글에서는 커맨드라인에서 코드만을 사용하여 AWS에 접속하는 과정을 살펴볼 것이다.</p>
-<h2 id="awscli"><a href="#awscli" class="headerlink" title="awscli"></a>awscli</h2><p>awscli(AWS command line interface)는 커맨드라인에서 AWS의 API를 직접 호출할 수 있도록 도와주는 도구이다. 커맨드라인에서 AWS를 제어하기 위해서는 해당 툴이 필요하다. python에 아래의 코드를 입력하여 해당 툴을 다운받아보자.</p>
+<h2 id="download-awscli"><a href="#download-awscli" class="headerlink" title="download awscli"></a>download awscli</h2><p>awscli(AWS command line interface)는 커맨드라인에서 AWS의 API를 직접 호출할 수 있도록 도와주는 도구이다. 커맨드라인에서 AWS를 제어하기 위해서는 해당 툴이 필요하다. python에 아래의 코드를 입력하여 해당 툴을 다운받아보자.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip install awscli</span><br></pre></td></tr></table></figure>
 <p>다운이 완료되었다면 로컬에 엑세스 키를 등록해야 한다. 그렇다면 엑세스 키는 무엇이고 어디서 받을 수 있을까? 이에 대해 잠깐 살펴보고 넘어가자.</p>
-<h2 id="Access-Key"><a href="#Access-Key" class="headerlink" title="Access Key"></a>Access Key</h2><p>엑세스 키(Access Key)는 IAM 사용자 계정을 해당 컴퓨터와 연결할 때 사용되는 정보이다. 즉, 각 IAM 사용자 계정에는 고유한 엑세스 키가 있으며, 이를 등록해야 해당 커맨드라인에서 AWS로 접속이 가능하다. 본인의 엑세스 키를 확인하고 싶다면 IAM</p>
+<h2 id="Use-Access-Key"><a href="#Use-Access-Key" class="headerlink" title="Use Access Key"></a>Use Access Key</h2><p>엑세스 키(Access Key)는 IAM 사용자 계정을 해당 컴퓨터와 연결할 때 사용되는 정보이다. 즉, 각 IAM 사용자 계정에는 고유한 엑세스 키가 있으며, 이를 등록해야 해당 커맨드라인에서 AWS로 접속이 가능하다. 본인의 엑세스 키는 해당 계정을 생성한 직후에만 공개되기 때문에 미리 다른 곳에 적어두어야 한다. 그럼 이제 엑세스 키를 이용하여 AWS에 접속해보자.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">aws configure</span><br></pre></td></tr></table></figure>
+<p>커맨드라인에 위의 코드를 입력하면 총 4개의 입력란이 등장한다. </p>
 ]]></content>
       <categories>
         <category>AWS project</category>
@@ -53,7 +55,7 @@
 <p><strong>(7) 아까 만들었던 그룹에 해당 사용자를 추가한다. 아래에 나타나는 그룹을 클릭한 뒤, 다음 단계로 넘어가면 된다.</strong></p>
 <p><img src="/images/90.png" alt="AWS8"></p>
 <p><strong>(8) 다음으로는 태그 설정이다. 보통 회사에서는 직위와 이메일, 사내 번호 등을 추가하여 사용자의 정보를 추기한다. 하지만 우리는 개인 계정이기 때문에 그냥 다음 단계로 바로 넘어간다. 이후 한번 더 검토를 한 후 <code>사용자 만들기</code>를 누르면 IAM 사용자 추가가 완료된다.</strong></p>
-<p><strong>warning</strong><br>IAM 사용자를 생성하면 엑세스 키와 엑세스 시크릿 키가 제공된다. 사용자를 생성할 때만 볼 수 있기 때문에 잊지 말고 다른 곳에 옮겨 적어두어야 한다.</p>
+<p><strong>warning</strong><br> IAM 사용자를 생성하면 엑세스 키와 엑세스 시크릿 키가 제공된다. 사용자를 생성할 때만 볼 수 있기 때문에 잊지 말고 다른 곳에 옮겨 적어두어야 한다.</p>
 <p>지금까지 AWS 계정의 종류와 생성 방법에 대해서 알아보았다. 다음 글에서는 생성한 IAM 계정을 통해 커맨드라인에서 AWS을 연결하는 방법에 대해서 알아볼 것이다.</p>
 ]]></content>
       <categories>
