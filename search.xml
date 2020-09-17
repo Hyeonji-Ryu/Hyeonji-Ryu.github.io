@@ -25,9 +25,9 @@
         <category>AWS project</category>
       </categories>
       <tags>
+        <tag>AWS</tag>
         <tag>딥러닝</tag>
         <tag>Deeplearning</tag>
-        <tag>AWS</tag>
         <tag>Amazon</tag>
       </tags>
   </entry>
@@ -70,9 +70,9 @@
         <category>AWS project</category>
       </categories>
       <tags>
+        <tag>AWS</tag>
         <tag>딥러닝</tag>
         <tag>Deeplearning</tag>
-        <tag>AWS</tag>
         <tag>Amazon</tag>
       </tags>
   </entry>
@@ -97,9 +97,9 @@
         <category>AWS project</category>
       </categories>
       <tags>
+        <tag>AWS</tag>
         <tag>딥러닝</tag>
         <tag>Deeplearning</tag>
-        <tag>AWS</tag>
         <tag>Amazon</tag>
       </tags>
   </entry>
@@ -174,10 +174,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>Julia</tag>
-        <tag>모델</tag>
         <tag>im2col</tag>
         <tag>col2im</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
       </tags>
   </entry>
   <entry>
@@ -210,10 +210,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>Julia</tag>
-        <tag>모델</tag>
         <tag>im2col</tag>
         <tag>col2im</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
       </tags>
   </entry>
   <entry>
@@ -255,10 +255,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>Julia</tag>
-        <tag>모델</tag>
         <tag>im2col</tag>
         <tag>col2im</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
       </tags>
   </entry>
   <entry>
@@ -300,10 +300,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>Julia</tag>
-        <tag>모델</tag>
         <tag>im2col</tag>
         <tag>col2im</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
       </tags>
   </entry>
   <entry>
@@ -386,10 +386,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>flatten</tag>
-        <tag>convolution</tag>
         <tag>Julia</tag>
         <tag>모델</tag>
+        <tag>flatten</tag>
+        <tag>convolution</tag>
       </tags>
   </entry>
   <entry>
@@ -437,8 +437,8 @@
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>신경망</tag>
         <tag>Dropout</tag>
@@ -523,8 +523,8 @@
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>신경망</tag>
         <tag>std</tag>
@@ -658,8 +658,8 @@
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>신경망</tag>
         <tag>optimizer</tag>
@@ -751,8 +751,8 @@ x & \text{(x>0) $$}\\
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>신경망</tag>
         <tag>ReLU</tag>
@@ -842,8 +842,8 @@ x & \text{(x>0) $$}\\
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>신경망</tag>
         <tag>역전파</tag>
@@ -1025,8 +1025,8 @@ x & \text{(x>0) $$}\\
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>신경망</tag>
         <tag>역전파</tag>
@@ -1726,8 +1726,8 @@ a_{12} & \mathbf{a_{22}}\\
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>신경망</tag>
         <tag>순전파</tag>
@@ -1778,8 +1778,8 @@ a_{12} & \mathbf{a_{22}}\\
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>가중치</tag>
         <tag>네트워크</tag>
@@ -1858,8 +1858,8 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>신경망</tag>
         <tag>순전파</tag>
@@ -1930,8 +1930,8 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>경사하강법</tag>
         <tag>미분</tag>
         <tag>편미분</tag>
@@ -1975,8 +1975,8 @@ x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>loss</tag>
         <tag>손실함수</tag>
@@ -2050,8 +2050,8 @@ x & \text{(x>0) $$}\\
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>ReLU</tag>
         <tag>렐루</tag>
@@ -2332,8 +2332,8 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
         <tag>벡터</tag>
         <tag>내적</tag>
@@ -2418,8 +2418,8 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
       </categories>
       <tags>
         <tag>딥러닝</tag>
-        <tag>머신러닝</tag>
         <tag>Deeplearning</tag>
+        <tag>머신러닝</tag>
         <tag>줄리아</tag>
       </tags>
   </entry>
