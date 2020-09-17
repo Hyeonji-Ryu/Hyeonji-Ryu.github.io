@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>3. S3에 훈련 데이터 추가하기</title>
+    <url>/2020/09/17/AWS-project-3/</url>
+    <content><![CDATA[<p>해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.<br><a id="more"></a></p>
+<hr>
+<p>이전 글에서는 AWS에 대해서 간단하게 알아보고 계정을 생성하였다. 이번 글에서는 커맨드라인에서 코드만을 사용하여 AWS에 접속하는 과정을 살펴볼 것이다.</p>
+<h2 id="AWS-S3"><a href="#AWS-S3" class="headerlink" title="AWS S3"></a>AWS S3</h2><p>S3(Simple Storage Service)는 AWS에서 제공하는 데이터 저장소이다. </p>
+]]></content>
+      <categories>
+        <category>AWS project</category>
+      </categories>
+      <tags>
+        <tag>AWS</tag>
+        <tag>딥러닝</tag>
+        <tag>Deeplearning</tag>
+        <tag>Amazon</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2. 커맨드라인으로 AWS 접속하기</title>
     <url>/2020/09/14/AWS-project-2/</url>
     <content><![CDATA[<p>해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.<br><a id="more"></a></p>
@@ -14,10 +32,10 @@
 <p>커맨드라인에 위의 코드를 입력하면 총 4개의 입력란이 등장한다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">AWS Access Key ID [None]: <span class="comment"># IAM 사용자 계정 키 입력</span></span><br><span class="line">AWS Secret Access Key [None]: <span class="comment"># IAM 사용자 계정 비밀 키 입력</span></span><br><span class="line">Default region name [None]: <span class="comment"># 지역 (서울: ap-northeast-2) 입력</span></span><br><span class="line">Default output format [None]:</span><br></pre></td></tr></table></figure>
 <p>위의 설명에 따라 값들을 입력한 후 엔터를 누르면 AWS와 연결된다.</p>
-<p>$\bullet$ AWS Access Key ID \<br>IAM 계정 만들 당시 시크릿 키와 같이 제공된다. 해당 키는 IAM 콘솔에서 다시 확인할 수 있다.</p>
-<p>$\bullet$ AWS Secret Access Key \<br>해당 키는 계정을 생성한 직후에만 볼 수 있기 때문에 꼭 잊지 말고 복사해두어야 한다.</p>
-<p>$\bullet$ Default region name \<br>API를 가져오는 지역을 설정하는 것이다. 서울은 <code>ap-northeast-2</code>를 입력하면 된다. 다른 지역은 <a href="https://aws.amazon.com/ko/about-aws/global-infrastructure/regional-product-services/" target="_blank" rel="noopener">지역 표</a>에서 확인할 수 있다.</p>
-<p>$\bullet$ Default output format \<br>AWS에서 도출한 결과를 어떤 형태로 저장할지 설정한다. text, json, table 중에 하나를 선택할 수 있다.</p>
+<p>$\bullet$ AWS Access Key ID<br>IAM 계정 만들 당시 시크릿 키와 같이 제공된다. 해당 키는 IAM 콘솔에서 다시 확인할 수 있다.</p>
+<p>$\bullet$ AWS Secret Access Key<br>해당 키는 계정을 생성한 직후에만 볼 수 있기 때문에 꼭 잊지 말고 복사해두어야 한다.</p>
+<p>$\bullet$ Default region name<br>API를 가져오는 지역을 설정하는 것이다. 서울은 <code>ap-northeast-2</code>를 입력하면 된다. 다른 지역은 <a href="https://aws.amazon.com/ko/about-aws/global-infrastructure/regional-product-services/" target="_blank" rel="noopener">지역 표</a>에서 확인할 수 있다.</p>
+<p>$\bullet$ Default output format<br>AWS에서 도출한 결과를 어떤 형태로 저장할지 설정한다. text, json, table 중에 하나를 선택할 수 있다.</p>
 <p>설명한 기본적인 지식 외에도 AWS 명령어에 대해 자세히 알고 싶다면 <a href="https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-configure-options.html" target="_blank" rel="noopener">AWS 명령줄 옵션</a>에서 확인하면 된다.</p>
 <p>이제 커맨드라인에서 AWS를 실행할 준비가 모두 완료되었다. 다음 글에서는 커맨드라인에서 S3 버킷을 만들고 데이터를 추가하는 방법에 대해 살펴볼 것이다.</p>
 ]]></content>
