@@ -12,6 +12,12 @@
 <h2 id="Use-Access-Key"><a href="#Use-Access-Key" class="headerlink" title="Use Access Key"></a>Use Access Key</h2><p>엑세스 키(Access Key)는 IAM 사용자 계정을 해당 컴퓨터와 연결할 때 사용되는 정보이다. 즉, 각 IAM 사용자 계정에는 고유한 엑세스 키가 있으며, 이를 등록해야 해당 커맨드라인에서 AWS로 접속이 가능하다. 본인의 엑세스 키는 해당 계정을 생성한 직후에만 공개되기 때문에 미리 다른 곳에 적어두어야 한다. 그럼 이제 엑세스 키를 이용하여 AWS에 접속해보자.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">aws configure</span><br></pre></td></tr></table></figure>
 <p>커맨드라인에 위의 코드를 입력하면 총 4개의 입력란이 등장한다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">AWS Access Key ID [None]: <span class="comment"># IAM 사용자 계정 키 입력</span></span><br><span class="line">AWS Secret Access Key [None]: <span class="comment"># IAM 사용자 계정 비밀 키 입력</span></span><br><span class="line">Default region name [None]: <span class="comment"># 지역 (서울: ap-northeast-2) 입력</span></span><br><span class="line">Default output format [None]: <span class="comment"># None 입력</span></span><br></pre></td></tr></table></figure>
+<p>위의 설명에 따라 값들을 입력한 후 엔터를 누르면 AWS와 연결된다.</p>
+<p>$\bullet$ AWS Access Key ID: </p>
+<p>$\bullet$ AWS Secret Access Key: </p>
+<p>$\bullet$ Default region name: </p>
+<p>$\bullet$ Default output format: </p>
 ]]></content>
       <categories>
         <category>AWS project</category>
