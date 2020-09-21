@@ -41,6 +41,7 @@
 <li>test_x.pickle : 검증 이미지 데이터 (shape: 10000 x 28 x 28 x 1)</li>
 <li>test_y.pickle : 검증 정답 데이터 (shape: 10000)</li>
 </ul>
+<p><strong>NOTE</strong><br> 왜 파일 확장자로 <code>plckle</code>를 사용했는가?<br> 그 이유는 해당 데이터 중 일부가 4차원 배열이기 때문이다. csv나 text 등의 확장자들은 2차원까지만 저장이 가능하다. 하지만 plckle은 파이썬 객체 자체를 파일로 저장하는 방식이기 때문에 다양한 구조의 데이터들을 비교적 쉽게 저장하고 불러올 수 있다.</p>
 <p>다운로드가 완료되었다면 먼저 저장된 데이터가 있는 폴더로 디렉토리를 변경해주어야 한다.</p>
 <p>아래의 코드를 입력하여 현재 경로를 확인해보자.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; <span class="keyword">import</span> os</span><br><span class="line">&gt; os.getcwd()</span><br></pre></td></tr></table></figure>
