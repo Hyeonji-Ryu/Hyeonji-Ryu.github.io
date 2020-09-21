@@ -54,7 +54,7 @@
 <meta property="og:description" content="해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-09-12T09:24:05.000Z">
-<meta property="article:modified_time" content="2020-09-13T05:58:39.807Z">
+<meta property="article:modified_time" content="2020-09-20T10:00:42.103Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="딥러닝">
@@ -250,7 +250,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-09-13 14:58:39" itemprop="dateModified" datetime="2020-09-13T14:58:39+09:00">2020-09-13</time>
+                <time title="Updated at: 2020-09-20 19:00:42" itemprop="dateModified" datetime="2020-09-20T19:00:42+09:00">2020-09-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -278,6 +278,17 @@
         <p>해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>실제 현장에서 흔히 사용되는 SOTA(State-Of-The-Art)라고 불리는 딥러닝 모델들은 매우 깊고 파라미터 수도 많다. 또한 제대로 학습되기 위해서는 많은 양의 훈련 데이터들을 필요로 한다. 따라서 실제 사용되는 딥러닝 모델들을 직접 구현해보고 학습하기 위해서는 좋은 컴퓨팅 파워가 필요하다. 하지만 대부분의 학생이나 스타트업에서는 그런 컴퓨팅 파워를 마련하기엔 경제적으로 부담스럽다. 그런 사람들이 사용하기 좋은 방법이 바로 클라우드 컴퓨팅이다. 해당 프로젝트는 이 클라우드 컴퓨팅을 사용하여 딥러닝을 훈련하고 그 결과를 바로 웹 페이지에 보여주는 과정을 진핼할 것이다. 따라서 해당 프로젝트를 이해하고 따라오기 위해서는 클라우드 컴퓨팅에 대한 기본적인 지식이 필요하다. 이번 글에서는 클라우드 컴퓨팅에 대한 기본적인 지식과 AWS에 대해서 살펴볼 것이다.</p>
+<h2 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h2><p>앞으로 진행할 프로젝트의 프로세스는 다음과 같다.</p>
+<ol>
+<li>AWS 계정 생성하기</li>
+<li>커맨드라인으로 AWS 접속하기</li>
+<li>S3에 훈련 데이터 업로드하기</li>
+<li>EC2 인스턴스 설정하기</li>
+<li>Docker image 만들기</li>
+<li>Docker image EC2에 인스턴스에 배포하기</li>
+<li>훈련 결과를 S3에 저장하기</li>
+<li>S3 데이터를 웹에 호스팅하기</li>
+</ol>
 <h2 id="Cloud-Computing"><a href="#Cloud-Computing" class="headerlink" title="Cloud Computing"></a>Cloud Computing</h2><p>클라우드 컴퓨팅이란 클라우드에서 가상 서버, 데이터 스토리지, 소프트웨어 등 필요한 IT 자원을 임대하여 사용하는 기술이다. 클라우드 컴퓨팅 서비스는 크게 3가지 종류로 나뉜다.</p>
 <h3 id="IaaS-Infrastructure-as-a-Service"><a href="#IaaS-Infrastructure-as-a-Service" class="headerlink" title="IaaS (Infrastructure as a Service)"></a>IaaS (Infrastructure as a Service)</h3><p>IaaS (Infrastructure as a Service)는 실제 하드웨어로 마련해야 하는 서버나, 데이터 스토리지 등의 자원들을 가상으로 제공해주는 서비스이다. 이를 사용하면 물리적인 GPU나 SDD 없이도 무거운 딥러닝 모델을 훈련시킬 수 있다. 해당 프로젝트에서 우리는 이 서비스를 사용할 예정이다.</p>
 <h3 id="PaaS-Platform-as-a-Service"><a href="#PaaS-Platform-as-a-Service" class="headerlink" title="PaaS (Platform as a Service)"></a>PaaS (Platform as a Service)</h3><p>PaaS (Platform as a Service)는 IaaS에서 제공하는 하드웨어와 사용자가 원하는 서비스를 개발할 수 있는 환경을 모두 제공하는 서비스이다. 즉, “IaaS + Platform” 이라고도 할 수 있다. 보통 웹을 구축하기 위해서는 물리적인 하드웨어인 서버를 사고 해당 서버 위에 운영체제 등을 설치해야 서비스를 개발할 수 있지만, 이 서비스를 이용하면 바로 서비스 개발에 들어갈 수 있다.</p>
@@ -375,7 +386,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloud-Computing"><span class="nav-number">2.</span> <span class="nav-text">Cloud Computing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IaaS-Infrastructure-as-a-Service"><span class="nav-number">2.1.</span> <span class="nav-text">IaaS (Infrastructure as a Service)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PaaS-Platform-as-a-Service"><span class="nav-number">2.2.</span> <span class="nav-text">PaaS (Platform as a Service)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SaaS-Software-as-a-Service"><span class="nav-number">2.3.</span> <span class="nav-text">SaaS (Software as a Service)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Web-Services-AWS"><span class="nav-number">3.</span> <span class="nav-text">Amazon Web Services (AWS)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Compute-Cloud-EC2"><span class="nav-number">3.1.</span> <span class="nav-text">Elastic Compute Cloud (EC2)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-Machine-Image-AMI"><span class="nav-number">3.2.</span> <span class="nav-text">Amazon Machine Image (AMI)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Block-Storage-EBS"><span class="nav-number">3.3.</span> <span class="nav-text">Elastic Block Storage (EBS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Storage-Service-S3"><span class="nav-number">3.4.</span> <span class="nav-text">Simple Storage Service (S3)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">4.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Index"><span class="nav-number">2.</span> <span class="nav-text">Index</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloud-Computing"><span class="nav-number">3.</span> <span class="nav-text">Cloud Computing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IaaS-Infrastructure-as-a-Service"><span class="nav-number">3.1.</span> <span class="nav-text">IaaS (Infrastructure as a Service)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PaaS-Platform-as-a-Service"><span class="nav-number">3.2.</span> <span class="nav-text">PaaS (Platform as a Service)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SaaS-Software-as-a-Service"><span class="nav-number">3.3.</span> <span class="nav-text">SaaS (Software as a Service)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Amazon-Web-Services-AWS"><span class="nav-number">4.</span> <span class="nav-text">Amazon Web Services (AWS)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Compute-Cloud-EC2"><span class="nav-number">4.1.</span> <span class="nav-text">Elastic Compute Cloud (EC2)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Amazon-Machine-Image-AMI"><span class="nav-number">4.2.</span> <span class="nav-text">Amazon Machine Image (AMI)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Elastic-Block-Storage-EBS"><span class="nav-number">4.3.</span> <span class="nav-text">Elastic Block Storage (EBS)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Simple-Storage-Service-S3"><span class="nav-number">4.4.</span> <span class="nav-text">Simple Storage Service (S3)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Conclusion"><span class="nav-number">5.</span> <span class="nav-text">Conclusion</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
