@@ -10,13 +10,13 @@
 <h3 id="객체-object"><a href="#객체-object" class="headerlink" title="객체 (object)"></a>객체 (object)</h3><p>객체는 S3에 데이터가 저장되는 기본 단위이다. 객체 종류로는 파일과 메타데이터가 있다. 일반적인 파일은 1개당 1Byte부터 5TB 까지 저장 가능하며, 메타데이터는 MIME 형식으로 파일 확장자를 자동으로 변경하여 저장된다. 메타데이터의 확장자는 사용자가 임의로 설정할 수도 있다.</p>
 <h3 id="버킷-bucket"><a href="#버킷-bucket" class="headerlink" title="버킷 (bucket)"></a>버킷 (bucket)</h3><p>버킷 (bucket)은 S3에서 데이터를 저장하는 최상위 저장소이다. 모든 데이터들은 버킷 안에 저장할 수 있으며, 버킷 없이 데이터를 업로드하는 것은 불가능하다. 각 AWS 계정별로 100개까지 생성할 수 있으며, 각 버킷에는 무제한으로 객체들을 저장할 수 있다.</p>
 <h2 id="boto3-library"><a href="#boto3-library" class="headerlink" title="boto3 library"></a>boto3 library</h2><p><code>boto3</code>는 파이썬에서 S3를 사용할 수 있도록 해주는 라이브러리이다. 아직 다운받지 않았다면 아래의 코드를 입력하면 된다.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install boto3</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; pip3 install boto3</span><br></pre></td></tr></table></figure>
 <p>다운이 완료되었다면 그 다음으로는 아래의 코드를 입력하여 해당 라이브러리를 가져온다.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> boto3</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; <span class="keyword">import</span> boto3</span><br></pre></td></tr></table></figure>
 <h2 id="버킷-생성하기"><a href="#버킷-생성하기" class="headerlink" title="버킷 생성하기"></a>버킷 생성하기</h2><p>커맨드라인에서 S3를 사용할 준비가 완료되었다. 이제부터는 훈련 데이터를 넣을 버킷을 생성해보자. 아래의 코드를 입력하여 S3에 접속한다.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s3 = boto3.client(<span class="string">'s3'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; s3 = boto3.client(<span class="string">'s3'</span>)</span><br></pre></td></tr></table></figure>
 <p>그 다음 버킷 이름을 설정하고, 버킷을 생성한다. 아래의 코드는 서울을 지역으로 설정하여 설정한 이름의 버킷을 생성한다.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">bucket_name = <span class="string">'원하는 이름'</span></span><br><span class="line">s3.create_bucket(Bucket = bucket_name, CreateBucketConfiguration = &#123;<span class="string">'LocationConstraint'</span>: <span class="string">'ap-northeast-2'</span>&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; bucket_name = <span class="string">'원하는 이름'</span></span><br><span class="line">&gt; s3.create_bucket(Bucket = bucket_name, CreateBucketConfiguration = &#123;<span class="string">'LocationConstraint'</span>: <span class="string">'ap-northeast-2'</span>&#125;)</span><br></pre></td></tr></table></figure>
 <p><strong>Warining</strong><br> 버킷의 이름은 전세계적으로 단 하나의 이름이어야 한다. 따라서 만약 누군가 사용하고 있는 이름을 입력하면 아래와 같은 오류가 발생하고, 버킷이 생성되지 않는다.</p>
  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):</span><br><span class="line"> File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"> File <span class="string">"/usr/local/lib/python3.7/site-packages/botocore/client.py"</span>, line <span class="number">337</span>, <span class="keyword">in</span> _api_call</span><br><span class="line">   <span class="keyword">return</span> self._make_api_call(operation_name, kwargs)</span><br><span class="line"> File <span class="string">"/usr/local/lib/python3.7/site-packages/botocore/client.py"</span>, line <span class="number">656</span>, <span class="keyword">in</span> _make_api_call</span><br><span class="line">   <span class="keyword">raise</span> error_class(parsed_response, operation_name)</span><br><span class="line">botocore.errorfactory.BucketAlreadyExists: An error occurred (BucketAlreadyExists) when calling the CreateBucket operation: The requested bucket name <span class="keyword">is</span> <span class="keyword">not</span> available. The bucket namespace <span class="keyword">is</span> shared by all users of the system. Please select a different name <span class="keyword">and</span> <span class="keyword">try</span> again.</span><br></pre></td></tr></table></figure>
 <p>버킷 이름을 만들 때 주의해야 할 요소는 아래와 같다.</p>
@@ -31,10 +31,27 @@
 </li>
 </ul>
 <p>이제 버킷 생성이 잘 되었는지 확인해보자. 아래의 코드를 입력하면 해당 계정의 버킷들의 목록을 볼 수 있다.</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s3.list_buckets()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; s3.list_buckets()</span><br></pre></td></tr></table></figure>
 <p>또한 AWS 사이트에 직접 로그인하여 S3를 확인해봐도 버킷이 생성되었음을 확인할 수 있다.</p>
 <p><img src="/images/91.png" alt="AWS3_1"></p>
-<h2 id="버킷에-훈련데이터-업로드하기"><a href="#버킷에-훈련데이터-업로드하기" class="headerlink" title="버킷에 훈련데이터 업로드하기"></a>버킷에 훈련데이터 업로드하기</h2>]]></content>
+<h2 id="버킷에-훈련-데이터-업로드하기"><a href="#버킷에-훈련-데이터-업로드하기" class="headerlink" title="버킷에 훈련 데이터 업로드하기"></a>버킷에 훈련 데이터 업로드하기</h2><p>해당 프로젝트에서는 간단하게 손글씨 데이터인 <code>MNIST</code>를 사용할 예정이다. <a href="https://github.com/Hyeonji-Ryu/AWS_project/tree/master/Data" target="_blank" rel="noopener">깃허브</a>에 가면 MNIST 데이터를 바로 다운받을 수 있다. 데이터 압축을 풀면 확장자 <code>plckle</code>인 MNIST 데이터 파일이 4개가 있을 것이다. 데이터 정보는 다음과 같다.</p>
+<ul>
+<li>train_x.pickle : 훈련 이미지 데이터 (shape: 60000 x 28 x 28 x 1)</li>
+<li>train_y.pickle : 훈련 정답 데이터 (shape: 60000)</li>
+<li>test_x.pickle : 검증 이미지 데이터 (shape: 10000 x 28 x 28 x 1)</li>
+<li>test_y.pickle : 검증 정답 데이터 (shape: 10000)</li>
+</ul>
+<p>다운로드가 완료되었다면 먼저 저장된 데이터가 있는 폴더로 디렉토리를 변경해주어야 한다.</p>
+<p>아래의 코드를 입력하여 현재 경로를 확인해보자.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; <span class="keyword">import</span> os</span><br><span class="line">&gt; os.getcwd()</span><br></pre></td></tr></table></figure>
+<p>확인했을 때 데이터 저장된 위치와 다르다면, 아래의 코드를 사용하여 알맞게 변경해준다.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">os.chdir(<span class="string">'변경할 주소 입력'</span>)</span><br></pre></td></tr></table></figure>
+<p>그 다음 데이터들을 생성한 버킷에 업로드한다. 해당 코드는 아래와 같다.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">s3.upload_file(<span class="string">'업로드할 파일 이름'</span>, <span class="string">'버킷 이름'</span>, <span class="string">'버킷에 저장할 이름'</span>)</span><br></pre></td></tr></table></figure>
+<p>그후 사이트에 들어가 확인해보면 아래 그림과 같은 변화를 확인할 수 있다.</p>
+<p><img src="/images/92.png" alt="AWS3_2"></p>
+<p>지금까지 커맨드라인에서 S3의 버킷을 생성하고 훈련 데이터를 업로드하는 방법을 살펴보았다. 다음 글에서는 EC2 인스턴스를 설정하는 방법에 대해서 살펴볼 것이다.</p>
+]]></content>
       <categories>
         <category>AWS project</category>
       </categories>
