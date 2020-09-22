@@ -150,7 +150,7 @@
 <li>AWS 계정 생성하기</li>
 <li>커맨드라인으로 AWS 접속하기</li>
 <li>S3에 훈련 데이터 업로드하기</li>
-<li>EC2 인스턴스 설정하기</li>
+<li>EC2 인스턴스 생성하기</li>
 <li>Docker image 만들기</li>
 <li>Docker image EC2에 인스턴스에 배포하기</li>
 <li>훈련 결과를 S3에 저장하기</li>
