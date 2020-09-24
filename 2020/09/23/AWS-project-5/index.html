@@ -55,7 +55,7 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/93.png">
 <meta property="article:published_time" content="2020-09-23T07:22:28.000Z">
-<meta property="article:modified_time" content="2020-09-24T15:59:36.650Z">
+<meta property="article:modified_time" content="2020-09-24T16:06:44.500Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="딥러닝">
@@ -254,7 +254,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-09-25 00:59:36" itemprop="dateModified" datetime="2020-09-25T00:59:36+09:00">2020-09-25</time>
+                <time title="Updated at: 2020-09-25 01:06:44" itemprop="dateModified" datetime="2020-09-25T01:06:44+09:00">2020-09-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -292,6 +292,7 @@
 <p>먼저 가상머신(Virtual Machine, VM)은 해당 컴퓨터의 운영체제 위에 가상 운영체제를 구축하여 가상 환경을 만드는 방법이다. 보통 가상머신은 하이퍼바이저를 통해 실제 컴퓨터의 하드웨어 일부를 할당받고 그 위에 원하는 운영체제 쌓아 애플리케이션들을 생성한다. 해당 방법은 완전한 독립된 환경을 구축할 수 있지만, 운영체제도 포함되어 있다보니 배포하는 애플리케이션이 무겁고 다운받는 시간도 오래걸린다.</p>
 <p>하지만 도커는 컨테이너 덕분에 비교적 간단하게 애플리케이션을 만들어 배포할 수 있다. 컨테이너란 컴퓨터 내의 독립적인 실행 환경이다. 그렇다면 실행 환경과 가상 환경의 차이점은 무엇일까? 가상 환경은 위에서 설명한 바와 같이 실제 하드웨어의 일부를 할당하여 완전하게 분리된 운영체제를 가진다. 반면 컨테이너는 기존 운영체제를 기반으로 운영체제에 없는 부분만 다운받아 사용한다. 정리하여 가상머신과 도커를 구분한다면 가상머신은 가상 운영체제를 쌓는 반면, 도커는 기존 운영체제를 사용한다는 점이다. 아래의 그림은 일반적인 환경과 가상 머신, 도커의 환경을 보여준다.</p>
 <p><img src="/images/93.png" alt="AWS5_1"></p>
+<h2 id="Docker-Image란"><a href="#Docker-Image란" class="headerlink" title="Docker Image란"></a>Docker Image란</h2><p>이 정도면 도커가 어떤 역할인지 대충 알았을 것이다. 현재 우리 프로젝트는 AWS 가상 서버에 도커를 깔고 도커 이미지를 다운받아서 리눅스 기반의 어떤 환경에도 잘 작동되는 웹페이지를 구축하는 것이다. 그렇다면 이제 도커 이미지에 대해서 자세히 살펴보자.</p>
 
     </div>
 
@@ -378,7 +379,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker란"><span class="nav-number">1.</span> <span class="nav-text">Docker란</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker란"><span class="nav-number">1.</span> <span class="nav-text">Docker란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Image란"><span class="nav-number">2.</span> <span class="nav-text">Docker Image란</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
