@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>5. Docker image 만들기</title>
+    <title>5. Docker image 가져오기</title>
     <url>/2020/09/23/AWS-project-5/</url>
     <content><![CDATA[<p>해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.<br><a id="more"></a></p>
 <hr>
@@ -237,7 +237,7 @@
 <li>커맨드라인으로 AWS 접속하기</li>
 <li>S3에 훈련 데이터 업로드하기</li>
 <li>EC2 인스턴스 생성하기</li>
-<li>Docker image 만들기</li>
+<li>Docker image 가져오기</li>
 <li>Docker image EC2에 인스턴스에 배포하기</li>
 <li>훈련 결과를 S3에 저장하기</li>
 <li>S3 데이터를 웹에 호스팅하기</li>
