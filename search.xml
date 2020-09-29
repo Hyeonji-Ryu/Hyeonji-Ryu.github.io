@@ -18,7 +18,12 @@
 <p><img src="/images/93.png" alt="AWS5_1"></p>
 <h2 id="Docker-Image란"><a href="#Docker-Image란" class="headerlink" title="Docker Image란"></a>Docker Image란</h2><p>이 정도면 도커가 어떤 플랫폼인지 파악했을 것이다. 현재 우리 프로젝트는 AWS 가상 서버에 도커를 깔고 도커 이미지를 다운받아서 리눅스 기반의 어떤 환경에도 잘 작동되는 웹페이지를 구축하는 것이다. 그렇다면 이제 도커 이미지에 대해서 자세히 살펴보자.</p>
 <p>이미지(image)는 사용중인 컨테이너의 상태를 그대로 저장하는 방법이다. 예를 들어, 개발자 A가 도커에서 리눅스 기반으로 어떤 애플리케이션을 개발했다고 생각해보자. 그럼 개발자 A는 어떻게 애플리케이션을 배포하는가? 그때 사용되는 방법이 개발자 A의 해당 컨테이너를 이미지로 저장하여 도커 허브(Docker Hub)에 올리는 것이다. 그러면 해당 애플리케이션을 사용하려는 사람들은 이미지를 다운받아 그대로 사용하면 된다. 이미지는 배포를 매우 간단하게 만들어주는 방법으로 실제로 도커 허브에는 수많은 이미지들이 올라와 있다. 우리는 이렇게 이미지를 만드는 과정을 ‘도커라이징(Dockering)’이라고 부른다.</p>
-<p>현재  우리는 AWS EC2</p>
+<p>이제 우리가 사용할 도커 이미지를 만들어보자. 도커 이미지를 만들기 위해서는 <code>dockerfile</code> 을 작성해야 한다. <code>dockerfile</code>은 도커 이미지를 만들기 위한 스크립트이다. 아래의 순서대로 <code>dockerfile</code>을 빌드하여 도커 이미지를 생성해보자.</p>
+<h3 id="1-먼저-커맨드라인에서-도커파일을-생성한다"><a href="#1-먼저-커맨드라인에서-도커파일을-생성한다" class="headerlink" title="1. 먼저 커맨드라인에서 도커파일을 생성한다"></a>1. 먼저 커맨드라인에서 도커파일을 생성한다</h3><p>이래의 코드를 커맨드라인에 입력해보자.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim Dockerfile</span><br></pre></td></tr></table></figure>
+<p>그러면 커맨드라인이 아래와 같이 변경될 것이다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">~</span><br><span class="line">~</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">~</span><br><span class="line">~</span><br><span class="line">-- INSERT --</span><br></pre></td></tr></table></figure>
+<h3 id="2-도커파일에-필요한-설정들을-추가한다"><a href="#2-도커파일에-필요한-설정들을-추가한다" class="headerlink" title="2. 도커파일에 필요한 설정들을 추가한다"></a>2. 도커파일에 필요한 설정들을 추가한다</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">FROM ufoym/deepo:cpu</span><br><span class="line">MAINTAINER name <span class="string">"e-mail"</span> <span class="comment"># 만든 이 정보</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>AWS project</category>
@@ -206,7 +211,7 @@
 <p><img src="/images/86.png" alt="AWS4"></p>
 <p><strong>(3) 그룹에서 새로운 그룹 생성을 누른 후, 해당 그룹의 이름을 입력하고 다음 단계로 넘어간다. 보통 그룹 이름으로는 직군을 사용한다.</strong></p>
 <p><img src="/images/87.png" alt="AWS5"></p>
-<p><strong>(4) 헤당 그룹에 부여할 권한을 선택한다. 해당 프로젝트에서는 가상 서버를 돌리고 훈련 데이터를 저장해야 하기 때문에 <code>AmazonEC2FullAccess</code>와 <code>AmazonS3FullAccess</code> 권한을 얻을 것이다. 이것들을 찾아서 체크한 후 다음 단계로 넘어간다.</strong></p>
+<p><strong>(4) 헤당 그룹에 부여할 권한을 선택한다. 해당 프로젝트에서는 가상 서버를 돌리고 훈련 데이터를 저장해야 하기 때문에 <code>AmazonEC2FullAccess</code>와 <code>AmazonS3FullAccess</code>, <code>AdministratorAccess</code>, 권한을 얻을 것이다. 이것들을 찾아서 체크한 후 다음 단계로 넘어간다.</strong></p>
 <p><img src="/images/88.png" alt="AWS6"></p>
 <p><strong>(5) 검토에서 최종적으로 확인한 후 그룹을 생성한다. 이제 IAM 사용자 계정을 만들 수 있는 그룹이 생겼다. 해당 그룹 안에 IAM 사용자를 추가해보자.</strong></p>
 <p><strong>(6) 대시보드에 ‘사용자’ 파트로 들어가서 사용자 추가를 클릭한 후, 이름을 입력하고 프로그래밍 방식 엑세스를 선택한다. 우리는 커맨드라인에서 바로 AWS을 연결하기 떄문에 콘솔 로그인은 제외하였다. 만약 콘솔로도 해당 계정을 사용하고 싶다면 아래의 엑세스 방식도 추가로 선택할 수 있다.</strong></p>
