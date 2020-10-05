@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/91.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/92.png">
 <meta property="article:published_time" content="2020-09-17T13:35:03.000Z">
-<meta property="article:modified_time" content="2020-09-21T12:08:38.034Z">
+<meta property="article:modified_time" content="2020-10-05T07:58:35.119Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="딥러닝">
@@ -253,7 +253,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-09-21 21:08:38" itemprop="dateModified" datetime="2020-09-21T21:08:38+09:00">2020-09-21</time>
+                <time title="Updated at: 2020-10-05 16:58:35" itemprop="dateModified" datetime="2020-10-05T16:58:35+09:00">2020-10-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -309,7 +309,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; s3.list_buckets()</span><br></pre></td></tr></table></figure>
 <p>또한 AWS 사이트에 직접 로그인하여 S3를 확인해봐도 버킷이 생성되었음을 확인할 수 있다.</p>
 <p><img src="/images/91.png" alt="AWS3_1"></p>
-<h2 id="버킷에-훈련-데이터-업로드하기"><a href="#버킷에-훈련-데이터-업로드하기" class="headerlink" title="버킷에 훈련 데이터 업로드하기"></a>버킷에 훈련 데이터 업로드하기</h2><p>해당 프로젝트에서는 간단하게 손글씨 데이터인 <code>MNIST</code>를 사용할 예정이다. <a href="https://github.com/Hyeonji-Ryu/AWS_project/tree/master/Data" target="_blank" rel="noopener">깃허브</a>에 가면 MNIST 데이터를 바로 다운받을 수 있다. 데이터 압축을 풀면 확장자 <code>plckle</code>인 MNIST 데이터 파일이 4개가 있을 것이다. 데이터 정보는 다음과 같다.</p>
+<h2 id="버킷에-훈련-데이터-업로드하기"><a href="#버킷에-훈련-데이터-업로드하기" class="headerlink" title="버킷에 훈련 데이터 업로드하기"></a>버킷에 훈련 데이터 업로드하기</h2><p>해당 프로젝트에서는 간단하게 손글씨 데이터인 <code>MNIST</code>를 사용할 예정이다. <a href="https://github.com/Hyeonji-Ryu/AWS_project/tree/master/MNIST_CPU" target="_blank" rel="noopener">깃허브</a>에 가면 MNIST 데이터를 바로 다운받을 수 있다. 데이터 압축을 풀면 확장자 <code>plckle</code>인 MNIST 데이터 파일이 4개가 있을 것이다. 데이터 정보는 다음과 같다.</p>
 <ul>
 <li>train_x.pickle : 훈련 이미지 데이터 (shape: 60000 x 28 x 28 x 1)</li>
 <li>train_y.pickle : 훈련 정답 데이터 (shape: 60000)</li>
