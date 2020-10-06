@@ -26,10 +26,23 @@
 <h2 id="EC2-인스턴스에-도커-설치하기"><a href="#EC2-인스턴스에-도커-설치하기" class="headerlink" title="EC2 인스턴스에 도커 설치하기"></a>EC2 인스턴스에 도커 설치하기</h2><p>이제 인스턴스에 도커를 설치해야 한다. 아래의 코드를 입력하여 도커를 설치해보자.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum update -y</span><br><span class="line">sudo yum install docker</span><br><span class="line">sudo service docker start</span><br><span class="line">sudo usermod -a -G docker ec2-user</span><br></pre></td></tr></table></figure>
 <p>도커가 정상작동하기 위해서는 인스턴스를 재부팅해야 한다. 아래의 코드를 입력하여 EC2 인스턴스를 재부팅한다.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">aws ec2 reboot-instances --instance-ids <span class="string">'인스턴스  ID'</span></span><br><span class="line">ssh -i <span class="string">'키 페어 이름.pem'</span> ec2-user@ <span class="string">'헤당 인스턴스 PublicDnsName'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">aws ec2 reboot-instances --instance-ids <span class="string">'인스턴스  ID'</span> or <span class="built_in">logout</span></span><br><span class="line">ssh -i <span class="string">'키 페어 이름.pem'</span> ec2-user@ <span class="string">'헤당 인스턴스 PublicDnsName'</span></span><br></pre></td></tr></table></figure>
 <p>그 다음 아래의 코드를 입력하면 도커가 정상작동하는 것을 확인할 수 있다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
-<h2 id="docker-image-가져와서-실행하기"><a href="#docker-image-가져와서-실행하기" class="headerlink" title="docker image 가져와서 실행하기"></a>docker image 가져와서 실행하기</h2>]]></content>
+<h2 id="docker-image-빌드하고-컨테이너-생성하기"><a href="#docker-image-빌드하고-컨테이너-생성하기" class="headerlink" title="docker image 빌드하고 컨테이너 생성하기"></a>docker image 빌드하고 컨테이너 생성하기</h2><p>인스턴스 재부팅이 완료되었다면 저장해두었던 도커파일을 빌드하여 컨테이너를 생성해보자. 아래의 코드를 입력하여 도커파일을 빌드한다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker build -t train:0.0 .</span><br></pre></td></tr></table></figure>
+<p>위 코드는 현재 디렉토리에 있는 도커파일을 <code>train:0.0</code>라는 이름으로 빌드한다. 뒤에 <code>(띄어쓰기).</code>는 현재 디렉토리를 나타낸 것이다. 그렇기 때문에  위 코드를 입력할 때 잊지 말고 같이 입력해야 한다. 이미지 빌드가 완성되면 아래의 코드를 입력하여 확인할 수 있다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images</span><br><span class="line"></span><br><span class="line">REPOSITORY          TAG                   IMAGE ID            CREATED             SIZE</span><br><span class="line">train               0.0                   947c77773268        8 seconds ago       2.05GB</span><br><span class="line">ufoym/deepo         tensorflow-py36-cpu   437bbe6aecab        5 weeks ago         1.79GB</span><br></pre></td></tr></table></figure>
+<p>위와 같이 나왔다면 이미지 빌드에 성공한 것이다. 이제 train:0.0을 사용하여 컨테이너를 생성할 것이다. 아래의 코드를 입력해보자.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -v /home/ec2-user:/app train:0.0</span><br></pre></td></tr></table></figure>
+<p>위 코드에 대해 살펴보자면 먼저 <code>-v</code>는 호스트의 디렉토리를 생성할 컨테이너 디렉토리로 마운트하는 것이다. <code>/home/ec2-user</code>은 EC2 인스턴스의 디렉토리이고, <code>/app</code>은 컨테이너 디렉토리이다. (도커파일에서 컨테이너 디렉토리를 <code>/app</code>으로 설정하였다 ) 그 다음 사용할 이미지 이름과 태그를 입력하면 도커 컨테이너가 작동한다.</p>
+<h2 id="훈련-결과-확인하기"><a href="#훈련-결과-확인하기" class="headerlink" title="훈련 결과 확인하기"></a>훈련 결과 확인하기</h2><p>컨테이너가 작동되면 커맨드라인에 아래와 같이 훈련이 진행되는 상황이 보인다.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Epoch <span class="number">1</span>/<span class="number">100</span></span><br><span class="line"><span class="number">600</span>/<span class="number">600</span> [==============================] - <span class="number">55</span>s <span class="number">92</span>ms/step - loss: <span class="number">0.1782</span> - accuracy: <span class="number">0.9444</span> - val_loss: <span class="number">6.7693</span> - val_accuracy: <span class="number">0.9827</span></span><br><span class="line">Epoch <span class="number">2</span>/<span class="number">100</span></span><br><span class="line"><span class="number">600</span>/<span class="number">600</span> [==============================] - <span class="number">55</span>s <span class="number">91</span>ms/step - loss: <span class="number">0.0519</span> - accuracy: <span class="number">0.9840</span> - val_loss: <span class="number">5.7595</span> - val_accuracy: <span class="number">0.9855</span></span><br><span class="line">Epoch <span class="number">3</span>/<span class="number">100</span></span><br><span class="line"><span class="number">600</span>/<span class="number">600</span> [==============================] - <span class="number">55</span>s <span class="number">91</span>ms/step - loss: <span class="number">0.0357</span> - accuracy: <span class="number">0.9886</span> - val_loss: <span class="number">8.1897</span> - val_accuracy: <span class="number">0.9838</span></span><br><span class="line">.</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
+<p>이것은 우리가 명령했던 <code>model.py</code>가 잘 작동하고 있다는 의미이며, 학습이 끝나면 가중치, 모델 스트럭쳐와 같은 모델 정보들을 EC2 인스턴스에 저장한다. 모델 정보는 <code>mnist_convNet</code>이라는 폴더로 저장된다. (model.py의 마지막 줄에서 폴더 이름 수정 가능하다)</p>
+<p>아래의 코드를 입력하여 EC2 인스턴스의 디렉토리를 확인해보자.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls</span><br><span class="line"></span><br><span class="line">Dockerfile     model.py       test_y.pickle   train_y.pickle</span><br><span class="line">mnist_convNet  test_x.pickle  train_x.pickle</span><br></pre></td></tr></table></figure>
+<h2 id="훈련-결과-S3에-저장하기"><a href="#훈련-결과-S3에-저장하기" class="headerlink" title="훈련 결과 S3에 저장하기"></a>훈련 결과 S3에 저장하기</h2><p>훈련이 끝났다. 이제 훈련이 완료된 모델 정보를 </p>
+]]></content>
       <categories>
         <category>AWS project</category>
       </categories>
@@ -323,8 +336,8 @@
 <li>EC2 인스턴스 생성하기</li>
 <li>Docker image 생성하기</li>
 <li>EC2 인스턴스에서 모델 훈련하기</li>
-<li>훈련 결과를 S3 버킷에 저장하기</li>
-<li>S3 데이터를 웹에 호스팅하기</li>
+<li>모델 서빙 API 생성하기</li>
+<li>GPU</li>
 </ol>
 <h2 id="Cloud-Computing"><a href="#Cloud-Computing" class="headerlink" title="Cloud Computing"></a>Cloud Computing</h2><p>클라우드 컴퓨팅이란 클라우드에서 가상 서버, 데이터 스토리지, 소프트웨어 등 필요한 IT 자원을 임대하여 사용하는 기술이다. 클라우드 컴퓨팅 서비스는 크게 3가지 종류로 나뉜다.</p>
 <h3 id="IaaS-Infrastructure-as-a-Service"><a href="#IaaS-Infrastructure-as-a-Service" class="headerlink" title="IaaS (Infrastructure as a Service)"></a>IaaS (Infrastructure as a Service)</h3><p>IaaS (Infrastructure as a Service)는 실제 하드웨어로 마련해야 하는 서버나, 데이터 스토리지 등의 자원들을 가상으로 제공해주는 서비스이다. 이를 사용하면 물리적인 GPU나 SDD 없이도 무거운 딥러닝 모델을 훈련시킬 수 있다. 해당 프로젝트에서 우리는 이 서비스를 사용할 예정이다.</p>
