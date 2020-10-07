@@ -6,7 +6,24 @@
     <content><![CDATA[<p>해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.<br><a id="more"></a></p>
 <hr>
 <p>지금까지 AWS를 사용하여 딥러닝 모델을 훈련하고 그 결과를 S3버킷에 저장하였다. 이번 글에서는 훈련된 모델을 서빙하는 방법에 대해서 살펴볼 것이다.</p>
-<h2 id="모델-API-생성하기"><a href="#모델-API-생성하기" class="headerlink" title="모델 API 생성하기"></a>모델 API 생성하기</h2><p>훈련된 모델 파일에는 크게 아래와 같은 데이터가 포함되어 있다. </p>
+<h2 id="모델-서빙서버-생성하기"><a href="#모델-서빙서버-생성하기" class="headerlink" title="모델 서빙서버 생성하기"></a>모델 서빙서버 생성하기</h2><p>먼저 API에 대해서 간단하게 알아보고 시작해보자. API()란</p>
+<p><strong>1. S3 버킷에서 모델 파일 다운 받기</strong><br>AWS에 접속한 상태에서 아래의 코드를 입력하면 로컬에 다운받을 수 있다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">aws s3 cp s3://<span class="string">'버킷 이름'</span>/<span class="string">'파일 이름'</span> <span class="string">'다운받을 로컬 디렉토리 경로'</span></span><br></pre></td></tr></table></figure>
+<p><strong>2. tar 압축 해제하기</strong><br>모델을 다운받은 디렉토리로 이동하여 아래의 코드를 입력하면 간단하게 해제할 수 있다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xvf <span class="string">'파일 이름.tar'</span></span><br></pre></td></tr></table></figure>
+<p><strong>3. 도커에 서빙서버 생성하기</strong><br>커맨드라인에서 아래의 코드를 입력하여 다운받은 모델을 서빙할 서버를 생성한다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p 8501:8501 --mount <span class="built_in">type</span>=<span class="built_in">bind</span>,<span class="built_in">source</span>=<span class="variable">$PWD</span>/mnist_convNet,target=/models/mnist -e MODEL_NAME=mnist -td tensorflow/serving</span><br></pre></td></tr></table></figure>
+<p>이제 모델 서빙서버가 만들어졌다. 아래의 코드를 입력하면 현재 서빙서버가 작동되고 있음을 확인할 수 있다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps <span class="comment"># 현재 실행중인 컨테이너만 보여준다.</span></span><br></pre></td></tr></table></figure>
+<h2 id="예제로-모델-서빙서버-테스트하기"><a href="#예제로-모델-서빙서버-테스트하기" class="headerlink" title="예제로 모델 서빙서버 테스트하기"></a>예제로 모델 서빙서버 테스트하기</h2><p>이제 서빙서버에 있는 모델이 잘 작동하는지 확인해보자. 커맨드라인에서 Python을 실행한 후 아래의 라이브러리들을 다운로드한다.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> tensorflow.keras <span class="keyword">import</span> datasets, layers, models</span><br></pre></td></tr></table></figure>
+<p>위 모델은 MNIST 데이터를 학습하였다. 따라서 테스트는 텐서플로우 측에서 제공하는 MNIST 데이터셋으로 진행할 것이다. 아래의 코들르 입력하여 MNIST 데이터들을 가져오자.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">(train_images, train_labels), (test_images, test_labels) = datasets.mnist.load_data()</span><br><span class="line">test_images = test_images.reshape((<span class="number">10000</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>))</span><br><span class="line">test_images = test_images / <span class="number">255.0</span></span><br><span class="line">test_images.shape</span><br><span class="line">(<span class="number">10000</span>, <span class="number">28</span>, <span class="number">28</span>, <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+<p>테스트셋은 10000개나 들어있다. 따라서 시각적으로 확인해보기 위해 앞의 2개의 이미지만 분리하여 예측해볼 것이다. 아래의 코드를 입력하여 이미지 2개를 분리하자.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">temp = test_images[<span class="number">0</span>:<span class="number">2</span>,:,:,:]</span><br><span class="line">answer = test_labels[<span class="number">0</span>:<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<p>이제 이미지 2개인 <code>temp</code>를 서빙서버에 보내고 예측값을 받아오자.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">address = <span class="string">'http://localhost:8501/v1/models/mnist:predict'</span></span><br><span class="line">data = json.dumps(&#123;<span class="string">'instances'</span>:temp.tolist()&#125;)</span><br><span class="line">result = requests.post(address, data=data)</span><br><span class="line">predictions = json.loads(str(result.content, <span class="string">'utf-8'</span>))[<span class="string">'predictions'</span>]</span><br></pre></td></tr></table></figure>
+<p><code>address</code>는 서빙서버의 URL이고, </p>
 ]]></content>
       <categories>
         <category>AWS project</category>
