@@ -383,8 +383,8 @@
 <li>EC2 인스턴스 생성하기</li>
 <li>Docker image 생성하기</li>
 <li>EC2 인스턴스에서 모델 훈련하기</li>
-<li>모델 서빙 API 생성하기</li>
-<li>GPU 사용하여 </li>
+<li>모델 서빙서버 생성하기</li>
+<li>GPU vs. CPU 속도 비교</li>
 </ol>
 <h2 id="Cloud-Computing"><a href="#Cloud-Computing" class="headerlink" title="Cloud Computing"></a>Cloud Computing</h2><p>클라우드 컴퓨팅이란 클라우드에서 가상 서버, 데이터 스토리지, 소프트웨어 등 필요한 IT 자원을 임대하여 사용하는 기술이다. 클라우드 컴퓨팅 서비스는 크게 3가지 종류로 나뉜다.</p>
 <h3 id="IaaS-Infrastructure-as-a-Service"><a href="#IaaS-Infrastructure-as-a-Service" class="headerlink" title="IaaS (Infrastructure as a Service)"></a>IaaS (Infrastructure as a Service)</h3><p>IaaS (Infrastructure as a Service)는 실제 하드웨어로 마련해야 하는 서버나, 데이터 스토리지 등의 자원들을 가상으로 제공해주는 서비스이다. 이를 사용하면 물리적인 GPU나 SDD 없이도 무거운 딥러닝 모델을 훈련시킬 수 있다. 해당 프로젝트에서 우리는 이 서비스를 사용할 예정이다.</p>
