@@ -23,7 +23,12 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">temp = test_images[<span class="number">0</span>:<span class="number">2</span>,:,:,:]</span><br><span class="line">answer = test_labels[<span class="number">0</span>:<span class="number">2</span>]</span><br></pre></td></tr></table></figure>
 <p>이제 이미지 2개인 <code>temp</code>를 서빙서버에 보내고 예측값을 받아오자.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">address = <span class="string">'http://localhost:8501/v1/models/mnist:predict'</span></span><br><span class="line">data = json.dumps(&#123;<span class="string">'instances'</span>:temp.tolist()&#125;)</span><br><span class="line">result = requests.post(address, data=data)</span><br><span class="line">predictions = json.loads(str(result.content, <span class="string">'utf-8'</span>))[<span class="string">'predictions'</span>]</span><br></pre></td></tr></table></figure>
-<p><code>address</code>는 서빙서버의 URL이고, </p>
+<p>우리가 보낸 이미지의 예측값이 <code>predictions</code>에 저장되었다. 아래의 코드를 입력하면 값들을 확인할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">np.argmax(predictions[<span class="number">0</span>])</span><br><span class="line"> <span class="number">7</span></span><br><span class="line">np.argmax(predictions[<span class="number">1</span>])</span><br><span class="line"> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>모델은 첫 번째 이미지를 7이라고 예측했고, 두 번째 이미지를 2라고 예측하였다. 아까 미리 저장해두었던 정답을 확인해보자.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">answer</span><br><span class="line"> array([<span class="number">7</span>, <span class="number">2</span>], dtype=uint8)</span><br></pre></td></tr></table></figure>
+<p>모델의 예측이 정확히 맞았다.</p>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>지금까지 AWS를 가상서버를 사용하여 모델을 훈련한 후, 해당 모델을 서빙하는 방법에 대해서 알아보았다. 다음 글에서는 GPU를 사용하여 훈련하는 과정을 살펴볼 것이다.</p>
 ]]></content>
       <categories>
         <category>AWS project</category>
