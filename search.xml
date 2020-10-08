@@ -8,7 +8,7 @@
 <p>지금까지 AWS를 사용하여 딥러닝 모델을 훈련하고 그 결과를 S3버킷에 저장하였다. 이번 글에서는 훈련된 모델을 서빙하는 방법에 대해서 살펴볼 것이다.</p>
 <h2 id="모델-서빙서버-생성하기"><a href="#모델-서빙서버-생성하기" class="headerlink" title="모델 서빙서버 생성하기"></a>모델 서빙서버 생성하기</h2><p><strong>1. S3 버킷에서 모델 파일 다운 받기</strong><br>AWS에 접속한 상태에서 아래의 코드를 입력하면 로컬에 다운받을 수 있다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">aws s3 cp s3://<span class="string">'버킷 이름'</span>/<span class="string">'파일 이름'</span> <span class="string">'다운받을 로컬 디렉토리 경로'</span></span><br></pre></td></tr></table></figure>
-<p><strong>2. tar 압축 해제하기</strong><br>모델을 다운받은 디렉토리로 이동하여 아래의 코드를 입력하면 간단하게 해제할 수 있다.</p>
+<p><strong>2. tar 묶음 해제하기</strong><br>모델을 다운받은 디렉토리로 이동하여 아래의 코드를 입력하면 간단하게 해제할 수 있다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xvf <span class="string">'파일 이름.tar'</span></span><br></pre></td></tr></table></figure>
 <p><strong>3. 도커에 서빙서버 생성하기</strong><br>커맨드라인에서 아래의 코드를 입력하여 다운받은 모델을 서빙할 서버를 생성한다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -p 8501:8501 --mount <span class="built_in">type</span>=<span class="built_in">bind</span>,<span class="built_in">source</span>=<span class="variable">$PWD</span>/mnist_convNet,target=/models/mnist -e MODEL_NAME=mnist -td tensorflow/serving</span><br></pre></td></tr></table></figure>
@@ -478,10 +478,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>Julia</tag>
-        <tag>모델</tag>
         <tag>im2col</tag>
         <tag>col2im</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
       </tags>
   </entry>
   <entry>
@@ -514,10 +514,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>Julia</tag>
-        <tag>모델</tag>
         <tag>im2col</tag>
         <tag>col2im</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
       </tags>
   </entry>
   <entry>
@@ -559,10 +559,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>Julia</tag>
-        <tag>모델</tag>
         <tag>im2col</tag>
         <tag>col2im</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
       </tags>
   </entry>
   <entry>
@@ -604,10 +604,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>Julia</tag>
-        <tag>모델</tag>
         <tag>im2col</tag>
         <tag>col2im</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
       </tags>
   </entry>
   <entry>
@@ -690,10 +690,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>flatten</tag>
-        <tag>convolution</tag>
         <tag>Julia</tag>
         <tag>모델</tag>
+        <tag>flatten</tag>
+        <tag>convolution</tag>
       </tags>
   </entry>
   <entry>
