@@ -27,12 +27,23 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -i -t mariadb /bin/bash</span><br></pre></td></tr></table></figure>
 <p>도커에서 <code>exec</code>는 컨테이너 내부로 접속하는 명령어이다. 그다음 명령어 <code>exec</code>의 옵션인 <code>-i</code>는 ‘interactive’의 약자로 사용자가 해당 서버에 입출력할 수 있도록 해주며, <code>-t</code>는 가상 터미널인 TTY(pseudo-TTY)를 통해 bash셀을 사용할 수 있도록 해준다.</p>
 <p>접속이 완료되면 아래와 같이 컨테이너 ID가 프롬프트가 된다.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment">#</span></span><br></pre></td></tr></table></figure>
 <p>그다음 아래의 코드를 입력하여 MariaDB에 접속한다.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
 <p>비밀번호는 처음 컨테이너를 생성할 때 만들었던 것을 입력하면 된다. 그러면 아래와 같이 프롬프트창이 변할 것이다.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">MariaDB [(none)]&gt;</span><br></pre></td></tr></table></figure>
-<h2 id="my-snf-수정하기"><a href="#my-snf-수정하기" class="headerlink" title="my.snf 수정하기"></a>my.snf 수정하기</h2>]]></content>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">MariaDB [(none)]&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="my-snf-수정하기"><a href="#my-snf-수정하기" class="headerlink" title="my.snf 수정하기"></a>my.snf 수정하기</h2><p>MariaDB에서 <code>status</code>를 입력하면, DB 정보를 확인할 수 있다. 그중 characterset이 “latin” 경우에는 힌글이 꺠질 수 있기 떄문에 UTF-8로 변경해주어야 한다.</p>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">MariaDB [(none)]&gt; status</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">Server characterset:    utf8mb4</span><br><span class="line">Db     characterset:    utf8mb4</span><br><span class="line">Client characterset:    latin1</span><br><span class="line">Conn.  characterset:    latin1</span><br></pre></td></tr></table></figure>
+<p>변경하는 방법은 간단하다. 해당 터미널에서 <code>exit</code>를 입력하여 DB를 빠져나온 후 컨테이너에서 아래의 코드를 입력하여 수정할 파일을 오픈한다. 우리는 에디터 vim을 사용하여 터미널 내에서 수정을 진행할 것이다.</p>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># apt-get update</span></span><br><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># apt-get install nano</span></span><br><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># apt-get install vim</span></span><br></pre></td></tr></table></figure>
+<p>컨테이너 내에 vim 설치가 완료되었다면 아래의 디렉토리로 이동하여 해당 파일을 오픈한다.</p>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># cd /etc/mysql</span></span><br><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># vim my.snf</span></span><br></pre></td></tr></table></figure>
+<p>그러면 에디터가 열리고 파일 내용이 터미널에 나타난다. 여기서 <code>i</code>를 입력하여 INSERT 모드로 변경한 후 아래의 코드를 복사해 붙여넣자.</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-<span class="keyword">set</span> = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-<span class="keyword">set</span> = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">collation-server = utf8_unicode_ci</span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span></span><br><span class="line">character-<span class="keyword">set</span>-server = utf8</span><br></pre></td></tr></table></figure>
+<p>그다음 esc를 누르고 <code>:write</code>를 입력하고 엔터를 누르면 수정사항이 저장된다. 그 후 <code>:q</code>을 입력하여 에디터를 빠져나오면 된다.</p>
+<p>확인을 위하여 다시 DB에 접속해보자. 접속한 후, <code>status</code>를 다시 입력해보면 변경된 것을 확인할 수 있다.</p>
+<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">MariaDB [(none)]&gt; status</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">Server characterset:    utf8mb4</span><br><span class="line">Db     characterset:    utf8mb4</span><br><span class="line">Client characterset:    utf8mb4</span><br><span class="line">Conn.  characterset:    utf8mb4</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>Database</category>
       </categories>
