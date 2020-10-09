@@ -54,7 +54,7 @@
 <meta property="og:description" content="도커 컨테이너에 MariaDB를 올려서 데이터베이스를 구축합니다. 커맨드라인에서 파일을 수정해야 하기에 vi, vim 사용법에 대해서도 같이 공부할 예정입니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-10-09T06:24:10.000Z">
-<meta property="article:modified_time" content="2020-10-09T09:59:29.389Z">
+<meta property="article:modified_time" content="2020-10-09T11:40:11.280Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="mariadb">
 <meta property="article:tag" content="database">
@@ -248,7 +248,7 @@
               <span class="post-meta-item-text">작성일</span>
               
 
-              <time title="Post created: 2020-10-09 15:24:10 / Updated at: 18:59:29" itemprop="dateCreated datePublished" datetime="2020-10-09T15:24:10+09:00">2020-10-09</time>
+              <time title="Post created: 2020-10-09 15:24:10 / Updated at: 20:40:11" itemprop="dateCreated datePublished" datetime="2020-10-09T15:24:10+09:00">2020-10-09</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -276,7 +276,15 @@
         <p>도커 컨테이너에 MariaDB를 올려서 데이터베이스를 구축합니다. 커맨드라인에서 파일을 수정해야 하기에 vi, vim 사용법에 대해서도 같이 공부할 예정입니다.<br><a id="more"></a></p>
 <hr>
 <p>이번 글에서는 MariaDB에 대해 간단하게 알아보고 도커 컨테이너에 MariaDB를 올려 데이터베이스 구축하는 방법에 대해서 살펴볼 것이다. 해당 글은 도커가 이미 깔려았다는 전제 하에 설명하기 때문에 만약 도커가 없다면 다운받아야 한다.</p>
-<h2 id="MariaDB란"><a href="#MariaDB란" class="headerlink" title="MariaDB란"></a>MariaDB란</h2><p>MariaDB는 </p>
+<h2 id="Database란"><a href="#Database란" class="headerlink" title="Database란"></a>Database란</h2><p>데이터베이스(Database, DB)는 여러 사람들이 사용할 목적으로 통합하고 관리하는 데이터 집합을 말하며, 대부분 관계형 데이터베이스(Relational Database, RDB) 형태로 많이 사용하고 있다. 관계형 데이터베이스란 데이터를 컬럼(column)과 로우(row)를 이루는 하나 이상의 테이블(또는 관계)로 정리하는 방식이며, 흔히 우리가 알고 있는 엑셀의 시트 형태와 같다.</p>
+<p>이런 데이터베이스를 통합하고 관리하는 소프트웨어를 ‘데이터베이스 관리시스템(DataBase Management System, DBMS)’라고 하며, 보통 RDB를 관리하는 시스템을 ‘관계형 데이터베이스 관리시스템(Relational DBMS, RDBMS)’이라고 한다. 이런 관계형 데이터베이스는 ‘SQL(Structured Query Language)’이라는 언어를 통해서 데이터 전송을 주고 받는다.</p>
+<p>정리하면 다음과 같다.</p>
+<ul>
+<li>데이터 뭉치: 관계형 데이터베이스</li>
+<li>데이터를 담는 통: 관계형 데이터베이스 관리시스템</li>
+<li>통에서 특정 데이터 조작: SQL</li>
+</ul>
+<h2 id="MariaDB"><a href="#MariaDB" class="headerlink" title="MariaDB"></a>MariaDB</h2><p>MariaDB는 MysSQL와 동일한 소스코드를 기반으로 한 오픈소스 관계형 데이터베이스 관리시스템(RDBMS)이다. 소스코드가 같으므로 데이터베이스의 구조나 사용방법이 MysSQL과 동일하다.</p>
 <h2 id="Docker에-MariaDB-컨테이너-생성하기"><a href="#Docker에-MariaDB-컨테이너-생성하기" class="headerlink" title="Docker에 MariaDB 컨테이너 생성하기"></a>Docker에 MariaDB 컨테이너 생성하기</h2><p>먼저 MariaDB image를 다운받아야 한다. 아래의 코드를 입력하여 다운을 받은 뒤, 도커 이미지를 확인해보자.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull mariadb <span class="comment"># mariaDB image download</span></span><br><span class="line">docker images <span class="comment"># check downloaded images</span></span><br></pre></td></tr></table></figure>
 <p>그 다음 아래의 코드를 입력하여 MariaDB 컨테이너를 생성하면 된다.</p>
@@ -287,7 +295,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
 <h2 id="MariaDB-접속하기"><a href="#MariaDB-접속하기" class="headerlink" title="MariaDB 접속하기"></a>MariaDB 접속하기</h2><p>이제 만든 컨테이너에 접속해보자. 아래의 코드를 입력한다.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -i -t mariadb /bin/bash</span><br></pre></td></tr></table></figure>
-<p>도커에서 <code>exec</code>는 컨테이너 내부로 접속하는 명령어이다. 그 다음 <code>-i</code>는 ‘interactive’의 약자로 사용자가 해당 서버에 입출력할 수 있도록 해주며, <code>-t</code></p>
+<p>도커에서 <code>exec</code>는 컨테이너 내부로 접속하는 명령어이다. 그다음 명령어 <code>exec</code>의 옵션인 <code>-i</code>는 ‘interactive’의 약자로 사용자가 해당 서버에 입출력할 수 있도록 해주며, <code>-t</code>는 가상 터미널인 TTY(pseudo-TTY)를 통해 bash셀을 사용할 수 있도록 해준다.</p>
+<p>접속이 완료되면 아래와 같이 컨테이너 ID가 프롬프트가 된다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>그다음 아래의 코드를 입력하여 MariaDB에 접속한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p>비밀번호는 처음 컨테이너를 생성할 때 만들었던 것을 입력하면 된다. 그러면 아래와 같이 프롬프트창이 변할 것이다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [(none)]&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="my-snf-수정하기"><a href="#my-snf-수정하기" class="headerlink" title="my.snf 수정하기"></a>my.snf 수정하기</h2>
     </div>
 
@@ -376,7 +390,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MariaDB란"><span class="nav-number">1.</span> <span class="nav-text">MariaDB란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker에-MariaDB-컨테이너-생성하기"><span class="nav-number">2.</span> <span class="nav-text">Docker에 MariaDB 컨테이너 생성하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MariaDB-접속하기"><span class="nav-number">3.</span> <span class="nav-text">MariaDB 접속하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#my-snf-수정하기"><span class="nav-number">4.</span> <span class="nav-text">my.snf 수정하기</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Database란"><span class="nav-number">1.</span> <span class="nav-text">Database란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MariaDB"><span class="nav-number">2.</span> <span class="nav-text">MariaDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker에-MariaDB-컨테이너-생성하기"><span class="nav-number">3.</span> <span class="nav-text">Docker에 MariaDB 컨테이너 생성하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MariaDB-접속하기"><span class="nav-number">4.</span> <span class="nav-text">MariaDB 접속하기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#my-snf-수정하기"><span class="nav-number">5.</span> <span class="nav-text">my.snf 수정하기</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
