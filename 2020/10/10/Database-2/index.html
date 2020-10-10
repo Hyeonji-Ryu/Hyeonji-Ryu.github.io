@@ -54,7 +54,7 @@
 <meta property="og:description" content="mariaDB의 기본적인 사용법 대해서 살펴봅니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-10-10T00:58:01.000Z">
-<meta property="article:modified_time" content="2020-10-10T08:06:23.476Z">
+<meta property="article:modified_time" content="2020-10-10T09:03:23.605Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="database">
 <meta property="article:tag" content="sql">
@@ -244,7 +244,7 @@
               <span class="post-meta-item-text">작성일</span>
               
 
-              <time title="Post created: 2020-10-10 09:58:01 / Updated at: 17:06:23" itemprop="dateCreated datePublished" datetime="2020-10-10T09:58:01+09:00">2020-10-10</time>
+              <time title="Post created: 2020-10-10 09:58:01 / Updated at: 18:03:23" itemprop="dateCreated datePublished" datetime="2020-10-10T09:58:01+09:00">2020-10-10</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,10 +271,25 @@
       
         <p>mariaDB의 기본적인 사용법 대해서 살펴봅니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="특정-데이터-찾기"><a href="#특정-데이터-찾기" class="headerlink" title="특정 데이터 찾기"></a>특정 데이터 찾기</h2><p>테이블에서 특정한 조건의 데이터를 찾을 때는 <code>WHERE</code>절을  사용하면 된다.</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  * <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span> <span class="keyword">WHERE</span> <span class="string">'조건에 사용될 카테고리'</span> = <span class="string">'특정 조건'</span> ;</span><br></pre></td></tr></table></figure>
-<p><code>WHERE</code>절은 </p>
-<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>
+<p>해당 글은 이전 글의 2편이기 때문에 DB를 처음 사용하는 사람은 <a href="https://hyeonji-ryu.github.io/2020/10/10/Database-1/#more">이전 글</a>을 먼저 보고 오기를 추천한다.</p>
+<h2 id="테이블에-복수-데이터-추가"><a href="#테이블에-복수-데이터-추가" class="headerlink" title="테이블에 복수 데이터 추가"></a>테이블에 복수 데이터 추가</h2><p>만약 테이블에 여러 개의 데이터를 한번에 입력해야 한다면 어떻게 해야할까? <code>VALUES</code> 아래에 여러 개의 데이터를 (,)를 사용하여 입력하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">(<span class="string">'값1_A'</span>, <span class="string">'값2_A'</span>), (<span class="string">'값1_B'</span>, <span class="string">'값2_B'</span>), (<span class="string">'값1_C'</span>, <span class="string">'값2_C'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="특정-데이터-찾기"><a href="#특정-데이터-찾기" class="headerlink" title="특정 데이터 찾기"></a>특정 데이터 찾기</h2><p>테이블에서 특정한 조건의 데이터를 찾을 때는 <code>WHERE</code>절을 사용하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  * <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span> <span class="keyword">WHERE</span> <span class="string">'조건에 사용될 카테고리'</span> = <span class="string">'특정 조건'</span>;</span><br></pre></td></tr></table></figure>
+<p>위의 코드는 카테고리에서 특정 조건을 만족하는 행(record)의 전체 데이터를 가져오라는 요청이다. 만약 전체데이터가 아닌 특정 열의 데이터를 가져오고 싶다면 앞의 <code>*</code>를 원하는 열의 이름으로 변경해주면 된다. 특정 열 이름은 여러 개 입력할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  <span class="string">'원하는 열 이름_1'</span>,<span class="string">'원하는 열 이름_2'</span> <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span> <span class="keyword">WHERE</span> <span class="string">'조건에 사용될 카테고리'</span> = <span class="string">'특정 조건'</span>;</span><br></pre></td></tr></table></figure>
+<p>그렇다면 특정 열의 전체 데이터는 어떻게 볼 수 있을까? 간단하다. <code>WHERE</code>절을 제외하고 입력하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  <span class="string">'원하는 열 이름_1'</span>,<span class="string">'원하는 열 이름_2'</span> <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="WHERE-조건-사용법"><a href="#WHERE-조건-사용법" class="headerlink" title="WHERE 조건 사용법"></a>WHERE 조건 사용법</h2><p>조건에 들어갈 수 있는 기본적인 비교 연산자는 다음과 같다.</p>
+<ul>
+<li>‘=’ : 같다</li>
+<li>‘&lt;&gt;’ : 같지 않다</li>
+<li>‘&lt;’ : 조건보다 작다 (미만)</li>
+<li>‘&gt;’ : 조건보다 크다 (초과)</li>
+<li>‘&lt;=’ : 조건과 같거나 작다 (이하)</li>
+<li>‘&gt;=’ : 조건과 같거나 크다 (이상)</li>
+</ul>
+
     </div>
 
     
@@ -358,7 +373,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#특정-데이터-찾기"><span class="nav-number">1.</span> <span class="nav-text">특정 데이터 찾기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#null"><span class="nav-number">2.</span> <span class="nav-text"> </span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#테이블에-복수-데이터-추가"><span class="nav-number">1.</span> <span class="nav-text">테이블에 복수 데이터 추가</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#특정-데이터-찾기"><span class="nav-number">2.</span> <span class="nav-text">특정 데이터 찾기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WHERE-조건-사용법"><span class="nav-number">3.</span> <span class="nav-text">WHERE 조건 사용법</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

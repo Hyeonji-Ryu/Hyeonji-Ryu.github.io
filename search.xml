@@ -5,10 +5,25 @@
     <url>/2020/10/10/Database-2/</url>
     <content><![CDATA[<p>mariaDB의 기본적인 사용법 대해서 살펴봅니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="특정-데이터-찾기"><a href="#특정-데이터-찾기" class="headerlink" title="특정 데이터 찾기"></a>특정 데이터 찾기</h2><p>테이블에서 특정한 조건의 데이터를 찾을 때는 <code>WHERE</code>절을  사용하면 된다.</p>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  * <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span> <span class="keyword">WHERE</span> <span class="string">'조건에 사용될 카테고리'</span> = <span class="string">'특정 조건'</span> ;</span><br></pre></td></tr></table></figure>
-<p><code>WHERE</code>절은 </p>
-<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2>]]></content>
+<p>해당 글은 이전 글의 2편이기 때문에 DB를 처음 사용하는 사람은 <a href="https://hyeonji-ryu.github.io/2020/10/10/Database-1/#more">이전 글</a>을 먼저 보고 오기를 추천한다.</p>
+<h2 id="테이블에-복수-데이터-추가"><a href="#테이블에-복수-데이터-추가" class="headerlink" title="테이블에 복수 데이터 추가"></a>테이블에 복수 데이터 추가</h2><p>만약 테이블에 여러 개의 데이터를 한번에 입력해야 한다면 어떻게 해야할까? <code>VALUES</code> 아래에 여러 개의 데이터를 (,)를 사용하여 입력하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">(<span class="string">'값1_A'</span>, <span class="string">'값2_A'</span>), (<span class="string">'값1_B'</span>, <span class="string">'값2_B'</span>), (<span class="string">'값1_C'</span>, <span class="string">'값2_C'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="특정-데이터-찾기"><a href="#특정-데이터-찾기" class="headerlink" title="특정 데이터 찾기"></a>특정 데이터 찾기</h2><p>테이블에서 특정한 조건의 데이터를 찾을 때는 <code>WHERE</code>절을 사용하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  * <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span> <span class="keyword">WHERE</span> <span class="string">'조건에 사용될 카테고리'</span> = <span class="string">'특정 조건'</span>;</span><br></pre></td></tr></table></figure>
+<p>위의 코드는 카테고리에서 특정 조건을 만족하는 행(record)의 전체 데이터를 가져오라는 요청이다. 만약 전체데이터가 아닌 특정 열의 데이터를 가져오고 싶다면 앞의 <code>*</code>를 원하는 열의 이름으로 변경해주면 된다. 특정 열 이름은 여러 개 입력할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  <span class="string">'원하는 열 이름_1'</span>,<span class="string">'원하는 열 이름_2'</span> <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span> <span class="keyword">WHERE</span> <span class="string">'조건에 사용될 카테고리'</span> = <span class="string">'특정 조건'</span>;</span><br></pre></td></tr></table></figure>
+<p>그렇다면 특정 열의 전체 데이터는 어떻게 볼 수 있을까? 간단하다. <code>WHERE</code>절을 제외하고 입력하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  <span class="string">'원하는 열 이름_1'</span>,<span class="string">'원하는 열 이름_2'</span> <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="WHERE-조건-사용법"><a href="#WHERE-조건-사용법" class="headerlink" title="WHERE 조건 사용법"></a>WHERE 조건 사용법</h2><p>조건에 들어갈 수 있는 기본적인 비교 연산자는 다음과 같다.</p>
+<ul>
+<li>‘=’ : 같다</li>
+<li>‘&lt;&gt;’ : 같지 않다</li>
+<li>‘&lt;’ : 조건보다 작다 (미만)</li>
+<li>‘&gt;’ : 조건보다 크다 (초과)</li>
+<li>‘&lt;=’ : 조건과 같거나 작다 (이하)</li>
+<li>‘&gt;=’ : 조건과 같거나 크다 (이상)</li>
+</ul>
+]]></content>
       <categories>
         <category>Database</category>
       </categories>
@@ -43,10 +58,12 @@
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">'테이블 이름'</span> <span class="keyword">VALUES</span> (<span class="string">'값1'</span>, <span class="string">'값2'</span>);</span><br></pre></td></tr></table></figure>
 <p>워 코드는 해당 테이블의 모든 열에 대한 데이터를 순서에 맞게 추가할 때 사용할 수 있다. 특정 데이터를 추가하거나 순서를 변경하기 위해서는 카테고리 이름을 같이 입력해주어야 한다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 순서 변경</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">'테이블 이름'</span>  (<span class="string">'카테고리 2'</span>, <span class="string">'카테고리 1'</span>) <span class="keyword">VALUES</span> (<span class="string">'값2'</span>, <span class="string">'값1'</span>);</span><br><span class="line"><span class="comment"># 특정 카테고리만 데이터 추가</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">'테이블 이름'</span>  (<span class="string">'카테고리 1'</span>) <span class="keyword">VALUES</span> (<span class="string">'값1'</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>WARNING</strong><br>값에 작은따옴표(‘)가 있는 경우<br>작은 따옴표는 SQL에서 문법으로 사용되기 떄문에 값 안에 포함된 작은 따옴표와 구분해야 한다. 따라서 값 내부의 작은따옴표는 개행문자를 사용하여 표현한다. 예시는 다음과 같다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">(<span class="string">'Indian\'</span>s Summer<span class="string">' , '</span>cherry juice<span class="string">', 2, '</span>pineapple juice<span class="string">', 7, '</span>serve <span class="keyword">over</span> ice <span class="keyword">with</span> straw<span class="string">');</span></span><br></pre></td></tr></table></figure>
 <h2 id="테이블-데이터-확인"><a href="#테이블-데이터-확인" class="headerlink" title="테이블 데이터 확인"></a>테이블 데이터 확인</h2><p>테이블에 데이터가 추가되었는지 확인하고 싶다면 아래의 코드를 사용하면 된다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span>;</span><br></pre></td></tr></table></figure>
 <p>위 코드에서 사용되는 <code>*</code>는 모든 데이터를 불러오라는 뜻이다.</p>
-<h2 id="NULL-제어"><a href="#NULL-제어" class="headerlink" title="NULL 제어"></a>NULL 제어</h2><p>일부 카테고리에만 데이터를 입력하면 해당 행의 나머지 카테고리에는 자동적으로 <code>NULL</code>로 처리된다. 하지만 어떤 카테고리는 필수적으로 입력되어야 한다고 가정하자. 그렇게 하기 위해서는 테이블을 생성할 때 아래와 같이 입력하여 <code>NULL</code>을 받지 않도록 설정해야 한다.</p>
+<h2 id="NULL-처리"><a href="#NULL-처리" class="headerlink" title="NULL 처리"></a>NULL 처리</h2><p>일부 카테고리에만 데이터를 입력하면 해당 행의 나머지 카테고리에는 자동적으로 <code>NULL</code>로 처리된다. 하지만 어떤 카테고리는 필수적으로 입력되어야 한다고 가정하자. 그렇게 하기 위해서는 테이블을 생성할 때 아래와 같이 입력하여 <code>NULL</code>을 받지 않도록 설정해야 한다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span>( <span class="string">'카테고리 1'</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="string">'카테고리 2'</span> <span class="built_in">VARCHAR</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
 <p>위 코드로 만들어진 테이블은 데이터를 추가할 때 카테고리 1이 무조건 채워져야 한다. 어떤 테이블의 카테고리들의 NULL 허용여부를 확인하고 싶다면 <code>DESC</code>를 사용하여 테이블 구조를 확인하면 된다.</p>
 <h2 id="디폴트값-설정"><a href="#디폴트값-설정" class="headerlink" title="디폴트값 설정"></a>디폴트값 설정</h2><p>만약 기본 값이 주어진 열인 경우에는 테이블을 생성 시 디퐅트 값을 지정할 수 있다. 디폴트 값은 해당 카테고리에 데이터가 입력되지 않았을 시에 자동으로 적용된다.</p>
