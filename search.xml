@@ -1,35 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>1. 기본적인 MariaDB 사용법</title>
+    <title>2. 기본적인 MariaDB 사용법 (2)</title>
+    <url>/2020/10/10/Database-2/</url>
+    <content><![CDATA[<p>mariaDB의 기본적인 사용법 대해서 살펴봅니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="특정-데이터-찾기"><a href="#특정-데이터-찾기" class="headerlink" title="특정 데이터 찾기"></a>특정 데이터 찾기</h2><p>테이블에서 특정한 조건의 데이터를 찾을 때는 <code>WHERE</code>절을  사용하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  * <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span> <span class="keyword">WHERE</span> <span class="string">'조건에 사용될 카테고리'</span> = <span class="string">'특정 조건'</span> ;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Database</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+        <tag>sql</tag>
+        <tag>mariaDB</tag>
+        <tag>RDBMS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1. 기본적인 MariaDB 사용법 (1)</title>
     <url>/2020/10/10/Database-1/</url>
     <content><![CDATA[<p>mariaDB의 기본적인 사용법 대해서 살펴봅니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="데이터베이스-생성"><a href="#데이터베이스-생성" class="headerlink" title="데이터베이스 생성"></a>데이터베이스 생성</h2><p>새로운 데이터베이스를 만드는 명령어는 다음과 같다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE DATABASE &#39;데이터베이스 이름&#39;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="string">'데이터베이스 이름'</span>;</span><br></pre></td></tr></table></figure>
 <p>그러면 해당 요청(query)가 정상적으로 수행되었다고 아래와 같이 알려준다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Query OK, 1 row affected (0.024 sec)</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">Query OK, 1 row affected (0.024 sec)</span><br></pre></td></tr></table></figure>
 <h2 id="데이터베이스-접속"><a href="#데이터베이스-접속" class="headerlink" title="데이터베이스 접속"></a>데이터베이스 접속</h2><p>원하는 데이터베이스에 접속해야 해당 DB를 사용할 수 있다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">USE DATABASE &#39;데이터베이스 이름&#39;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">USE</span> <span class="keyword">DATABASE</span> <span class="string">'데이터베이스 이름'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="테이블-생성"><a href="#테이블-생성" class="headerlink" title="테이블 생성"></a>테이블 생성</h2><p>어떤 데이터베이스에 자료를 정리하여 넣으려고 한다. 그때 관계형 DB에서는 테이블을 사용하여 데이터를 저장한다. 테이블은 행과 열로 구성되어 있으며, 행(record)은 객체 하나의 모든 정보를 포함하고 열(field)은 데이터의 카테고리를 포함한다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE &#39;테이블 이름&#39;( &#39;카테고리 1&#39; VARCHAR(10), &#39;카테고리 2&#39; VARCHAR(6));</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span>( <span class="string">'카테고리 1'</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>), <span class="string">'카테고리 2'</span> <span class="built_in">VARCHAR</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
 <p>위 코드에서 <code>VARCHAR</code>은 ‘variable character’의 약자로 해당 카테고리의 데이터타입을 나타낸다. 뒤에 따라오는 (10), (6)과 같은 숫자는 해당 카테고리에서 저장할 수 있는 최대 길이를 설정한 것이다.</p>
 <h2 id="테이블-구조"><a href="#테이블-구조" class="headerlink" title="테이블 구조"></a>테이블 구조</h2><p>생성한 테이블의 구조는 명령어 <code>DESC</code>를 사용하여 볼 수 있다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DESC &#39;테이블 이름&#39;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">DESC '테이블 이름';</span><br></pre></td></tr></table></figure>
 <h2 id="테이블-삭제"><a href="#테이블-삭제" class="headerlink" title="테이블 삭제"></a>테이블 삭제</h2><p>테이블 전체를 삭제하는 명령어는 다음과 같다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">DROP &#39;테이블 이름&#39;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="string">'테이블 이름'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="테이블에-데이터-추가"><a href="#테이블에-데이터-추가" class="headerlink" title="테이블에 데이터 추가"></a>테이블에 데이터 추가</h2><p>테이블에 데이터를 추가하는 것은  <code>INSERT</code> 명령어를 사용한다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">INSERT INTO &#39;테이블 이름&#39; VALUES (&#39;값1&#39;, &#39;값2&#39;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">'테이블 이름'</span> <span class="keyword">VALUES</span> (<span class="string">'값1'</span>, <span class="string">'값2'</span>);</span><br></pre></td></tr></table></figure>
 <p>워 코드는 해당 테이블의 모든 열에 대한 데이터를 순서에 맞게 추가할 때 사용할 수 있다. 특정 데이터를 추가하거나 순서를 변경하기 위해서는 카테고리 이름을 같이 입력해주어야 한다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 순서 변경</span><br><span class="line">INSERT INTO &#39;테이블 이름&#39;  (&#39;카테고리 2&#39;, &#39;카테고리 1&#39;) VALUES (&#39;값2&#39;, &#39;값1&#39;);</span><br><span class="line"># 특정 카테고리만 데이터 추가</span><br><span class="line">INSERT INTO &#39;테이블 이름&#39;  (&#39;카테고리 1&#39;) VALUES (&#39;값1&#39;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 순서 변경</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">'테이블 이름'</span>  (<span class="string">'카테고리 2'</span>, <span class="string">'카테고리 1'</span>) <span class="keyword">VALUES</span> (<span class="string">'값2'</span>, <span class="string">'값1'</span>);</span><br><span class="line"><span class="comment"># 특정 카테고리만 데이터 추가</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">'테이블 이름'</span>  (<span class="string">'카테고리 1'</span>) <span class="keyword">VALUES</span> (<span class="string">'값1'</span>);</span><br></pre></td></tr></table></figure>
 <h2 id="테이블-데이터-확인"><a href="#테이블-데이터-확인" class="headerlink" title="테이블 데이터 확인"></a>테이블 데이터 확인</h2><p>테이블에 데이터가 추가되었는지 확인하고 싶다면 아래의 코드를 사용하면 된다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT * FROM &#39;테이블 이름&#39;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span>;</span><br></pre></td></tr></table></figure>
 <p>위 코드에서 사용되는 <code>*</code>는 모든 데이터를 불러오라는 뜻이다.</p>
 <h2 id="NULL-제어"><a href="#NULL-제어" class="headerlink" title="NULL 제어"></a>NULL 제어</h2><p>일부 카테고리에만 데이터를 입력하면 해당 행의 나머지 카테고리에는 자동적으로 <code>NULL</code>로 처리된다. 하지만 어떤 카테고리는 필수적으로 입력되어야 한다고 가정하자. 그렇게 하기 위해서는 테이블을 생성할 때 아래와 같이 입력하여 <code>NULL</code>을 받지 않도록 설정해야 한다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE &#39;테이블 이름&#39;( &#39;카테고리 1&#39; VARCHAR(10) NOT NULL, &#39;카테고리 2&#39; VARCHAR(6));</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span>( <span class="string">'카테고리 1'</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>, <span class="string">'카테고리 2'</span> <span class="built_in">VARCHAR</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
 <p>위 코드로 만들어진 테이블은 데이터를 추가할 때 카테고리 1이 무조건 채워져야 한다. 어떤 테이블의 카테고리들의 NULL 허용여부를 확인하고 싶다면 <code>DESC</code>를 사용하여 테이블 구조를 확인하면 된다.</p>
 <h2 id="디폴트값-설정"><a href="#디폴트값-설정" class="headerlink" title="디폴트값 설정"></a>디폴트값 설정</h2><p>만약 기본 값이 주어진 열인 경우에는 테이블을 생성 시 디퐅트 값을 지정할 수 있다. 디폴트 값은 해당 카테고리에 데이터가 입력되지 않았을 시에 자동으로 적용된다.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">CREATE TABLE &#39;테이블 이름&#39;( &#39;카테고리 1&#39; VARCHAR(10) DEFAULT 1, &#39;카테고리 2&#39; VARCHAR(6));</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span>( <span class="string">'카테고리 1'</span> <span class="built_in">VARCHAR</span>(<span class="number">10</span>) <span class="keyword">DEFAULT</span> <span class="number">1</span>, <span class="string">'카테고리 2'</span> <span class="built_in">VARCHAR</span>(<span class="number">6</span>));</span><br></pre></td></tr></table></figure>
 <p>위 코드에서는 카테고리 1에 디폴트 값 1을 지정하였다.</p>
 ]]></content>
       <categories>
@@ -69,17 +87,17 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -i -t mariadb /bin/bash</span><br></pre></td></tr></table></figure>
 <p>도커에서 <code>exec</code>는 컨테이너 내부로 접속하는 명령어이다. 그다음 명령어 <code>exec</code>의 옵션인 <code>-i</code>는 ‘interactive’의 약자로 사용자가 해당 서버에 입출력할 수 있도록 해주며, <code>-t</code>는 가상 터미널인 TTY(pseudo-TTY)를 통해 bash셀을 사용할 수 있도록 해준다.</p>
 <p>접속이 완료되면 아래와 같이 컨테이너 ID가 프롬프트가 된다.</p>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment">#</span></span><br></pre></td></tr></table></figure>
 <p>그다음 아래의 코드를 입력하여 MariaDB에 접속한다.</p>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
 <p>비밀번호는 처음 컨테이너를 생성할 때 만들었던 것을 입력하면 된다. 그러면 아래와 같이 프롬프트창이 변할 것이다.</p>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">MariaDB [(none)]&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">MariaDB [(none)]&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="my-snf-수정하기"><a href="#my-snf-수정하기" class="headerlink" title="my.snf 수정하기"></a>my.snf 수정하기</h2><p>MariaDB에서 <code>status</code>를 입력하면, DB 정보를 확인할 수 있다. 그중 characterset이 “latin” 경우에는 힌글이 꺠질 수 있기 떄문에 UTF-8로 변경해주어야 한다.</p>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">MariaDB [(none)]&gt; status</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">Server characterset:    utf8mb4</span><br><span class="line">Db     characterset:    utf8mb4</span><br><span class="line">Client characterset:    latin1</span><br><span class="line">Conn.  characterset:    latin1</span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">MariaDB [(none)]&gt; status</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">Server characterset:    utf8mb4</span><br><span class="line">Db     characterset:    utf8mb4</span><br><span class="line">Client characterset:    latin1</span><br><span class="line">Conn.  characterset:    latin1</span><br></pre></td></tr></table></figure>
 <p>변경하는 방법은 간단하다. 해당 터미널에서 <code>exit</code>를 입력하여 DB를 빠져나온 후 컨테이너에서 아래의 코드를 입력하여 수정할 파일을 오픈한다. 우리는 에디터 vim을 사용하여 터미널 내에서 수정을 진행할 것이다.</p>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># apt-get update</span></span><br><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># apt-get install nano</span></span><br><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># apt-get install vim</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># apt-get update</span></span><br><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># apt-get install nano</span></span><br><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># apt-get install vim</span></span><br></pre></td></tr></table></figure>
 <p>컨테이너 내에 vim 설치가 완료되었다면 아래의 디렉토리로 이동하여 해당 파일을 오픈한다.</p>
-<figure class="highlight docker"><table><tr><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># cd /etc/mysql</span></span><br><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># vim my.snf</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight dockerfile"><table><tr><td class="code"><pre><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># cd /etc/mysql</span></span><br><span class="line">root@<span class="string">'컨테이너 ID'</span>:/<span class="comment"># vim my.snf</span></span><br></pre></td></tr></table></figure>
 <p>그러면 에디터가 열리고 파일 내용이 터미널에 나타난다. 여기서 <code>i</code>를 입력하여 INSERT 모드로 변경한 후 아래의 코드를 복사해 붙여넣자.</p>
 <figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">[client]</span><br><span class="line">default-character-<span class="keyword">set</span> = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysql]</span><br><span class="line">default-character-<span class="keyword">set</span> = utf8mb4</span><br><span class="line"></span><br><span class="line">[mysqld]</span><br><span class="line">collation-server = utf8_unicode_ci</span><br><span class="line">init-connect=<span class="string">'SET NAMES utf8'</span></span><br><span class="line">character-<span class="keyword">set</span>-server = utf8</span><br></pre></td></tr></table></figure>
 <p>그다음 esc를 누르고 <code>:write</code>를 입력하고 엔터를 누르면 수정사항이 저장된다. 그 후 <code>:q</code>을 입력하여 에디터를 빠져나오면 된다.</p>

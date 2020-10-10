@@ -46,15 +46,23 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="AI &amp; ML">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/tags/RDBMS/index.html">
+  <meta name="description" content="mariaDB의 기본적인 사용법 대해서 살펴봅니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2. 기본적인 MariaDB 사용법 (2)">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/10/10/Database-2/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
+<meta property="og:description" content="mariaDB의 기본적인 사용법 대해서 살펴봅니다.">
 <meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2020-10-10T00:58:01.000Z">
+<meta property="article:modified_time" content="2020-10-10T06:05:25.384Z">
 <meta property="article:author" content="Hyeonji Ryu">
+<meta property="article:tag" content="database">
+<meta property="article:tag" content="sql">
+<meta property="article:tag" content="mariaDB">
+<meta property="article:tag" content="RDBMS">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/tags/RDBMS/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/10/10/Database-2/">
 
 
 <script id="page-configurations">
@@ -62,11 +70,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>태그: RDBMS | AI & ML</title>
+  <title>2. 기본적인 MariaDB 사용법 (2) | AI & ML</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
     <script>
@@ -207,70 +215,98 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">RDBMS
-          <small>태그</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/10/10/Database-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyeonji Ryu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI & ML">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2. 기본적인 MariaDB 사용법 (2)
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+              
+
+              <time title="Post created: 2020-10-10 09:58:01 / Updated at: 15:05:25" itemprop="dateCreated datePublished" datetime="2020-10-10T09:58:01+09:00">2020-10-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Database/" itemprop="url" rel="index">
+                    <span itemprop="name">Database</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-10-10T09:58:01+09:00"
-              content="2020-10-10">
-          10-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/10/10/Database-2/" itemprop="url">
-            <span itemprop="name">2. 기본적인 MariaDB 사용법 (2)</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-10-10T07:20:09+09:00"
-              content="2020-10-10">
-          10-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/10/10/Database-1/" itemprop="url">
-            <span itemprop="name">1. 기본적인 MariaDB 사용법 (1)</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
+        <p>mariaDB의 기본적인 사용법 대해서 살펴봅니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="특정-데이터-찾기"><a href="#특정-데이터-찾기" class="headerlink" title="특정 데이터 찾기"></a>특정 데이터 찾기</h2><p>테이블에서 특정한 조건의 데이터를 찾을 때는 <code>WHERE</code>절을  사용하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  * <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span> <span class="keyword">WHERE</span> <span class="string">'조건에 사용될 카테고리'</span> = <span class="string">'특정 조건'</span> ;</span><br></pre></td></tr></table></figure>
 
     </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/database/" rel="tag"># database</a>
+              <a href="/tags/sql/" rel="tag"># sql</a>
+              <a href="/tags/mariaDB/" rel="tag"># mariaDB</a>
+              <a href="/tags/RDBMS/" rel="tag"># RDBMS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/10/Database-1/" rel="prev" title="1. 기본적인 MariaDB 사용법 (1)">
+      <i class="fa fa-chevron-left"></i> 1. 기본적인 MariaDB 사용법 (1)
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -321,6 +357,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#특정-데이터-찾기"><span class="nav-number">1.</span> <span class="nav-text">특정 데이터 찾기</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
