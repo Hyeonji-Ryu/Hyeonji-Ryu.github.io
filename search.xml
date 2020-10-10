@@ -34,6 +34,8 @@
 <p>위 코드에서 <code>VARCHAR</code>은 ‘variable character’의 약자로 해당 카테고리의 데이터타입을 나타낸다. 뒤에 따라오는 (10), (6)과 같은 숫자는 해당 카테고리에서 저장할 수 있는 최대 길이를 설정한 것이다.</p>
 <h2 id="테이블-구조"><a href="#테이블-구조" class="headerlink" title="테이블 구조"></a>테이블 구조</h2><p>생성한 테이블의 구조는 명령어 <code>DESC</code>를 사용하여 볼 수 있다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">DESC '테이블 이름';</span><br></pre></td></tr></table></figure>
+<h2 id="테이블-목록"><a href="#테이블-목록" class="headerlink" title="테이블 목록"></a>테이블 목록</h2><p>데이터베이스에 있는 테이블들의 목록은 해당 데이터베이스에서 <code>SHOW TABLES</code>를 입력하면 볼 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SHOW</span> <span class="keyword">TABLES</span></span><br></pre></td></tr></table></figure>
 <h2 id="테이블-삭제"><a href="#테이블-삭제" class="headerlink" title="테이블 삭제"></a>테이블 삭제</h2><p>테이블 전체를 삭제하는 명령어는 다음과 같다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="string">'테이블 이름'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="테이블에-데이터-추가"><a href="#테이블에-데이터-추가" class="headerlink" title="테이블에 데이터 추가"></a>테이블에 데이터 추가</h2><p>테이블에 데이터를 추가하는 것은  <code>INSERT</code> 명령어를 사용한다.</p>
