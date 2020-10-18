@@ -56,7 +56,7 @@
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/91.png">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/92.png">
 <meta property="article:published_time" content="2020-09-17T13:35:03.000Z">
-<meta property="article:modified_time" content="2020-10-05T07:58:35.119Z">
+<meta property="article:modified_time" content="2020-10-18T19:26:39.789Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="AWS">
 <meta property="article:tag" content="딥러닝">
@@ -253,7 +253,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-10-05 16:58:35" itemprop="dateModified" datetime="2020-10-05T16:58:35+09:00">2020-10-05</time>
+                <time title="Updated at: 2020-10-19 04:26:39" itemprop="dateModified" datetime="2020-10-19T04:26:39+09:00">2020-10-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -286,7 +286,7 @@
 <h3 id="버킷-bucket"><a href="#버킷-bucket" class="headerlink" title="버킷 (bucket)"></a>버킷 (bucket)</h3><p>버킷 (bucket)은 S3에서 데이터를 저장하는 최상위 저장소이다. 모든 데이터들은 버킷 안에 저장할 수 있으며, 버킷 없이 데이터를 업로드하는 것은 불가능하다. 각 AWS 계정별로 100개까지 생성할 수 있으며, 각 버킷에는 무제한으로 객체들을 저장할 수 있다.</p>
 <h2 id="boto3-library"><a href="#boto3-library" class="headerlink" title="boto3 library"></a>boto3 library</h2><p><code>boto3</code>는 파이썬에서 S3를 사용할 수 있도록 해주는 라이브러리이다. 아직 다운받지 않았다면 아래의 코드를 입력하면 된다.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; pip3 install boto3</span><br></pre></td></tr></table></figure>
-<p>다운이 완료되었다면 그 다음으로는 아래의 코드를 입력하여 해당 라이브러리를 가져온다.</p>
+<p>다운이 완료되었다면 그 다음으로는 파이썬에 접속한 후 아래의 코드를 입력하여 해당 라이브러리를 가져온다.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">import</span> boto3</span><br></pre></td></tr></table></figure>
 <h2 id="버킷-생성하기"><a href="#버킷-생성하기" class="headerlink" title="버킷 생성하기"></a>버킷 생성하기</h2><p>커맨드라인에서 S3를 사용할 준비가 완료되었다. 이제부터는 훈련 데이터를 넣을 버킷을 생성해보자. 아래의 코드를 입력하여 S3에 접속한다.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; s3 = boto3.client(<span class="string">'s3'</span>)</span><br></pre></td></tr></table></figure>

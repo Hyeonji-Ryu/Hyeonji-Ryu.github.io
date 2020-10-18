@@ -269,13 +269,13 @@
 <p>그 다음에는 아래의 코드를 입력하여 훈련데이터가 들어있는 버킷을 인스턴스에 복사해온다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">aws s3 sync s3://;<span class="string">'가져올 버킷 이름'</span> /home/ec2-user</span><br></pre></td></tr></table></figure>
 <p>그러면 커맨드라인에 아래와 같이 다운되었다고 나올 것이다.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">download: s3://mnist-data-60000/test_y.pickle to ./test_y.pickle</span><br><span class="line">download: s3://mnist-data-60000/train_y.pickle to ./train_y.pickle</span><br><span class="line">download: s3://mnist-data-60000/test_x.pickle to ./test_x.pickle</span><br><span class="line">download: s3://mnist-data-60000/train_x.pickle to ./train_x.pickle</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">download: s3://mnist-data-60000/Dockerfile to ./Dockerfile</span><br><span class="line">download: s3://mnist-data-60000/model.py to ./model.py</span><br><span class="line">download: s3://mnist-data-60000/test_y.pickle to ./test_y.pickle</span><br><span class="line">download: s3://mnist-data-60000/train_y.pickle to ./train_y.pickle</span><br><span class="line">download: s3://mnist-data-60000/test_x.pickle to ./test_x.pickle</span><br><span class="line">download: s3://mnist-data-60000/train_x.pickle to ./train_x.pickle</span><br></pre></td></tr></table></figure>
 <p>인스턴스 디렉토리를 확인하여 잘 다운되었는지 확인해보자.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; ls</span><br><span class="line">test_x.pickle  test_y.pickle  train_x.pickle  train_y.pickle</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt; ls</span><br><span class="line">Dockerfile  model.py  test_x.pickle  test_y.pickle  train_x.pickle  train_y.pickle</span><br></pre></td></tr></table></figure>
 <h2 id="EC2-인스턴스에-도커-설치하기"><a href="#EC2-인스턴스에-도커-설치하기" class="headerlink" title="EC2 인스턴스에 도커 설치하기"></a>EC2 인스턴스에 도커 설치하기</h2><p>이제 인스턴스에 도커를 설치해야 한다. 아래의 코드를 입력하여 도커를 설치해보자.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum update -y</span><br><span class="line">sudo yum install docker</span><br><span class="line">sudo service docker start</span><br><span class="line">sudo usermod -a -G docker ec2-user</span><br></pre></td></tr></table></figure>
 <p>도커가 정상작동하기 위해서는 인스턴스를 재부팅해야 한다. 아래의 코드를 입력하여 EC2 인스턴스를 재부팅한다.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">aws ec2 reboot-instances --instance-ids <span class="string">'인스턴스  ID'</span> or <span class="built_in">logout</span></span><br><span class="line">ssh -i <span class="string">'키 페어 이름.pem'</span> ec2-user@ <span class="string">'헤당 인스턴스 PublicDnsName'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">aws ec2 reboot-instances --instance-ids <span class="string">'인스턴스  ID'</span> <span class="comment"># 그냥 logout만 입력해도 된다.</span></span><br><span class="line">ssh -i <span class="string">'키 페어 이름.pem'</span> ec2-user@ <span class="string">'헤당 인스턴스 PublicDnsName'</span></span><br></pre></td></tr></table></figure>
 <p>그 다음 아래의 코드를 입력하면 도커가 정상작동하는 것을 확인할 수 있다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker info</span><br></pre></td></tr></table></figure>
 <h2 id="docker-image-빌드하고-컨테이너-생성하기"><a href="#docker-image-빌드하고-컨테이너-생성하기" class="headerlink" title="docker image 빌드하고 컨테이너 생성하기"></a>docker image 빌드하고 컨테이너 생성하기</h2><p>인스턴스 재부팅이 완료되었다면 저장해두었던 도커파일을 빌드하여 컨테이너를 생성해보자. 아래의 코드를 입력하여 도커파일을 빌드한다.</p>
@@ -449,7 +449,7 @@
 <h3 id="버킷-bucket"><a href="#버킷-bucket" class="headerlink" title="버킷 (bucket)"></a>버킷 (bucket)</h3><p>버킷 (bucket)은 S3에서 데이터를 저장하는 최상위 저장소이다. 모든 데이터들은 버킷 안에 저장할 수 있으며, 버킷 없이 데이터를 업로드하는 것은 불가능하다. 각 AWS 계정별로 100개까지 생성할 수 있으며, 각 버킷에는 무제한으로 객체들을 저장할 수 있다.</p>
 <h2 id="boto3-library"><a href="#boto3-library" class="headerlink" title="boto3 library"></a>boto3 library</h2><p><code>boto3</code>는 파이썬에서 S3를 사용할 수 있도록 해주는 라이브러리이다. 아직 다운받지 않았다면 아래의 코드를 입력하면 된다.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; pip3 install boto3</span><br></pre></td></tr></table></figure>
-<p>다운이 완료되었다면 그 다음으로는 아래의 코드를 입력하여 해당 라이브러리를 가져온다.</p>
+<p>다운이 완료되었다면 그 다음으로는 파이썬에 접속한 후 아래의 코드를 입력하여 해당 라이브러리를 가져온다.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; <span class="keyword">import</span> boto3</span><br></pre></td></tr></table></figure>
 <h2 id="버킷-생성하기"><a href="#버킷-생성하기" class="headerlink" title="버킷 생성하기"></a>버킷 생성하기</h2><p>커맨드라인에서 S3를 사용할 준비가 완료되었다. 이제부터는 훈련 데이터를 넣을 버킷을 생성해보자. 아래의 코드를 입력하여 S3에 접속한다.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; s3 = boto3.client(<span class="string">'s3'</span>)</span><br></pre></td></tr></table></figure>
@@ -556,7 +556,7 @@
 <p><img src="/images/86.png" alt="AWS4"></p>
 <p><strong>(3) 그룹에서 새로운 그룹 생성을 누른 후, 해당 그룹의 이름을 입력하고 다음 단계로 넘어간다. 보통 그룹 이름으로는 직군을 사용한다.</strong></p>
 <p><img src="/images/87.png" alt="AWS5"></p>
-<p><strong>(4) 헤당 그룹에 부여할 권한을 선택한다. 해당 프로젝트에서는 가상 서버를 돌리고 훈련 데이터를 저장해야 하기 때문에 <code>AmazonEC2FullAccess</code>와 <code>AmazonS3FullAccess</code>, <code>AdministratorAccess</code>, 권한을 얻을 것이다. 이것들을 찾아서 체크한 후 다음 단계로 넘어간다.</strong></p>
+<p><strong>(4) 헤당 그룹에 부여할 권한을 선택한다. 해당 프로젝트에서는 가상 서버를 돌리고 훈련 데이터를 저장해야 하기 때문에 <code>AmazonEC2FullAccess</code>와 <code>AmazonS3FullAccess</code>, <code>AdministratorAccess</code> 권한을 얻을 것이다. 이것들을 찾아서 체크한 후 다음 단계로 넘어간다.</strong></p>
 <p><img src="/images/88.png" alt="AWS6"></p>
 <p><strong>(5) 검토에서 최종적으로 확인한 후 그룹을 생성한다. 이제 IAM 사용자 계정을 만들 수 있는 그룹이 생겼다. 해당 그룹 안에 IAM 사용자를 추가해보자.</strong></p>
 <p><strong>(6) 대시보드에 ‘사용자’ 파트로 들어가서 사용자 추가를 클릭한 후, 이름을 입력하고 프로그래밍 방식 엑세스를 선택한다. 우리는 커맨드라인에서 바로 AWS을 연결하기 떄문에 콘솔 로그인은 제외하였다. 만약 콘솔로도 해당 계정을 사용하고 싶다면 아래의 엑세스 방식도 추가로 선택할 수 있다.</strong></p>
@@ -582,7 +582,7 @@
     <url>/2020/09/12/AWS-project-0/</url>
     <content><![CDATA[<p>해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>실제 현장에서 흔히 사용되는 SOTA(State-Of-The-Art)라고 불리는 딥러닝 모델들은 매우 깊고 파라미터 수도 많다. 또한 제대로 학습되기 위해서는 많은 양의 훈련 데이터들을 필요로 한다. 따라서 실제 사용되는 딥러닝 모델들을 직접 구현해보고 학습하기 위해서는 좋은 컴퓨팅 파워가 필요하다. 하지만 대부분의 학생이나 스타트업에서는 그런 컴퓨팅 파워를 마련하기엔 경제적으로 부담스럽다. 그런 사람들이 사용하기 좋은 방법이 바로 클라우드 컴퓨팅이다. 해당 프로젝트는 이 클라우드 컴퓨팅을 사용하여 딥러닝을 훈련하고 그 결과를 바로 웹 페이지에 보여주는 과정을 진핼할 것이다. 따라서 해당 프로젝트를 이해하고 따라오기 위해서는 클라우드 컴퓨팅에 대한 기본적인 지식이 필요하다. 이번 글에서는 클라우드 컴퓨팅에 대한 기본적인 지식과 AWS에 대해서 살펴볼 것이다.</p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>실제 현장에서 흔히 사용되는 SOTA(State-Of-The-Art)라고 불리는 딥러닝 모델들은 매우 깊고 파라미터 수도 많다. 또한 제대로 학습되기 위해서는 많은 양의 훈련 데이터들을 필요로 한다. 따라서 실제 사용되는 딥러닝 모델들을 직접 구현해보고 학습하기 위해서는 좋은 컴퓨팅 파워가 필요하다. 하지만 대부분의 학생이나 스타트업에서는 그런 컴퓨팅 파워를 마련하기엔 경제적으로 부담스럽다. 그런 사람들이 사용하기 좋은 방법이 바로 클라우드 컴퓨팅이다. 해당 프로젝트는 클라우드 컴퓨팅을 사용하여 딥러닝을 훈련하고 그 결과를 바로 웹 페이지에 보여주는 과정을 진핼할 것이다. 따라서 해당 프로젝트를 이해하고 따라오기 위해서는 클라우드 컴퓨팅에 대한 기본적인 지식이 필요하다. 이번 글에서는 클라우드 컴퓨팅에 대한 기본적인 지식과 AWS에 대해서 살펴볼 것이다.</p>
 <h2 id="Index"><a href="#Index" class="headerlink" title="Index"></a>Index</h2><p>앞으로 진행할 프로젝트의 프로세스는 다음과 같다.</p>
 <ol>
 <li>AWS 계정 생성하기</li>
@@ -602,7 +602,7 @@
 <h3 id="Elastic-Compute-Cloud-EC2"><a href="#Elastic-Compute-Cloud-EC2" class="headerlink" title="Elastic Compute Cloud (EC2)"></a>Elastic Compute Cloud (EC2)</h3><p>EC2는 클라우드 기반의 가상 서버를 제공하는 서비스이다. 보통 EC2의 인스턴스를 만들어 가상 서버 환경을 구축한다. EC2를 통해 가상 환경을 구축하기 위해서는 AMI를 선택하고, 해당 서버에서 운용할 데이터를 넣어둘 저장장치(볼륨)를 선택해야 한다.</p>
 <h3 id="Amazon-Machine-Image-AMI"><a href="#Amazon-Machine-Image-AMI" class="headerlink" title="Amazon Machine Image (AMI)"></a>Amazon Machine Image (AMI)</h3><p>AMI는 서버 바로 위에 구축해야 하는 환경들을 조합해둔 템플릿이다. 아마존에는 딥러닝을 위한 이미지(Deep Learning AMI)도 존재하며, 해당 이미지에는 텐서플로우, 파이토치 등 구현에 필요한 프레임워크까지 모두 포함되어 있다. 즉, 해당 이미지를 선택하여 EC2에 올리면 바로 딥러닝 모델 학습을 시작할 수 있는 것이다.</p>
 <h3 id="Elastic-Block-Storage-EBS"><a href="#Elastic-Block-Storage-EBS" class="headerlink" title="Elastic Block Storage (EBS)"></a>Elastic Block Storage (EBS)</h3><p>EBS는 EC2에서 사용될 데이터나 학습 이후의 결과물 등을 저장하고 사용할 수 있는 임시 저장장치이다. 흔히 하드웨어에서 HDD나 SSD와 같은 역할을 한다. 다만, 가상 서버인 EC2가 멈추면 EBS에 있던 자료도 제거되기 때문에 주의해야 한다. 물론 EBS도 영구적으로 만들어 사용할 수는 있지만 있지만, 가격이 비싸기 때문에 보통 가상 서버에서만 사용한다.</p>
-<h3 id="Simple-Storage-Service-S3"><a href="#Simple-Storage-Service-S3" class="headerlink" title="Simple Storage Service (S3)"></a>Simple Storage Service (S3)</h3><p>S3 또한 데이터를 저장할 수 있는 저장장치이며, EBS보다 저렴하고 데이터를 무한대로 저장할 수 있다는 장점이 있다. S3는 데이터를 저장한 용량에 대비하여 저렴한 비용이 청구되지만 EBS는 선택한 용량 전체에 대해서 비용이 청구되기 떄문에 가상 서버를 돌리지 않을 때에는 데이터들을 S3에 저장해두는 것이 훨씬 저렴하다.</p>
+<h3 id="Simple-Storage-Service-S3"><a href="#Simple-Storage-Service-S3" class="headerlink" title="Simple Storage Service (S3)"></a>Simple Storage Service (S3)</h3><p>S3 또한 데이터를 저장할 수 있는 저장장치이며, EBS보다 저렴하고 데이터를 무한대로 저장할 수 있다는 장점이 있다. S3는 데이터를 저장한 용량에 대비하여 저렴한 비용이 청구되지만 EBS는 선택한 용량 전체에 대해서 비용이 청구되기 때문에 가상 서버를 돌리지 않을 때에는 데이터들을 S3에 저장해두는 것이 훨씬 저렴하다.</p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>이번 글에서는 클라우드 컴퓨팅의 개념과 우리가 사용하게 될 AWS에 대해서 간단하게 살펴보았다. 다음 글에서는 본격적으로 AWS 계정 만드는 방법과 커맨드라인에서 AWS로 바로 접속하는 방법에 대해서 알아볼 것이다.</p>
 ]]></content>
       <categories>
