@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>SQLAlchemy 사용 중 pylint 에러</title>
+    <title>SQLAlchemy ORM 사용 중 pylint 에러</title>
     <url>/2020/10/22/error-list-0/</url>
     <content><![CDATA[<p>SQLAlchemy 사용 중에 아래와 같은 에러의 해결책을 정리합니다.  </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Instance of <span class="string">'scoped_session'</span> has no <span class="string">'commit'</span> member pylint(no-member)</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <hr>
-<p><code>flask</code>에 <code>mariadb</code>를 붙여서 웹페이지를 만들던 중 문제가 생겼다.</p>
-<p> 바로 <code>sqlalchemy</code>에서</p>
+<p>VS code를 사용하여 <code>flask</code>로 붙여서 웹페이지를 만들던 중 문제가 생겼다.</p>
+<p>데이터베이스를 연동하기 위해서 <code>sqlalchemy</code> ORM 코드를 사용하는데 세션 충돌을 막아주는 ‘scoped_session’을 인식하지 못한 것이다. </p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pylint --generate-rcfile &gt;.config/pylintrc</span><br></pre></td></tr></table></figure>
 <p>cd .config/</p>
 <p>vim pylintrc</p>
 <p>SQLObject,Registrant,scoped_session</p>
 ]]></content>
       <categories>
-        <category>ERROR LIST</category>
+        <category>error list</category>
       </categories>
       <tags>
         <tag>sqlalchemy</tag>
