@@ -101,9 +101,9 @@
         <category>Database</category>
       </categories>
       <tags>
-        <tag>database</tag>
         <tag>sql</tag>
         <tag>mariaDB</tag>
+        <tag>database</tag>
         <tag>RDBMS</tag>
       </tags>
   </entry>
@@ -162,9 +162,9 @@
         <category>Database</category>
       </categories>
       <tags>
-        <tag>database</tag>
         <tag>sql</tag>
         <tag>mariaDB</tag>
+        <tag>database</tag>
         <tag>RDBMS</tag>
       </tags>
   </entry>
@@ -209,9 +209,9 @@
         <category>Database</category>
       </categories>
       <tags>
-        <tag>database</tag>
         <tag>sql</tag>
         <tag>mariaDB</tag>
+        <tag>database</tag>
         <tag>RDBMS</tag>
       </tags>
   </entry>
@@ -264,9 +264,9 @@
         <category>Database</category>
       </categories>
       <tags>
-        <tag>mariadb</tag>
-        <tag>database</tag>
         <tag>sql</tag>
+        <tag>database</tag>
+        <tag>mariadb</tag>
         <tag>docker</tag>
         <tag>vi</tag>
         <tag>vim</tag>
