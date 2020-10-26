@@ -1171,7 +1171,7 @@
 <p>집합 $V$에 속하는 요소인 $x$는 벡터이다. 따라서 $(V,+)$의 항등원 또한 영벡터($[0,\dots,0$^T)이다.</p>
 ]]></content>
       <categories>
-        <category>Mathematics for machine learning</category>
+        <category>mathematics for machine learning</category>
       </categories>
       <tags>
         <tag>머신러닝</tag>
@@ -1990,7 +1990,7 @@ x_1&+&x_3&-&x_4&=& 0\\
 <script type="math/tex; mode=display">x = (A^TA)^{-1}A^Tb, \quad A^TA \in R^{3 \times 3}</script><p>이 방법은 근사 해를 구할 수 있게 해주기에 매우 유용하지만, 많은 행렬 계산이 들어가고 근사값을 구하는 것이기에 일반적으로 사용하기를 추천하지는 않는다. 이의 대안으로 우리는 chapter2에서 벡터 사이의 유사성을 계산할 수 있는 방법을 살펴볼 것이다.</p>
 ]]></content>
       <categories>
-        <category>Mathematics for machine learning</category>
+        <category>mathematics for machine learning</category>
       </categories>
       <tags>
         <tag>머신러닝</tag>
@@ -2195,7 +2195,7 @@ a_{12} & \mathbf{a_{22}}\\
 <p>$\lambda(B + C)=\lambda B + \lambda C,\quad B,C \in \mathbb R^{m \times n}$</p>
 ]]></content>
       <categories>
-        <category>Mathematics for machine learning</category>
+        <category>mathematics for machine learning</category>
       </categories>
       <tags>
         <tag>머신러닝</tag>
@@ -3706,7 +3706,7 @@ fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
 </ul>
 ]]></content>
       <categories>
-        <category>Mathematics for machine learning</category>
+        <category>mathematics for machine learning</category>
       </categories>
       <tags>
         <tag>머신러닝</tag>
