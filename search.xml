@@ -1,6 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Clustering-1</title>
+    <url>/2020/11/02/Clustering-1/</url>
+    <content><![CDATA[<p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
+<hr>
+<h2 id=""><a href="#" class="headerlink" title=" "></a> </h2><h2 id="라즈베리-파이-오픈"><a href="#라즈베리-파이-오픈" class="headerlink" title="라즈베리 파이 오픈"></a>라즈베리 파이 오픈</h2><p>1.이미지 다운로드 (sdcard)</p>
+<ol>
+<li>lite 다운</li>
+<li>ssh 파일 만들기 -&gt; touch ssh</li>
+<li>랜선 연결</li>
+<li>ping raspberrypi.local<br>ssh pi@raspberrypi.local</li>
+</ol>
+<p>ssh-keygen -R raspberrypi.local</p>
+<p>ssh pi@raspberrypi.local -&gt; 초기 비번: raspberry</p>
+<p>sudo apt-get update<br>sudo apt-get upgrade</p>
+<p>sudo raspi-config</p>
+<h2 id="도커-설치"><a href="#도커-설치" class="headerlink" title="도커 설치"></a>도커 설치</h2><p>sudo curl -fsSL <a href="https://get.docker.com/" target="_blank" rel="noopener">https://get.docker.com/</a> | sudo sh</p>
+<p>sudo docker version</p>
+<p>sudo usermod -aG docker pi</p>
+<p>logout 후 재접속</p>
+<h2 id="마리아-디비-다운"><a href="#마리아-디비-다운" class="headerlink" title="마리아 디비 다운"></a>마리아 디비 다운</h2><p>docker pull linuxserver/mariadb</p>
+<h2 id="라즈베리파이-끄는-법"><a href="#라즈베리파이-끄는-법" class="headerlink" title="라즈베리파이 끄는 법"></a>라즈베리파이 끄는 법</h2><p>sudo shutdown -h now</p>
+<h2 id="파이썬-깔기"><a href="#파이썬-깔기" class="headerlink" title="파이썬 깔기"></a>파이썬 깔기</h2><p>sudo apt-get install python3</p>
+]]></content>
+      <categories>
+        <category>Clustering</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>raspberrypi</tag>
+        <tag>clustering</tag>
+        <tag>하둡</tag>
+        <tag>스파크</tag>
+        <tag>빅데이터</tag>
+        <tag>bigdata</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>0. 라즈베리 파이4 언박싱</title>
+    <url>/2020/11/02/Clustering-0/</url>
+    <content><![CDATA[<p>해당 시리즈는 라즈베리 파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>이제는 대부분의 데이터가 ‘빅데이터’라고 불리는 만큼 그 용량이 매우 크며, 이런 데이터들을 전부 저장하고 불러오기 위해서는 정말 좋은 컴퓨터 사양이 필요하다. 하지만 컴퓨터는 고성능일수록 가격이 가파르게 상승한다. 그렇다면 데이터를 다루기 위해 모든 사람들이 슈퍼컴퓨터를 살 필요가 있을까? 오히려 적당한 컴퓨터 여러 개를 붙여서 하나처럼 사용할 수 있다면 훨씬 저렴하게 빅데이터를 다룰 수 있을 것이다. 이처럼 여러 개의 컴퓨터를 연결하여 하나의 좋은 컴퓨터처럼 사용하는 시스템을 클러스터(Cluster)라고 한다. 결국 클러스터링(Clustering)은 클러스터를 만드는 과정인 것이다. 해당 프로젝트에서는 라즈베리 파이4 3개를 연결하여 클러스터링하는 과정들을 공부하고, 이를 기록하는 데 목적이 있다. 라즈베리 파이 3개를 연결한 모습은 다음과 같다.</p>
+<p><img src="/images/96.png" alt="rasp1"></p>
+<h2 id="라즈베리-파이4"><a href="#라즈베리-파이4" class="headerlink" title="라즈베리 파이4"></a>라즈베리 파이4</h2><p>라즈베리 파이는 영국의 라즈베리 파이 재단에서 생성하는 초소형, 최저가 컴퓨터이다. 라즈베리 파이를 구매하면 간단한 개발 보드의 형태로 배송되며, 키트로 구매할 시 설명서와 키보스, 마우스 등을 포함하여 제공한다. 이번엔 EU 2020년 기준 최신 모델인 라즈베리 파이4를 키트로 구매하였다. 라즈베리 파이4 언박싱을 시작해보자.</p>
+<p><img src="/images/97.png" alt="rasp2"></p>
+<p>위 사진은 키트 박스이다. 해당 박스 한쪽 면에는 키트 구성품들을 설명하고 있다.</p>
+<p><img src="/images/98.png" alt="rasp3"></p>
+<p>박스를 처음 개봉하면 구성품들이 깔끔하게 패키징되어 있다. 아래 사진의 중간에 있는 케이스 안에 라즈베리 파이4가 들어 있다.</p>
+<p><img src="/images/99.png" alt="rasp4"></p>
+<p>아래의 사진은 모든 구성품들을 꺼낸 것이다. 키트에는 라즈베리 파이 공식 설명서도 포함되어 있다. 라즈베리 파이 포장지도 너무 귀엽고 예쁜 것 같다.</p>
+<p><img src="/images/100.png" alt="rasp5"></p>
+<p>이번에 키트를 구매하면서 라즈베리 파이와 세트인 키보드와 마우스도 같이 왔는데 생각보다 컬러도 예쁘고 퀄리티도 괜찮았다. 아래 사진은 구성품들을 모두 꺼낸 모습이다.</p>
+<p><img src="/images/101.png" alt="rasp6"></p>
+]]></content>
+      <categories>
+        <category>Clustering</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>raspberrypi</tag>
+        <tag>clustering</tag>
+        <tag>하둡</tag>
+        <tag>스파크</tag>
+        <tag>언박싱</tag>
+        <tag>빅데이터</tag>
+        <tag>bigdata</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SQLAlchemy ORM 사용 중 pylint 에러</title>
     <url>/2020/10/22/error-list-0/</url>
     <content><![CDATA[<p>SQLAlchemy 사용 중에 아래와 같은 에러의 해결책을 정리합니다.  </p>
