@@ -3,7 +3,7 @@
   <entry>
     <title>6. DB 스키마와 참조키 설정하기</title>
     <url>/2020/11/09/Database-6/</url>
-    <content><![CDATA[<p>mariaDB의 기본적인 사용법에 대해서 살펴봅니다.<br><a id="more"></a></p>
+    <content><![CDATA[<p>데이터베이스에서 스키마가 무엇인지 살펴본 후 mariaDB에서 참조키 설정하는 방법을 설명합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h2>]]></content>
       <categories>
@@ -14,12 +14,16 @@
         <tag>mariaDB</tag>
         <tag>database</tag>
         <tag>RDBMS</tag>
+        <tag>DB</tag>
+        <tag>스키마</tag>
+        <tag>참조키</tag>
+        <tag>FK</tag>
       </tags>
   </entry>
   <entry>
     <title>5. mariaDB 그룹핑과 연산 명령어 모음</title>
     <url>/2020/11/08/Database-5/</url>
-    <content><![CDATA[<p>mariaDB의 기본적인 사용법에 대해서 살펴봅니다.<br><a id="more"></a></p>
+    <content><![CDATA[<p>mariaDB에서 그룹핑을 하는 명령어 GROUPBY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h2>]]></content>
       <categories>
@@ -30,12 +34,17 @@
         <tag>mariaDB</tag>
         <tag>database</tag>
         <tag>RDBMS</tag>
+        <tag>GRUOPBY</tag>
+        <tag>AVG</tag>
+        <tag>SUM</tag>
+        <tag>COUNT</tag>
+        <tag>DB</tag>
       </tags>
   </entry>
   <entry>
     <title>4. 명령어 ALTER 사용법</title>
     <url>/2020/11/07/Database-4/</url>
-    <content><![CDATA[<p>mariaDB의 기본적인 사용법에 대해서 살펴봅니다.<br><a id="more"></a></p>
+    <content><![CDATA[<p>mariaDB에서 ALTER 명령어를 사용하는 방법을 정리합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h2>]]></content>
       <categories>
@@ -46,6 +55,8 @@
         <tag>mariaDB</tag>
         <tag>database</tag>
         <tag>RDBMS</tag>
+        <tag>DB</tag>
+        <tag>ALTER</tag>
       </tags>
   </entry>
   <entry>
@@ -207,7 +218,7 @@
   <entry>
     <title>3. DB 정규화와 기본키 설정하기</title>
     <url>/2020/10/19/Database-3/</url>
-    <content><![CDATA[<p>mariaDB의 기본적인 사용법에 대해서 살펴봅니다.<br><a id="more"></a></p>
+    <content><![CDATA[<p>데이터베이스의 정규화와 기본키에 대해서 살펴본 후 mariaDB에서 기본키 설정하는 방법을 설명합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="정규화-Nomalization"><a href="#정규화-Nomalization" class="headerlink" title="정규화 (Nomalization)"></a>정규화 (Nomalization)</h2><p>같은 자료를 받아도 설계자의 목표에 따라서 다른 테이블이 만들어 질 수 있다. 예를 들어, 식물에 관한 정보를 식물 관리인과 식물 연구자가 받았다고 가정해보자. 식물 관리인은 식물에게 물을 주는 주기나 식물의 생장 속도와 같은 정보들이 구체적으로 필요할 것이다. 반면 식물 연구자는 해당 식물의 세부적인 종이나 생물학적 특징 등이 필요할 것이다. 두 사람에게는 동일한 정보를 주어도 다른 테이블이 도출될 수 있는 것이다.</p>
 <p>‘정규화’란 목표에 맞는 테이블을 올바르게 구성하는 것이다. 그렇다면 어떻게 정규화된 테이블을 만들 수 있을까? 정규화된 테이블은 아래의 두 가지의 원칙을 포함한다.</p>
@@ -256,12 +267,16 @@
         <tag>mariaDB</tag>
         <tag>database</tag>
         <tag>RDBMS</tag>
+        <tag>DB</tag>
+        <tag>정규화</tag>
+        <tag>nomalization</tag>
+        <tag>기본키</tag>
       </tags>
   </entry>
   <entry>
     <title>2. mariaDB 기본적인 명령어 모음</title>
     <url>/2020/10/10/Database-2/</url>
-    <content><![CDATA[<p>mariaDB의 기본적인 사용법에 대해서 살펴봅니다.<br><a id="more"></a></p>
+    <content><![CDATA[<p>mariaDB에서 기본적으로 사용하는 명령어들을 정리한 글입니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="테이블에-복수-데이터-추가"><a href="#테이블에-복수-데이터-추가" class="headerlink" title="테이블에 복수 데이터 추가"></a>테이블에 복수 데이터 추가</h2><p>만약 테이블에 여러 개의 데이터를 한번에 입력해야 한다면 어떻게 해야할까? <code>VALUES</code> 아래에 여러 개의 데이터를 (,)를 사용하여 입력하면 된다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">VALUES</span></span><br><span class="line">(<span class="string">'값1_A'</span>, <span class="string">'값2_A'</span>), (<span class="string">'값1_B'</span>, <span class="string">'값2_B'</span>), (<span class="string">'값1_C'</span>, <span class="string">'값2_C'</span>);</span><br></pre></td></tr></table></figure>
@@ -329,12 +344,14 @@
         <tag>mariaDB</tag>
         <tag>database</tag>
         <tag>RDBMS</tag>
+        <tag>명령어</tag>
+        <tag>WHERE</tag>
       </tags>
   </entry>
   <entry>
     <title>1. 데이터베이스와 테이블 생성하기</title>
     <url>/2020/10/10/Database-1/</url>
-    <content><![CDATA[<p>mariaDB의 기본적인 사용법에 대해서 살펴봅니다.<br><a id="more"></a></p>
+    <content><![CDATA[<p>mariaDB에서 데이터베이스와 테이블을 생성하는 방법에 대해 살펴봅니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="데이터베이스-생성"><a href="#데이터베이스-생성" class="headerlink" title="데이터베이스 생성"></a>데이터베이스 생성</h2><p>새로운 데이터베이스를 만드는 명령어는 다음과 같다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> <span class="string">'데이터베이스 이름'</span>;</span><br></pre></td></tr></table></figure>
@@ -376,6 +393,7 @@
         <tag>mariaDB</tag>
         <tag>database</tag>
         <tag>RDBMS</tag>
+        <tag>table</tag>
       </tags>
   </entry>
   <entry>

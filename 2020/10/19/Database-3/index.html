@@ -46,20 +46,24 @@
   };
 </script>
 
-  <meta name="description" content="mariaDB의 기본적인 사용법에 대해서 살펴봅니다.">
+  <meta name="description" content="데이터베이스의 정규화와 기본키에 대해서 살펴본 후 mariaDB에서 기본키 설정하는 방법을 설명합니다.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3. DB 정규화와 기본키 설정하기">
 <meta property="og:url" content="https://hyeonji-ryu.github.io/2020/10/19/Database-3/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
-<meta property="og:description" content="mariaDB의 기본적인 사용법에 대해서 살펴봅니다.">
+<meta property="og:description" content="데이터베이스의 정규화와 기본키에 대해서 살펴본 후 mariaDB에서 기본키 설정하는 방법을 설명합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-10-18T17:44:03.000Z">
-<meta property="article:modified_time" content="2020-11-08T16:56:08.217Z">
+<meta property="article:modified_time" content="2020-11-08T17:06:50.808Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="sql">
 <meta property="article:tag" content="mariaDB">
 <meta property="article:tag" content="database">
 <meta property="article:tag" content="RDBMS">
+<meta property="article:tag" content="DB">
+<meta property="article:tag" content="정규화">
+<meta property="article:tag" content="nomalization">
+<meta property="article:tag" content="기본키">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://hyeonji-ryu.github.io/2020/10/19/Database-3/">
@@ -250,7 +254,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-11-09 01:56:08" itemprop="dateModified" datetime="2020-11-09T01:56:08+09:00">2020-11-09</time>
+                <time title="Updated at: 2020-11-09 02:06:50" itemprop="dateModified" datetime="2020-11-09T02:06:50+09:00">2020-11-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -275,7 +279,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>mariaDB의 기본적인 사용법에 대해서 살펴봅니다.<br><a id="more"></a></p>
+        <p>데이터베이스의 정규화와 기본키에 대해서 살펴본 후 mariaDB에서 기본키 설정하는 방법을 설명합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="정규화-Nomalization"><a href="#정규화-Nomalization" class="headerlink" title="정규화 (Nomalization)"></a>정규화 (Nomalization)</h2><p>같은 자료를 받아도 설계자의 목표에 따라서 다른 테이블이 만들어 질 수 있다. 예를 들어, 식물에 관한 정보를 식물 관리인과 식물 연구자가 받았다고 가정해보자. 식물 관리인은 식물에게 물을 주는 주기나 식물의 생장 속도와 같은 정보들이 구체적으로 필요할 것이다. 반면 식물 연구자는 해당 식물의 세부적인 종이나 생물학적 특징 등이 필요할 것이다. 두 사람에게는 동일한 정보를 주어도 다른 테이블이 도출될 수 있는 것이다.</p>
 <p>‘정규화’란 목표에 맞는 테이블을 올바르게 구성하는 것이다. 그렇다면 어떻게 정규화된 테이블을 만들 수 있을까? 정규화된 테이블은 아래의 두 가지의 원칙을 포함한다.</p>
@@ -328,6 +332,10 @@
               <a href="/tags/mariaDB/" rel="tag"># mariaDB</a>
               <a href="/tags/database/" rel="tag"># database</a>
               <a href="/tags/RDBMS/" rel="tag"># RDBMS</a>
+              <a href="/tags/DB/" rel="tag"># DB</a>
+              <a href="/tags/%EC%A0%95%EA%B7%9C%ED%99%94/" rel="tag"># 정규화</a>
+              <a href="/tags/nomalization/" rel="tag"># nomalization</a>
+              <a href="/tags/%EA%B8%B0%EB%B3%B8%ED%82%A4/" rel="tag"># 기본키</a>
           </div>
 
         
@@ -429,7 +437,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">111</span>
+        <span class="site-state-item-count">126</span>
         <span class="site-state-item-name">태그</span></a>
       </div>
   </nav>
