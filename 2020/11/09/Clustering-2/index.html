@@ -46,15 +46,26 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="AI &amp; ML">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/tags/Julia/page/2/index.html">
+  <meta name="description" content="해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2. 라즈베리 파이 클러스터 셋팅하기">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/11/09/Clustering-2/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
+<meta property="og:description" content="해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.">
 <meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2020-11-09T08:43:57.000Z">
+<meta property="article:modified_time" content="2020-11-09T10:02:58.818Z">
 <meta property="article:author" content="Hyeonji Ryu">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="raspberrypi">
+<meta property="article:tag" content="clustering">
+<meta property="article:tag" content="하둡">
+<meta property="article:tag" content="스파크">
+<meta property="article:tag" content="빅데이터">
+<meta property="article:tag" content="bigdata">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/tags/Julia/page/2/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/11/09/Clustering-2/">
 
 
 <script id="page-configurations">
@@ -62,11 +73,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>태그: Julia | AI & ML</title>
+  <title>2. 라즈베리 파이 클러스터 셋팅하기 | AI & ML</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
     <script>
@@ -207,233 +218,112 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">Julia
-          <small>태그</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/11/09/Clustering-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Hyeonji Ryu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AI & ML">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          2. 라즈베리 파이 클러스터 셋팅하기
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+              
+
+              <time title="Post created: 2020-11-09 17:43:57 / Updated at: 19:02:58" itemprop="dateCreated datePublished" datetime="2020-11-09T17:43:57+09:00">2020-11-09</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Clustering/" itemprop="url" rel="index">
+                    <span itemprop="name">Clustering</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2020</h1>
+        <p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
+<hr>
+<p>이번 글에서는 환경설정이 끝난 라즈베리 파이 3개를 클러스터로 연결하는 방법에 대해서 알아볼 것이다. 해당 과정은 아래와 같다.</p>
+<ul>
+<li>Static IP Addresses 셋팅하기</li>
+<li>SSH 활성화하기</li>
+<li>공개키/개인키 생성하여 복제하기</li>
+<li>클러스터 로그인 함수 만들기</li>
+</ul>
+<p>기술적인 부분에 들어가기 앞서 클러스터와 마스터/슬레이브 개념에 대해서 간단하게 살펴보자.</p>
+<h2 id="클러스터란"><a href="#클러스터란" class="headerlink" title="클러스터란"></a>클러스터란</h2><h2 id="마스터-슬레이브란"><a href="#마스터-슬레이브란" class="headerlink" title="마스터/슬레이브란"></a>마스터/슬레이브란</h2><h2 id="클러스터-셋팅하기"><a href="#클러스터-셋팅하기" class="headerlink" title="클러스터 셋팅하기"></a>클러스터 셋팅하기</h2><p>본격적으로 클러스터를 셋팅해보자. 먼저 라즈베리 파이에 접속한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh pi@raspberrypi.local</span><br></pre></td></tr></table></figure>
+<p>그 다음으로는 고정 IP 주소를 설정하여 고정 네트워크 루트를 생성한다.</p>
+<h3 id="Static-IP-Addresses-셋팅하기"><a href="#Static-IP-Addresses-셋팅하기" class="headerlink" title="Static IP Addresses 셋팅하기"></a>Static IP Addresses 셋팅하기</h3><p>먼저 라즈베리 파이에 접속한다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh pi@raspberrypi.local</span><br></pre></td></tr></table></figure>
+<h3 id="SSH-활성화하기"><a href="#SSH-활성화하기" class="headerlink" title="SSH 활성화하기"></a>SSH 활성화하기</h3><h3 id="공개키-개인키-생성하여-복제하기"><a href="#공개키-개인키-생성하여-복제하기" class="headerlink" title="공개키/개인키 생성하여 복제하기"></a>공개키/개인키 생성하여 복제하기</h3><h3 id="클러스터-로그인-함수-만들기"><a href="#클러스터-로그인-함수-만들기" class="headerlink" title="클러스터 로그인 함수 만들기"></a>클러스터 로그인 함수 만들기</h3>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-16T20:28:58+09:00"
-              content="2020-03-16">
-          03-16
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+              <a href="/tags/raspberrypi/" rel="tag"># raspberrypi</a>
+              <a href="/tags/clustering/" rel="tag"># clustering</a>
+              <a href="/tags/%ED%95%98%EB%91%A1/" rel="tag"># 하둡</a>
+              <a href="/tags/%EC%8A%A4%ED%8C%8C%ED%81%AC/" rel="tag"># 스파크</a>
+              <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag"># 빅데이터</a>
+              <a href="/tags/bigdata/" rel="tag"># bigdata</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/16/Think-Julia-Chapter-16/" itemprop="url">
-            <span itemprop="name">15. 구조체와 함수</span>
-          </a>
-      </h2>
+        
 
-    </header>
-  </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-15T02:04:23+09:00"
-              content="2020-03-15">
-          03-15
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/15/Think-Julia-Chapter-15/" itemprop="url">
-            <span itemprop="name">14. 구조체와 객체</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-13T05:37:08+09:00"
-              content="2020-03-13">
-          03-13
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/13/Think-Julia-Chapter-14/" itemprop="url">
-            <span itemprop="name">13. 파일</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-12T18:31:08+09:00"
-              content="2020-03-12">
-          03-12
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/12/Think-Julia-Chapter-13/" itemprop="url">
-            <span itemprop="name">12. 사례 연구 - 데이터 구조 선택</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-11T01:31:08+09:00"
-              content="2020-03-11">
-          03-11
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/11/Think-Julia-Chapter-12/" itemprop="url">
-            <span itemprop="name">11. 튜플</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-10T23:31:08+09:00"
-              content="2020-03-10">
-          03-10
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/10/Think-Julia-Chapter-11/" itemprop="url">
-            <span itemprop="name">10. 딕셔너리</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-08T23:31:08+09:00"
-              content="2020-03-08">
-          03-08
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/08/Think-Julia-Chapter-10/" itemprop="url">
-            <span itemprop="name">9. 배열</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-06T21:13:37+09:00"
-              content="2020-03-06">
-          03-06
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/06/Think-Julia-Chapter-9/" itemprop="url">
-            <span itemprop="name">8. 사례 연구 - 워드 플레이</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-05T21:13:37+09:00"
-              content="2020-03-05">
-          03-05
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/05/Think-Julia-Chapter-8/" itemprop="url">
-            <span itemprop="name">7. 문자열</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-03-05T13:24:12+09:00"
-              content="2020-03-05">
-          03-05
-        </time>
-      </div>
-
-      <h2 class="post-title">
-          <a class="post-title-link" href="/2020/03/05/Think-Julia-Chapter-7/" itemprop="url">
-            <span itemprop="name">6. 반복</span>
-          </a>
-      </h2>
-
-    </header>
-  </article>
-
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/09/Database-6/" rel="prev" title="6. DB 스키마와 참조키 설정하기">
+      <i class="fa fa-chevron-left"></i> 6. DB 스키마와 참조키 설정하기
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
-  
-  
-  
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/tags/Julia/"><i class="fa fa-angle-left" aria-label="이전 페이지"></i></a><a class="page-number" href="/tags/Julia/">1</a><span class="page-number current">2</span><a class="page-number" href="/tags/Julia/page/3/">3</a><a class="extend next" rel="next" href="/tags/Julia/page/3/"><i class="fa fa-angle-right" aria-label="다음 페이지"></i></a>
-  </nav>
-
 
 
           </div>
@@ -484,6 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#클러스터란"><span class="nav-number">1.</span> <span class="nav-text">클러스터란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#마스터-슬레이브란"><span class="nav-number">2.</span> <span class="nav-text">마스터&#x2F;슬레이브란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#클러스터-셋팅하기"><span class="nav-number">3.</span> <span class="nav-text">클러스터 셋팅하기</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Static-IP-Addresses-셋팅하기"><span class="nav-number">3.1.</span> <span class="nav-text">Static IP Addresses 셋팅하기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH-활성화하기"><span class="nav-number">3.2.</span> <span class="nav-text">SSH 활성화하기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#공개키-개인키-생성하여-복제하기"><span class="nav-number">3.3.</span> <span class="nav-text">공개키&#x2F;개인키 생성하여 복제하기</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#클러스터-로그인-함수-만들기"><span class="nav-number">3.4.</span> <span class="nav-text">클러스터 로그인 함수 만들기</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

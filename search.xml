@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>2. 라즈베리 파이 클러스터 셋팅하기</title>
+    <url>/2020/11/09/Clustering-2/</url>
+    <content><![CDATA[<p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
+<hr>
+<p>이번 글에서는 환경설정이 끝난 라즈베리 파이 3개를 클러스터로 연결하는 방법에 대해서 알아볼 것이다. 해당 과정은 아래와 같다.</p>
+<ul>
+<li>Static IP Addresses 셋팅하기</li>
+<li>SSH 활성화하기</li>
+<li>공개키/개인키 생성하여 복제하기</li>
+<li>클러스터 로그인 함수 만들기</li>
+</ul>
+<p>기술적인 부분에 들어가기 앞서 클러스터와 마스터/슬레이브 개념에 대해서 간단하게 살펴보자.</p>
+<h2 id="클러스터란"><a href="#클러스터란" class="headerlink" title="클러스터란"></a>클러스터란</h2><h2 id="마스터-슬레이브란"><a href="#마스터-슬레이브란" class="headerlink" title="마스터/슬레이브란"></a>마스터/슬레이브란</h2><h2 id="클러스터-셋팅하기"><a href="#클러스터-셋팅하기" class="headerlink" title="클러스터 셋팅하기"></a>클러스터 셋팅하기</h2><p>본격적으로 클러스터를 셋팅해보자. 먼저 라즈베리 파이에 접속한다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh pi@raspberrypi.local</span><br></pre></td></tr></table></figure>
+<p>그 다음으로는 고정 IP 주소를 설정하여 고정 네트워크 루트를 생성한다.</p>
+<h3 id="Static-IP-Addresses-셋팅하기"><a href="#Static-IP-Addresses-셋팅하기" class="headerlink" title="Static IP Addresses 셋팅하기"></a>Static IP Addresses 셋팅하기</h3><p>먼저 라즈베리 파이에 접속한다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh pi@raspberrypi.local</span><br></pre></td></tr></table></figure>
+<h3 id="SSH-활성화하기"><a href="#SSH-활성화하기" class="headerlink" title="SSH 활성화하기"></a>SSH 활성화하기</h3><h3 id="공개키-개인키-생성하여-복제하기"><a href="#공개키-개인키-생성하여-복제하기" class="headerlink" title="공개키/개인키 생성하여 복제하기"></a>공개키/개인키 생성하여 복제하기</h3><h3 id="클러스터-로그인-함수-만들기"><a href="#클러스터-로그인-함수-만들기" class="headerlink" title="클러스터 로그인 함수 만들기"></a>클러스터 로그인 함수 만들기</h3>]]></content>
+      <categories>
+        <category>Clustering</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>raspberrypi</tag>
+        <tag>clustering</tag>
+        <tag>하둡</tag>
+        <tag>스파크</tag>
+        <tag>빅데이터</tag>
+        <tag>bigdata</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>6. DB 스키마와 참조키 설정하기</title>
     <url>/2020/11/09/Database-6/</url>
     <content><![CDATA[<p>데이터베이스에서 스키마가 무엇인지 살펴본 후 mariaDB에서 참조키 설정하는 방법을 설명합니다.<br><a id="more"></a></p>
@@ -46,7 +78,8 @@
     <url>/2020/11/07/Database-4/</url>
     <content><![CDATA[<p>mariaDB에서 ALTER 명령어를 사용하는 방법을 정리합니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h2>]]></content>
+<h2 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h2><p>이전 글에서도 살짝 살펴봤지만 명령어 <code>ALTER</code>은 기존의 데이터를 유지하면서</p>
+]]></content>
       <categories>
         <category>Database</category>
       </categories>
@@ -83,9 +116,9 @@
 <ul>
 <li><p>이미지를 다운받은 SD 메모리 카드를 한번 제거 했다가 다시 노트북에 삽입한다.</p>
 </li>
-<li><p>터미널에서 해당 노트북의 Volumes 딕셔너리로 접속한다.</p>
+<li><p>터미널에서 해당 노트북의 Volumes 디렉토리로 접속한다.</p>
 </li>
-<li><p>Volumes에 있는 boot(라즈베리 파이 SD card)로 접속한다.</p>
+<li><p>Volumes에 있는 boot(라즈베리 파이 SD card) 디렉토리로 접속한다.</p>
 </li>
 <li><p>아래의 코드를 입력하여 ssh 빈 파일을 생성한다.</p>
 </li>
