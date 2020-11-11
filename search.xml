@@ -149,7 +149,7 @@
     <url>/2020/11/08/Database-5/</url>
     <content><![CDATA[<p>mariaDB에서 그룹핑을 하는 명령어 GROUPBY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h2>]]></content>
+<h2 id="부분-문자열-찾기"><a href="#부분-문자열-찾기" class="headerlink" title="부분 문자열 찾기"></a>부분 문자열 찾기</h2>]]></content>
       <categories>
         <category>Database</category>
       </categories>
@@ -170,7 +170,34 @@
     <url>/2020/11/07/Database-4/</url>
     <content><![CDATA[<p>mariaDB에서 ALTER 명령어를 사용하는 방법을 정리합니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h2><p>이전 글에서도 살짝 살펴봤지만 명령어 <code>ALTER</code>은 기존의 데이터를 유지하면서</p>
+<h2 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h2><p>이전 글에서도 살짝 살펴봤지만 명령어 <code>ALTER</code>은 기존의 테이블을 유지하면서 원하는 부분만 수정할 수 있다. 이번 글에서는 명령어 <code>ALTER</code>로 할 수 있는 일들을 살펴볼 것이다.</p>
+<h2 id="ADD-COLUMN-열-추가하기"><a href="#ADD-COLUMN-열-추가하기" class="headerlink" title="ADD COLUMN 열 추가하기"></a>ADD COLUMN 열 추가하기</h2><p>기존 생성되어 있는 테이블에 카테고리(Column)을 추가해야 하는 경우에는 <code>ALTER TABLE + ADD COLUMN</code>을 사용하면 된다. 문법은 다음과 같다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">COLUMN</span> <span class="string">'추가하려는 카테고리 이름'</span> <span class="string">'키테고리 데이터 타입'</span>;</span><br></pre></td></tr></table></figure>
+<p>위의 문법으로 쿼리를 요청하면 sql은 기본적으로 추가되는 열을 끝에 추가한다. 만약 추가하려는 카테고리의 위치를 지정하려면 어떻게 해야 할까? <code>ADD COLUMN</code> 으로 시작하는 문장 마지막에 위치를 지정해주면 된다. 위치는 <code>FIRST</code>, <code>SECOND</code> 등 위치할 순서로 지정할 수도 있고, <code>AFTER</code>을 사용하여 기존의 특정 카테고리 뒤에 위치하도록 설정할 수도 있다. 예시는 다음과 같다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">COLUMN</span> <span class="string">'추가하려는 카테고리 이름'</span> <span class="string">'키테고리 데이터 타입'</span> <span class="keyword">FIRST</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="RENAME-TO-테이블-이름-변경하기"><a href="#RENAME-TO-테이블-이름-변경하기" class="headerlink" title="RENAME TO 테이블 이름 변경하기"></a>RENAME TO 테이블 이름 변경하기</h2><p>테이블의 이름을 다른 것으로 변경하고 싶다면 <code>ALTER TABLE + RENAME TO</code>를 사용하면 된다. 문법은 다음과 같다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">RENAME</span> <span class="keyword">TO</span> <span class="string">'변경하려는 테이블 이름'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="RENAME-COLUMN-TO-열-이름-변경하기"><a href="#RENAME-COLUMN-TO-열-이름-변경하기" class="headerlink" title="RENAME COLUMN TO 열 이름 변경하기"></a>RENAME COLUMN TO 열 이름 변경하기</h2><p>특정 열의 이름을 변경하고 싶다면  <code>ALTER TABLE + RENAME COLUMN TO</code>를 사용하면 된다. 문법은 다음과 같다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">RENAME</span> <span class="keyword">COLUMN</span> <span class="string">'기존 열 이름'</span> <span class="keyword">TO</span> <span class="string">'바꾸려는 열 이름'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="CHANGE-COLUMN-열-이름-및-데이터-타입-변경하기"><a href="#CHANGE-COLUMN-열-이름-및-데이터-타입-변경하기" class="headerlink" title="CHANGE COLUMN 열 이름 및 데이터 타입 변경하기"></a>CHANGE COLUMN 열 이름 및 데이터 타입 변경하기</h2><p><code>ALTER TABLE + CHANGE COLUMN</code>는 열 이름과 동시에 해당 열의 데이터 타입도 변경해준다. 문법은 다음과 같다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">CHANGE</span> <span class="keyword">COLUMN</span> <span class="string">'기존 열 이름'</span> <span class="string">'바꾸려는 열 이름'</span> <span class="string">'새로운 데이터 타입'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="MODIFY-COLUMN-데이터-타입만-변경하기"><a href="#MODIFY-COLUMN-데이터-타입만-변경하기" class="headerlink" title="MODIFY COLUMN 데이터 타입만 변경하기"></a>MODIFY COLUMN 데이터 타입만 변경하기</h2><p>만약 열 이름을 그대로 유지하면서 해당 열의 데이터 타입만 변경하고 싶은 경우는 어떻게 하면 될까?</p>
+<p><code>ALTER TABLE + MODIFY COLUMN</code>을 사용하면 간단하게 수정할 수 있다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">MODIFY</span> <span class="keyword">COLUMN</span> <span class="string">'해당 열 이름'</span> <span class="string">'새로운 데이터 타입'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="DROP-COLUMN-특정-열-삭제하기"><a href="#DROP-COLUMN-특정-열-삭제하기" class="headerlink" title="DROP COLUMN 특정 열 삭제하기"></a>DROP COLUMN 특정 열 삭제하기</h2><p>기존의 테이블에서 특정한 카테고리만 제거하고 싶다면 <code>ALTER TABLE + DROP COLUMN</code>을 사용하면 된다. 문법은 다음과 같다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">COLUMN</span> <span class="string">'삭제할 열 이름'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="기본키-변경하기"><a href="#기본키-변경하기" class="headerlink" title="기본키 변경하기"></a>기본키 변경하기</h2><p>만약 기존에 사용하던 기본키가 아닌 다른 열을 기본키로 지정하고 싶다면 어떻게 해야할까? 두 가지의 쿼리가 필요하다.</p>
+<ul>
+<li>기존의 기본키 삭제하기</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">DROP</span> PRIMARY <span class="keyword">KEY</span>;</span><br></pre></td></tr></table></figure>
+<p>위 코드는 기존에 지정했던 기본키를 삭제한다.</p>
+<ul>
+<li>새로운 열을 기본키로 지정하기</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">ADD</span> PRIMARY <span class="keyword">KEY</span>(<span class="string">'기본키로 지정할 열 이름'</span>);</span><br></pre></td></tr></table></figure>
+<p>만약 새로운 기본키에 <code>ATUO_INCREMENT</code>를 설정하고 싶다면 <code>MODIFY COLUMN</code>이나 <code>CHANGE COLUMN</code>을 시용하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">--예시--</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">MODIFY</span> <span class="keyword">COLUMN</span> <span class="string">'해당 열 이름'</span> <span class="built_in">INT</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="string">'테이블 이름'</span></span><br><span class="line"><span class="keyword">CHANGE</span> <span class="keyword">COLUMN</span> <span class="string">'해당 열 이름'</span>  <span class="string">'해당 열 이름'</span> <span class="built_in">INT</span>(<span class="number">10</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Database</category>
