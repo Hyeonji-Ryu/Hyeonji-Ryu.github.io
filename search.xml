@@ -1,52 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>4. Hadoop 클러스터 설정하기</title>
-    <url>/2020/11/10/Clustering-4/</url>
-    <content><![CDATA[<p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
-<hr>
-]]></content>
-      <categories>
-        <category>Clustering</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>raspberrypi</tag>
-        <tag>clustering</tag>
-        <tag>하둡</tag>
-        <tag>스파크</tag>
-        <tag>빅데이터</tag>
-        <tag>bigdata</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>3. Hadoop &amp; Spark 설치하기</title>
-    <url>/2020/11/10/Clustering-3/</url>
-    <content><![CDATA[<p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
-<hr>
-<p>이번 글에서는 마스터 라즈베리 파이에서 하둡과 스파크를 다운받은 후 클러스터링을 진행할 것이다. 먼저 마스터로 지정한 라즈베리 파이에 접속한 후 아래의 순서대로 진행하자.</p>
-<h2 id="Hadoop-3-3-0-다운로드"><a href="#Hadoop-3-3-0-다운로드" class="headerlink" title="Hadoop 3.3.0 다운로드"></a>Hadoop 3.3.0 다운로드</h2><p>먼저 아래의 코드를 입력하여 하둡을 다운받고 압축을 풀어준다. (마스터에서만 진행한다.)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 다운</span></span><br><span class="line">wget https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-3.3.0/hadoop-3.3.0.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 압축 해제</span></span><br><span class="line">sudo tar -xvf hadoop-3.3.0.tar.gz -C /opt/</span><br></pre></td></tr></table></figure>
-<p>그 다음 압축 해제된 파일을 <code>/opt/hadoop</code>으로 옮긴 후, 해당 디렉토리의 권한을 변경한다.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> opt</span><br><span class="line">sudo mv hadoop-3.2.0 hadoop</span><br><span class="line">sudo chown pi:pi -R /opt/hadoop</span><br></pre></td></tr></table></figure>
-<p>각각의 실행파일들읭 경로를 지정해야 한다. <code>~/.bashrc</code>에 들어가서 아래의 코드를 <strong>가장 윗부분에</strong>에 붙여넣는다.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h2 id="Spark-3-0-1-다운로드"><a href="#Spark-3-0-1-다운로드" class="headerlink" title="Spark 3.0.1 다운로드"></a>Spark 3.0.1 다운로드</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 다운</span></span><br><span class="line">wget https://downloads.apache.org/spark/spark-3.0.1/spark-3.0.1-bin-hadoop3.2.tgz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 압축 해제</span></span><br><span class="line">sudo tar -xvf spark-3.0.1-bin-hadoop3.2.tgz -C /opt/</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Clustering</category>
-      </categories>
-      <tags>
-        <tag>Docker</tag>
-        <tag>raspberrypi</tag>
-        <tag>clustering</tag>
-        <tag>하둡</tag>
-        <tag>스파크</tag>
-        <tag>빅데이터</tag>
-        <tag>bigdata</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2. Raspberry Pi SSH 셋팅하기</title>
     <url>/2020/11/09/Clustering-2/</url>
     <content><![CDATA[<p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
@@ -130,26 +84,6 @@
       </tags>
   </entry>
   <entry>
-    <title>6. DB 스키마와 참조키 설정하기</title>
-    <url>/2020/11/09/Database-6/</url>
-    <content><![CDATA[<p>데이터베이스에서 스키마가 무엇인지 살펴본 후 mariaDB에서 참조키 설정하는 방법을 설명합니다.<br><a id="more"></a></p>
-<hr>
-<h2 id="ALTER"><a href="#ALTER" class="headerlink" title="ALTER"></a>ALTER</h2>]]></content>
-      <categories>
-        <category>Database</category>
-      </categories>
-      <tags>
-        <tag>sql</tag>
-        <tag>mariaDB</tag>
-        <tag>database</tag>
-        <tag>RDBMS</tag>
-        <tag>DB</tag>
-        <tag>스키마</tag>
-        <tag>참조키</tag>
-        <tag>FK</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>5. mariaDB 그룹핑과 연산 명령어 모음</title>
     <url>/2020/11/08/Database-5/</url>
     <content><![CDATA[<p>mariaDB에서 그룹핑을 하는 명령어 GROUPBY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.<br><a id="more"></a></p>
@@ -221,15 +155,15 @@
         <category>Database</category>
       </categories>
       <tags>
+        <tag>database</tag>
         <tag>sql</tag>
         <tag>mariaDB</tag>
-        <tag>database</tag>
         <tag>RDBMS</tag>
+        <tag>DB</tag>
+        <tag>GROUPBY</tag>
         <tag>AVG</tag>
         <tag>SUM</tag>
         <tag>COUNT</tag>
-        <tag>DB</tag>
-        <tag>GROUPBY</tag>
       </tags>
   </entry>
   <entry>
@@ -270,9 +204,9 @@
         <category>Database</category>
       </categories>
       <tags>
+        <tag>database</tag>
         <tag>sql</tag>
         <tag>mariaDB</tag>
-        <tag>database</tag>
         <tag>RDBMS</tag>
         <tag>DB</tag>
         <tag>ALTER</tag>
@@ -393,9 +327,9 @@
         <tag>clustering</tag>
         <tag>하둡</tag>
         <tag>스파크</tag>
-        <tag>언박싱</tag>
         <tag>빅데이터</tag>
         <tag>bigdata</tag>
+        <tag>언박싱</tag>
       </tags>
   </entry>
   <entry>
@@ -485,9 +419,9 @@
         <category>Database</category>
       </categories>
       <tags>
+        <tag>database</tag>
         <tag>sql</tag>
         <tag>mariaDB</tag>
-        <tag>database</tag>
         <tag>RDBMS</tag>
         <tag>DB</tag>
         <tag>정규화</tag>
@@ -562,9 +496,9 @@
         <category>Database</category>
       </categories>
       <tags>
+        <tag>database</tag>
         <tag>sql</tag>
         <tag>mariaDB</tag>
-        <tag>database</tag>
         <tag>RDBMS</tag>
         <tag>명령어</tag>
         <tag>WHERE</tag>
@@ -611,9 +545,9 @@
         <category>Database</category>
       </categories>
       <tags>
+        <tag>database</tag>
         <tag>sql</tag>
         <tag>mariaDB</tag>
-        <tag>database</tag>
         <tag>RDBMS</tag>
         <tag>table</tag>
       </tags>
@@ -667,9 +601,9 @@
         <category>Database</category>
       </categories>
       <tags>
-        <tag>sql</tag>
-        <tag>database</tag>
         <tag>mariadb</tag>
+        <tag>database</tag>
+        <tag>sql</tag>
         <tag>docker</tag>
         <tag>vi</tag>
         <tag>vim</tag>
