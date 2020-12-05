@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>제 2장. 파이썬스러운 코드</title>
+    <url>/2020/12/06/Clean-code-1/</url>
+    <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Mariano Anaya의 저서인 파이썬 클린 코드를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="파이썬스럽다의-의미"><a href="#파이썬스럽다의-의미" class="headerlink" title="파이썬스럽다의 의미"></a>파이썬스럽다의 의미</h2>]]></content>
+      <categories>
+        <category>Clean code in Python</category>
+      </categories>
+      <tags>
+        <tag>Cleancode</tag>
+        <tag>python</tag>
+        <tag>클린코드</tag>
+        <tag>책리뷰</tag>
+        <tag>review</tag>
+        <tag>code</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>제 1장. 소개, 코드 포매팅과 도구</title>
     <url>/2020/12/05/Clean-code-0/</url>
     <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Mariano Anaya의 저서인 파이썬 클린 코드를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
@@ -21,7 +39,8 @@
 <li><p>코드 품질<br>: 코드를 구조화하여 살펴보면 한 눈에 코드를 이해하고 버그와 실수를 쉽게 찾을 수 있다. 코드 품질 도구를 사용하면 잠재적인 버그까지 살펴볼 수 있다.</p>
 </li>
 </ul>
-<h2 id="Docstring과-어노테이션"><a href="#Docstring과-어노테이션" class="headerlink" title="Docstring과 어노테이션"></a>Docstring과 어노테이션</h2>]]></content>
+<h2 id="Docstring과-어노테이션"><a href="#Docstring과-어노테이션" class="headerlink" title="Docstring과 어노테이션"></a>Docstring과 어노테이션</h2><p>Docstring이란</p>
+]]></content>
       <categories>
         <category>Clean code in Python</category>
       </categories>

@@ -46,23 +46,25 @@
   };
 </script>
 
-  <meta name="description" content="해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.">
+  <meta name="description" content="글을 시작하기에 앞서 해당 글은 Mariano Anaya의 저서인 파이썬 클린 코드를 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2. 커맨드라인으로 AWS 접속하기">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/09/14/AWS-project-2/index.html">
+<meta property="og:title" content="제 2장. 파이썬스러운 코드">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/12/06/Clean-code-1/index.html">
 <meta property="og:site_name" content="AI &amp; ML">
-<meta property="og:description" content="해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.">
+<meta property="og:description" content="글을 시작하기에 앞서 해당 글은 Mariano Anaya의 저서인 파이썬 클린 코드를 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2020-09-14T14:51:02.718Z">
-<meta property="article:modified_time" content="2020-09-17T13:36:36.695Z">
+<meta property="article:published_time" content="2020-12-05T17:06:21.000Z">
+<meta property="article:modified_time" content="2020-12-05T17:07:17.706Z">
 <meta property="article:author" content="Hyeonji Ryu">
-<meta property="article:tag" content="AWS">
-<meta property="article:tag" content="딥러닝">
-<meta property="article:tag" content="Deeplearning">
-<meta property="article:tag" content="Amazon">
+<meta property="article:tag" content="Cleancode">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="클린코드">
+<meta property="article:tag" content="책리뷰">
+<meta property="article:tag" content="review">
+<meta property="article:tag" content="code">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/09/14/AWS-project-2/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/12/06/Clean-code-1/">
 
 
 <script id="page-configurations">
@@ -74,7 +76,7 @@
   };
 </script>
 
-  <title>2. 커맨드라인으로 AWS 접속하기 | AI & ML</title>
+  <title>제 2장. 파이썬스러운 코드 | AI & ML</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
     <script>
@@ -220,7 +222,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/09/14/AWS-project-2/">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/12/06/Clean-code-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -233,7 +235,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          2. 커맨드라인으로 AWS 접속하기
+          제 2장. 파이썬스러운 코드
         </h1>
 
         <div class="post-meta">
@@ -242,24 +244,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">작성일</span>
+              
 
-              <time title="Post created: 2020-09-14 23:51:02" itemprop="dateCreated datePublished" datetime="2020-09-14T23:51:02+09:00">2020-09-14</time>
+              <time title="Post created: 2020-12-06 02:06:21 / Updated at: 02:07:17" itemprop="dateCreated datePublished" datetime="2020-12-06T02:06:21+09:00">2020-12-06</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-09-17 22:36:36" itemprop="dateModified" datetime="2020-09-17T22:36:36+09:00">2020-09-17</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/AWS-project/" itemprop="url" rel="index">
-                    <span itemprop="name">AWS project</span>
+                  <a href="/categories/Clean-code-in-Python/" itemprop="url" rel="index">
+                    <span itemprop="name">Clean code in Python</span>
                   </a>
                 </span>
             </span>
@@ -275,24 +271,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>해당 시리즈는 커맨드라인에서 AWS(Amazon Web Services)를 사용하여 딥러닝 모델을 훈련하고, 그 결과를 웹 페이지에 구현하는 것을 목표로 합니다.<br><a id="more"></a></p>
+        <p>글을 시작하기에 앞서 해당 글은 Mariano Anaya의 저서인 파이썬 클린 코드를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
 <hr>
-<p>이전 글에서는 AWS에 대해서 간단하게 알아보고 계정을 생성하였다. 이번 글에서는 커맨드라인에서 코드만을 사용하여 AWS에 접속하는 과정을 살펴볼 것이다.</p>
-<h2 id="download-awscli"><a href="#download-awscli" class="headerlink" title="download awscli"></a>download awscli</h2><p>awscli(AWS command line interface)는 커맨드라인에서 AWS의 API를 직접 호출할 수 있도록 도와주는 도구이다. 커맨드라인에 아래의 코드를 입력하여 해당 툴을 다운받아보자.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install awscli</span><br></pre></td></tr></table></figure>
-<p>다운이 완료되었다면 로컬에 엑세스 키를 등록해야 한다. 그렇다면 엑세스 키는 무엇이고 어디서 받을 수 있을까? 이에 대해 잠깐 살펴보고 넘어가자.</p>
-<h2 id="Use-Access-Key"><a href="#Use-Access-Key" class="headerlink" title="Use Access Key"></a>Use Access Key</h2><p>엑세스 키(Access Key)는 IAM 사용자 계정을 해당 컴퓨터와 연결할 때 사용되는 정보이다. 즉, 각 IAM 사용자 계정에는 고유한 엑세스 키가 있으며, 이를 등록해야 해당 커맨드라인에서 AWS로 접속이 가능하다. 본인의 엑세스 키는 해당 계정을 생성한 직후에만 공개되기 때문에 미리 다른 곳에 적어두어야 한다. 그럼 이제 엑세스 키를 이용하여 AWS에 접속해보자.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">aws configure</span><br></pre></td></tr></table></figure>
-<p>커맨드라인에 위의 코드를 입력하면 총 4개의 입력란이 등장한다.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AWS Access Key ID [None]: <span class="comment"># IAM 사용자 계정 키 입력</span></span><br><span class="line">AWS Secret Access Key [None]: <span class="comment"># IAM 사용자 계정 비밀 키 입력</span></span><br><span class="line">Default region name [None]: <span class="comment"># 지역 (서울: ap-northeast-2) 입력</span></span><br><span class="line">Default output format [None]:</span><br></pre></td></tr></table></figure>
-<p>위의 설명에 따라 값들을 입력한 후 엔터를 누르면 AWS와 연결된다.</p>
-<p>$\bullet$ AWS Access Key ID<br>IAM 계정 만들 당시 시크릿 키와 같이 제공된다. 해당 키는 IAM 콘솔에서 다시 확인할 수 있다.</p>
-<p>$\bullet$ AWS Secret Access Key<br>해당 키는 계정을 생성한 직후에만 볼 수 있기 때문에 꼭 잊지 말고 복사해두어야 한다.</p>
-<p>$\bullet$ Default region name<br>API를 가져오는 지역을 설정하는 것이다. 서울은 <code>ap-northeast-2</code>를 입력하면 된다. 다른 지역은 <a href="https://aws.amazon.com/ko/about-aws/global-infrastructure/regional-product-services/" target="_blank" rel="noopener">지역 표</a>에서 확인할 수 있다.</p>
-<p>$\bullet$ Default output format<br>AWS에서 도출한 결과를 어떤 형태로 저장할지 설정한다. text, json, table 중에 하나를 선택할 수 있다.</p>
-<p>설명한 기본적인 지식 외에도 AWS 명령어에 대해 자세히 알고 싶다면 <a href="https://docs.aws.amazon.com/ko_kr/cli/latest/userguide/cli-configure-options.html" target="_blank" rel="noopener">AWS 명령줄 옵션</a>에서 확인하면 된다.</p>
-<p>이제 커맨드라인에서 AWS를 실행할 준비가 모두 완료되었다. 다음 글에서는 커맨드라인에서 S3 버킷을 만들고 데이터를 추가하는 방법에 대해 살펴볼 것이다.</p>
-
+<h2 id="파이썬스럽다의-의미"><a href="#파이썬스럽다의-의미" class="headerlink" title="파이썬스럽다의 의미"></a>파이썬스럽다의 의미</h2>
     </div>
 
     
@@ -301,10 +282,12 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/AWS/" rel="tag"># AWS</a>
-              <a href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/" rel="tag"># 딥러닝</a>
-              <a href="/tags/Deeplearning/" rel="tag"># Deeplearning</a>
-              <a href="/tags/Amazon/" rel="tag"># Amazon</a>
+              <a href="/tags/Cleancode/" rel="tag"># Cleancode</a>
+              <a href="/tags/python/" rel="tag"># python</a>
+              <a href="/tags/%ED%81%B4%EB%A6%B0%EC%BD%94%EB%93%9C/" rel="tag"># 클린코드</a>
+              <a href="/tags/%EC%B1%85%EB%A6%AC%EB%B7%B0/" rel="tag"># 책리뷰</a>
+              <a href="/tags/review/" rel="tag"># review</a>
+              <a href="/tags/code/" rel="tag"># code</a>
           </div>
 
         
@@ -313,13 +296,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/09/13/AWS-project-1/" rel="prev" title="1. AWS 계정 생성하기">
-      <i class="fa fa-chevron-left"></i> 1. AWS 계정 생성하기
+    <a href="/2020/12/05/Clean-code-0/" rel="prev" title="제 1장. 소개, 코드 포매팅과 도구">
+      <i class="fa fa-chevron-left"></i> 제 1장. 소개, 코드 포매팅과 도구
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/09/17/AWS-project-3/" rel="next" title="3. S3에 훈련 데이터 업로드하기">
-      3. S3에 훈련 데이터 업로드하기 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -379,7 +359,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#download-awscli"><span class="nav-number">1.</span> <span class="nav-text">download awscli</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Use-Access-Key"><span class="nav-number">2.</span> <span class="nav-text">Use Access Key</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#파이썬스럽다의-의미"><span class="nav-number">1.</span> <span class="nav-text">파이썬스럽다의 의미</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -497,54 +477,6 @@
   
 
   
-      
-<script type="text/x-mathjax-config">
-
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    },
-    TeX: {
-      equationNumbers: {
-        autoNumber: 'AMS'
-      }
-    }
-  });
-
-  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
-    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
-      if (data.display) {
-        var next = data.script.nextSibling;
-        while (next && next.nodeName.toLowerCase() === '#text') {
-          next = next.nextSibling;
-        }
-        if (next && next.nodeName.toLowerCase() === 'br') {
-          next.parentNode.removeChild(next);
-        }
-      }
-    });
-  });
-
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for (i = 0; i < all.length; i += 1) {
-      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
-      if (element.nodeName.toLowerCase() == 'li') {
-        element = element.parentNode;
-      }
-      element.classList.add('has-jax');
-    }
-  });
-</script>
-<script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
-    MathJax.Hub.Typeset();
-  }, window.MathJax);
-</script>
-
-    
 
   
 
