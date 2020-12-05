@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>제 0장. 클린 코드의 의미와 중요성</title>
+    <url>/2020/12/05/Clean-code-0/</url>
+    <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Mariano Anaya의 저서인 파이썬 클린 코드를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
+<hr>
+]]></content>
+      <categories>
+        <category>Clean code in Python</category>
+      </categories>
+      <tags>
+        <tag>Cleancode</tag>
+        <tag>python</tag>
+        <tag>클린코드</tag>
+        <tag>책리뷰</tag>
+        <tag>review</tag>
+        <tag>code</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2. Raspberry Pi SSH 셋팅하기</title>
     <url>/2020/11/09/Clustering-2/</url>
     <content><![CDATA[<p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
