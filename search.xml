@@ -5,7 +5,10 @@
     <url>/2020/12/06/Clean-code-1/</url>
     <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Mariano Anaya의 저서인 파이썬 클린 코드를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="파이썬스럽다의-의미"><a href="#파이썬스럽다의-의미" class="headerlink" title="파이썬스럽다의 의미"></a>파이썬스럽다의 의미</h2>]]></content>
+<h2 id="파이썬스럽다-pythonic-의-의미"><a href="#파이썬스럽다-pythonic-의-의미" class="headerlink" title="파이썬스럽다(pythonic)의 의미"></a>파이썬스럽다(pythonic)의 의미</h2><p>모든 프로그래밍 언어는 각자의 고유한 관용구(idiom)를 가지고 있다. 여기서 관용구란 특정 작업을 수행하기 위한 특별한 방법이며, 패턴이라고도 불린다. 이런 관용구를 따른 코드를 관용적이라고 부르며, 파이썬에서는 파이썬스럽다고 한다. 이런 관용구를 따른 코드는 더 나은 성능을 낸다.</p>
+<h2 id="인덱스와-슬라이스"><a href="#인덱스와-슬라이스" class="headerlink" title="인덱스와 슬라이스"></a>인덱스와 슬라이스</h2><p>파이썬은 인덱스에 음수를 사용하여 끝에서부터 접근이 가능하다. 또한 슬라이스를 사용하여 특정 구간의 인덱스 요소롤 반환할 수 있다. 마지막 예제를처럼 슬라이스에서 세번째 값을 추가로 입력하여 간격을 설정할 수 있다.</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; num = (<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>)</span><br><span class="line">&gt; num[<span class="number">-1</span>]</span><br><span class="line"><span class="number">7</span></span><br><span class="line">&gt; num[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">&gt;num[<span class="number">0</span>:<span class="number">4</span>:<span class="number">2</span>]</span><br><span class="line">(<span class="number">2</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>Clean code in Python</category>
       </categories>
