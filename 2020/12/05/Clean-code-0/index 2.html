@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 글은 Mariano Anaya의 저서인 파이썬 클린 코드를 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-12-05T14:30:30.000Z">
-<meta property="article:modified_time" content="2020-12-06T23:38:58.356Z">
+<meta property="article:modified_time" content="2020-12-06T23:19:33.111Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="Cleancode">
 <meta property="article:tag" content="python">
@@ -252,7 +252,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-12-07 08:38:58" itemprop="dateModified" datetime="2020-12-07T08:38:58+09:00">2020-12-07</time>
+                <time title="Updated at: 2020-12-07 08:19:33" itemprop="dateModified" datetime="2020-12-07T08:19:33+09:00">2020-12-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -319,12 +319,8 @@
 <p>사용방법은 설치 후 <code>mypy{파일 명}</code>을 입력하면 검사 결과가 나오는 방식이다. 잘못 탐지한 경우 해당 문장 끝에 <code>#type: ignore</code>를 추가하여 Mypy가 무시하도록 할 수 있다.</p>
 <h3 id="Pylint"><a href="#Pylint" class="headerlink" title="Pylint"></a>Pylint</h3><p>Pylint는 가장 엄격하게 코드를 검사하는 도구이다. VScode에 기본적으로 내장되어 있으며, 빨간색은 버그, 노란색은 필요없는 코드, 하늘색은 PEP-8에 맞지 않는 코드를 반환한다. 만약 직접 설치하여 사용하고 싶다면 아래의 코드를 입력하자.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pylint</span><br></pre></td></tr></table></figure>
-<p>Pylintsms <code>.pylintrc</code> 파일에서 설정 값들을 변경할 수 있다.</p>
-<h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h3><p>Makefile은 리눅스 환경에서 프로젝트를 컴파일하고 실행하기 위한 설정을 도와주는 파워풀한 도구이다. 빌드 외에도 포매팅 검사나 코딩 컨벤션 검사를 자동화하기 위해서도 사용된다. 예시를 살펴보자.</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">typehint:</span></span><br><span class="line">mypy src/tests/</span><br><span class="line"></span><br><span class="line"><span class="section">test:</span></span><br><span class="line">pytest tests/</span><br><span class="line"></span><br><span class="line"><span class="section">lint:</span></span><br><span class="line">pylint src/tests/</span><br><span class="line"></span><br><span class="line"><span class="section">chechlist: lint typehint test</span></span><br><span class="line"></span><br><span class="line"><span class="meta"><span class="meta-keyword">.PHONY</span>: typehint test lint chechlist</span></span><br></pre></td></tr></table></figure>
-<p>위의 설정은 pylint로 PHP-8을 검사하고, mypy로 타입을 확인한 후 최종적으로 test를 진행하라는 명령 모음이다. 이렇게 저장해두면 단 한 줄의 코드로 모든 검사를 한번에 진행할 수 있다. 한 줄의 코드는 아래와 같다.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make checklist</span><br></pre></td></tr></table></figure>
-
+<p>Pylintsms <code>.pylintrc</code> 파일에서 설정 값들을 변경할 수 있다. 참고로 웹 개발 등을 진행할 때 </p>
+<h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h3>
     </div>
 
     
