@@ -404,9 +404,9 @@
         <tag>clustering</tag>
         <tag>하둡</tag>
         <tag>스파크</tag>
+        <tag>언박싱</tag>
         <tag>빅데이터</tag>
         <tag>bigdata</tag>
-        <tag>언박싱</tag>
       </tags>
   </entry>
   <entry>
@@ -434,7 +434,7 @@
 <p>이제 VS code를 재부팅하거나 헤당 어플리케이션 폴더를 다시 열면 위의 오류가 사라져 있음을 볼 수 있다.</p>
 ]]></content>
       <categories>
-        <category>Error list</category>
+        <category>error list</category>
       </categories>
       <tags>
         <tag>sqlalchemy</tag>
@@ -1169,10 +1169,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>im2col</tag>
-        <tag>col2im</tag>
         <tag>Julia</tag>
         <tag>모델</tag>
+        <tag>im2col</tag>
+        <tag>col2im</tag>
       </tags>
   </entry>
   <entry>
@@ -1205,10 +1205,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>im2col</tag>
-        <tag>col2im</tag>
         <tag>Julia</tag>
         <tag>모델</tag>
+        <tag>im2col</tag>
+        <tag>col2im</tag>
       </tags>
   </entry>
   <entry>
@@ -1250,10 +1250,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>im2col</tag>
-        <tag>col2im</tag>
         <tag>Julia</tag>
         <tag>모델</tag>
+        <tag>im2col</tag>
+        <tag>col2im</tag>
       </tags>
   </entry>
   <entry>
@@ -1295,10 +1295,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>im2col</tag>
-        <tag>col2im</tag>
         <tag>Julia</tag>
         <tag>모델</tag>
+        <tag>im2col</tag>
+        <tag>col2im</tag>
       </tags>
   </entry>
   <entry>
@@ -1381,10 +1381,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>Julia</tag>
-        <tag>모델</tag>
         <tag>flatten</tag>
         <tag>convolution</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
       </tags>
   </entry>
   <entry>
@@ -3329,9 +3329,9 @@ y_3=w_{13}x_1+w_{23}x_2+b_3</script><p>이제 준비가 완료되었다. 위의 
         <tag>딥러닝</tag>
         <tag>Deeplearning</tag>
         <tag>머신러닝</tag>
-        <tag>줄리아</tag>
         <tag>벡터</tag>
         <tag>내적</tag>
+        <tag>줄리아</tag>
       </tags>
   </entry>
   <entry>
