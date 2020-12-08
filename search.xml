@@ -8,7 +8,7 @@
 <h2 id="파이썬스럽다-pythonic-의-의미"><a href="#파이썬스럽다-pythonic-의-의미" class="headerlink" title="파이썬스럽다(pythonic)의 의미"></a>파이썬스럽다(pythonic)의 의미</h2><p>모든 프로그래밍 언어는 각자의 고유한 관용구(idiom)를 가지고 있다. 여기서 관용구란 특정 작업을 수행하기 위한 특별한 방법이며, 패턴이라고도 불린다. 이런 관용구를 따른 코드를 관용적이라고 부르며, 파이썬에서는 파이썬스럽다고 한다. 이런 관용구를 따른 코드는 더 나은 성능을 낸다.</p>
 <h2 id="인덱스와-슬라이스"><a href="#인덱스와-슬라이스" class="headerlink" title="인덱스와 슬라이스"></a>인덱스와 슬라이스</h2><p>파이썬은 인덱스에 음수를 사용하여 끝에서부터 접근이 가능하다. 또한 슬라이스를 사용하여 특정 구간의 인덱스 요소롤 반환할 수 있다. 마지막 예제를처럼 슬라이스에서 세번째 값을 추가로 입력하여 간격을 설정할 수 있다.</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; num = (<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>)</span><br><span class="line">&gt; num[<span class="number">-1</span>]</span><br><span class="line"><span class="number">7</span></span><br><span class="line">&gt; num[<span class="number">1</span>:<span class="number">3</span>]</span><br><span class="line">(<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">&gt;num[<span class="number">0</span>:<span class="number">4</span>:<span class="number">2</span>]</span><br><span class="line">(<span class="number">2</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
+<h2 id="자체-시퀀스-생성"><a href="#자체-시퀀스-생성" class="headerlink" title="자체 시퀀스 생성"></a>자체 시퀀스 생성</h2>]]></content>
       <categories>
         <category>Clean code in Python</category>
       </categories>
@@ -641,7 +641,7 @@
     <url>/2020/10/09/Database-0/</url>
     <content><![CDATA[<p>도커 컨테이너에 MariaDB를 올려서 데이터베이스를 구축합니다.<br><a id="more"></a></p>
 <hr>
-<p>이번 글에서는 MariaDB에 대해 간단하게 알아보고 도커 컨테이너에 MariaDB를 올려 데이터베이스 구축하는 방법에 대해서 살펴볼 것이다. 해당 글은 도커가 이미 깔려았다는 전제 하에 설명하기 때문에 만약 도커가 없다면 다운받아야 한다.</p>
+<p>이번 글에서는 MariaDB에 대해 간단하게 알아보고 도커 컨테이너에 MariaDB를 올려 데이터베이스 구축하는 방법에 대해서 살펴볼 것이다. 해당 글은 도커가 이미 깔렸다는 전제 하에 설명하기 때문에 만약 도커가 없다면 다운받아야 한다.</p>
 <h2 id="Database란"><a href="#Database란" class="headerlink" title="Database란"></a>Database란</h2><p>데이터베이스(Database, DB)는 여러 사람들이 사용할 목적으로 통합하고 관리하는 데이터 집합을 말하며, 대부분 관계형 데이터베이스(Relational Database, RDB) 형태로 많이 사용하고 있다. 관계형 데이터베이스란 데이터를 컬럼(column)과 로우(row)를 이루는 하나 이상의 테이블(또는 관계)로 정리하는 방식이며, 흔히 우리가 알고 있는 엑셀의 시트 형태와 같다.</p>
 <p>이런 데이터베이스를 통합하고 관리하는 소프트웨어를 ‘데이터베이스 관리시스템(DataBase Management System, DBMS)’라고 하며, 보통 RDB를 관리하는 시스템을 ‘관계형 데이터베이스 관리시스템(Relational DBMS, RDBMS)’이라고 한다. 이런 관계형 데이터베이스는 ‘SQL(Structured Query Language)’이라는 언어를 통해서 데이터 전송을 주고 받는다.</p>
 <p>정리하면 다음과 같다.</p>
