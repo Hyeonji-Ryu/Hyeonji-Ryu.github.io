@@ -243,6 +243,27 @@
       </tags>
   </entry>
   <entry>
+    <title>6. DB 스키마와 참조키 설정하기</title>
+    <url>/2020/11/09/Database-6/</url>
+    <content><![CDATA[<p>데이터베이스에서 스키마가 무엇인지 살펴본 후 mariaDB에서 참조키 설정하는 방법을 설명합니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="여러-개의-테이블-다루기"><a href="#여러-개의-테이블-다루기" class="headerlink" title="여러 개의 테이블 다루기"></a>여러 개의 테이블 다루기</h2><p>초기에 테이블을 잘 설계하면 쿼리의 복잡도가 낮아지며, 원하는 데이터를 더 쉽게 찾을 수 있다. 그렇다면 테이블을 잘 설계하는 방법은 무엇인가? 그 방법 중 하나가 여러 개의 테이블을 사용하는 것이다. 여러 개의 테이블을 사용하면 각 카테고리에 대한 세부 정보들을 체계적으로 정리할 수 있다.</p>
+]]></content>
+      <categories>
+        <category>Database</category>
+      </categories>
+      <tags>
+        <tag>database</tag>
+        <tag>sql</tag>
+        <tag>mariaDB</tag>
+        <tag>RDBMS</tag>
+        <tag>DB</tag>
+        <tag>스키마</tag>
+        <tag>참조키</tag>
+        <tag>FK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>5. mariaDB 그룹핑과 연산 명령어 모음</title>
     <url>/2020/11/08/Database-5/</url>
     <content><![CDATA[<p>mariaDB에서 그룹핑을 하는 명령어 GROUPBY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.<br><a id="more"></a></p>
