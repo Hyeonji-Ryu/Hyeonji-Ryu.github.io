@@ -46,36 +46,28 @@
   };
 </script>
 
-  <meta name="description" content="해당 시리즈는 라즈베리 파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.">
+  <meta name="description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="0. Raspberry Pi 4 unboxing">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/11/02/Clustering-0/index.html">
-<meta property="og:site_name" content="DEV AnythinG">
-<meta property="og:description" content="해당 시리즈는 라즈베리 파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.">
+<meta property="og:title" content="5. 인공신경망 구현 - 수학식 풀이">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/04/01/Deeplearning-5/index.html">
+<meta property="og:site_name" content="Dev anything">
+<meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/96.jpg">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/97.jpg">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/98.jpg">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/99.jpg">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/100.jpg">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/101.jpg">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/102.jpg">
-<meta property="og:image" content="https://hyeonji-ryu.github.io/images/103.jpg">
-<meta property="article:published_time" content="2020-11-02T07:37:25.000Z">
-<meta property="article:modified_time" content="2021-02-08T02:31:16.867Z">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/36.png">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/37.png">
+<meta property="article:published_time" content="2020-04-01T08:59:47.000Z">
+<meta property="article:modified_time" content="2020-05-02T05:50:01.720Z">
 <meta property="article:author" content="Hyeonji Ryu">
-<meta property="article:tag" content="Docker">
-<meta property="article:tag" content="raspberrypi">
-<meta property="article:tag" content="clustering">
-<meta property="article:tag" content="하둡">
-<meta property="article:tag" content="스파크">
-<meta property="article:tag" content="언박싱">
-<meta property="article:tag" content="빅데이터">
-<meta property="article:tag" content="bigdata">
+<meta property="article:tag" content="딥러닝">
+<meta property="article:tag" content="Deeplearning">
+<meta property="article:tag" content="머신러닝">
+<meta property="article:tag" content="줄리아">
+<meta property="article:tag" content="신경망">
+<meta property="article:tag" content="순전파">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hyeonji-ryu.github.io/images/96.jpg">
+<meta name="twitter:image" content="https://hyeonji-ryu.github.io/images/36.png">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/11/02/Clustering-0/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/04/01/Deeplearning-5/">
 
 
 <script id="page-configurations">
@@ -87,7 +79,7 @@
   };
 </script>
 
-  <title>0. Raspberry Pi 4 unboxing | DEV AnythinG</title>
+  <title>5. 인공신경망 구현 - 수학식 풀이 | Dev anything</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
     <script>
@@ -140,7 +132,7 @@
     <div>
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">DEV AnythinG</span>
+        <span class="site-title">Dev anything</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -233,7 +225,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/11/02/Clustering-0/">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/04/01/Deeplearning-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -242,11 +234,11 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DEV AnythinG">
+      <meta itemprop="name" content="Dev anything">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          0. Raspberry Pi 4 unboxing
+          5. 인공신경망 구현 - 수학식 풀이
         </h1>
 
         <div class="post-meta">
@@ -256,14 +248,14 @@
               </span>
               <span class="post-meta-item-text">작성일</span>
 
-              <time title="Post created: 2020-11-02 16:37:25" itemprop="dateCreated datePublished" datetime="2020-11-02T16:37:25+09:00">2020-11-02</time>
+              <time title="Post created: 2020-04-01 17:59:47" itemprop="dateCreated datePublished" datetime="2020-04-01T17:59:47+09:00">2020-04-01</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2021-02-08 11:31:16" itemprop="dateModified" datetime="2021-02-08T11:31:16+09:00">2021-02-08</time>
+                <time title="Updated at: 2020-05-02 14:50:01" itemprop="dateModified" datetime="2020-05-02T14:50:01+09:00">2020-05-02</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,8 +263,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Clustering/" itemprop="url" rel="index">
-                    <span itemprop="name">Clustering</span>
+                  <a href="/categories/Deep-learning-in-Julia/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep learning in Julia</span>
                   </a>
                 </span>
             </span>
@@ -288,25 +280,66 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>해당 시리즈는 라즈베리 파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
+        <p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>이제는 대부분의 데이터가 ‘빅데이터’라고 불리는 만큼 그 용량이 매우 크며, 이런 데이터들을 전부 저장하고 불러오기 위해서는 정말 좋은 컴퓨터 사양이 필요하다. 하지만 컴퓨터는 고성능일수록 가격이 가파르게 상승한다. 그렇다면 데이터를 다루기 위해 모든 사람들이 슈퍼컴퓨터를 살 필요가 있을까? 오히려 적당한 컴퓨터 여러 개를 붙여서 하나처럼 사용할 수 있다면 훨씬 저렴하게 빅데이터를 다룰 수 있을 것이다. 이처럼 여러 개의 컴퓨터를 연결하여 하나의 좋은 컴퓨터처럼 사용하는 시스템을 클러스터(Cluster)라고 한다. 결국 클러스터링(Clustering)은 클러스터를 만드는 과정인 것이다. 해당 프로젝트에서는 라즈베리 파이4 3개를 연결하여 클러스터링하는 과정들을 공부하고, 이를 기록하는 데 목적이 있다. 라즈베리 파이 3개를 연결한 모습은 다음과 같다.</p>
-<p><img src="/images/96.jpg" alt="rasp1"></p>
-<h2 id="라즈베리-파이4-키트"><a href="#라즈베리-파이4-키트" class="headerlink" title="라즈베리 파이4 키트"></a>라즈베리 파이4 키트</h2><p>라즈베리 파이는 영국의 라즈베리 파이 재단에서 생성하는 초소형, 최저가 컴퓨터이다. 라즈베리 파이를 구매하면 간단한 개발 보드의 형태로 배송되며, 키트로 구매할 시 설명서와 키보스, 마우스 등을 포함하여 제공한다. 이번엔 EU 2020년 기준 최신 모델인 라즈베리 파이4를 키트로 구매하였다. 라즈베리 파이4 언박싱을 시작해보자.</p>
-<p><img src="/images/97.jpg" alt="rasp2"></p>
-<p>위 사진은 키트 박스이다. 해당 박스 한쪽 면에는 키트 구성품들을 설명하고 있다.</p>
-<p><img src="/images/98.jpg" alt="rasp3"></p>
-<p>박스를 처음 개봉하면 구성품들이 깔끔하게 패키징되어 있다. 아래 사진의 중간에 있는 케이스 안에 라즈베리 파이4가 들어 있다.</p>
-<p><img src="/images/99.jpg" alt="rasp4"></p>
-<p>아래의 사진은 모든 구성품들을 꺼낸 것이다. 키트에는 라즈베리 파이 공식 설명서도 포함되어 있다. 포장지가 참 귀엽다.</p>
-<p><img src="/images/100.jpg" alt="rasp5"></p>
-<p>이번에 키트를 구매하면서 사실  키보드와 마우스는 별 기대 안했는데 생각보다 컬러도 예쁘고 퀄리티도 괜찮았다. 아래 사진은 구성품들을 모두 꺼낸 모습이다.</p>
-<p><img src="/images/101.jpg" alt="rasp6"></p>
-<p>SD 메모리 카드도 깔끔하게 포장되어 왔다. 안의 메모리 카드를 확인해보면 16GB 이다.</p>
-<p><img src="/images/102.jpg" alt="rasp7"></p>
-<h2 id="라즈베리-파이4-3개-연결"><a href="#라즈베리-파이4-3개-연결" class="headerlink" title="라즈베리 파이4 3개 연결"></a>라즈베리 파이4 3개 연결</h2><p>라즈베리 파이들을 연결하기 위해서는 몇 가지의 준비물이 필요하다. 바로 PoE 스위칭 허브와 PoE 랜선이다. PoE란 Power over Ethernet의 약자로 한 개의 랜선이 전원과 데이터 송신을 모두 공급하는 기술을 말한다. 기본적으로 컴퓨터는 전기를 공급받는 전원선과 네트워크를 연결하여 데이터를 받는 랜선 2가지가 필요하다. 따라서 여러 개의 컴퓨터를 동시에 연결해야 하는 경우, 각 컴퓨터 당 최소 2개의 선이 발생하고 전원 어댑터를 연결할 콘센트도 컴퓨터 갯수만큼 필요하다. 한마디로 정신없다. 이럴 때 PoE 기술이 포함된 랜선과 스위칭 허브를 사용하면 선 하나로 깔끔하게 정리할 수 있다. 또한 멀티 콘센트도 필요 없다. 이런 방법은 연결할 컴퓨터의 갯수가 많을수록 더욱 의미있다. 라즈베리 파이 3개를 스위칭 허브와 연결한 모습은 아래와 같다.</p>
-<p><img src="/images/103.jpg" alt="rasp8"></p>
-<p>지금까지 라즈베리 파이4를 살펴보았다. 다음 글에서는 라즈베리 파이의 초기 환경설정에 대해서 살펴볼 것이다.</p>
+<h2 id="인공신경망이란"><a href="#인공신경망이란" class="headerlink" title="인공신경망이란"></a>인공신경망이란</h2><script type="math/tex; mode=display">Layer=(X*W)+B</script><p>위 수식은 각 층을 계산하는 식이며, 입력 데이터의 값들인 배열 $X$에 가중치 $W$를 곱한 후 편향 $B$를 더한다. 이 식은 신경망이 작동하는 방식에서 가져온 알고리즘이다. 생물학에서의 신경망은 수많은 뉴런(신경 세포)이 연결되어 있으며, 이들은 전기 신호를 전달한다. 각각의 뉴런들은 수상돌기를 통해 들어오는 전기 신호를 받고 세포체에서 종합한 후 축삭돌기를 통해 전기 신호를 다른 뉴런으로 내보낸다. 이때 축삭돌기 끝 부분인 시냅스에서 전기 신호에 따라 신경전달물질을 분비하여 다른 뉴런의 시냅스로 전달하는데 이런 과정을 신경이라고 부르는 것이다.</p>
+<p><img src="\../images/36.png" alt="신경 세포 구조"></p>
+<p>그렇다면 뉴런들은 왜 전기 신호들을 전달하는 것일까? 이유는 간단하다. 우리 몸에서 필요한 생활 기능들을 ‘적절’하게 조절하기 위해서이다. 뉴런은 수상돌기에서 전기 신호를 생산하라는 흥분성 신호와 전기 신호를 생산하지 말라는 억제성 신호를 받아들인다. 그후 세포체에서 이를 종합하여 다른 뉴런으로 해당 전기 신호를 보낼지 말지 결정한다. 이런 뉴런의 원리를 바탕으로 살펴봤을 때 가중치를 곱하는 것은 뉴런에서 각각의 고유한 흥분성과 억제성 신호를 받아들이는 과정을 표현했다고 볼 수 있다.<br>물론 실제 생물학에서의 뉴런은 세포체에서 전기 신호를 보내거나(1), 보내지 않거나(0)라는 계단 함수의 개념으로 작동한다는 차이점이 있지만, 가중치의 원리는 동일하다. 또한 편향은 뉴런이 가지고 있는 ‘임계값’을 표현한 것이다. 세포체는 받은 전기 신호가 어느 임계값 이상이 되어야 전기 신호를 내보내는 데, 이를 나타낸 것이다.</p>
+<p>따라서 인공신경망의 원리를 한번에 설명한다면, 입력 신호에 가중치를 곱하면서 적절한 전기 신호로 변환하여 받은 후, 편향(임계값)이 넘으면 전기 신호를 출력한다고 정리된다. 2층으로 구성된 인공신경망 계산 과정을 도식화하면 다음과 같다.</p>
+<p><img src="\../images/37.png" alt="인공신경망 계산 과정"></p>
+<h2 id="인공신경망-수학식-풀이"><a href="#인공신경망-수학식-풀이" class="headerlink" title="인공신경망 수학식 풀이"></a>인공신경망 수학식 풀이</h2><p>인공신경망을 코드로 구현하기에 앞서 수학식으로 풀이해보려고 한다. 이 과정이 필요한 이유는 컴퓨터가 신경망 모델을 어떻게 진행하는지 명확히 파악하고, 이해해야 하기 때문이다. 따라서 위의 인공신경망 도식을 수식으로 풀이해보자. (참고로 위의 인공신경망 도식은 2층 신경망이다.)</p>
+<script type="math/tex; mode=display">X:
+\begin{bmatrix}
+ x_1 & x_2 \\
+ \end{bmatrix}\quad
+W_1:
+\begin{bmatrix}
+ w1_{11} & w1_{12} \\
+ w1_{21} & w1_{22} \\
+ \end{bmatrix}\quad
+W_2:
+\begin{bmatrix}
+ w2_{11} & w2_{12} & w2_{13}\\
+ w2_{21} & w2_{22} & w2_{23}\\
+ \end{bmatrix}</script><script type="math/tex; mode=display">B_1:
+\begin{bmatrix}
+b1_1 & b1_2
+ \end{bmatrix}\quad
+ B_2:
+\begin{bmatrix}
+ b2_1 & b2_2 & b2_3
+ \end{bmatrix}</script><p>먼저 입력값인 $X$와 가중치 $W_1, W_2$, 편향 $b_1, b_2$를 설정한다. 예시이기 때문에 입력층, 은닉층, 출력층의 노드 개수를 임의로 설정하였다. (실제로는 훨씬 많은 노드들이 사용된다.)</p>
+<script type="math/tex; mode=display">Z1 = XW_1+B_1</script><script type="math/tex; mode=display">Z1=
+\begin{bmatrix}
+ x_1 & x_2 \\
+ \end{bmatrix}
+\times
+\begin{bmatrix}
+ w1_{11} & w1_{12} \\
+ w1_{21} & w1_{22} \\
+ \end{bmatrix}
++
+\begin{bmatrix}
+b1_1 & b1_2
+ \end{bmatrix}\\</script><script type="math/tex; mode=display">=
+\begin{bmatrix}
+x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
+\end{bmatrix}</script><p>먼저 입력값에 첫 번째 가중치인 $W_1$을 곱하고 첫 번째 편향인 $B_1$ 더한다. 입력값과 가중치, 편향 모두 배열이기에 이 계산은 배열 단위로 이루어진다. 즉, 행렬곱과 행렬덧셈이 사용되는 것이다. 이 과정은 입력값이 첫 번째 활성화 함수 $h(x)$로 넘어가기 전에 이루어진다.</p>
+<script type="math/tex; mode=display">A1 = \cfrac{1}{1+e^{-Z1}}</script><script type="math/tex; mode=display">A1 =
+\begin{bmatrix}
+\cfrac{1}{1+e^{-Z1_1}} & \cfrac{1}{1+e^{-Z1_2}}
+\end{bmatrix}</script><p>그 다음, 위의 $Z_1$을 활성화 함수에 대입하면 된다. 여기서 $Z_1$은 행렬인데 위의 수식을 $Z_1$의 요소에 각각 적용한다. 참고로 위 식에서 사용된 활성화 함수는 시그모이드 함수이다. 이 과정은 입력값이 첫 번째 은닉층에 도착한 것이다.</p>
+<script type="math/tex; mode=display">Z2 = A1 \times W_2+b_2</script><script type="math/tex; mode=display">=
+\begin{bmatrix}
+\frac{w2_{11}}{1+e^{-Z1_1}}+\frac{w2_{21}}{1+e^{-Z1_2}}+b2_1 & \frac{w2_{12}}{1+e^{-Z1_1}}+\frac{w2_{22}}{1+e^{-Z1_2}}+b2_2 & \frac{w2_{13}}{1+e^{-Z1_1}}+\frac{w2_{23}}{1+e^{-Z1_2}}+b2_3
+\end{bmatrix}</script><p>$A1$의 값은 행렬로 반환된다. $A1$을 다시 두 번째 은닉층으로 보내기 위해 두 번째 가중치인 $W_2$를 곱하고 두 번째 편향인 $b_2$를 더한다. 여기서도 행렬곱과 행렬덧셈이 사용된다. 행렬 단위로 계산되는 수식은 $Z1$과 동일하다.</p>
+<script type="math/tex; mode=display">\hat{y_k}=\cfrac{e^{Z2_k}}{\sum_{i=1}^n e^{Z2_i}}</script><script type="math/tex; mode=display">\hat{y}=
+\begin{bmatrix}
+\cfrac{e^{Z2_1}}{\sum_{i=1}^3 e^{Z2_i}} & \cfrac{e^{Z2_2}}{\sum_{i=1}^3 e^{Z2_i}} & \cfrac{e^{Z2_3}}{\sum_{i=1}^3 e^{Z2_i}}
+\end{bmatrix}</script><p>은닉층 계산 이후 마지막으로 출력층 활성화 함수인 소프트맥스 함수를 적용하여 예측값 $\hat{y}$을 얻는다.</p>
+<p>위의 식을 토대로 우리는 예측값을 아래와 같은 식로 정의할 수 있다.</p>
+<script type="math/tex; mode=display">\hat{y}=\sigma(h(XW1+B1)\times W2+B2)</script><p>위의 식을 살펴보면 $Z1$인 $XW_1+B_1$을 활성화 함수 $h(x)$에 대입하고, 활성화 함수의 결과 값을 다시 $Z2$의 입력값으로 받는다. 그렇게 $Z2$를 계산한 후 출력층의 활성화 함수인 $\sigma(x)$에 대입하여 나온 값이 예측값 $\hat{y}$이다.</p>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>아번 글에서는 신경망을 구현하기에 앞서 신경망의 원리를 수학식으로 풀이하였다. 이 과정은 이해를 위함이며, 다음 글에서는 손글씨 인식하는 신경망을 구현하면서 코드로 작동하는 과정을 살펴볼 것이다.</p>
 
     </div>
 
@@ -316,14 +349,12 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Docker/" rel="tag"># Docker</a>
-              <a href="/tags/raspberrypi/" rel="tag"># raspberrypi</a>
-              <a href="/tags/clustering/" rel="tag"># clustering</a>
-              <a href="/tags/%ED%95%98%EB%91%A1/" rel="tag"># 하둡</a>
-              <a href="/tags/%EC%8A%A4%ED%8C%8C%ED%81%AC/" rel="tag"># 스파크</a>
-              <a href="/tags/%EC%96%B8%EB%B0%95%EC%8B%B1/" rel="tag"># 언박싱</a>
-              <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag"># 빅데이터</a>
-              <a href="/tags/bigdata/" rel="tag"># bigdata</a>
+              <a href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/" rel="tag"># 딥러닝</a>
+              <a href="/tags/Deeplearning/" rel="tag"># Deeplearning</a>
+              <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" rel="tag"># 머신러닝</a>
+              <a href="/tags/%EC%A4%84%EB%A6%AC%EC%95%84/" rel="tag"># 줄리아</a>
+              <a href="/tags/%EC%8B%A0%EA%B2%BD%EB%A7%9D/" rel="tag"># 신경망</a>
+              <a href="/tags/%EC%88%9C%EC%A0%84%ED%8C%8C/" rel="tag"># 순전파</a>
           </div>
 
         
@@ -332,12 +363,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/10/22/error-list-0/" rel="prev" title="SQLAlchemy ORM 사용 중 pylint 에러">
-      <i class="fa fa-chevron-left"></i> SQLAlchemy ORM 사용 중 pylint 에러
+    <a href="/2020/03/31/Deeplearning-4/" rel="prev" title="4. 경사하강법">
+      <i class="fa fa-chevron-left"></i> 4. 경사하강법
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/11/02/Clustering-1/" rel="next" title="1. Raspberry Pi 환경설정하기">
-      1. Raspberry Pi 환경설정하기 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/02/Deeplearning-6/" rel="next" title="6. 인공신경망 구현 - 모델 학습">
+      6. 인공신경망 구현 - 모델 학습 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -398,7 +429,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#라즈베리-파이4-키트"><span class="nav-number">2.</span> <span class="nav-text">라즈베리 파이4 키트</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#라즈베리-파이4-3개-연결"><span class="nav-number">3.</span> <span class="nav-text">라즈베리 파이4 3개 연결</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#인공신경망이란"><span class="nav-number">1.</span> <span class="nav-text">인공신경망이란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#인공신경망-수학식-풀이"><span class="nav-number">2.</span> <span class="nav-text">인공신경망 수학식 풀이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#결론"><span class="nav-number">3.</span> <span class="nav-text">결론</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -516,6 +547,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
