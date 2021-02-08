@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>0. 정규표현식이란</title>
+    <url>/2021/02/08/Regex-0/</url>
+    <content><![CDATA[<p>해당 시리즈는 정규표현식 문법 및 python에서 정규표현식을 사용하는 방법들을 정리합니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="정규표현식이란"><a href="#정규표현식이란" class="headerlink" title="정규표현식이란"></a>정규표현식이란</h2><p>정규표현식(regular expression or regex)는</p>
+]]></content>
+      <categories>
+        <category>Regular expression</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+        <tag>regex</tag>
+        <tag>regular_expression</tag>
+        <tag>정규표현식</tag>
+        <tag>re</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>제 2장. 파이썬스러운 코드</title>
     <url>/2020/12/06/Clean-code-1/</url>
     <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Mariano Anaya의 저서인 파이썬 클린 코드를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
@@ -507,9 +525,9 @@
         <tag>clustering</tag>
         <tag>하둡</tag>
         <tag>스파크</tag>
-        <tag>언박싱</tag>
         <tag>빅데이터</tag>
         <tag>bigdata</tag>
+        <tag>언박싱</tag>
       </tags>
   </entry>
   <entry>
@@ -603,10 +621,10 @@
         <tag>sql</tag>
         <tag>mariaDB</tag>
         <tag>RDBMS</tag>
-        <tag>DB</tag>
         <tag>정규화</tag>
         <tag>nomalization</tag>
         <tag>기본키</tag>
+        <tag>DB</tag>
       </tags>
   </entry>
   <entry>
