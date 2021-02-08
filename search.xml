@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>0. KBO Analytical Dashboard</title>
+    <url>/2021/02/08/kbo-0/</url>
+    <content><![CDATA[<p>해당 시리즈는 한국프로야구(Korea Baseball Organization) 웹사이트에서 크롤링한 데이터를 분석하여 대시보드를 만드는 과정을 보여줍니다.</p>
+<a id="more"></a>
+<h2 id="이-프로젝트를-시작하게-된-계기"><a href="#이-프로젝트를-시작하게-된-계기" class="headerlink" title="이 프로젝트를 시작하게 된 계기"></a>이 프로젝트를 시작하게 된 계기</h2>]]></content>
+      <categories>
+        <category>KBO Analytical Dashboard</category>
+      </categories>
+      <tags>
+        <tag>AWS</tag>
+        <tag>docker</tag>
+        <tag>mariaDB</tag>
+        <tag>DB</tag>
+        <tag>flask</tag>
+        <tag>KBO</tag>
+        <tag>analysis</tag>
+        <tag>dashborad</tag>
+        <tag>EC2</tag>
+        <tag>plotly</tag>
+        <tag>dash</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>0. 정규표현식이란</title>
     <url>/2021/02/08/Regex-0/</url>
     <content><![CDATA[<p>해당 시리즈는 정규표현식 문법 및 python에서 정규표현식을 사용하는 방법들을 정리합니다.<br><a id="more"></a></p>
@@ -266,7 +289,7 @@
     <content><![CDATA[<p>데이터베이스에서 스키마가 무엇인지 살펴본 후 mariaDB에서 참조키 설정하는 방법을 설명합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="여러-개의-테이블-다루기"><a href="#여러-개의-테이블-다루기" class="headerlink" title="여러 개의 테이블 다루기"></a>여러 개의 테이블 다루기</h2><p>초기에 테이블을 잘 설계하면 쿼리의 복잡도가 낮아지며, 원하는 데이터를 더 쉽게 찾을 수 있다. 그렇다면 테이블을 잘 설계하는 방법은 무엇인가? 그 방법 중 하나가 여러 개의 테이블을 사용하는 것이다. 여러 개의 테이블을 사용하면 각 카테고리에 대한 세부 정보들을 체계적으로 정리할 수 있다.</p>
-]]></content>
+<h2 id="테이블-간의-관계도-스키마"><a href="#테이블-간의-관계도-스키마" class="headerlink" title="테이블 간의 관계도, 스키마"></a>테이블 간의 관계도, 스키마</h2>]]></content>
       <categories>
         <category>Database</category>
       </categories>
