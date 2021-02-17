@@ -54,7 +54,7 @@
 <meta property="og:description" content="글을 시작하기에 앞서 해당 글은 ‘그림으로 공부하는 IT 인프라 구조’를 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2021-02-15T20:37:50.000Z">
-<meta property="article:modified_time" content="2021-02-15T21:12:13.397Z">
+<meta property="article:modified_time" content="2021-02-17T11:48:03.863Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="infra">
 <meta property="article:tag" content="IT">
@@ -247,10 +247,16 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">작성일</span>
-              
 
-              <time title="Post created: 2021-02-16 05:37:50 / Updated at: 06:12:13" itemprop="dateCreated datePublished" datetime="2021-02-16T05:37:50+09:00">2021-02-16</time>
+              <time title="Post created: 2021-02-16 05:37:50" itemprop="dateCreated datePublished" datetime="2021-02-16T05:37:50+09:00">2021-02-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Updated at: 2021-02-17 20:48:03" itemprop="dateModified" datetime="2021-02-17T20:48:03+09:00">2021-02-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -286,7 +292,13 @@
 <li>이중화: 컴퓨터를 구성하는 주요 부품들을 다중화하여 하나 고장나도 업무가 지속될 수 있게 하는 것이다.</li>
 </ul>
 <p>단점으로는 대형 컴퓨터의 도입 및 유지 비용이 비싸고, 확장성의 한계 등이 있다.</p>
-<h3 id="분항형-아키텍쳐"><a href="#분항형-아키텍쳐" class="headerlink" title="분항형 아키텍쳐"></a>분항형 아키텍쳐</h3>
+<h3 id="분할형-아키텍쳐"><a href="#분할형-아키텍쳐" class="headerlink" title="분할형 아키텍쳐"></a>분할형 아키텍쳐</h3><p>분할형 아키텍쳐는 여러 대의 컴퓨터를 조합하여 하나의 시스템을 구축하는 구조이다. 이 아키텍쳐는 표준 OS나 개발 언어를 사용하기 때문에 오픈 시스템이라고도 불리며, 여러 대의 컴퓨터를 연결한다는 점에서 분산 시스템이라고도 불린다. 장점으로는 저렴한 비용과 서버를 쉽게 늘릴 수 있어 확장성이 높다는 점이 있으며, 단점으로는 대수가 늘어날수록 관리가 어렵고 한대가 망가질 시 피해의 최소화를 위한 구조를 검토해야 한다는 점이다.</p>
+<ul>
+<li>서버: 서버라는 단어는 하드웨어, 소프트웨어에서 전부 사용된다. 분산처리에 사용되는 물리적인 컴퓨터 등을 물리 서버라고 하며, 웹서버나 DB 서버와 같이 소프트웨어로 구현된 서버를 논리 서버라고 부른다.</li>
+</ul>
+<p>분할형에는 서버마다 다른 작업을 할당하는 수직 분할형 아키텍쳐와 비슷한 작업을 여러 서버에 할당하는 방법인 수평 분할형 아키텍쳐가 있다.</p>
+<h4 id="수직-분할형-아키텍쳐"><a href="#수직-분할형-아키텍쳐" class="headerlink" title="수직 분할형 아키텍쳐"></a>수직 분할형 아키텍쳐</h4><p>위에서 설명했듯 수직 분할형 아키텍쳐는 각 서버마다 역할을 분리하는 것이다. 수직형이라고 표현한 이유는 역할에 따라 서버의 계층이 위 또는 아래로 나눠지기 때문이다. 수직 분할형 아키텍쳐는 크게 클라이언트-서버형 아키텍쳐, 3계층형 아키텍쳐으로 나뉜다.</p>
+<h5 id="클라이언트-서버형-아키텍쳐"><a href="#클라이언트-서버형-아키텍쳐" class="headerlink" title="클라이언트-서버형 아키텍쳐"></a>클라이언트-서버형 아키텍쳐</h5>
     </div>
 
     
@@ -375,7 +387,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#시작하기에-앞서"><span class="nav-number">1.</span> <span class="nav-text">시작하기에 앞서</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#인프라란-무엇인가"><span class="nav-number">2.</span> <span class="nav-text">인프라란 무엇인가?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#궁극의-아키텍쳐는-없다"><span class="nav-number">3.</span> <span class="nav-text">궁극의 아키텍쳐는 없다</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#아키텍쳐"><span class="nav-number">4.</span> <span class="nav-text">아키텍쳐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#집약형-아키텍쳐"><span class="nav-number">4.1.</span> <span class="nav-text">집약형 아키텍쳐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#분항형-아키텍쳐"><span class="nav-number">4.2.</span> <span class="nav-text">분항형 아키텍쳐</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#시작하기에-앞서"><span class="nav-number">1.</span> <span class="nav-text">시작하기에 앞서</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#인프라란-무엇인가"><span class="nav-number">2.</span> <span class="nav-text">인프라란 무엇인가?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#궁극의-아키텍쳐는-없다"><span class="nav-number">3.</span> <span class="nav-text">궁극의 아키텍쳐는 없다</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#아키텍쳐"><span class="nav-number">4.</span> <span class="nav-text">아키텍쳐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#집약형-아키텍쳐"><span class="nav-number">4.1.</span> <span class="nav-text">집약형 아키텍쳐</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#분할형-아키텍쳐"><span class="nav-number">4.2.</span> <span class="nav-text">분할형 아키텍쳐</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#수직-분할형-아키텍쳐"><span class="nav-number">4.2.1.</span> <span class="nav-text">수직 분할형 아키텍쳐</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#클라이언트-서버형-아키텍쳐"><span class="nav-number">4.2.1.1.</span> <span class="nav-text">클라이언트-서버형 아키텍쳐</span></a></li></ol></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
