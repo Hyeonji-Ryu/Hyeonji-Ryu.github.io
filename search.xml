@@ -156,8 +156,10 @@
     <url>/2021/02/08/Regex-0/</url>
     <content><![CDATA[<p>해당 시리즈는 정규표현식 문법 및 python에서 정규표현식을 사용하는 방법들을 정리합니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="정규표현식이란"><a href="#정규표현식이란" class="headerlink" title="정규표현식이란"></a>정규표현식이란</h2><p>정규표현식(regular expression or regex)는</p>
-]]></content>
+<h2 id="정규표현식이란"><a href="#정규표현식이란" class="headerlink" title="정규표현식이란"></a>정규표현식이란</h2><p>정규표현식(regular expression or regex)는 특정 패턴을 적용하여 문자열을 보다 쉽게 처리할 수 있도록 하는 문법이다. 이는 언어도 아니고 어떤 프로그램도 아니다. 오히려 대부분의 언어들이 공통적으로 지원하는 하나의 문법체계라고 보는 것이 맞다. 정규표현식을 다룰 수 있다면 문자열을 처리하는 코드 길이는 반 이상이 줄 수 있고, 또 복잡한 처리들도 간편해진다.</p>
+<h2 id="NOTE"><a href="#NOTE" class="headerlink" title="NOTE"></a>NOTE</h2><p>이 시리즈의 목적은 정규표현식의 기본적인 원리들을 정리해두는 데 있다. 사용하는 언어마다 정규표현식이 약간 다를 수 있는데, 해당 시리즈에서 사용하는 언어는 Python이다. 따라서 우리는 <code>re</code>라는 라이브러리를 import하여 사용할 것이며 <code>re</code>가 제공하는 함수들을 사용할 것이다.</p>
+<h2 id="re"><a href="#re" class="headerlink" title="re"></a>re</h2><p><code>re</code>는 정규표현식이란 의미인 regex에서 앞글자를 따온 이름이다. 즉, 파이썬에서는 re모듈을 이용해야만 정규표현식 패턴을 사용할 수 있다. 모듈 <code>re</code>에는 45지의 매서드가 있다.</p>
+<h3 id="re-match-‘pattern’-string"><a href="#re-match-‘pattern’-string" class="headerlink" title="re.match(‘pattern’, string)"></a>re.match(‘pattern’, string)</h3><h3 id="re-fullmatch-‘pattern’-string"><a href="#re-fullmatch-‘pattern’-string" class="headerlink" title="re.fullmatch(‘pattern’, string)"></a>re.fullmatch(‘pattern’, string)</h3><h3 id="re-search-‘pattern’-string"><a href="#re-search-‘pattern’-string" class="headerlink" title="re.search(‘pattern’, string)"></a>re.search(‘pattern’, string)</h3><h3 id="re-findall-‘pattern’-string"><a href="#re-findall-‘pattern’-string" class="headerlink" title="re.findall(‘pattern’, string)"></a>re.findall(‘pattern’, string)</h3><h3 id="re-finditer-‘pattern’-string"><a href="#re-finditer-‘pattern’-string" class="headerlink" title="re.finditer(‘pattern’, string)"></a>re.finditer(‘pattern’, string)</h3>]]></content>
       <categories>
         <category>Regular expression</category>
       </categories>
