@@ -55,7 +55,7 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/31.png">
 <meta property="article:published_time" content="2020-03-25T20:37:08.000Z">
-<meta property="article:modified_time" content="2021-03-30T13:47:44.662Z">
+<meta property="article:modified_time" content="2021-03-30T13:49:07.917Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="딥러닝">
 <meta property="article:tag" content="Deeplearning">
@@ -254,7 +254,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2021-03-30 22:47:44" itemprop="dateModified" datetime="2021-03-30T22:47:44+09:00">2021-03-30</time>
+                <time title="Updated at: 2021-03-30 22:49:07" itemprop="dateModified" datetime="2021-03-30T22:49:07+09:00">2021-03-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -528,13 +528,13 @@ b_1 & b_2
  \end{bmatrix}\quad
 편향 2:
 \begin{bmatrix}
- b_1 & b_2 & b_3
+ b_3 & b_4 & b_5
  \end{bmatrix}</script><p>입력층에서 은닉층까지의 계산을 순서대로 나타내면 아래의 수학식과 같다.</p>
 <script type="math/tex; mode=display">h_1=w_{11}x_1+w_{21}x_2+w_{31}x_3+w_{41}x_4+b_1\\
 h_2=w_{12}x_1+w_{22}x_2+w_{32}x_3+w_{42}x_4+b_2</script><p>다음은 은닉층에서 출력층의 계산을 수학식으로 작성한 것이다.</p>
-<script type="math/tex; mode=display">y_1=w_{51}h_1+w_{61}h_2+b_1\\
-y_2=w_{52}h_1+w_{62}h_2+b_2\\
-y_3=w_{53}h_1+w_{63}h_2+b_3</script><p>이제 준비가 완료되었다. 위의 수학식들을 코드로 구현해보자.</p>
+<script type="math/tex; mode=display">y_1=w_{51}h_1+w_{61}h_2+b_3\\
+y_2=w_{52}h_1+w_{62}h_2+b_4\\
+y_3=w_{53}h_1+w_{63}h_2+b_5</script><p>이제 준비가 완료되었다. 위의 수학식들을 코드로 구현해보자.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Julia&gt; X = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span> <span class="number">4</span>]</span><br><span class="line">Julia&gt; W1 = [<span class="number">1</span> <span class="number">2</span>; <span class="number">3</span> <span class="number">4</span>;<span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span>]</span><br><span class="line">Julia&gt; W2 = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>; <span class="number">4</span> <span class="number">5</span> <span class="number">6</span>]</span><br><span class="line">Julia&gt; B1 = [<span class="number">1</span> <span class="number">2</span>]</span><br><span class="line">Julia&gt; B2 = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
 <p>먼저 입력층 행렬과 가중치 행렬, 편향을 할당해준다. 그 후 위의 수학공식을 구현하여 은닉층을 구현해보자.</p>
 <figure class="highlight julia"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Julia&gt; H = *(X,W1)+B1</span><br><span class="line"><span class="number">51</span>  <span class="number">62</span></span><br></pre></td></tr></table></figure>
