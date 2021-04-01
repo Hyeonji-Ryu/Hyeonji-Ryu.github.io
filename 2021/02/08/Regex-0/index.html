@@ -48,13 +48,13 @@
 
   <meta name="description" content="해당 시리즈는 정규표현식 문법 및 python에서 정규표현식을 사용하는 방법들을 정리합니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="0. 정규표현식이란">
+<meta property="og:title" content="0. python에서 정규표현식 사용하기">
 <meta property="og:url" content="https://hyeonji-ryu.github.io/2021/02/08/Regex-0/index.html">
 <meta property="og:site_name" content="DEV AnythinG">
 <meta property="og:description" content="해당 시리즈는 정규표현식 문법 및 python에서 정규표현식을 사용하는 방법들을 정리합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2021-02-08T02:25:25.000Z">
-<meta property="article:modified_time" content="2021-03-30T15:25:52.304Z">
+<meta property="article:modified_time" content="2021-04-01T13:47:38.045Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="python">
 <meta property="article:tag" content="regex">
@@ -75,7 +75,7 @@
   };
 </script>
 
-  <title>0. 정규표현식이란 | DEV AnythinG</title>
+  <title>0. python에서 정규표현식 사용하기 | DEV AnythinG</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
     <script>
@@ -234,7 +234,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          0. 정규표현식이란
+          0. python에서 정규표현식 사용하기
         </h1>
 
         <div class="post-meta">
@@ -251,7 +251,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2021-03-31 00:25:52" itemprop="dateModified" datetime="2021-03-31T00:25:52+09:00">2021-03-31</time>
+                <time title="Updated at: 2021-04-01 22:47:38" itemprop="dateModified" datetime="2021-04-01T22:47:38+09:00">2021-04-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -295,7 +295,14 @@
 <h3 id="re-findall-‘pattern’-string"><a href="#re-findall-‘pattern’-string" class="headerlink" title="re.findall(‘pattern’, string)"></a>re.findall(‘pattern’, string)</h3><p><code>findall</code>은 문자열에서 패턴에 해당하는 모든 값들을 찾아 리스트로 반환한다. 지금까지 봤던 메서드들은 하나의 값을 제공했지만 <code>findall</code>은 <strong>리스트</strong>를 반환한다.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; re.findall(<span class="string">'[a-z]+'</span>, <span class="string">'123 number one two three'</span>)</span><br><span class="line">[<span class="string">'number'</span>, <span class="string">'one'</span>, <span class="string">'two'</span>, <span class="string">'three'</span>]</span><br></pre></td></tr></table></figure>
 <p>예시에서 사용한 패턴 <code>[a-z]+</code>으로 인해 연속되는 알파벳은 하나의 결과값으로 반환되기 때문에 띄어쓰기를 기준으로 단어들만 리스트 요소로 들어간 것을 볼 수 있다.<br>다음 글에서 본격적으로 패턴, 즉 정규표현식에 대해서 다룰 예정이다.</p>
-<h3 id="re-finditer-‘pattern’-string"><a href="#re-finditer-‘pattern’-string" class="headerlink" title="re.finditer(‘pattern’, string)"></a>re.finditer(‘pattern’, string)</h3><h3 id="re-split-‘pattern’-‘string’-‘split-number’"><a href="#re-split-‘pattern’-‘string’-‘split-number’" class="headerlink" title="re.split(‘pattern’, ‘string’, ‘split number’)"></a>re.split(‘pattern’, ‘string’, ‘split number’)</h3>
+<h3 id="re-finditer-‘pattern’-string"><a href="#re-finditer-‘pattern’-string" class="headerlink" title="re.finditer(‘pattern’, string)"></a>re.finditer(‘pattern’, string)</h3><p><code>finditer</code>은 패턴에 해당하는 문자열 모두를 iterator의 형태로 반환한다. 따라서 내부의 값을 확인하려면 while문이나 for문을 사용하여 가져오면 된다. 각 객체의 값들은 <code>match</code>와 동일하기 떄문에 온전한 문자열만 보고 싶다면 <code>group()</code>으로 저장하면 된다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="keyword">for</span> i <span class="keyword">in</span> re.finditer(<span class="string">'[a-z]+'</span>, <span class="string">'123 number one two three'</span>):</span><br><span class="line">    print(i)</span><br><span class="line">&lt;re.Match object; span=(<span class="number">4</span>, <span class="number">10</span>), match=<span class="string">'number'</span>&gt;</span><br><span class="line">&lt;re.Match object; span=(<span class="number">11</span>, <span class="number">14</span>), match=<span class="string">'one'</span>&gt;</span><br><span class="line">&lt;re.Match object; span=(<span class="number">15</span>, <span class="number">18</span>), match=<span class="string">'two'</span>&gt;</span><br><span class="line">&lt;re.Match object; span=(<span class="number">19</span>, <span class="number">24</span>), match=<span class="string">'three'</span>&gt;</span><br><span class="line"></span><br><span class="line">&gt; <span class="keyword">for</span> i <span class="keyword">in</span> re.finditer(<span class="string">'[a-z]+'</span>, <span class="string">'123 number one two three'</span>):</span><br><span class="line">    print(i.group())</span><br><span class="line">number</span><br><span class="line">one</span><br><span class="line">two</span><br><span class="line">three</span><br></pre></td></tr></table></figure>
+<p>위 예시에서 <code>finditer</code>의 객체는 <code>match</code>와 동일함을 알 수 있다.</p>
+<h3 id="re-split-‘pattern’-‘string’-‘split-number’"><a href="#re-split-‘pattern’-‘string’-‘split-number’" class="headerlink" title="re.split(‘pattern’, ‘string’, ‘split number’)"></a>re.split(‘pattern’, ‘string’, ‘split number’)</h3><p><code>split</code>은 문자열을 패턴에 맞게 분리하는 메서드이며, 사실상 가장 많이 쓰인다. 물론 파이썬에서 기본적으로 제공하는 split도 있지만 이는 쉼표, 마침표, 공백 등 단순한 조건들만 가능한 반면, <code>re</code>에서 제공하는 해당 메서드는 훨씬 복잡한 패턴들도 문자열을 분리할 수 있다. 예시로 확인해보자. 아래 예시에서는 문자 중간에 있는 숫자들을 기준으로 문자열을 분리하였다. <code>split</code>은 분리된 문자열들을 리스트로 반환한다. 또한 나누는 기준이 되는 문자는 결과에 포함되는 것이 아니라 사라진다.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; re.split(<span class="string">'[0-9]+'</span>, <span class="string">'number0 one1 two2 three3'</span>)</span><br><span class="line">[<span class="string">'number'</span>, <span class="string">' one'</span>, <span class="string">' two'</span>, <span class="string">' three'</span>, <span class="string">''</span>]</span><br></pre></td></tr></table></figure>
+<p>숫자를 기준으로 문자에 맞게 잘렸지만 결과가 좀 이상하다. 어떤 객체는 앞에 띄어쓰기를 가지고 있고 또 빈 객체도 속해 있다. 정규표현식에서는 이런 부분도 패턴으로 지정하여 처리해주어야 한다.</p>
+<p>다음 글에서는 정규표현식 기본 문법에 대해서 알아보자.</p>
+
     </div>
 
     
