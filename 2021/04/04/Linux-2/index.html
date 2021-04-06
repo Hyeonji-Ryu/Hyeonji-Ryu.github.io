@@ -55,7 +55,7 @@
 <meta property="og:locale" content="ko_KR">
 <meta property="og:image" content="https://hyeonji-ryu.github.io/images/107.jpg">
 <meta property="article:published_time" content="2021-04-04T13:56:02.000Z">
-<meta property="article:modified_time" content="2021-04-06T14:20:50.603Z">
+<meta property="article:modified_time" content="2021-04-06T14:45:16.123Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="kernel">
@@ -254,7 +254,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2021-04-06 23:20:50" itemprop="dateModified" datetime="2021-04-06T23:20:50+09:00">2021-04-06</time>
+                <time title="Updated at: 2021-04-06 23:45:16" itemprop="dateModified" datetime="2021-04-06T23:45:16+09:00">2021-04-06</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -281,18 +281,20 @@
       
         <p>리눅스 커널에 대해서 정리합니다.</p>
 <a id="more"></a>
-<h2 id="kernel이란"><a href="#kernel이란" class="headerlink" title="kernel이란"></a>kernel이란</h2><p>커널(kernel)이란 운영체제에서 가장 중요한 프로그램 중 하나이며, 하드웨어라는 자원을 관리하는 관리자이다. 즉, 어떤 프로그램의 프로세스를 작동할 수 있도록 CPU, 메모리, 디스크와 같은 물리적 장치들을 배분하는 것이 커널이다. 리눅스 강의에서 들었던 좋은 예시를 가져왔다. 아래 그림을 보자</p>
+<h2 id="kernel이란"><a href="#kernel이란" class="headerlink" title="kernel이란"></a>kernel이란</h2><p>커널(kernel)이란 운영체제에서 가장 중요한 프로그램 중 하나이며, 하드웨어라는 자원을 관리하는 관리자이다. 즉, 어떤 프로그램이 작동할 수 있도록 CPU, 메모리, 디스크와 같은 물리적 장치들을 배분하는 것이 커널이다. 리눅스 강의에서 들었던 좋은 예시를 가져왔다. 아래 그림을 보자</p>
 <p><img src="/images/107.jpg" alt="kernel"></p>
-<p>위 그림은 커널의 역할을 도서관의 사서와 비교한 것이다. 컴퓨터에서 어떤 프로그램이 프로세스를 시작하려고 하면 특정한 양의 하드웨어 재료들이 필요하다. 이 재료들을 요구한 만큼 찾아서 빌려주고 또 돌려받아서 관리하는 것이 커널인 것이다. 마치 학생이 과제를 하기 위해 사서에게 과제에 필요한 책이나 영상, 신문들을 빌려가는 것과 같다.<br>또한 사서는 단순히 빌려주기만 하는 것이 아니라 자료들의 상태를 관리하고 빌려주기로 한 기간이 지나면 돌려받기도 한다. 이런 일들도 컴퓨터에서 커널이 동일하게 담당한다.</p>
+<p>위 그림은 커널의 역할을 도서관의 사서와 비교한 것이다. 컴퓨터에서 어떤 프로그램을 시작하려고 하면 특정한 양의 하드웨어 재료들이 필요하다. 이 재료들을 요구한만큼 찾아서 빌려주고 또 돌려받아서 관리하는 것이 커널이다. 마치 학생이 과제를 하기 위해 사서에게 과제에 필요한 책이나 영상, 신문들을 빌려가는 것과 같다.<br>또한 사서는 단순히 빌려주기만 하는 것이 아니라 자료들의 상태를 관리하고 빌려주기로 한 기간이 지나면 돌려받기도 한다. 이런 일들도 컴퓨터에서 커널이 동일하게 담당한다.</p>
 <h2 id="kernel의-역할"><a href="#kernel의-역할" class="headerlink" title="kernel의 역할"></a>kernel의 역할</h2><p>커널은 크게 4가지의 역할을 가진다.</p>
 <ul>
 <li>메모리 관리: 메모리 사용량과 잔여량 등을 체크하고, 건강에 문제 없는지 체크한다.</li>
 <li>프로세스 관리: CPU의 건강을 체크하고, 각 프로세스의 진행상황들을 관리한다.</li>
 <li>장치 드라이버: 하드웨어와 프로세스를 연결한다.</li>
-<li>시스템 호출 및 보안: 프로그램이 커널의 함수를 동작하게 한다. (print, read, open, write 등)</li>
+<li>시스템 호출 및 보안: 프로그램이 요구하는 커널의 재료들을 사용할 수 있도록 한다. (print, read, open, write 등)</li>
 </ul>
 <h2 id="kernel-version"><a href="#kernel-version" class="headerlink" title="kernel version"></a>kernel version</h2><p>커널의 버전을 확인하고 싶다면 아래의 코드를 입력하자.</p>
-<p>```bash<br>$ </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ uname -a</span><br></pre></td></tr></table></figure>
+<p>위 명령어를 입력하면 “Linux Kernel Version 4.15.0”와 같은 단어가 보일 것이다. 첫번째 숫자인 4가 커널 버전이다. 만약 커널의 소스코드를 보고 싶다면 <a href="https://www.kernel.org" target="_blank" rel="noopener">해당 링크</a>에서 찾아볼 수 있다.</p>
+<h2 id="kernel-space-amp-user-space"><a href="#kernel-space-amp-user-space" class="headerlink" title="kernel space &amp; user space"></a>kernel space &amp; user space</h2><p>컴퓨터 자원은 크게 2가지로 분리된다. 바로 커널 스페이스와 유저 스페이스이다. 보안 상의 문제를 방지하기 위해 일반적인 프로그램들은 커널 스페이스에 직접적으로 접근할 수 없다. </p>
 
     </div>
 
@@ -379,7 +381,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kernel이란"><span class="nav-number">1.</span> <span class="nav-text">kernel이란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kernel의-역할"><span class="nav-number">2.</span> <span class="nav-text">kernel의 역할</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kernel-version"><span class="nav-number">3.</span> <span class="nav-text">kernel version</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#kernel이란"><span class="nav-number">1.</span> <span class="nav-text">kernel이란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kernel의-역할"><span class="nav-number">2.</span> <span class="nav-text">kernel의 역할</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kernel-version"><span class="nav-number">3.</span> <span class="nav-text">kernel version</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#kernel-space-amp-user-space"><span class="nav-number">4.</span> <span class="nav-text">kernel space &amp; user space</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
