@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>D+001(2021-04-19)</title>
+    <url>/2021/04/19/TIL-0-md/</url>
+    <content><![CDATA[<p>2021년 4월 19일 월요일, 처음으로 기록을 시작한 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>Linux Kernel 블로그 글 작성 완료</li>
+<li>프로그래머스 sql 문제 12개 풀이</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>블로그 글 업데이트</li>
+<li>sql repository 업데이트</li>
+</ul>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>오늘은 새벽 5시에 일어나서 출근을 했다.<br>확실히 퇴근 후 집에서 공부하는 것보다 아침에 일찍 와서 공부하는 것이 효과적인 것 같다.<br>밀린 글들이 많아서 하루에 하나씩 글을 쓰는 것이 목표이다.<br>매일 커밋을 하겠다는 마음으로 TIL을 시작한다.<br>화이팅하자.</p>
+]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+        <tag>lunux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2. Linux Kernel</title>
     <url>/2021/04/04/Linux-2/</url>
     <content><![CDATA[<p>리눅스 커널에 대해서 정리합니다.</p>
@@ -50,7 +77,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Memory block size:       128M</span><br><span class="line">Total online memory:      16G</span><br><span class="line">Total offline memory:      0B</span><br></pre></td></tr></table></figure>
 <p>위 예시를 보면 메모리 블럭의 단위는 128 MiB(메비바이트)이며, 현재 16 GiB(기비바이트)의 양을 사용하고 있는 것이다. 즉, 128개의 메모리 블럭을 사용중이라고 볼 수 있다.</p>
 <p><strong>NOTE</strong><br><code>lsmem</code>과 <code>free</code>의 차이점은 무엇인가?<br><code>lsmem</code>은 메모리 블럭을 단위로 책정하여 사용중인 총량을 확인할 수 있으며, <code>/sys/devices/system/memory</code>에 위치한 정보를 읽어온다. 이와 달리 <code>free</code>는 실제 시스템에서 사용할 수 있는 메모리의 량을 보여주며, <code>/proc/meminfo</code>에서 정보를 읽어온다.</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ free -h</span><br><span class="line">total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:            15G        4.3G        3.7G         29M        7.5G         10G</span><br><span class="line">Swap:          7.9G          0B        7.9G</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ free -h</span><br><span class="line">            total        used        free      shared  buff/cache   available</span><br><span class="line">Mem:          15G        4.3G        3.7G         29M        7.5G         10G</span><br><span class="line">Swap:        7.9G          0B        7.9G</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Linux</category>
