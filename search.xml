@@ -66,7 +66,7 @@
 <p>위의 명령어를 터미널에 입력하면 <code>uptime</code>이라는 명령어는 <code>up</code>만 입력해도 사용 가능하다.</p>
 <h2 id="prompt-설정"><a href="#prompt-설정" class="headerlink" title="prompt 설정"></a>prompt 설정</h2><p>터미널에서 사용하는 리눅스 프롬프트도 원하는 형태로 변경할 수 있다. 터미널에 아래와 같이 입력해보자.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ PS1=<span class="string">'[\d]\u@\h:\w'</span></span><br></pre></td></tr></table></figure>
-<p>위 패턴은 정규표현식이며, 해석하면 다음과 같다. <code>[날짜]사용자@호스트:지금 사용중인 디렉토리</code><br>만약 터미널을 다시 껐다가 켜도 해당 프롬프르를 유지하고 싶다면 환경변수로 셋팅하면 된다.</p>
+<p>위 패턴은 정규표현식이며, 해석하면 다음과 같다. <code>[날짜]사용자@호스트:지금 사용중인 디렉토리</code><br>만약 터미널을 다시 껐다가 켜도 해당 프롬프트를 유지하고 싶다면 환경변수로 셋팅하면 된다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ vi /etc/bashrc</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'PS1=[\d]\u@\h:\w'</span></span><br></pre></td></tr></table></figure>
 <h2 id="enviroment-variable"><a href="#enviroment-variable" class="headerlink" title="enviroment variable"></a>enviroment variable</h2><p>환경 변수는 해당 서버의 운영체제에서 명령어를 실행할 때 참조하는 변수이다. 지정된 변수들은 <code>$변수이름</code>으로 사용된다.<br>현재 서버에서 지정된 환경 변수는 아래의 명령어를 입력하여 볼 수 있다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ env</span><br><span class="line">TERM_PROGRAM=터미널 프로그램 종류</span><br><span class="line">USER=사용자 이름</span><br><span class="line">PATH=저장된 실행파일 경로들</span><br><span class="line">LANG=지원되는 언어</span><br><span class="line">SHELL=사용되는 쉘 이름</span><br><span class="line">HOME=사용자 홈 디렉토리</span><br><span class="line">OSTYPE=운영체제 종류</span><br></pre></td></tr></table></figure>
