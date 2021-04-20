@@ -46,27 +46,26 @@
   };
 </script>
 
-  <meta name="description" content="데이터베이스에서 스키마가 무엇인지 살펴본 후 mariaDB에서 참조키 설정하는 방법을 설명합니다.">
+  <meta name="description" content="2021년 4월 20일 화요일, 기록을 시작한지 2번째 날">
 <meta property="og:type" content="article">
-<meta property="og:title" content="6. DB 스키마와 참조키 설정하기">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/11/09/Database-6/index.html">
+<meta property="og:title" content="Day + 002">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2021/04/20/TIL-1-md/index.html">
 <meta property="og:site_name" content="DEV AnythinG">
-<meta property="og:description" content="데이터베이스에서 스키마가 무엇인지 살펴본 후 mariaDB에서 참조키 설정하는 방법을 설명합니다.">
+<meta property="og:description" content="2021년 4월 20일 화요일, 기록을 시작한지 2번째 날">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2020-11-08T16:45:41.000Z">
-<meta property="article:modified_time" content="2021-04-19T08:07:06.175Z">
+<meta property="article:published_time" content="2021-04-20T01:53:32.000Z">
+<meta property="article:modified_time" content="2021-04-20T07:38:00.026Z">
 <meta property="article:author" content="Hyeonji Ryu">
-<meta property="article:tag" content="database">
 <meta property="article:tag" content="sql">
-<meta property="article:tag" content="mariaDB">
-<meta property="article:tag" content="RDBMS">
-<meta property="article:tag" content="DB">
-<meta property="article:tag" content="스키마">
-<meta property="article:tag" content="참조키">
-<meta property="article:tag" content="FK">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="TIL">
+<meta property="article:tag" content="TodayILearned">
+<meta property="article:tag" content="plan">
+<meta property="article:tag" content="diary">
+<meta property="article:tag" content="lunux">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/11/09/Database-6/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2021/04/20/TIL-1-md/">
 
 
 <script id="page-configurations">
@@ -78,7 +77,7 @@
   };
 </script>
 
-  <title>6. DB 스키마와 참조키 설정하기 | DEV AnythinG</title>
+  <title>Day + 002 | DEV AnythinG</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
     <script>
@@ -224,7 +223,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/11/09/Database-6/">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2021/04/20/TIL-1-md/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -237,7 +236,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          6. DB 스키마와 참조키 설정하기
+          Day + 002
         </h1>
 
         <div class="post-meta">
@@ -246,24 +245,18 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">작성일</span>
+              
 
-              <time title="Post created: 2020-11-09 01:45:41" itemprop="dateCreated datePublished" datetime="2020-11-09T01:45:41+09:00">2020-11-09</time>
+              <time title="Post created: 2021-04-20 10:53:32 / Updated at: 16:38:00" itemprop="dateCreated datePublished" datetime="2021-04-20T10:53:32+09:00">2021-04-20</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2021-04-19 17:07:06" itemprop="dateModified" datetime="2021-04-19T17:07:06+09:00">2021-04-19</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Database/" itemprop="url" rel="index">
-                    <span itemprop="name">Database</span>
+                  <a href="/categories/Today-I-Learned/" itemprop="url" rel="index">
+                    <span itemprop="name">Today I Learned</span>
                   </a>
                 </span>
             </span>
@@ -279,10 +272,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>데이터베이스에서 스키마가 무엇인지 살펴본 후 mariaDB에서 참조키 설정하는 방법을 설명합니다.<br><a id="more"></a></p>
-<hr>
-<h2 id="여러-개의-테이블-다루기"><a href="#여러-개의-테이블-다루기" class="headerlink" title="여러 개의 테이블 다루기"></a>여러 개의 테이블 다루기</h2><p>초기에 테이블을 잘 설계하면 쿼리의 복잡도가 낮아지며, 원하는 데이터를 더 쉽게 찾을 수 있다. 그렇다면 테이블을 잘 설계하는 방법은 무엇인가? 그 방법 중 하나가 여러 개의 테이블을 사용하는 것이다. 여러 개의 테이블을 사용하면 각 카테고리에 대한 세부 정보들을 체계적으로 정리할 수 있다.</p>
-<h2 id="테이블-간의-관계도-스키마"><a href="#테이블-간의-관계도-스키마" class="headerlink" title="테이블 간의 관계도, 스키마"></a>테이블 간의 관계도, 스키마</h2>
+        <p>2021년 4월 20일 화요일, 기록을 시작한지 2번째 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>Rust chapter 3-0 번역 후 메인 레포에 merge하기</li>
+<li>프로그래머스 sql GROUP BY 문제 풀기</li>
+<li>sql 배운 내용 블로그에 정리하기</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>Rust chapter 3-0 &gt; LOPES main repo</li>
+<li>sql 문제 풀이 업데이트</li>
+</ul>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2>
     </div>
 
     
@@ -291,14 +291,13 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/database/" rel="tag"># database</a>
               <a href="/tags/sql/" rel="tag"># sql</a>
-              <a href="/tags/mariaDB/" rel="tag"># mariaDB</a>
-              <a href="/tags/RDBMS/" rel="tag"># RDBMS</a>
-              <a href="/tags/DB/" rel="tag"># DB</a>
-              <a href="/tags/%EC%8A%A4%ED%82%A4%EB%A7%88/" rel="tag"># 스키마</a>
-              <a href="/tags/%EC%B0%B8%EC%A1%B0%ED%82%A4/" rel="tag"># 참조키</a>
-              <a href="/tags/FK/" rel="tag"># FK</a>
+              <a href="/tags/Github/" rel="tag"># Github</a>
+              <a href="/tags/TIL/" rel="tag"># TIL</a>
+              <a href="/tags/TodayILearned/" rel="tag"># TodayILearned</a>
+              <a href="/tags/plan/" rel="tag"># plan</a>
+              <a href="/tags/diary/" rel="tag"># diary</a>
+              <a href="/tags/lunux/" rel="tag"># lunux</a>
           </div>
 
         
@@ -307,13 +306,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/08/Database-5/" rel="prev" title="5. mariaDB 그룹핑과 연산 명령어 모음">
-      <i class="fa fa-chevron-left"></i> 5. mariaDB 그룹핑과 연산 명령어 모음
+    <a href="/2021/04/19/TIL-0-md/" rel="prev" title="Day + 001">
+      <i class="fa fa-chevron-left"></i> Day + 001
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/09/Clustering-2/" rel="next" title="2. Raspberry Pi SSH 셋팅하기">
-      2. Raspberry Pi SSH 셋팅하기 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -373,7 +369,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#여러-개의-테이블-다루기"><span class="nav-number">1.</span> <span class="nav-text">여러 개의 테이블 다루기</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#테이블-간의-관계도-스키마"><span class="nav-number">2.</span> <span class="nav-text">테이블 간의 관계도, 스키마</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#오늘-한-일"><span class="nav-number">1.</span> <span class="nav-text">오늘 한 일</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-commit"><span class="nav-number">2.</span> <span class="nav-text">Github commit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#소감"><span class="nav-number">3.</span> <span class="nav-text">소감</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -400,7 +396,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">165</span>
+        <span class="site-state-item-count">162</span>
         <span class="site-state-item-name">태그</span></a>
       </div>
   </nav>

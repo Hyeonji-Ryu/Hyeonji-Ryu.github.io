@@ -46,15 +46,15 @@
   };
 </script>
 
-  <meta name="description" content="mariaDB에서 그룹핑을 하는 명령어 GROUPBY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.">
+  <meta name="description" content="mariaDB에서 그룹핑을 하는 명령어 GROUP BY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="5. mariaDB 그룹핑과 연산 명령어 모음">
 <meta property="og:url" content="https://hyeonji-ryu.github.io/2020/11/08/Database-5/index.html">
 <meta property="og:site_name" content="DEV AnythinG">
-<meta property="og:description" content="mariaDB에서 그룹핑을 하는 명령어 GROUPBY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.">
+<meta property="og:description" content="mariaDB에서 그룹핑을 하는 명령어 GROUP BY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2020-11-07T16:45:31.000Z">
-<meta property="article:modified_time" content="2020-11-13T16:59:16.497Z">
+<meta property="article:modified_time" content="2021-04-20T07:03:30.084Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="database">
 <meta property="article:tag" content="sql">
@@ -255,7 +255,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Updated at: 2020-11-14 01:59:16" itemprop="dateModified" datetime="2020-11-14T01:59:16+09:00">2020-11-14</time>
+                <time title="Updated at: 2021-04-20 16:03:30" itemprop="dateModified" datetime="2021-04-20T16:03:30+09:00">2021-04-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -280,7 +280,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>mariaDB에서 그룹핑을 하는 명령어 GROUPBY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.<br><a id="more"></a></p>
+        <p>mariaDB에서 그룹핑을 하는 명령어 GROUP BY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="부분-문자열-찾기"><a href="#부분-문자열-찾기" class="headerlink" title="부분 문자열 찾기"></a>부분 문자열 찾기</h2><p>만약 특정 열에서 값 일부만 얻고 싶을 때에는 어떻게 해야할까? 바로 <code>LEFT()</code>와 <code>RIGHT()</code>를 사용하면 된다. 두 함수는 특정 열에서 값 일부만을 반환해준다.</p>
 <p>먼저 <code>LEFT()</code>는 왼쪽을 기준으로 작동한다. 아래의 코드를 확인해보자.</p>
@@ -323,6 +323,8 @@
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건 1'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건 2'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건 3'</span>;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
 <p>하지만 이 방법은 너무 비효율적이다. 이럴 때는 명령어 <code>GROUP BY</code>를 사용해주면 한번에 결과를 받을 수 있다.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">'조건에 사용할 카테고리'</span> ,<span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span><span class="string">'조건에 사용할 카테고리'</span>;</span><br></pre></td></tr></table></figure>
+<p>만약 그룹 단위로 조건을 걸고 싶다면 아래와 같이 <code>WHERE</code> 대신에 <code>HAVING</code>을 사용하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">'조건에 사용할 카테고리'</span> ,<span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span><span class="string">'조건에 사용할 카테고리'</span> <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(<span class="string">'조건에 사용할 카테고리'</span>) = <span class="string">'조건'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="평균-명렁어-AVG"><a href="#평균-명렁어-AVG" class="headerlink" title="평균 명렁어 AVG"></a>평균 명렁어 AVG</h2><p>명령어 <code>AVG</code>는 평균을 구해준다. 즉, <code>SUM</code>과 사용방법은 동일하지만 더하는 것이 아니라 평균을 구해주는 것이다. 사용법은 다음과 같다.</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="MIN과-MAX"><a href="#MIN과-MAX" class="headerlink" title="MIN과 MAX"></a>MIN과 MAX</h2><p>최솟값을 구해주는 명령어 <code>MIN</code>과 최댓값을 구해주는 명령어인 <code>MAX</code>도 위의 연산 명령어들과 동일하다. 사용법은 다음과 같다.</p>
@@ -374,8 +376,8 @@
       <i class="fa fa-chevron-left"></i> 4. 명령어 ALTER 사용법
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/11/09/Database-6/" rel="next" title="6. DB 스키마와 참조키 설정하기">
-      6. DB 스키마와 참조키 설정하기 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/11/09/Clustering-2/" rel="next" title="2. Raspberry Pi SSH 셋팅하기">
+      2. Raspberry Pi SSH 셋팅하기 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -463,7 +465,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">165</span>
+        <span class="site-state-item-count">162</span>
         <span class="site-state-item-name">태그</span></a>
       </div>
   </nav>

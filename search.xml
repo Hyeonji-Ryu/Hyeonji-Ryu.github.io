@@ -1,16 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Day + 002</title>
+    <url>/2021/04/20/TIL-1-md/</url>
+    <content><![CDATA[<p>2021년 4월 20일 화요일, 기록을 시작한지 2번째 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>Rust chapter 3-0 번역 후 메인 레포에 merge하기</li>
+<li>프로그래머스 sql GROUP BY 문제 풀기</li>
+<li>sql 배운 내용 블로그에 정리하기</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>Rust chapter 3-0 &gt; LOPES main repo</li>
+<li>sql 문제 풀이 업데이트</li>
+</ul>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2>]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+        <tag>lunux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Day + 001</title>
     <url>/2021/04/19/TIL-0-md/</url>
     <content><![CDATA[<p>2021년 4월 19일 월요일, 처음으로 기록을 시작한 날<br><a id="more"></a></p>
 <h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
 <li>Linux Kernel 블로그 글 작성 완료</li>
-<li>프로그래머스 sql 문제 12개 풀이</li>
+<li>프로그래머스 sql 문제 12개 풀기</li>
 </ul>
 <h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
 <li>블로그 글 업데이트</li>
-<li>sql repository 업데이트</li>
+<li>sql repository 생성 및 문제 풀이 업데이트</li>
 </ul>
 <h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>오늘은 새벽 5시에 일어나서 출근을 했다.<br>확실히 퇴근 후 집에서 공부하는 것보다 아침에 일찍 와서 공부하는 것이 효과적인 것 같다.<br>밀린 글들이 많아서 하루에 하나씩 글을 쓰는 것이 목표이다.<br>매일 커밋을 하겠다는 마음으로 TIL을 시작한다.<br>화이팅하자.</p>
 ]]></content>
@@ -385,30 +412,9 @@
       </tags>
   </entry>
   <entry>
-    <title>6. DB 스키마와 참조키 설정하기</title>
-    <url>/2020/11/09/Database-6/</url>
-    <content><![CDATA[<p>데이터베이스에서 스키마가 무엇인지 살펴본 후 mariaDB에서 참조키 설정하는 방법을 설명합니다.<br><a id="more"></a></p>
-<hr>
-<h2 id="여러-개의-테이블-다루기"><a href="#여러-개의-테이블-다루기" class="headerlink" title="여러 개의 테이블 다루기"></a>여러 개의 테이블 다루기</h2><p>초기에 테이블을 잘 설계하면 쿼리의 복잡도가 낮아지며, 원하는 데이터를 더 쉽게 찾을 수 있다. 그렇다면 테이블을 잘 설계하는 방법은 무엇인가? 그 방법 중 하나가 여러 개의 테이블을 사용하는 것이다. 여러 개의 테이블을 사용하면 각 카테고리에 대한 세부 정보들을 체계적으로 정리할 수 있다.</p>
-<h2 id="테이블-간의-관계도-스키마"><a href="#테이블-간의-관계도-스키마" class="headerlink" title="테이블 간의 관계도, 스키마"></a>테이블 간의 관계도, 스키마</h2>]]></content>
-      <categories>
-        <category>Database</category>
-      </categories>
-      <tags>
-        <tag>database</tag>
-        <tag>sql</tag>
-        <tag>mariaDB</tag>
-        <tag>RDBMS</tag>
-        <tag>DB</tag>
-        <tag>스키마</tag>
-        <tag>참조키</tag>
-        <tag>FK</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>5. mariaDB 그룹핑과 연산 명령어 모음</title>
     <url>/2020/11/08/Database-5/</url>
-    <content><![CDATA[<p>mariaDB에서 그룹핑을 하는 명령어 GROUPBY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.<br><a id="more"></a></p>
+    <content><![CDATA[<p>mariaDB에서 그룹핑을 하는 명령어 GROUP BY과 수학 연산을 처리해주는 다양한 명령어들의 사용법을 정리합니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="부분-문자열-찾기"><a href="#부분-문자열-찾기" class="headerlink" title="부분 문자열 찾기"></a>부분 문자열 찾기</h2><p>만약 특정 열에서 값 일부만 얻고 싶을 때에는 어떻게 해야할까? 바로 <code>LEFT()</code>와 <code>RIGHT()</code>를 사용하면 된다. 두 함수는 특정 열에서 값 일부만을 반환해준다.</p>
 <p>먼저 <code>LEFT()</code>는 왼쪽을 기준으로 작동한다. 아래의 코드를 확인해보자.</p>
@@ -451,6 +457,8 @@
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건 1'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건 2'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건 3'</span>;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
 <p>하지만 이 방법은 너무 비효율적이다. 이럴 때는 명령어 <code>GROUP BY</code>를 사용해주면 한번에 결과를 받을 수 있다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">'조건에 사용할 카테고리'</span> ,<span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span><span class="string">'조건에 사용할 카테고리'</span>;</span><br></pre></td></tr></table></figure>
+<p>만약 그룹 단위로 조건을 걸고 싶다면 아래와 같이 <code>WHERE</code> 대신에 <code>HAVING</code>을 사용하면 된다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">'조건에 사용할 카테고리'</span> ,<span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span><span class="string">'조건에 사용할 카테고리'</span> <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(<span class="string">'조건에 사용할 카테고리'</span>) = <span class="string">'조건'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="평균-명렁어-AVG"><a href="#평균-명렁어-AVG" class="headerlink" title="평균 명렁어 AVG"></a>평균 명렁어 AVG</h2><p>명령어 <code>AVG</code>는 평균을 구해준다. 즉, <code>SUM</code>과 사용방법은 동일하지만 더하는 것이 아니라 평균을 구해주는 것이다. 사용법은 다음과 같다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="MIN과-MAX"><a href="#MIN과-MAX" class="headerlink" title="MIN과 MAX"></a>MIN과 MAX</h2><p>최솟값을 구해주는 명령어 <code>MIN</code>과 최댓값을 구해주는 명령어인 <code>MAX</code>도 위의 연산 명령어들과 동일하다. 사용법은 다음과 같다.</p>
