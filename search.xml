@@ -1,19 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Day + 003</title>
+    <url>/2021/04/21/TIL-2-md/</url>
+    <content><![CDATA[<p>2021년 4월 21일 수요일, 기록을 시작한지 3번째 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>프로그래머스 sql IS NULL 문제 풀기</li>
+<li>Rust 부록 A 일부 번역 및 깃허브 업데이트</li>
+<li>Resume 페이지 html 템플릿 결정 및 수정</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>Rust appendix A &gt; LOPES main repo</li>
+<li>sql 문제 풀이 업데이트</li>
+</ul>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>오늘은 5시 30분에 일어났지만 졸음을 이기지 못하고 다시 잤다.<br>6시에 일어났고, 8시에 회사에 도착했다.<br>회사에서 신입 교육을 받고 있지만 일과 개인 공부를 병행하는 것은 쉽지 않다.<br>정확하게는 출퇴근과 개인 공부와의 싸움 같기도 하다.<br>그래도 작심 삼일은 채웠다.<br>오늘 레쥬메 양식을 다운받았다.<br>원하는 대로 수정해서 깃허브 페이지로 올릴 예정이다.<br>내일도 화이팅하자.</p>
+]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+        <tag>lunux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>6. 날짜 데이터 일부만 추출하기</title>
+    <url>/2021/04/20/Database-6/</url>
+    <content><![CDATA[<p>DATETIME 형식의 날짜 데이터에서 일부만 추출하는 방법을 정리합니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="DATETIME"><a href="#DATETIME" class="headerlink" title="DATETIME"></a>DATETIME</h2><p><code>DATETIME</code>은 SQL에서 지정한 날짜 형식이다. 해당 구조는 아래와 같다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">2013-12-22 11:30:00</span><br><span class="line">2017-09-27 19:09:00</span><br><span class="line">2018-02-02 14:18:00</span><br><span class="line">2018-02-02 14:17:00</span><br></pre></td></tr></table></figure>
+<p>예시에서 확인할 수 있듯이 <code>연도-월-일 시간:분:초</code> 형식으로 셋팅되어 있다. 만약 여기서 시간만 필요하거나 월만 필요하다면 어떻게 쿼리를 해야할까?<br>SQL에서는 원하는 날짜나 시간대를 부분 추출할 수 있는 여러 함수들을 제공한다.</p>
+<h2 id="YEAR-연도"><a href="#YEAR-연도" class="headerlink" title="YEAR: 연도"></a>YEAR: 연도</h2><p><code>YEAR</code>은 <code>DATETIME</code>형식에서 연도만 추출하여 출력한다. 문법은 다음과 같다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">YEAR</span>(DATETIME) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span>;</span><br><span class="line">2013</span><br><span class="line">2017</span><br><span class="line">2018</span><br><span class="line">2018</span><br><span class="line">2018</span><br></pre></td></tr></table></figure>
+<h2 id="MONTH-월"><a href="#MONTH-월" class="headerlink" title="MONTH: 월"></a>MONTH: 월</h2><p><code>MONTH</code>은 <code>DATETIME</code>형식에서 월 단위만 추출하여 출력한다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MONTH</span>(DATETIME) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span>;</span><br><span class="line">12</span><br><span class="line">9</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h2 id="DAY-일"><a href="#DAY-일" class="headerlink" title="DAY: 일"></a>DAY: 일</h2><p><code>DAY</code>은 <code>DATETIME</code>형식에서 일 단위만 추출하여 출력한다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DAY</span>(DATETIME) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span>;</span><br><span class="line">22</span><br><span class="line">27</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">28</span><br></pre></td></tr></table></figure>
+<h2 id="HOUR-시간"><a href="#HOUR-시간" class="headerlink" title="HOUR: 시간"></a>HOUR: 시간</h2><p><code>HOUR</code>은 <code>DATETIME</code>형식에서 시간 단위만 추출하여 출력한다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">HOUR</span>(DATETIME) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span>;</span><br><span class="line">11</span><br><span class="line">19</span><br><span class="line">14</span><br><span class="line">14</span><br><span class="line">17</span><br></pre></td></tr></table></figure>
+<h2 id="MINUTE-분"><a href="#MINUTE-분" class="headerlink" title="MINUTE: 분"></a>MINUTE: 분</h2><p><code>MINUTE</code>은 <code>DATETIME</code>형식에서 분 단위만 추출하여 출력한다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">MINUTE</span>(DATETIME) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span>;</span><br><span class="line">30</span><br><span class="line">9</span><br><span class="line">18</span><br><span class="line">17</span><br><span class="line">51</span><br></pre></td></tr></table></figure>
+<h2 id="SECOND-초"><a href="#SECOND-초" class="headerlink" title="SECOND: 초"></a>SECOND: 초</h2><p><code>SECOND</code>은 <code>DATETIME</code>형식에서 초 단위만 추출하여 출력한다.</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SECOND</span>(DATETIME) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span>;</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Database</category>
+      </categories>
+      <tags>
+        <tag>mariadb</tag>
+        <tag>sql</tag>
+        <tag>mysql</tag>
+        <tag>DATETIME</tag>
+        <tag>HOUR</tag>
+        <tag>YEAR</tag>
+        <tag>DATA</tag>
+        <tag>DATE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Day + 002</title>
     <url>/2021/04/20/TIL-1-md/</url>
     <content><![CDATA[<p>2021년 4월 20일 화요일, 기록을 시작한지 2번째 날<br><a id="more"></a></p>
 <h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
 <li>Rust chapter 3-0 번역 후 메인 레포에 merge하기</li>
-<li>프로그래머스 sql GROUP BY 문제 풀기</li>
+<li>프로그래머스 sql GROUP BY 문제 풀기 (level 4 제외)</li>
 <li>sql 배운 내용 블로그에 정리하기</li>
 </ul>
 <h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
 <li>Rust chapter 3-0 &gt; LOPES main repo</li>
 <li>sql 문제 풀이 업데이트</li>
+<li>Database 블로그 글 업데이트</li>
 </ul>
-<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2>]]></content>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>늦잠을 자서 6시에 일어났다. 어제 12시에 잠들었으니 늦잠 잘 수 밖에 없지!<br>집에서는 7시에 출발했는데, 8시 반에 회사에 도착했다. 대중교통도 사람 엄청 많았다.<br>내일은 무조건 5시에 일어나서 6시에는 출발할꺼다.<br>SQL도 오랜만에 보니 새롭다.<br>소소해도 매일 개인 공부를 한다는 점 자체가 뿌듯하다.<br>작심 삼일이라고, 내일까지는 꾸준히 해보자.</p>
+]]></content>
       <categories>
         <category>Today I Learned</category>
       </categories>
@@ -457,7 +522,7 @@
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건 1'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건 2'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건 3'</span>;</span><br><span class="line">.</span><br><span class="line">.</span><br><span class="line">.</span><br></pre></td></tr></table></figure>
 <p>하지만 이 방법은 너무 비효율적이다. 이럴 때는 명령어 <code>GROUP BY</code>를 사용해주면 한번에 결과를 받을 수 있다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">'조건에 사용할 카테고리'</span> ,<span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span><span class="string">'조건에 사용할 카테고리'</span>;</span><br></pre></td></tr></table></figure>
-<p>만약 그룹 단위로 조건을 걸고 싶다면 아래와 같이 <code>WHERE</code> 대신에 <code>HAVING</code>을 사용하면 된다.</p>
+<p>만약 그룹 단위로 조건을 걸고 싶다면 <code>WHERE</code> 대신에 <code>HAVING</code>을 사용하면 된다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="string">'조건에 사용할 카테고리'</span> ,<span class="keyword">SUM</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">GROUP</span> <span class="keyword">BY</span><span class="string">'조건에 사용할 카테고리'</span> <span class="keyword">HAVING</span> <span class="keyword">COUNT</span>(<span class="string">'조건에 사용할 카테고리'</span>) = <span class="string">'조건'</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="평균-명렁어-AVG"><a href="#평균-명렁어-AVG" class="headerlink" title="평균 명렁어 AVG"></a>평균 명렁어 AVG</h2><p>명령어 <code>AVG</code>는 평균을 구해준다. 즉, <code>SUM</code>과 사용방법은 동일하지만 더하는 것이 아니라 평균을 구해주는 것이다. 사용법은 다음과 같다.</p>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">AVG</span>(<span class="string">'더하는 열 이름'</span>) <span class="keyword">FROM</span> <span class="string">'테이블 이름'</span></span><br><span class="line">    <span class="keyword">WHERE</span> <span class="string">'조건에 사용할 카테고리'</span> = <span class="string">'조건'</span>;</span><br></pre></td></tr></table></figure>
