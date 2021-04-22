@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Day + 004</title>
+    <url>/2021/04/22/TIL-3-md/</url>
+    <content><![CDATA[<p>2021년 4월 22일 목요일, 기록을 시작한지 4번째 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>Resume 페이지 html 1차 수정 및 레이아웃 변경</li>
+<li>프로그래머스 sql String, Date 문제 풀기 (level 4 제외)</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>sql 문제 풀이 업데이트</li>
+</ul>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>작심 삼일, 정확하다.<br>오늘은 어제 일찍 잠들었음에도 불구하고 7시에 기상했다.<br>한마디로 엄청 잤다는 말이다.<br>잠은 평소보다 1.5배 많이 잤는데 오히려 더 피곤한 것 같다.<br>그래서 오늘은 어제보다 많은 일을 하지는 못했다.<br>반성하자.</p>
+]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+        <tag>lunux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Day + 003</title>
     <url>/2021/04/21/TIL-2-md/</url>
     <content><![CDATA[<p>2021년 4월 21일 수요일, 기록을 시작한지 3번째 날<br><a id="more"></a></p>
