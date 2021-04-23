@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Day + 005</title>
+    <url>/2021/04/23/TIL-4-md/</url>
+    <content><![CDATA[<p>2021년 4월 23일 금요일, 기록을 시작한지 5번째 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>Resume 페이지 html 2차 수정 캐릭터 생성</li>
+<li>프로그래머스 코딩테스트 문제 풀이</li>
+<li>Rust 부록 A 나머지 번역 및 깃허브 업데이트</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>Rust appendix A &gt; LOPES main repo</li>
+<li>코딩 테스트 문제 풀이 업데이트</li>
+</ul>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2>]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>sql</tag>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+        <tag>lunux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Day + 004</title>
     <url>/2021/04/22/TIL-3-md/</url>
     <content><![CDATA[<p>2021년 4월 22일 목요일, 기록을 시작한지 4번째 날<br><a id="more"></a></p>
