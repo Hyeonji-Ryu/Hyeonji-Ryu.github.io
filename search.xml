@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Day + 006</title>
+    <url>/2021/04/24/TIL-5-md/</url>
+    <content><![CDATA[<p>2021년 4월 24일 토요일, 기록을 시작한지 6번째 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>Rust study with LOPES</li>
+<li>KBO 선수 이름 크롤링 코드 작성</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>KBO 선수 이름 크롤링 코드 업데이트</li>
+</ul>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>오늘은 LOPES 모임을 갔다.<br>이 모임에서는 Rust와 이산 수학을 매주마다 병행하면서 공부하고 있다.<br>Rust 공부를 3시간 정도 하고, KBO 프로젝트 크롤링한 데이터 전처리 이슈에 대해 논의했다.<br>그리고 결정되었던 DB 스키마가 일부 변경되었다.<br>그래서 필요한 크롤링 코드가 생겼고, 내가 맡아서 작성했다.<br>오랜만에 파이썬을 다루니 너무 재밌다.<br>파이썬의 엄청난 장점, C로 짜려면 6개월은 걸릴 만한 일도 반나절이면 끝난다.</p>
+]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+        <tag>lunux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Day + 005</title>
     <url>/2021/04/23/TIL-4-md/</url>
     <content><![CDATA[<p>2021년 4월 23일 금요일, 기록을 시작한지 5번째 날<br><a id="more"></a></p>
