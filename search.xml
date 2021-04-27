@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Day + 009</title>
+    <url>/2021/04/27/TIL-8-md/</url>
+    <content><![CDATA[<p>2021년 4월 27일 화요일, 기록을 시작한지 9번째 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>Resume 페이지 skills 파트 갈아엎기 -&gt; 아이콘으로 변경 완료</li>
+<li>회사 발표 준비 (주제 정하기)</li>
+<li>백준 코딩테스트 문제풀이</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>백준 코딩테스트 문제 풀이 업데이트</li>
+</ul>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>오늘은 레쥬메 스킬 페이지를 다시 만들었다.<br>별로 성숙도를 나타낸 것은 좋아 보였으나 반응형 웹이랑은 맞지 않았다.<br>그리고 성숙도 표시도 개인적인 평가라서 애매하기도 했다.<br>오늘 엄청난 구글링으로 결국 원하는 형태를 완성하였다. (뿌듯)<br>내일은 파이콘 회의가 있기 때문에 회사에서 개인적인 할 일들을 최대한 많이 해야 한다.<br>얼른 자고 일찍 일어나서 출근하자.<br>요즘 7시에 일어나 겨우 출근하고 있다.<br>사람 많은 지하철에 껴서 가고 싶지 않다.<br>제발 일찍 일어나자!</p>
+]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Day + 008</title>
     <url>/2021/04/26/TIL-7-md/</url>
     <content><![CDATA[<p>2021년 4월 26일 월요일, 기록을 시작한지 8번째 날<br><a id="more"></a></p>
