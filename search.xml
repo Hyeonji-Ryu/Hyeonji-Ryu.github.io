@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Day + 012</title>
+    <url>/2021/04/30/TIL-11-md/</url>
+    <content><![CDATA[<p>2021년 4월 29일 목요일, 기록을 시작한지 11번째 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>회사 신입 교육 발표</li>
+<li>테스트 클러스터 구축</li>
+<li>앤서블 글 작성</li>
+<li>KBO 크롤링 함수 이슈 처리</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>KBO 크롤링 함수 이슈 처리</li>
+<li>앤서블 글 업데이트</li>
+</ul>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2>]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Day + 011</title>
+    <url>/2021/04/29/TIL-10-md/</url>
+    <content><![CDATA[<p>2021년 4월 29일 목요일, 기록을 시작한지 11번째 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>회사 발표 준비 (금요일)</li>
+<li>회식</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>아무것도 못함</li>
+</ul>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>오늘 매우 바빴다.<br>퇴근 후 회식이 있어서 퇴근 전에 내일 발표할 피피티를 완성해야 했는데 내게 주어진 건 2시간 남짓..<br>진짜 손목 나가도록 피피티를 만들었다. 그 결과 어느 정도는 만들었다. 휴<br>또 내일 신입 교육 마지막 날이라서 다시 실무를 해야 하는데 기억이..잘 나지 않는다.<br>한달 실무 보다가 한당 신입교육 들으니 머릿속이 터질 것 같다.<br>회식 끝나고 집에오니 오후 11시 30분.<br>그냥 씻고 잠이나 잘래</p>
+]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Day + 010</title>
     <url>/2021/04/28/TIL-9-md/</url>
     <content><![CDATA[<p>2021년 4월 28일 수요일, 기록을 시작한지 10번째 날<br><a id="more"></a></p>
