@@ -7,14 +7,15 @@
 <h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
 <li>회사 신입 교육 발표</li>
 <li>테스트 클러스터 구축</li>
-<li>앤서블 글 작성</li>
+<li>앤서블 글 작성 (1)</li>
 <li>KBO 크롤링 함수 이슈 처리</li>
 </ul>
 <h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
 <li>KBO 크롤링 함수 이슈 처리</li>
 <li>앤서블 글 업데이트</li>
 </ul>
-<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2>]]></content>
+<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>오늘은 오전에 발표를 했다.<br>많이 준비 못했지만 그래도 중간은 한 것 같다.<br>오늘부로 신입 교육이 끝났다.<br>처음에는 좋은 기회라고 생각하지는 않았는데, 배운 뒤 생각하니 참 좋은 시간이었다.<br>그리고 입사 동기들과 친해져서 그것도 좋다.<br>아직도 많이 어렵지만 회사에 천천히 적응 중이다.<br>마음을 열자!<br>오늘 오랜만에 친한 대학 동기들을 만난다. 야호</p>
+]]></content>
       <categories>
         <category>Today I Learned</category>
       </categories>
@@ -459,16 +460,25 @@
       </tags>
   </entry>
   <entry>
-    <title>0. ansible 시작하기</title>
+    <title>0. Ansible 시작하기</title>
     <url>/2021/03/20/ansible-0/</url>
     <content><![CDATA[<p>Ansible에 대해서 간략하게 소개합니다.<br><a id="more"></a></p>
-<h2 id="ansible을-공부하게-된-계기"><a href="#ansible을-공부하게-된-계기" class="headerlink" title="ansible을 공부하게 된 계기"></a>ansible을 공부하게 된 계기</h2><p>앤서블(ansible)은 데이터 분산처리 플랫폼인 클러스터를 구성하면서 알게 되었다. 처음 클러스터를 구성할 때는 직접 쉘 스크립트로 함수를 작성하여 사용하였다. 그 때 사용했던 함수는 다음과 같다.</p>
+<h2 id="Ansible을-공부하게-된-계기"><a href="#Ansible을-공부하게-된-계기" class="headerlink" title="Ansible을 공부하게 된 계기"></a>Ansible을 공부하게 된 계기</h2><p>앤서블(ansible)은 데이터 분산처리 플랫폼 구축을 위해 클러스터를 구성하면서 알게 되었다. 처음 클러스터를 구성할 때는 직접 쉘 스크립트로 함수를 작성하여 사용하였다. 그 때 사용했던 함수는 다음과 같다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> clustercmd &#123;</span><br><span class="line">  <span class="keyword">for</span> pi <span class="keyword">in</span> $(otherpis); <span class="keyword">do</span> ssh <span class="variable">$pi</span> <span class="string">"<span class="variable">$@</span>"</span>; <span class="keyword">done</span></span><br><span class="line">  <span class="variable">$@</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>위 함수는 <code>clustercmd</code>뒤에 입력하는 명령어를 다른 노드들에도 똑같이 적용해주는 함수이다. 만약 클러스터 하나만 만들면 되는 상황이라면 이렇게 필요한 함수들을 하나씩 만들어 사용하는 것도 나쁘지 않다. 하지만 테스트를 위한 클러스터 구축이라면?</p>
-<p>만약 테스트를 10번 한다고 하면 똑같은 반복 업무를 10번 해야 한다. 그 와중에 환경변수 설정하다가 오타 났는데 모르고 넘어가는 경우도 태반이고, 결국 제대로 클러스터 구축이 안되면 처음부터 끝까지 구축 프로세스를 훑어야 한다. 음..너무 귀찮고 귀찮다.</p>
+<p>위 함수는 <code>clustercmd</code> 뒤에 입력하는 명령어를 다른 노드들에도 똑같이 적용해주는 함수이다. 만약 클러스터 하나만 만들면 되는 상황이라면 이렇게 필요한 함수들을 하나씩 만들어 사용하는 것도 나쁘지 않다. 하지만 테스트를 위한 클러스터 구축이라면?</p>
+<p>만약 테스트를 10번 한다고 하면 똑같은 반복 업무를 10번 해야 한다. 그 와중에 환경변수 설정하다가 오타 났는데 모르고 넘어가는 경우도 태반이고, 결국 제대로 클러스터 구축이 안되면 처음부터 끝까지 구축 프로세스를 훑어야 한다. 음..너무 귀찮고 또 귀찮다.</p>
 <p>그래서 처음 <code>ansible</code>을 시작했을 때는 테스트용 클러스터를 좀 더 빠르고 편하게 만들기 위해서였다. 또한 실제로 그렇게 사용하고 있다. <code>ansible</code>은 시스템 엔지니어나 Devops 엔지니어들이 많이 사용하는 도구이고, 사용해본 결과 엄청 편하다.</p>
 <p>그렇다면 도대체 앤서블은 무엇인가?</p>
-<h2 id="ansible이란"><a href="#ansible이란" class="headerlink" title="ansible이란"></a>ansible이란</h2>]]></content>
+<h2 id="Ansible이란"><a href="#Ansible이란" class="headerlink" title="Ansible이란"></a>Ansible이란</h2><p>앤서블(Ansible)은 파이썬으로 구현된 오픈소스이며, 그동안 직접 쉘 스크립트로 일일이 수행했던 인프라 작업들을 코드로 해결할 수 있도록 해주는 도구이다. 예를 들어 각 서버에 소프트웨어를 배포하거나 환경설정 및 컨피그레이션을 수정하는 것 같은 일들도 자동화할 수 있다.</p>
+<h2 id="Ansible-구성요소"><a href="#Ansible-구성요소" class="headerlink" title="Ansible 구성요소"></a>Ansible 구성요소</h2><h2 id="Ansible-특징"><a href="#Ansible-특징" class="headerlink" title="Ansible 특징"></a>Ansible 특징</h2><p>앤서블의 특징으로는 크게 2가지가 있다.</p>
+<ol>
+<li><p>에이전트리스(Agentless)<br>엔서블은 관리하는 서버들에 에이전트를 설치하지 않고도 프로그램을 배포하거나 환경 변수, 컨피그레이션 등을 변경할 수 있다. 이런 방식이 가능한 이유는 각 서버들과 SSH 통신을 하여 유저가 요구한 작업들을 진행하기 때문이다.</p>
+</li>
+<li><p>멱등성<br>멱등성은 어떤 연산이나 코드를 여러 번 반복해도 동일한 결과를 도출하는 성질을 의미한다. 엔서블은 특정 코드들을 여러 번 실행시켜도 똑같은 결과를 제공한다.</p>
+</li>
+</ol>
+<h2 id="Ansible-사용-방법"><a href="#Ansible-사용-방법" class="headerlink" title="Ansible 사용 방법"></a>Ansible 사용 방법</h2><p>앤서블은 파이썬으로 구현되었기 때문에 사용하기 위해서는 해당 환경에 파이썬이 있어야 한다.</p>
+]]></content>
       <categories>
         <category>Ansible</category>
       </categories>
