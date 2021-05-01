@@ -26,33 +26,6 @@
   </entry>
   <entry>
     <title>Day + 012</title>
-    <url>/2021/04/30/TIL-11-md/</url>
-    <content><![CDATA[<p>2021년 4월 29일 목요일, 기록을 시작한지 11번째 날<br><a id="more"></a></p>
-<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
-<li>회사 신입 교육 발표</li>
-<li>테스트 클러스터 구축</li>
-<li>앤서블 글 작성 (1)</li>
-<li>KBO 크롤링 함수 이슈 처리</li>
-</ul>
-<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
-<li>KBO 크롤링 함수 이슈 처리</li>
-<li>앤서블 글 업데이트</li>
-</ul>
-<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>오늘은 오전에 발표를 했다.<br>많이 준비 못했지만 그래도 중간은 한 것 같다.<br>오늘부로 신입 교육이 끝났다.<br>처음에는 좋은 기회라고 생각하지는 않았는데, 배운 뒤 생각하니 참 좋은 시간이었다.<br>그리고 입사 동기들과 친해져서 그것도 좋다.<br>아직도 많이 어렵지만 회사에 천천히 적응 중이다.<br>마음을 열자!<br>오늘 오랜만에 친한 대학 동기들을 만난다. 야호</p>
-]]></content>
-      <categories>
-        <category>Today I Learned</category>
-      </categories>
-      <tags>
-        <tag>Github</tag>
-        <tag>TIL</tag>
-        <tag>TodayILearned</tag>
-        <tag>plan</tag>
-        <tag>diary</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Day + 012</title>
     <url>/2021/04/30/TIL-11/</url>
     <content><![CDATA[<p>2021년 4월 30일 금요일, 기록을 시작한지 12번째 날<br><a id="more"></a></p>
 <h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
@@ -358,33 +331,6 @@
 <li>Database 블로그 글 업데이트</li>
 </ul>
 <h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>늦잠을 자서 6시에 일어났다. 어제 12시에 잠들었으니 늦잠 잘 수 밖에 없지!<br>집에서는 7시에 출발했는데, 8시 반에 회사에 도착했다. 대중교통도 사람 엄청 많았다.<br>내일은 무조건 5시에 일어나서 6시에는 출발할꺼다.<br>SQL도 오랜만에 보니 새롭다.<br>소소해도 매일 개인 공부를 한다는 점 자체가 뿌듯하다.<br>작심 삼일이라고, 내일까지는 꾸준히 해보자.</p>
-]]></content>
-      <categories>
-        <category>Today I Learned</category>
-      </categories>
-      <tags>
-        <tag>sql</tag>
-        <tag>Github</tag>
-        <tag>TIL</tag>
-        <tag>TodayILearned</tag>
-        <tag>plan</tag>
-        <tag>diary</tag>
-        <tag>lunux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Day + 001</title>
-    <url>/2021/04/19/TIL-0-md/</url>
-    <content><![CDATA[<p>2021년 4월 19일 월요일, 처음으로 기록을 시작한 날<br><a id="more"></a></p>
-<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
-<li>Linux Kernel 블로그 글 작성 완료</li>
-<li>프로그래머스 sql 문제 12개 풀기</li>
-</ul>
-<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
-<li>블로그 글 업데이트</li>
-<li>sql repository 생성 및 문제 풀이 업데이트</li>
-</ul>
-<h2 id="소감"><a href="#소감" class="headerlink" title="소감"></a>소감</h2><p>오늘은 새벽 5시에 일어나서 출근을 했다.<br>확실히 퇴근 후 집에서 공부하는 것보다 아침에 일찍 와서 공부하는 것이 효과적인 것 같다.<br>밀린 글들이 많아서 하루에 하나씩 글을 쓰는 것이 목표이다.<br>매일 커밋을 하겠다는 마음으로 TIL을 시작한다.<br>화이팅하자.</p>
 ]]></content>
       <categories>
         <category>Today I Learned</category>
