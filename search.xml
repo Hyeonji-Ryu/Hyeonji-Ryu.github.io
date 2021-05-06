@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Day + 018</title>
+    <url>/2021/05/07/TIL-17/</url>
+    <content><![CDATA[<p>2021년 5월 6일 목요일, 기록을 시작한지 18번째 날<br><a id="more"></a></p>
+<h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+<li>회사 업무</li>
+<li>KBO 대시보드 덤프 데이터베이스(sqlite) 생성</li>
+<li>KBO 대시보드 Readme.md 작성</li>
+<li>고양이 화장실 청소</li>
+</ul>
+<h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
+<li>KBO 대시보드 소스 코드 업데이트</li>
+<li>KBO 대시보드 Readme.md 업데이트</li>
+</ul>
+<h2 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h2><p>하나씩 밀린 일들을 처리하고 있다. 완벽하게 완성한 후 깃허브에 올리려고 하면 끝도 없더라.<br>그냥 일단 올리고 계속 수정하기로 마음을 바꿨다.<br>사실 KBO 대시보드는 DB 스키마 최적화와 서버 부분만 손보면 된다.<br>아, KBO 프로젝트에서 데이터 크롤링 자동화를 위해 코드를 리팩토링하고 있다.<br>가능하다면 패키지까지 만드는 것을 목표로 하고 있다.<br>이번주에 PoC 지원으로 갔던 프로젝트를 참여하게 되었다.<br>덕분에 내일 늦게 출근해서 이 시간까지 개인 프로젝트 붙잡고 있었다.<br>얼른 자자. 내일도 화이팅</p>
+]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Day + 017</title>
     <url>/2021/05/05/TIL-16/</url>
     <content><![CDATA[<p>2021년 5월 5일 수요일, 기록을 시작한지 17번째 날<br><a id="more"></a></p>
