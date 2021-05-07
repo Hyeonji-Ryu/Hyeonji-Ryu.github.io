@@ -2597,7 +2597,7 @@ x & \text{(x>0) $$}\\
   </entry>
   <entry>
     <title>2. 카테고리 및 태그 설정</title>
-    <url>/2020/04/20/about-hexo-2/</url>
+    <url>/2020/04/20/about%20hexo/about-hexo-2/</url>
     <content><![CDATA[<p>NexT 테마에서 카테고리와 태그를 생성하고자 합니다.</p>
 <p>아직 블로그를 만들지 않았다면 <a href="https://hyeonji-ryu.github.io/2020/02/27/about_hexo-0/">이전 글</a>을 참고해주시기 바랍니다.</p>
 <a id="more"></a>
@@ -5886,7 +5886,7 @@ fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
   </entry>
   <entry>
     <title>1. Hexo에 NexT 테마 적용하기</title>
-    <url>/2020/03/08/about_hexo-1/</url>
+    <url>/2020/03/08/about%20hexo/about_hexo-1/</url>
     <content><![CDATA[<p>Hexo 블로그를 만든 다음 NexT 테마를 적용하고자 합니다.</p>
 <p>아직 블로그를 만들지 않았다면 <a href="https://hyeonji-ryu.github.io/2020/02/27/about_hexo-0/">이전 글</a>을 참고해주시기 바랍니다.</p>
 <a id="more"></a>
@@ -6746,7 +6746,7 @@ fib(n-1)+fib(n-2) & \text{if n>1 $$}\\
   </entry>
   <entry>
     <title>0. Github Page와 Hexo를 이용하여 블로그 만들기</title>
-    <url>/2020/02/27/about_hexo-0/</url>
+    <url>/2020/02/27/about%20hexo/about_hexo-0/</url>
     <content><![CDATA[<p>Hexo 블로그를 만들기 위해서는 Github계정을 사용하는 것이 가장 편합니다. Github계정이 없는 분들은 <a href="https://github.com" target="_blank" rel="noopener">Github</a>에서 만들어 주세요! Github계정이 있는 분들이라면 바로 Hexo 블로그를 만들 수 있습니다.</p>
 <a id="more"></a>
 <hr>
