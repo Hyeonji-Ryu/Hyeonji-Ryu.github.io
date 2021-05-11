@@ -5,13 +5,14 @@
     <url>/2021/05/11/TIL/TIL-22/</url>
     <content><![CDATA[<p>2021년 5월 11일 화요일, 기록을 시작한지 23번째 날<br><a id="more"></a></p>
 <h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
-<li>백준 코딩테스트 함수 완료</li>
+<li>오늘도 야근</li>
 <li>고양이 화장실 청소</li>
+<li>DAsP 자격시험 신청</li>
 </ul>
 <h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
-<li>백준 코딩테스트 답안 업데이트</li>
+<li>개인 공부 못함</li>
 </ul>
-<h2 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h2><p>오늘은 매우 바빴다.<br>그래도 오늘 하기로 했던 일</p>
+<h2 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h2><p>오늘은 예상치 못한 일들이 돌발적으로 생겼다.<br>필요하다고 요청되는 데모 데이터가 계속 변했고, 우리가 구축해놓은 카프카는 필요가 없다고 한다.<br>음..오늘 내내 멘탈이 나갔다.<br>일 이야기는 더이상 하지 않고 개인적인 이야기를 하고 싶다.<br>오늘 DAsP를 신청했다. DAsP는 데이터 아키텍처 준전문가 자격증이다.<br>원래는 상반기에 sqld를 신청하려고 했는데 신청기간을 놓쳐서 하반기에 볼 예정이다.<br>요즘 일에 치여서 공부를 너무 안한 것 같다.<br>곧 입사 3개월 차인데 아직 많이 부족하다.<br>그래서 일단 자격증 시험을 신청해서 매일매일 공부하는 습관을 만드려고 한다.<br>힘내자.</p>
 ]]></content>
       <categories>
         <category>Today I Learned</category>
@@ -29,13 +30,14 @@
     <url>/2021/05/11/TIL/TIL-21/</url>
     <content><![CDATA[<p>2021년 5월 10일 월요일, 기록을 시작한지 22번째 날<br><a id="more"></a></p>
 <h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
-<li>22시 30분 퇴근</li>
+<li>22시 30분 퇴근 (!)</li>
 <li>고양이 화장실 청소</li>
 </ul>
 <h2 id="Github-commit"><a href="#Github-commit" class="headerlink" title="Github commit"></a>Github commit</h2><ul>
 <li>개인 공부 못함</li>
 </ul>
-<h2 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h2>]]></content>
+<h2 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h2><p>위에 쓴 한 줄이 모든 것을 답한다.<br>오늘 아침 7시 30분에 집을 나가서 다음날 12시 10분에 귀가하였다.<br>저 22시 30분은 회사에서 출발한 시간이다.<br>당연히 씻자마자 칼잠을 잤고, 그래서 11일인 오늘 대신 작성한다.<br>내가 밤 10시 반까지 일하다가 온 이유, 간단하다.<br>먼저 전달된 아키텍처가 명확하지 않았고, 이에 대해 아는 사람은 아무도 없었다.<br>커뮤니케이션이 제대로 이루어지지 않아 필요한 데이터 생성에도 어려움을 겪었고, 쿼리 엔진도 마찬가지이다.<br>모든 것들이 혼란스러운 가운데, 데모 데이터 생성을 아주 뒤늦게 시작했고 결과는 야근이다.<br>..첫 프로젝트인데, 참 감격스럽다.<br>커뮤니케이션의 부족은 모든 업무의 비효율을 불러오는 것 같다.</p>
+]]></content>
       <categories>
         <category>Today I Learned</category>
       </categories>
@@ -136,7 +138,7 @@
 <li>KBO 대시보드 소스 코드 업데이트</li>
 <li>KBO 대시보드 Readme.md 업데이트</li>
 </ul>
-<h2 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h2><p>하나씩 밀린 일들을 처리하고 있다. 완벽하게 완성한 후 깃허브에 올리려고 하면 끝도 없더라.<br>그냥 일단 올리고 계속 수정하기로 마음을 바꿨다.<br>사실 KBO 대시보드는 DB 스키마 최적화와 서버 부분만 손보면 된다.<br>아, KBO 프로젝트에서 데이터 크롤링 자동화를 위해 코드를 리팩토링하고 있다.<br>가능하다면 패키지까지 만드는 것을 목표로 하고 있다.<br>이번주에 PoC 지원으로 갔던 프로젝트를 참여하게 되었다.<br>덕분에 내일 늦게 출근해서 이 시간까지 개인 프로젝트 붙잡고 있었다.<br>얼른 자자. 내일도 화이팅</p>
+<h2 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h2><p>하나씩 밀린 일들을 처리하고 있다. 완벽하게 완성한 후 깃허브에 올리려고 하면 끝도 없더라.<br>그냥 일단 올리고 계속 수정하기로 마음을 바꿨다.<br>사실 KBO 대시보드는 DB 스키마 최적화와 서버 부분만 손보면 된다.<br>아, KBO 프로젝트에서 데이터 크롤링 자동화를 위해 코드를 리팩토링하고 있다.<br>가능하다면 패키지까지 만드는 것을 목표로 하고 있다.<br>이번주에 POC 지원으로 갔던 프로젝트를 참여하게 되었다.<br>덕분에 내일 늦게 출근해서 이 시간까지 개인 프로젝트 붙잡고 있었다.<br>얼른 자자. 내일도 화이팅</p>
 ]]></content>
       <categories>
         <category>Today I Learned</category>
@@ -181,7 +183,7 @@
     <url>/2021/05/04/TIL/TIL-15/</url>
     <content><![CDATA[<p>2021년 5월 4일 화요일, 기록을 시작한지 16번째 날<br><a id="more"></a></p>
 <h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
-<li>외근(PoC, 강남)</li>
+<li>외근(POC, 강남)</li>
 <li>고양이 용품 구매</li>
 <li>고양이 화장실 청소</li>
 </ul>
