@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>error-1</title>
+    <title>Windows환경에서 Rust 컴파일 link 에러</title>
     <url>/2021/05/15/ERROR/error-1/</url>
-    <content><![CDATA[<p>Windows 환경에서 Rust를 vscode로 실행하기 위한 추가 설정 방법을 정리합니다.</p>
+    <content><![CDATA[<p>Windows 환경에서 msvc 없이 Rust를 실행하기 위한 추가 설정 방법을 정리합니다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">the msvc targets depend on the msvc linker but `link.exe` was not found</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <hr>
