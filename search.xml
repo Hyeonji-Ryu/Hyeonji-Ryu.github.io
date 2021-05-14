@@ -947,9 +947,9 @@
         <tag>clustering</tag>
         <tag>하둡</tag>
         <tag>스파크</tag>
-        <tag>언박싱</tag>
         <tag>빅데이터</tag>
         <tag>bigdata</tag>
+        <tag>언박싱</tag>
       </tags>
   </entry>
   <entry>
@@ -1712,10 +1712,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>im2col</tag>
-        <tag>col2im</tag>
         <tag>Julia</tag>
         <tag>모델</tag>
+        <tag>im2col</tag>
+        <tag>col2im</tag>
       </tags>
   </entry>
   <entry>
@@ -1748,10 +1748,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>im2col</tag>
-        <tag>col2im</tag>
         <tag>Julia</tag>
         <tag>모델</tag>
+        <tag>im2col</tag>
+        <tag>col2im</tag>
       </tags>
   </entry>
   <entry>
@@ -1793,10 +1793,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>im2col</tag>
-        <tag>col2im</tag>
         <tag>Julia</tag>
         <tag>모델</tag>
+        <tag>im2col</tag>
+        <tag>col2im</tag>
       </tags>
   </entry>
   <entry>
@@ -1838,10 +1838,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>im2col</tag>
-        <tag>col2im</tag>
         <tag>Julia</tag>
         <tag>모델</tag>
+        <tag>im2col</tag>
+        <tag>col2im</tag>
       </tags>
   </entry>
   <entry>
@@ -1924,10 +1924,10 @@
         <tag>합성곱</tag>
         <tag>이미지신경망</tag>
         <tag>풀링</tag>
-        <tag>Julia</tag>
-        <tag>모델</tag>
         <tag>flatten</tag>
         <tag>convolution</tag>
+        <tag>Julia</tag>
+        <tag>모델</tag>
       </tags>
   </entry>
   <entry>
