@@ -41,8 +41,8 @@
         <category>Ansible</category>
       </categories>
       <tags>
-        <tag>sshpass</tag>
         <tag>docker</tag>
+        <tag>sshpass</tag>
         <tag>script</tag>
         <tag>앤서블</tag>
         <tag>ansible</tag>
@@ -84,7 +84,11 @@
 <li>자바8, 러스트 환경 셋팅</li>
 </ul>
 <h3 id="발자국-4"><a href="#발자국-4" class="headerlink" title="발자국"></a>발자국</h3><p>어제 스크립트로 돌려놓고 간 맵리듀스 잡이 잘 돌아가서 HDFS 데이터 노드가 터졌다.<br>급하게 생성된 데이터 폴더 일부를 지웠더니 다행히 클러스터는 안정을 되찾았다.<br>오늘 협업사 대표님이 오셨는데 갑자기 카프카에 나이파이를 이야기하신다.<br>이제는 진짜로 일이 어떻게 돌아가는지 파악이 안된다. 일이 진전되고는 있는 걸까?<br>오늘 DAsP 수험서가 도착했다.<br>시험까지 앞으로 정확히 3주, 공부할 것들이 많다.<br>원래는 공부한 내용들을 정리하려고 만든 TIL인데, 일기가 되어버렸다.</p>
-<h2 id="2021년-5월-15일-토요일"><a href="#2021년-5월-15일-토요일" class="headerlink" title="2021년 5월 15일 토요일"></a>2021년 5월 15일 토요일</h2><h2 id="2021년-5월-16일-일요일"><a href="#2021년-5월-16일-일요일" class="headerlink" title="2021년 5월 16일 일요일"></a>2021년 5월 16일 일요일</h2>]]></content>
+<h2 id="2021년-5월-15일-토요일"><a href="#2021년-5월-15일-토요일" class="headerlink" title="2021년 5월 15일 토요일"></a>2021년 5월 15일 토요일</h2><ul>
+<li>이산수학 3장 공부 (LOPES)</li>
+<li>KBO database 테스트 시작</li>
+</ul>
+<h3 id="발자국-5"><a href="#발자국-5" class="headerlink" title="발자국"></a>발자국</h3><h2 id="2021년-5월-16일-일요일"><a href="#2021년-5월-16일-일요일" class="headerlink" title="2021년 5월 16일 일요일"></a>2021년 5월 16일 일요일</h2>]]></content>
       <categories>
         <category>Today I Learned</category>
       </categories>
@@ -310,8 +314,8 @@
         <category>Today I Learned</category>
       </categories>
       <tags>
-        <tag>Github</tag>
         <tag>sql</tag>
+        <tag>Github</tag>
         <tag>TIL</tag>
         <tag>TodayILearned</tag>
         <tag>plan</tag>
@@ -470,8 +474,8 @@
         <category>Ansible</category>
       </categories>
       <tags>
-        <tag>sshpass</tag>
         <tag>docker</tag>
+        <tag>sshpass</tag>
         <tag>script</tag>
         <tag>앤서블</tag>
         <tag>ansible</tag>
@@ -611,11 +615,11 @@
         <category>Regular expression</category>
       </categories>
       <tags>
+        <tag>python</tag>
         <tag>regex</tag>
         <tag>regular_expression</tag>
         <tag>정규표현식</tag>
         <tag>re</tag>
-        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -980,10 +984,10 @@
         <category>error list</category>
       </categories>
       <tags>
-        <tag>mysql</tag>
         <tag>sqlalchemy</tag>
         <tag>flask_sqlalchemy</tag>
         <tag>pylint</tag>
+        <tag>mysql</tag>
         <tag>db</tag>
         <tag>scoped_session</tag>
         <tag>error</tag>
@@ -1221,10 +1225,10 @@
         <category>Database</category>
       </categories>
       <tags>
-        <tag>docker</tag>
         <tag>mariadb</tag>
         <tag>database</tag>
         <tag>sql</tag>
+        <tag>docker</tag>
         <tag>vi</tag>
         <tag>vim</tag>
         <tag>도커</tag>
@@ -4431,9 +4435,9 @@ cos(x)=\frac{e^{ix}+e^{-1x}}{2}
       </tags>
   </entry>
   <entry>
-    <title>chapter 0. 시작하기</title>
+    <title>Big-O 표기법</title>
     <url>/2020/03/19/Algorithms/Algorithms-0/</url>
-    <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Sanjoy Dasgupta, Christos Papadimitriou, Umesh 의 저서인 Algorithms를 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
+    <content><![CDATA[<p>글을 시작하기에 앞서 해당 글은 Sanjoy Dasgupta, Christos Papadimitriou, Umesh 의 저서인 Algorithms를 참고하여 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
 <h2 id="피보나치-입문"><a href="#피보나치-입문" class="headerlink" title="피보나치 입문"></a>피보나치 입문</h2><p>피보나치는 유명한 수열로 가장 많이 알려져있다. 수열 내에서 각 숫자들은 이전 두 숫자의 합이라는 것이 피보나치 수열의 원리이다. 피보나치수 $F_n$은 다음과 같다.</p>
 <script type="math/tex; mode=display">
 fib(n) =

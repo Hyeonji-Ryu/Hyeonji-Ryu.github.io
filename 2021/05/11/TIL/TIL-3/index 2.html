@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    hostname: new URL('https://hyeonji-ryu.github.io').hostname,
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.7.1',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    comments: {"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}
+  };
+</script>
+
+  <meta name="description" content="2021년 5월 10일 - 2021년 5월 16일, 네 번째 기록">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Day 022 - Day 028">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2021/05/11/TIL/TIL-3/index.html">
+<meta property="og:site_name" content="DEV AnythinG">
+<meta property="og:description" content="2021년 5월 10일 - 2021년 5월 16일, 네 번째 기록">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2021-05-11T14:44:15.000Z">
+<meta property="article:modified_time" content="2021-05-14T18:09:45.839Z">
+<meta property="article:author" content="Hyeonji Ryu">
+<meta property="article:tag" content="Github">
+<meta property="article:tag" content="TIL">
+<meta property="article:tag" content="TodayILearned">
+<meta property="article:tag" content="plan">
+<meta property="article:tag" content="diary">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2021/05/11/TIL/TIL-3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true
+  };
+</script>
+
+  <title>Day 022 - Day 028 | DEV AnythinG</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-163411677-2');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DEV AnythinG</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">Welcome :)</p>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>홈</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>태그</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>카테고리</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>아카이브</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>검색
+        </a>
+      </li>
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="Searching..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/Hyeonji-Ryu" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2021/05/11/TIL/TIL-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile.jpg">
+      <meta itemprop="name" content="Hyeonji Ryu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DEV AnythinG">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Day 022 - Day 028
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">작성일</span>
+
+              <time title="Post created: 2021-05-11 23:44:15" itemprop="dateCreated datePublished" datetime="2021-05-11T23:44:15+09:00">2021-05-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Today-I-Learned/" itemprop="url" rel="index">
+                    <span itemprop="name">Today I Learned</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>2021년 5월 10일 - 2021년 5월 16일, 네 번째 기록<br><a id="more"></a></p>
+<h2 id="2021년-5월-10일-월요일"><a href="#2021년-5월-10일-월요일" class="headerlink" title="2021년 5월 10일 월요일"></a>2021년 5월 10일 월요일</h2><ul>
+<li>22시 30분 퇴근 (!)</li>
+<li>고양이 화장실 청소</li>
+</ul>
+<h3 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h3><p>위에 쓴 한 줄이 모든 것을 답한다.<br>오늘 아침 7시 30분에 집을 나가서 다음날 12시 10분에 귀가하였다.<br>저 22시 30분은 회사에서 출발한 시간이다.<br>당연히 씻자마자 칼잠을 잤고, 그래서 11일인 오늘 대신 작성한다.<br>내가 밤 10시 반까지 일하다가 온 이유, 간단하다.<br>먼저 전달된 아키텍처가 명확하지 않았고, 이에 대해 아는 사람은 아무도 없었다.<br>커뮤니케이션이 제대로 이루어지지 않아 필요한 데이터 생성에도 어려움을 겪었고, 쿼리 엔진도 마찬가지이다.<br>모든 것들이 혼란스러운 가운데, 데모 데이터 생성을 아주 뒤늦게 시작했고 결과는 야근이다.<br>..첫 프로젝트인데, 참 감격스럽다.<br>커뮤니케이션의 부족은 모든 업무의 비효율을 불러오는 것 같다.</p>
+<h2 id="2021년-5월-11일-화요일"><a href="#2021년-5월-11일-화요일" class="headerlink" title="2021년 5월 11일 화요일"></a>2021년 5월 11일 화요일</h2><ul>
+<li>오늘도 야근</li>
+<li>고양이 화장실 청소</li>
+<li>DAsP 자격시험 신청</li>
+</ul>
+<h3 id="발자국-1"><a href="#발자국-1" class="headerlink" title="발자국"></a>발자국</h3><p>오늘은 예상치 못한 일들이 돌발적으로 생겼다.<br>필요하다고 요청되는 데모 데이터가 계속 변했고, 우리가 구축해놓은 카프카는 필요가 없다고 한다.<br>음..오늘 내내 멘탈이 나갔다.<br>일 이야기는 더이상 하지 않고 개인적인 이야기를 하고 싶다.<br>오늘 DAsP를 신청했다. DAsP는 데이터 아키텍처 준전문가 자격증이다.<br>원래는 상반기에 sqld를 신청하려고 했는데 신청기간을 놓쳐서 하반기에 볼 예정이다.<br>요즘 일에 치여서 공부를 너무 안한 것 같다.<br>곧 입사 3개월 차인데 아직 많이 부족하다.<br>그래서 일단 자격증 시험을 신청해서 매일매일 공부하는 습관을 만드려고 한다.<br>힘내자.</p>
+<h2 id="2021년-5월-12일-수요일"><a href="#2021년-5월-12일-수요일" class="headerlink" title="2021년 5월 12일 수요일"></a>2021년 5월 12일 수요일</h2><ul>
+<li>조기 퇴근</li>
+<li>낮잠 및 휴식</li>
+<li>고양이 화장실 청소</li>
+<li>리눅스 강의 듣기</li>
+<li>데이터 생성 코드 수정</li>
+<li>KBO 테이블 스키마 정리</li>
+</ul>
+<h3 id="발자국-2"><a href="#발자국-2" class="headerlink" title="발자국"></a>발자국</h3><p>오늘은 오전에 업무가 끝났다. 그래서 3시쯤 퇴근하고 집에 왔다.<br>집에 오니 5시, 씻고 집안일 하고 낮잠도 좀 잤다.<br>근데 8시쯤 지금까지 진행한 일들이 리셋되었다는 소식을 접했다.<br>분명히 기존 테이블과 데이터 컬럼 수 달라도 괜찮은지 몇 번이고 확인 받았는데, 업무가 반 이상 진행된 지금에서야 같게 수정해 달라고 한다.<br>아..내일 회사가기 싫다.</p>
+<h2 id="2021년-5월-13일-목요일"><a href="#2021년-5월-13일-목요일" class="headerlink" title="2021년 5월 13일 목요일"></a>2021년 5월 13일 목요일</h2><ul>
+<li>러스트 공부</li>
+<li>앤서블 공부 및 정리</li>
+<li>고양이 화장실 청소</li>
+</ul>
+<h3 id="발자국-3"><a href="#발자국-3" class="headerlink" title="발자국"></a>발자국</h3><p>오늘은 많은 것들을 느꼈다. 첫 번째로 이번 프로젝트에서 카프카가 빠지면서 할 일이 정말 없어졌다. 그리고 자바도 공부를 해야겠다.<br>사실 그동안 자바를 좀 더 공부해야겠다고 생각했었지만, 음..필요를 못느꼈다.<br>그러다가 결국 Hadoop 에코 시스템을 더 잘 활용하기 위해서는 자바 개발이 필요하다는 것을 느꼈다.<br>자바 공부하자. 아 그렇다고 러스트를 포기하지는 않는다.<br>둘 다 가져간다. 잠을 줄이자.</p>
+<h2 id="2021년-5월-14일-금요일"><a href="#2021년-5월-14일-금요일" class="headerlink" title="2021년 5월 14일 금요일"></a>2021년 5월 14일 금요일</h2><ul>
+<li>이산수학 3장 공부 및 정리</li>
+<li>고양이 화장실 청소</li>
+<li>자바8, 러스트 환경 셋팅</li>
+</ul>
+<h3 id="발자국-4"><a href="#발자국-4" class="headerlink" title="발자국"></a>발자국</h3><p>어제 스크립트로 돌려놓고 간 맵리듀스 잡이 잘 돌아가서 HDFS 데이터 노드가 터졌다.<br>급하게 생성된 데이터 폴더 일부를 지웠더니 다행히 클러스터는 안정을 되찾았다.<br>오늘 협업사 대표님이 오셨는데 갑자기 카프카에 나이파이를 이야기하신다.<br>이제는 진짜로 일이 어떻게 돌아가는지 파악이 안된다. 일이 진전되고는 있는 걸까?<br>오늘 DAsP 수험서가 도착했다.<br>시험까지 앞으로 정확히 3주, 공부할 것들이 많다.<br>원래는 공부한 내용들을 정리하려고 만든 TIL인데, 일기가 되어버렸다.</p>
+<h2 id="2021년-5월-15일-토요일"><a href="#2021년-5월-15일-토요일" class="headerlink" title="2021년 5월 15일 토요일"></a>2021년 5월 15일 토요일</h2><h2 id="2021년-5월-16일-일요일"><a href="#2021년-5월-16일-일요일" class="headerlink" title="2021년 5월 16일 일요일"></a>2021년 5월 16일 일요일</h2>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Github/" rel="tag"># Github</a>
+              <a href="/tags/TIL/" rel="tag"># TIL</a>
+              <a href="/tags/TodayILearned/" rel="tag"># TodayILearned</a>
+              <a href="/tags/plan/" rel="tag"># plan</a>
+              <a href="/tags/diary/" rel="tag"># diary</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/05/04/TIL/TIL-2/" rel="prev" title="Day 015 - Day 021">
+      <i class="fa fa-chevron-left"></i> Day 015 - Day 021
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/05/13/Ansible/ansible-1/" rel="next" title="1. Ansible 사용하기">
+      1. Ansible 사용하기 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let activeClass = CONFIG.comments.activeClass;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          목차
+        </li>
+        <li class="sidebar-nav-overview">
+          훑어보기
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-10일-월요일"><span class="nav-number">1.</span> <span class="nav-text">2021년 5월 10일 월요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국"><span class="nav-number">1.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-11일-화요일"><span class="nav-number">2.</span> <span class="nav-text">2021년 5월 11일 화요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-1"><span class="nav-number">2.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-12일-수요일"><span class="nav-number">3.</span> <span class="nav-text">2021년 5월 12일 수요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-2"><span class="nav-number">3.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-13일-목요일"><span class="nav-number">4.</span> <span class="nav-text">2021년 5월 13일 목요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-3"><span class="nav-number">4.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-14일-금요일"><span class="nav-number">5.</span> <span class="nav-text">2021년 5월 14일 금요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-4"><span class="nav-number">5.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-15일-토요일"><span class="nav-number">6.</span> <span class="nav-text">2021년 5월 15일 토요일</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-16일-일요일"><span class="nav-number">7.</span> <span class="nav-text">2021년 5월 16일 일요일</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Hyeonji Ryu"
+      src="/images/profile.jpg">
+  <p class="site-author-name" itemprop="name">Hyeonji Ryu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-name">포스트</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">카테고리</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">175</span>
+        <span class="site-state-item-name">태그</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hyeonji Ryu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.1
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.1
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
