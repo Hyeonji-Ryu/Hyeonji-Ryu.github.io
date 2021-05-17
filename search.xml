@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Day 029 - Day 035</title>
+    <url>/2021/05/17/TIL/TIL-4/</url>
+    <content><![CDATA[<p>2021년 5월 17일 - 2021년 5월 23일, 다섯 번째 기록<br><a id="more"></a></p>
+<h2 id="2021년-5월-17일-월요일"><a href="#2021년-5월-17일-월요일" class="headerlink" title="2021년 5월 17일 월요일"></a>2021년 5월 17일 월요일</h2><ul>
+<li>늦은 퇴근</li>
+<li>집안일</li>
+<li>아이폰 셋팅</li>
+<li>고양이 화장실 청소</li>
+</ul>
+<h3 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h3><p>오늘은 진짜 많이 배웠다.<br>사실 프로젝트가 어떻게 돌아가는건지 몰랐는데 오늘 같이 일하시는 책임님이 알려주셨다.<br>그니까 벤더사는 프로젝트에 솔루션을 판매하는 것이고, 나와 같은 엔지니어들은 해당 프로젝트에 파견되는 방식이다.<br>즉, 특정 벤더사의 엔지니어로 파견된 것이다.<br>결론적으로 이 프로젝트에서 내가 속한 벤더사의 모든 엔지니어들은 같이 일하는 동료인 것이다.<br>여기서는 엔지니어가 어떤 회사 소속인지가 크게 중요하지 않은 것 같다.<br>다들 잘하시는 분들이라서 많이 배울 수 있을 것 같다.</p>
+]]></content>
+      <categories>
+        <category>Today I Learned</category>
+      </categories>
+      <tags>
+        <tag>Github</tag>
+        <tag>TIL</tag>
+        <tag>TodayILearned</tag>
+        <tag>plan</tag>
+        <tag>diary</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>1. 전사 아키텍처 이해 (1)</title>
     <url>/2021/05/16/DAsP/DAsP-0/</url>
     <content><![CDATA[<p>해당 시리즈는 데이터아키텍처 준전문가(DAsP) 자격증 공부 내용을 정리합니다.<br><a id="more"></a></p>
