@@ -46,24 +46,28 @@
   };
 </script>
 
-  <meta name="description" content="2021년 5월 17일 - 2021년 5월 23일, 다섯 번째 기록">
+  <meta name="description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Day 029 - Day 035">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/2021/05/17/TIL/TIL-4/index.html">
+<meta property="og:title" content="5. 인공신경망 구현 - 수학식 풀이">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/04/01/DeeplearningJulia/Deeplearning-5/index.html">
 <meta property="og:site_name" content="DEV AnythinG">
-<meta property="og:description" content="2021년 5월 17일 - 2021년 5월 23일, 다섯 번째 기록">
+<meta property="og:description" content="해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2021-05-17T14:59:07.000Z">
-<meta property="article:modified_time" content="2021-05-21T14:46:26.332Z">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/36.png">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/37.png">
+<meta property="article:published_time" content="2020-04-01T08:59:47.000Z">
+<meta property="article:modified_time" content="2020-05-02T05:50:01.720Z">
 <meta property="article:author" content="Hyeonji Ryu">
-<meta property="article:tag" content="Github">
-<meta property="article:tag" content="TIL">
-<meta property="article:tag" content="TodayILearned">
-<meta property="article:tag" content="plan">
-<meta property="article:tag" content="diary">
+<meta property="article:tag" content="딥러닝">
+<meta property="article:tag" content="Deeplearning">
+<meta property="article:tag" content="머신러닝">
+<meta property="article:tag" content="줄리아">
+<meta property="article:tag" content="신경망">
+<meta property="article:tag" content="순전파">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyeonji-ryu.github.io/images/36.png">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/2021/05/17/TIL/TIL-4/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/04/01/DeeplearningJulia/Deeplearning-5/">
 
 
 <script id="page-configurations">
@@ -75,7 +79,7 @@
   };
 </script>
 
-  <title>Day 029 - Day 035 | DEV AnythinG</title>
+  <title>5. 인공신경망 구현 - 수학식 풀이 | DEV AnythinG</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
     <script>
@@ -221,7 +225,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2021/05/17/TIL/TIL-4/">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/04/01/DeeplearningJulia/Deeplearning-5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/profile.jpg">
@@ -234,7 +238,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Day 029 - Day 035
+          5. 인공신경망 구현 - 수학식 풀이
         </h1>
 
         <div class="post-meta">
@@ -244,7 +248,7 @@
               </span>
               <span class="post-meta-item-text">작성일</span>
 
-              <time title="Post created: 2021-05-17 23:59:07" itemprop="dateCreated datePublished" datetime="2021-05-17T23:59:07+09:00">2021-05-17</time>
+              <time title="Post created: 2020-04-01 17:59:47" itemprop="dateCreated datePublished" datetime="2020-04-01T17:59:47+09:00">2020-04-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,8 +256,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Today-I-Learned/" itemprop="url" rel="index">
-                    <span itemprop="name">Today I Learned</span>
+                  <a href="/categories/Deep-learning-in-Julia/" itemprop="url" rel="index">
+                    <span itemprop="name">Deep learning in Julia</span>
                   </a>
                 </span>
             </span>
@@ -269,32 +273,67 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>2021년 5월 17일 - 2021년 5월 23일, 다섯 번째 기록<br><a id="more"></a></p>
-<h2 id="2021년-5월-17일-월요일"><a href="#2021년-5월-17일-월요일" class="headerlink" title="2021년 5월 17일 월요일"></a>2021년 5월 17일 월요일</h2><ul>
-<li>늦은 퇴근</li>
-<li>집안일</li>
-<li>아이폰 셋팅</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h3><p>오늘은 진짜 많이 배웠다.<br>사실 프로젝트가 어떻게 돌아가는건지 몰랐는데 오늘 같이 일하시는 책임님이 알려주셨다.<br>그니까 벤더사는 프로젝트에 솔루션을 판매하는 것이고, 나와 같은 엔지니어들은 해당 프로젝트에 파견되는 방식이다.<br>즉, 특정 벤더사의 엔지니어로 파견된 것이다.<br>결론적으로 이 프로젝트에서 내가 속한 벤더사의 모든 엔지니어들은 같이 일하는 동료인 것이다.<br>여기서는 엔지니어가 어떤 회사 소속인지가 크게 중요하지 않은 것 같다.<br>다들 잘하시는 분들이라서 많이 배울 수 있을 것 같다.</p>
-<h2 id="2021년-5월-18일-화요일"><a href="#2021년-5월-18일-화요일" class="headerlink" title="2021년 5월 18일 화요일"></a>2021년 5월 18일 화요일</h2><ul>
-<li>DAsP 공부</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국-1"><a href="#발자국-1" class="headerlink" title="발자국"></a>발자국</h3><h2 id="2021년-5월-19일-수요일"><a href="#2021년-5월-19일-수요일" class="headerlink" title="2021년 5월 19일 수요일"></a>2021년 5월 19일 수요일</h2><ul>
-<li>DAsP 공부</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국-2"><a href="#발자국-2" class="headerlink" title="발자국"></a>발자국</h3><h2 id="2021년-5월-20일-목요일"><a href="#2021년-5월-20일-목요일" class="headerlink" title="2021년 5월 20일 목요일"></a>2021년 5월 20일 목요일</h2><ul>
-<li>야근</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국-3"><a href="#발자국-3" class="headerlink" title="발자국"></a>발자국</h3><p>오랜만에 오전에 본사에 들렀다.<br>확실히 </p>
-<h2 id="2021년-5월-21일-금요일"><a href="#2021년-5월-21일-금요일" class="headerlink" title="2021년 5월 21일 금요일"></a>2021년 5월 21일 금요일</h2><ul>
-<li>DAsP 공부</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국-4"><a href="#발자국-4" class="headerlink" title="발자국"></a>발자국</h3>
+        <p>해당 시리즈는 프로그래밍 언어 중 하나인 줄리아(Julia)로 딥러닝(Deep learning)을 구현하면서 원리를 설명합니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="인공신경망이란"><a href="#인공신경망이란" class="headerlink" title="인공신경망이란"></a>인공신경망이란</h2><script type="math/tex; mode=display">Layer=(X*W)+B</script><p>위 수식은 각 층을 계산하는 식이며, 입력 데이터의 값들인 배열 $X$에 가중치 $W$를 곱한 후 편향 $B$를 더한다. 이 식은 신경망이 작동하는 방식에서 가져온 알고리즘이다. 생물학에서의 신경망은 수많은 뉴런(신경 세포)이 연결되어 있으며, 이들은 전기 신호를 전달한다. 각각의 뉴런들은 수상돌기를 통해 들어오는 전기 신호를 받고 세포체에서 종합한 후 축삭돌기를 통해 전기 신호를 다른 뉴런으로 내보낸다. 이때 축삭돌기 끝 부분인 시냅스에서 전기 신호에 따라 신경전달물질을 분비하여 다른 뉴런의 시냅스로 전달하는데 이런 과정을 신경이라고 부르는 것이다.</p>
+<p><img src="\../images/36.png" alt="신경 세포 구조"></p>
+<p>그렇다면 뉴런들은 왜 전기 신호들을 전달하는 것일까? 이유는 간단하다. 우리 몸에서 필요한 생활 기능들을 ‘적절’하게 조절하기 위해서이다. 뉴런은 수상돌기에서 전기 신호를 생산하라는 흥분성 신호와 전기 신호를 생산하지 말라는 억제성 신호를 받아들인다. 그후 세포체에서 이를 종합하여 다른 뉴런으로 해당 전기 신호를 보낼지 말지 결정한다. 이런 뉴런의 원리를 바탕으로 살펴봤을 때 가중치를 곱하는 것은 뉴런에서 각각의 고유한 흥분성과 억제성 신호를 받아들이는 과정을 표현했다고 볼 수 있다.<br>물론 실제 생물학에서의 뉴런은 세포체에서 전기 신호를 보내거나(1), 보내지 않거나(0)라는 계단 함수의 개념으로 작동한다는 차이점이 있지만, 가중치의 원리는 동일하다. 또한 편향은 뉴런이 가지고 있는 ‘임계값’을 표현한 것이다. 세포체는 받은 전기 신호가 어느 임계값 이상이 되어야 전기 신호를 내보내는 데, 이를 나타낸 것이다.</p>
+<p>따라서 인공신경망의 원리를 한번에 설명한다면, 입력 신호에 가중치를 곱하면서 적절한 전기 신호로 변환하여 받은 후, 편향(임계값)이 넘으면 전기 신호를 출력한다고 정리된다. 2층으로 구성된 인공신경망 계산 과정을 도식화하면 다음과 같다.</p>
+<p><img src="\../images/37.png" alt="인공신경망 계산 과정"></p>
+<h2 id="인공신경망-수학식-풀이"><a href="#인공신경망-수학식-풀이" class="headerlink" title="인공신경망 수학식 풀이"></a>인공신경망 수학식 풀이</h2><p>인공신경망을 코드로 구현하기에 앞서 수학식으로 풀이해보려고 한다. 이 과정이 필요한 이유는 컴퓨터가 신경망 모델을 어떻게 진행하는지 명확히 파악하고, 이해해야 하기 때문이다. 따라서 위의 인공신경망 도식을 수식으로 풀이해보자. (참고로 위의 인공신경망 도식은 2층 신경망이다.)</p>
+<script type="math/tex; mode=display">X:
+\begin{bmatrix}
+ x_1 & x_2 \\
+ \end{bmatrix}\quad
+W_1:
+\begin{bmatrix}
+ w1_{11} & w1_{12} \\
+ w1_{21} & w1_{22} \\
+ \end{bmatrix}\quad
+W_2:
+\begin{bmatrix}
+ w2_{11} & w2_{12} & w2_{13}\\
+ w2_{21} & w2_{22} & w2_{23}\\
+ \end{bmatrix}</script><script type="math/tex; mode=display">B_1:
+\begin{bmatrix}
+b1_1 & b1_2
+ \end{bmatrix}\quad
+ B_2:
+\begin{bmatrix}
+ b2_1 & b2_2 & b2_3
+ \end{bmatrix}</script><p>먼저 입력값인 $X$와 가중치 $W_1, W_2$, 편향 $b_1, b_2$를 설정한다. 예시이기 때문에 입력층, 은닉층, 출력층의 노드 개수를 임의로 설정하였다. (실제로는 훨씬 많은 노드들이 사용된다.)</p>
+<script type="math/tex; mode=display">Z1 = XW_1+B_1</script><script type="math/tex; mode=display">Z1=
+\begin{bmatrix}
+ x_1 & x_2 \\
+ \end{bmatrix}
+\times
+\begin{bmatrix}
+ w1_{11} & w1_{12} \\
+ w1_{21} & w1_{22} \\
+ \end{bmatrix}
++
+\begin{bmatrix}
+b1_1 & b1_2
+ \end{bmatrix}\\</script><script type="math/tex; mode=display">=
+\begin{bmatrix}
+x_1w1_{11}+x_2w1_{21}+b1_1 & x_1w1_{12}+x_2w1_{22}+b1_2
+\end{bmatrix}</script><p>먼저 입력값에 첫 번째 가중치인 $W_1$을 곱하고 첫 번째 편향인 $B_1$ 더한다. 입력값과 가중치, 편향 모두 배열이기에 이 계산은 배열 단위로 이루어진다. 즉, 행렬곱과 행렬덧셈이 사용되는 것이다. 이 과정은 입력값이 첫 번째 활성화 함수 $h(x)$로 넘어가기 전에 이루어진다.</p>
+<script type="math/tex; mode=display">A1 = \cfrac{1}{1+e^{-Z1}}</script><script type="math/tex; mode=display">A1 =
+\begin{bmatrix}
+\cfrac{1}{1+e^{-Z1_1}} & \cfrac{1}{1+e^{-Z1_2}}
+\end{bmatrix}</script><p>그 다음, 위의 $Z_1$을 활성화 함수에 대입하면 된다. 여기서 $Z_1$은 행렬인데 위의 수식을 $Z_1$의 요소에 각각 적용한다. 참고로 위 식에서 사용된 활성화 함수는 시그모이드 함수이다. 이 과정은 입력값이 첫 번째 은닉층에 도착한 것이다.</p>
+<script type="math/tex; mode=display">Z2 = A1 \times W_2+b_2</script><script type="math/tex; mode=display">=
+\begin{bmatrix}
+\frac{w2_{11}}{1+e^{-Z1_1}}+\frac{w2_{21}}{1+e^{-Z1_2}}+b2_1 & \frac{w2_{12}}{1+e^{-Z1_1}}+\frac{w2_{22}}{1+e^{-Z1_2}}+b2_2 & \frac{w2_{13}}{1+e^{-Z1_1}}+\frac{w2_{23}}{1+e^{-Z1_2}}+b2_3
+\end{bmatrix}</script><p>$A1$의 값은 행렬로 반환된다. $A1$을 다시 두 번째 은닉층으로 보내기 위해 두 번째 가중치인 $W_2$를 곱하고 두 번째 편향인 $b_2$를 더한다. 여기서도 행렬곱과 행렬덧셈이 사용된다. 행렬 단위로 계산되는 수식은 $Z1$과 동일하다.</p>
+<script type="math/tex; mode=display">\hat{y_k}=\cfrac{e^{Z2_k}}{\sum_{i=1}^n e^{Z2_i}}</script><script type="math/tex; mode=display">\hat{y}=
+\begin{bmatrix}
+\cfrac{e^{Z2_1}}{\sum_{i=1}^3 e^{Z2_i}} & \cfrac{e^{Z2_2}}{\sum_{i=1}^3 e^{Z2_i}} & \cfrac{e^{Z2_3}}{\sum_{i=1}^3 e^{Z2_i}}
+\end{bmatrix}</script><p>은닉층 계산 이후 마지막으로 출력층 활성화 함수인 소프트맥스 함수를 적용하여 예측값 $\hat{y}$을 얻는다.</p>
+<p>위의 식을 토대로 우리는 예측값을 아래와 같은 식로 정의할 수 있다.</p>
+<script type="math/tex; mode=display">\hat{y}=\sigma(h(XW1+B1)\times W2+B2)</script><p>위의 식을 살펴보면 $Z1$인 $XW_1+B_1$을 활성화 함수 $h(x)$에 대입하고, 활성화 함수의 결과 값을 다시 $Z2$의 입력값으로 받는다. 그렇게 $Z2$를 계산한 후 출력층의 활성화 함수인 $\sigma(x)$에 대입하여 나온 값이 예측값 $\hat{y}$이다.</p>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>아번 글에서는 신경망을 구현하기에 앞서 신경망의 원리를 수학식으로 풀이하였다. 이 과정은 이해를 위함이며, 다음 글에서는 손글씨 인식하는 신경망을 구현하면서 코드로 작동하는 과정을 살펴볼 것이다.</p>
+
     </div>
 
     
@@ -303,11 +342,12 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Github/" rel="tag"># Github</a>
-              <a href="/tags/TIL/" rel="tag"># TIL</a>
-              <a href="/tags/TodayILearned/" rel="tag"># TodayILearned</a>
-              <a href="/tags/plan/" rel="tag"># plan</a>
-              <a href="/tags/diary/" rel="tag"># diary</a>
+              <a href="/tags/%EB%94%A5%EB%9F%AC%EB%8B%9D/" rel="tag"># 딥러닝</a>
+              <a href="/tags/Deeplearning/" rel="tag"># Deeplearning</a>
+              <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" rel="tag"># 머신러닝</a>
+              <a href="/tags/%EC%A4%84%EB%A6%AC%EC%95%84/" rel="tag"># 줄리아</a>
+              <a href="/tags/%EC%8B%A0%EA%B2%BD%EB%A7%9D/" rel="tag"># 신경망</a>
+              <a href="/tags/%EC%88%9C%EC%A0%84%ED%8C%8C/" rel="tag"># 순전파</a>
           </div>
 
         
@@ -316,10 +356,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/16/DAsP/DAsP-0/" rel="prev" title="1. 전사 아키텍처 이해 (1)">
-      <i class="fa fa-chevron-left"></i> 1. 전사 아키텍처 이해 (1)
+    <a href="/2020/03/31/DeeplearningJulia/Deeplearning-4/" rel="prev" title="4. 경사하강법">
+      <i class="fa fa-chevron-left"></i> 4. 경사하강법
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/02/DeeplearningJulia/Deeplearning-6/" rel="next" title="6. 인공신경망 구현 - 모델 학습">
+      6. 인공신경망 구현 - 모델 학습 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -379,7 +422,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-17일-월요일"><span class="nav-number">1.</span> <span class="nav-text">2021년 5월 17일 월요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국"><span class="nav-number">1.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-18일-화요일"><span class="nav-number">2.</span> <span class="nav-text">2021년 5월 18일 화요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-1"><span class="nav-number">2.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-19일-수요일"><span class="nav-number">3.</span> <span class="nav-text">2021년 5월 19일 수요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-2"><span class="nav-number">3.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-20일-목요일"><span class="nav-number">4.</span> <span class="nav-text">2021년 5월 20일 목요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-3"><span class="nav-number">4.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-21일-금요일"><span class="nav-number">5.</span> <span class="nav-text">2021년 5월 21일 금요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-4"><span class="nav-number">5.1.</span> <span class="nav-text">발자국</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#인공신경망이란"><span class="nav-number">1.</span> <span class="nav-text">인공신경망이란</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#인공신경망-수학식-풀이"><span class="nav-number">2.</span> <span class="nav-text">인공신경망 수학식 풀이</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#결론"><span class="nav-number">3.</span> <span class="nav-text">결론</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -395,7 +438,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
@@ -499,6 +542,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 

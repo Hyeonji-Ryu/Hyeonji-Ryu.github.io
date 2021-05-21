@@ -46,24 +46,36 @@
   };
 </script>
 
-  <meta name="description" content="2021년 5월 17일 - 2021년 5월 23일, 다섯 번째 기록">
+  <meta name="description" content="해당 시리즈는 라즈베리 파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Day 029 - Day 035">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/2021/05/17/TIL/TIL-4/index.html">
+<meta property="og:title" content="0. Raspberry Pi 4 unboxing">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/11/02/Cluster/Clustering-0/index.html">
 <meta property="og:site_name" content="DEV AnythinG">
-<meta property="og:description" content="2021년 5월 17일 - 2021년 5월 23일, 다섯 번째 기록">
+<meta property="og:description" content="해당 시리즈는 라즈베리 파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2021-05-17T14:59:07.000Z">
-<meta property="article:modified_time" content="2021-05-21T14:46:26.332Z">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/96.jpg">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/97.jpg">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/98.jpg">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/99.jpg">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/100.jpg">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/101.jpg">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/102.jpg">
+<meta property="og:image" content="https://hyeonji-ryu.github.io/images/103.jpg">
+<meta property="article:published_time" content="2020-11-02T07:37:25.000Z">
+<meta property="article:modified_time" content="2021-02-08T02:31:16.867Z">
 <meta property="article:author" content="Hyeonji Ryu">
-<meta property="article:tag" content="Github">
-<meta property="article:tag" content="TIL">
-<meta property="article:tag" content="TodayILearned">
-<meta property="article:tag" content="plan">
-<meta property="article:tag" content="diary">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="raspberrypi">
+<meta property="article:tag" content="clustering">
+<meta property="article:tag" content="하둡">
+<meta property="article:tag" content="스파크">
+<meta property="article:tag" content="빅데이터">
+<meta property="article:tag" content="bigdata">
+<meta property="article:tag" content="언박싱">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyeonji-ryu.github.io/images/96.jpg">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/2021/05/17/TIL/TIL-4/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/11/02/Cluster/Clustering-0/">
 
 
 <script id="page-configurations">
@@ -75,7 +87,7 @@
   };
 </script>
 
-  <title>Day 029 - Day 035 | DEV AnythinG</title>
+  <title>0. Raspberry Pi 4 unboxing | DEV AnythinG</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
     <script>
@@ -221,7 +233,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2021/05/17/TIL/TIL-4/">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/11/02/Cluster/Clustering-0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/profile.jpg">
@@ -234,7 +246,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Day 029 - Day 035
+          0. Raspberry Pi 4 unboxing
         </h1>
 
         <div class="post-meta">
@@ -244,7 +256,7 @@
               </span>
               <span class="post-meta-item-text">작성일</span>
 
-              <time title="Post created: 2021-05-17 23:59:07" itemprop="dateCreated datePublished" datetime="2021-05-17T23:59:07+09:00">2021-05-17</time>
+              <time title="Post created: 2020-11-02 16:37:25" itemprop="dateCreated datePublished" datetime="2020-11-02T16:37:25+09:00">2020-11-02</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,8 +264,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Today-I-Learned/" itemprop="url" rel="index">
-                    <span itemprop="name">Today I Learned</span>
+                  <a href="/categories/Clustering/" itemprop="url" rel="index">
+                    <span itemprop="name">Clustering</span>
                   </a>
                 </span>
             </span>
@@ -269,32 +281,26 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>2021년 5월 17일 - 2021년 5월 23일, 다섯 번째 기록<br><a id="more"></a></p>
-<h2 id="2021년-5월-17일-월요일"><a href="#2021년-5월-17일-월요일" class="headerlink" title="2021년 5월 17일 월요일"></a>2021년 5월 17일 월요일</h2><ul>
-<li>늦은 퇴근</li>
-<li>집안일</li>
-<li>아이폰 셋팅</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h3><p>오늘은 진짜 많이 배웠다.<br>사실 프로젝트가 어떻게 돌아가는건지 몰랐는데 오늘 같이 일하시는 책임님이 알려주셨다.<br>그니까 벤더사는 프로젝트에 솔루션을 판매하는 것이고, 나와 같은 엔지니어들은 해당 프로젝트에 파견되는 방식이다.<br>즉, 특정 벤더사의 엔지니어로 파견된 것이다.<br>결론적으로 이 프로젝트에서 내가 속한 벤더사의 모든 엔지니어들은 같이 일하는 동료인 것이다.<br>여기서는 엔지니어가 어떤 회사 소속인지가 크게 중요하지 않은 것 같다.<br>다들 잘하시는 분들이라서 많이 배울 수 있을 것 같다.</p>
-<h2 id="2021년-5월-18일-화요일"><a href="#2021년-5월-18일-화요일" class="headerlink" title="2021년 5월 18일 화요일"></a>2021년 5월 18일 화요일</h2><ul>
-<li>DAsP 공부</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국-1"><a href="#발자국-1" class="headerlink" title="발자국"></a>발자국</h3><h2 id="2021년-5월-19일-수요일"><a href="#2021년-5월-19일-수요일" class="headerlink" title="2021년 5월 19일 수요일"></a>2021년 5월 19일 수요일</h2><ul>
-<li>DAsP 공부</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국-2"><a href="#발자국-2" class="headerlink" title="발자국"></a>발자국</h3><h2 id="2021년-5월-20일-목요일"><a href="#2021년-5월-20일-목요일" class="headerlink" title="2021년 5월 20일 목요일"></a>2021년 5월 20일 목요일</h2><ul>
-<li>야근</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국-3"><a href="#발자국-3" class="headerlink" title="발자국"></a>발자국</h3><p>오랜만에 오전에 본사에 들렀다.<br>확실히 </p>
-<h2 id="2021년-5월-21일-금요일"><a href="#2021년-5월-21일-금요일" class="headerlink" title="2021년 5월 21일 금요일"></a>2021년 5월 21일 금요일</h2><ul>
-<li>DAsP 공부</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국-4"><a href="#발자국-4" class="headerlink" title="발자국"></a>발자국</h3>
+        <p>해당 시리즈는 라즈베리 파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>이제는 대부분의 데이터가 ‘빅데이터’라고 불리는 만큼 그 용량이 매우 크며, 이런 데이터들을 전부 저장하고 불러오기 위해서는 정말 좋은 컴퓨터 사양이 필요하다. 하지만 컴퓨터는 고성능일수록 가격이 가파르게 상승한다. 그렇다면 데이터를 다루기 위해 모든 사람들이 슈퍼컴퓨터를 살 필요가 있을까? 오히려 적당한 컴퓨터 여러 개를 붙여서 하나처럼 사용할 수 있다면 훨씬 저렴하게 빅데이터를 다룰 수 있을 것이다. 이처럼 여러 개의 컴퓨터를 연결하여 하나의 좋은 컴퓨터처럼 사용하는 시스템을 클러스터(Cluster)라고 한다. 결국 클러스터링(Clustering)은 클러스터를 만드는 과정인 것이다. 해당 프로젝트에서는 라즈베리 파이4 3개를 연결하여 클러스터링하는 과정들을 공부하고, 이를 기록하는 데 목적이 있다. 라즈베리 파이 3개를 연결한 모습은 다음과 같다.</p>
+<p><img src="/images/96.jpg" alt="rasp1"></p>
+<h2 id="라즈베리-파이4-키트"><a href="#라즈베리-파이4-키트" class="headerlink" title="라즈베리 파이4 키트"></a>라즈베리 파이4 키트</h2><p>라즈베리 파이는 영국의 라즈베리 파이 재단에서 생성하는 초소형, 최저가 컴퓨터이다. 라즈베리 파이를 구매하면 간단한 개발 보드의 형태로 배송되며, 키트로 구매할 시 설명서와 키보스, 마우스 등을 포함하여 제공한다. 이번엔 EU 2020년 기준 최신 모델인 라즈베리 파이4를 키트로 구매하였다. 라즈베리 파이4 언박싱을 시작해보자.</p>
+<p><img src="/images/97.jpg" alt="rasp2"></p>
+<p>위 사진은 키트 박스이다. 해당 박스 한쪽 면에는 키트 구성품들을 설명하고 있다.</p>
+<p><img src="/images/98.jpg" alt="rasp3"></p>
+<p>박스를 처음 개봉하면 구성품들이 깔끔하게 패키징되어 있다. 아래 사진의 중간에 있는 케이스 안에 라즈베리 파이4가 들어 있다.</p>
+<p><img src="/images/99.jpg" alt="rasp4"></p>
+<p>아래의 사진은 모든 구성품들을 꺼낸 것이다. 키트에는 라즈베리 파이 공식 설명서도 포함되어 있다. 포장지가 참 귀엽다.</p>
+<p><img src="/images/100.jpg" alt="rasp5"></p>
+<p>이번에 키트를 구매하면서 사실  키보드와 마우스는 별 기대 안했는데 생각보다 컬러도 예쁘고 퀄리티도 괜찮았다. 아래 사진은 구성품들을 모두 꺼낸 모습이다.</p>
+<p><img src="/images/101.jpg" alt="rasp6"></p>
+<p>SD 메모리 카드도 깔끔하게 포장되어 왔다. 안의 메모리 카드를 확인해보면 16GB 이다.</p>
+<p><img src="/images/102.jpg" alt="rasp7"></p>
+<h2 id="라즈베리-파이4-3개-연결"><a href="#라즈베리-파이4-3개-연결" class="headerlink" title="라즈베리 파이4 3개 연결"></a>라즈베리 파이4 3개 연결</h2><p>라즈베리 파이들을 연결하기 위해서는 몇 가지의 준비물이 필요하다. 바로 PoE 스위칭 허브와 PoE 랜선이다. PoE란 Power over Ethernet의 약자로 한 개의 랜선이 전원과 데이터 송신을 모두 공급하는 기술을 말한다. 기본적으로 컴퓨터는 전기를 공급받는 전원선과 네트워크를 연결하여 데이터를 받는 랜선 2가지가 필요하다. 따라서 여러 개의 컴퓨터를 동시에 연결해야 하는 경우, 각 컴퓨터 당 최소 2개의 선이 발생하고 전원 어댑터를 연결할 콘센트도 컴퓨터 갯수만큼 필요하다. 한마디로 정신없다. 이럴 때 PoE 기술이 포함된 랜선과 스위칭 허브를 사용하면 선 하나로 깔끔하게 정리할 수 있다. 또한 멀티 콘센트도 필요 없다. 이런 방법은 연결할 컴퓨터의 갯수가 많을수록 더욱 의미있다. 라즈베리 파이 3개를 스위칭 허브와 연결한 모습은 아래와 같다.</p>
+<p><img src="/images/103.jpg" alt="rasp8"></p>
+<p>지금까지 라즈베리 파이4를 살펴보았다. 다음 글에서는 라즈베리 파이의 초기 환경설정에 대해서 살펴볼 것이다.</p>
+
     </div>
 
     
@@ -303,11 +309,14 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Github/" rel="tag"># Github</a>
-              <a href="/tags/TIL/" rel="tag"># TIL</a>
-              <a href="/tags/TodayILearned/" rel="tag"># TodayILearned</a>
-              <a href="/tags/plan/" rel="tag"># plan</a>
-              <a href="/tags/diary/" rel="tag"># diary</a>
+              <a href="/tags/Docker/" rel="tag"># Docker</a>
+              <a href="/tags/raspberrypi/" rel="tag"># raspberrypi</a>
+              <a href="/tags/clustering/" rel="tag"># clustering</a>
+              <a href="/tags/%ED%95%98%EB%91%A1/" rel="tag"># 하둡</a>
+              <a href="/tags/%EC%8A%A4%ED%8C%8C%ED%81%AC/" rel="tag"># 스파크</a>
+              <a href="/tags/%EB%B9%85%EB%8D%B0%EC%9D%B4%ED%84%B0/" rel="tag"># 빅데이터</a>
+              <a href="/tags/bigdata/" rel="tag"># bigdata</a>
+              <a href="/tags/%EC%96%B8%EB%B0%95%EC%8B%B1/" rel="tag"># 언박싱</a>
           </div>
 
         
@@ -316,10 +325,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/16/DAsP/DAsP-0/" rel="prev" title="1. 전사 아키텍처 이해 (1)">
-      <i class="fa fa-chevron-left"></i> 1. 전사 아키텍처 이해 (1)
+    <a href="/2020/10/22/ERROR/error-0/" rel="prev" title="SQLAlchemy ORM 사용 중 pylint 에러">
+      <i class="fa fa-chevron-left"></i> SQLAlchemy ORM 사용 중 pylint 에러
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/02/Cluster/Clustering-1/" rel="next" title="1. Raspberry Pi 환경설정하기">
+      1. Raspberry Pi 환경설정하기 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -379,7 +391,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-17일-월요일"><span class="nav-number">1.</span> <span class="nav-text">2021년 5월 17일 월요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국"><span class="nav-number">1.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-18일-화요일"><span class="nav-number">2.</span> <span class="nav-text">2021년 5월 18일 화요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-1"><span class="nav-number">2.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-19일-수요일"><span class="nav-number">3.</span> <span class="nav-text">2021년 5월 19일 수요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-2"><span class="nav-number">3.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-20일-목요일"><span class="nav-number">4.</span> <span class="nav-text">2021년 5월 20일 목요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-3"><span class="nav-number">4.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-21일-금요일"><span class="nav-number">5.</span> <span class="nav-text">2021년 5월 21일 금요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-4"><span class="nav-number">5.1.</span> <span class="nav-text">발자국</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#라즈베리-파이4-키트"><span class="nav-number">2.</span> <span class="nav-text">라즈베리 파이4 키트</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#라즈베리-파이4-3개-연결"><span class="nav-number">3.</span> <span class="nav-text">라즈베리 파이4 3개 연결</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -395,7 +407,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>

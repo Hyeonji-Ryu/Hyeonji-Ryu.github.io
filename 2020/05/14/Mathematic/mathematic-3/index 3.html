@@ -46,24 +46,25 @@
   };
 </script>
 
-  <meta name="description" content="2021년 5월 17일 - 2021년 5월 23일, 다섯 번째 기록">
+  <meta name="description" content="글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Day 029 - Day 035">
-<meta property="og:url" content="https://hyeonji-ryu.github.io/2021/05/17/TIL/TIL-4/index.html">
+<meta property="og:title" content="1. Linear Algebra (3)">
+<meta property="og:url" content="https://hyeonji-ryu.github.io/2020/05/14/Mathematic/mathematic-3/index.html">
 <meta property="og:site_name" content="DEV AnythinG">
-<meta property="og:description" content="2021년 5월 17일 - 2021년 5월 23일, 다섯 번째 기록">
+<meta property="og:description" content="글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.">
 <meta property="og:locale" content="ko_KR">
-<meta property="article:published_time" content="2021-05-17T14:59:07.000Z">
-<meta property="article:modified_time" content="2021-05-21T14:46:26.332Z">
+<meta property="article:published_time" content="2020-05-14T12:45:33.000Z">
+<meta property="article:modified_time" content="2020-10-26T17:59:17.251Z">
 <meta property="article:author" content="Hyeonji Ryu">
-<meta property="article:tag" content="Github">
-<meta property="article:tag" content="TIL">
-<meta property="article:tag" content="TodayILearned">
-<meta property="article:tag" content="plan">
-<meta property="article:tag" content="diary">
+<meta property="article:tag" content="머신러닝">
+<meta property="article:tag" content="mathematics">
+<meta property="article:tag" content="machine learning">
+<meta property="article:tag" content="mathematics for machine learning">
+<meta property="article:tag" content="머신러닝 수학">
+<meta property="article:tag" content="수학">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://hyeonji-ryu.github.io/2021/05/17/TIL/TIL-4/">
+<link rel="canonical" href="https://hyeonji-ryu.github.io/2020/05/14/Mathematic/mathematic-3/">
 
 
 <script id="page-configurations">
@@ -75,7 +76,7 @@
   };
 </script>
 
-  <title>Day 029 - Day 035 | DEV AnythinG</title>
+  <title>1. Linear Algebra (3) | DEV AnythinG</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
     <script>
@@ -221,7 +222,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="ko">
-    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2021/05/17/TIL/TIL-4/">
+    <link itemprop="mainEntityOfPage" href="https://hyeonji-ryu.github.io/2020/05/14/Mathematic/mathematic-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/profile.jpg">
@@ -234,7 +235,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Day 029 - Day 035
+          1. Linear Algebra (3)
         </h1>
 
         <div class="post-meta">
@@ -244,7 +245,7 @@
               </span>
               <span class="post-meta-item-text">작성일</span>
 
-              <time title="Post created: 2021-05-17 23:59:07" itemprop="dateCreated datePublished" datetime="2021-05-17T23:59:07+09:00">2021-05-17</time>
+              <time title="Post created: 2020-05-14 21:45:33" itemprop="dateCreated datePublished" datetime="2020-05-14T21:45:33+09:00">2020-05-14</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -252,8 +253,8 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Today-I-Learned/" itemprop="url" rel="index">
-                    <span itemprop="name">Today I Learned</span>
+                  <a href="/categories/mathematics-for-machine-learning/" itemprop="url" rel="index">
+                    <span itemprop="name">mathematics for machine learning</span>
                   </a>
                 </span>
             </span>
@@ -269,32 +270,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>2021년 5월 17일 - 2021년 5월 23일, 다섯 번째 기록<br><a id="more"></a></p>
-<h2 id="2021년-5월-17일-월요일"><a href="#2021년-5월-17일-월요일" class="headerlink" title="2021년 5월 17일 월요일"></a>2021년 5월 17일 월요일</h2><ul>
-<li>늦은 퇴근</li>
-<li>집안일</li>
-<li>아이폰 셋팅</li>
-<li>고양이 화장실 청소</li>
+        <p>글을 시작하기에 앞서 해당 글은 Marc Peter Deisenroth, A. Aldo Faisal, Cheng Soon Ong의 저서인 mathematics for machine learning을 바탕으로 요약 및 정리한 글임을 알려드립니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="벡터-공간-Vector-Spaces"><a href="#벡터-공간-Vector-Spaces" class="headerlink" title="벡터 공간 (Vector Spaces)"></a>벡터 공간 (Vector Spaces)</h2><p>이전 글에서도 봤듯이, 선형 방정식은 매트릭스-벡터 형태로도 표현될 수 있다. 이번 글에서는 벡터들이 존재하는 벡터 공간에 대해서 알아볼 것이다.</p>
+<p>시작하기에 앞서 벡터의 특징을 간단하게 정리해보자. 벡터는 서로 더할 수 있으며, 스칼라를 곱할 수 있다. 또한 사칙연산 이후 결과도 벡터로 도출된다. 이런 벡터들의 연산이 가능한 공간을 벡터 공간이라고 한다. 기본 지식은 이 정도면 충분하다. 지금부터는 요소들(elements)의 집합인 군(group)의 개념과 요소들의 구조를 저장하는 작업에 대해서 살펴볼 것이다.</p>
+<h3 id="군-Groups"><a href="#군-Groups" class="headerlink" title="군 (Groups)"></a>군 (Groups)</h3><p>군(group)은 컴퓨터 과학에서 중요한 역할을 한다. 집합 작업에 대한 프레임 워크를 제공할 뿐만 아니라 암호기법, 코딩 이론, 그래픽에서도 많이 사용된다.</p>
+<p>집합 $\mathcal G$와 연산자 $\otimes$를 사용하여 생각해보자. $\mathcal G \times \mathcal G \rightarrow \mathcal G$의 수식은 $\mathcal G$로 정의된다. 이와 같이 아래의 조건들을 모두 만족한다면 $G := (\mathcal G, \otimes)$를 군(group)이라고 정의한다.</p>
+<ul>
+<li><p>집합 $\mathcal G$는 연산자 $\otimes$에 닫혀 있다.<br>: $\forall x, y \in \mathcal G : x \otimes y \in \mathcal G$</p>
+</li>
+<li><p>결합 법칙 : $\forall x,y,z \in \mathcal G: (x\otimes y)\otimes z = x\otimes (y\otimes z)$</p>
+</li>
+<li><p>항등원(neutral element): $\forall x \in \mathcal G \exists e \in \mathcal G: x \otimes e = x \ and \ e \otimes x = x$</p>
+</li>
+<li><p>역원(inverse element): $\forall x \in \mathcal G \exists y \in \mathcal G: x \otimes y = e \ and \ y \otimes x = e$</p>
+</li>
 </ul>
-<h3 id="발자국"><a href="#발자국" class="headerlink" title="발자국"></a>발자국</h3><p>오늘은 진짜 많이 배웠다.<br>사실 프로젝트가 어떻게 돌아가는건지 몰랐는데 오늘 같이 일하시는 책임님이 알려주셨다.<br>그니까 벤더사는 프로젝트에 솔루션을 판매하는 것이고, 나와 같은 엔지니어들은 해당 프로젝트에 파견되는 방식이다.<br>즉, 특정 벤더사의 엔지니어로 파견된 것이다.<br>결론적으로 이 프로젝트에서 내가 속한 벤더사의 모든 엔지니어들은 같이 일하는 동료인 것이다.<br>여기서는 엔지니어가 어떤 회사 소속인지가 크게 중요하지 않은 것 같다.<br>다들 잘하시는 분들이라서 많이 배울 수 있을 것 같다.</p>
-<h2 id="2021년-5월-18일-화요일"><a href="#2021년-5월-18일-화요일" class="headerlink" title="2021년 5월 18일 화요일"></a>2021년 5월 18일 화요일</h2><ul>
-<li>DAsP 공부</li>
-<li>고양이 화장실 청소</li>
+<p><strong>Note</strong><br>역원은 연산자 곱($\otimes$)에 대해서만 정의되었기에 $\frac{1}{x}$가 필요하지는 않다. 또한 만약 ‘교환 법칙(commutative)’인 $\forall x,y \in \mathcal G : x \otimes y = y \otimes x$를 추가적으로 포함한다면, $G := (\mathcal G, \otimes)$은 ‘아벨군(isanAbelian group)’이라고 한다.</p>
+<p>지금까지 군의 정의에 대해서 살펴보았다. 이제 아래의 예시들이 그룹인지 아닌지 구분해보자.</p>
+<p>$\mathbb{Z}$ : 정수, $\mathbb{N}$ : 자연수, $\mathbb{R}$ : 실수</p>
+<ul>
+<li><p>$(\mathbb{Z}, +)$는 그룹이다. $\rightarrow$ 모든 정수의 합은 정수이다.</p>
+</li>
+<li><p>$(\mathbb{N}_0, +)$은 그룹이 아니다. $\rightarrow$ 항등원 0은 포함하지만 역원이 포함되지 않았다.</p>
+</li>
+<li><p>$(\mathbb{Z},\cdot)$은 그룹이 아니다. $\rightarrow$ 항등원 1은 포함하지만 결과값 1을 반환하는 역원이 포함되지 않았다.</p>
+</li>
+<li><p>$(\mathbb{R},\cdot)$은 그룹이 아니다. $\rightarrow$ 실수 중 하나인 0은 역원을 포함하지 않는다.</p>
+</li>
+<li><p>$(\mathbb{R}$ \ {0}, $\cdot)$은 아벨군이다. $\rightarrow$ 0을 제외한 실수는 아벨군의 모든 요건을 충족한다.</p>
+</li>
+<li><p>$(\mathbb{R}^n, +),(\mathbb{Z}^n, +),n \in \mathbb{N}$은 $+$가 성분별로 정의된 경우에 아벨군이다.</p>
+</li>
+<li><p>$(\mathbb{R}^{m \times n},+)$, $m \times n$ 행렬은 성분별로 더했을 때 아벨군이다.</p>
+</li>
+<li><p>$(\mathbb{R}^{n\times n}, \cdot)$인 경우를 예시를 통해 확인하자.<br>$n \times n$ 행렬의 곱은 다음 식으로 정의된다.</p>
+<script type="math/tex; mode=display">c_{ij} = \sum_{l=1}^n a_{il}b_{lj}, \qquad i = 1,\dots,n,\quad j = 1,\dots,n.</script><p>위 식에 따르면, $n \times n$ 행렬의 곱은 $n \times n$ 행렬의 형태이기에 곱셈에 닫혀 있고 결합 법칙도 성립한다. 또한 항등 행렬인 $I_n$ 또한 곱셈 결과가 $n \times n$ 행렬을 만족하기에 성립한다. 마지막으로 해당 행렬이 가역행렬이라서 역행렬이 존재한다면, 그 역행렬 또한 $n \times n$ 행렬형태이다. 위 조건을 모두 만족하기에 $(\mathbb{R}^{n\times n}, \cdot)$는 군이라고 할 수 있으며, 이를 ‘일반선형군(general linear group)’이라고 부른다.</p>
+</li>
 </ul>
-<h3 id="발자국-1"><a href="#발자국-1" class="headerlink" title="발자국"></a>발자국</h3><h2 id="2021년-5월-19일-수요일"><a href="#2021년-5월-19일-수요일" class="headerlink" title="2021년 5월 19일 수요일"></a>2021년 5월 19일 수요일</h2><ul>
-<li>DAsP 공부</li>
-<li>고양이 화장실 청소</li>
+<p>일반선형군(general linear group)은 가역행렬 A가 $\mathbb{R}^{n \times n}$에 포함될 때, 행렬곱셈에 대한 군을 의미하며, 기호는 $GL(n,\mathbb{R})$을 사용한다. 행렬곱은 교환법칙이 성립하지 않기 때문에 일반선형군은 아벨군이 아니라는 점을 기억하자.</p>
+<h3 id="벡터-공간-Vector-spaces"><a href="#벡터-공간-Vector-spaces" class="headerlink" title="벡터 공간 (Vector spaces)"></a>벡터 공간 (Vector spaces)</h3><p>이전까지는 집합 $\mathcal G$와 $\mathcal G$ 요소끼리의 내부 연산에 대해서 알아보았다. 지금부터는 집합 ‘내부 연산자(inner operation)’와 집합끼리의 ‘외부 연산자(outer operation)’ 모두 살펴볼 것이다.</p>
+<p>먼저 벡터 $x \in \mathcal G$가 내부 연산자로 $+$이 사용하고, 외부 연산자로 $\cdot$을 사용하여 $\lambda \in \mathbb{R}$과 곱한다고 가정하자. 이떄 우리는 내부 연산을 덧셈의 형태로, 또 외부 연산을 스케일링(스칼라 곱)으로 생각할 수 있다. 각 연산들은 서로의 결과에 어떠한 영향도 주지않는다는 점을 기억하자.</p>
+<p>실제 값의 벡터 공간 $V = (V,+,\cdot)$은 집합 $V$와 두 연산자를 의미한다.</p>
+<script type="math/tex; mode=display">+: V \times V \rightarrow V</script><script type="math/tex; mode=display">\cdot : \mathbb{R} \times V \rightarrow V</script><ul>
+<li>$(V,+)$은 아벨군이다. (교환 법칙 성립)</li>
+<li>분배 법칙:<br>$\forall \lambda \in \mathbb{R}, x,y \in V: \lambda\cdot(x+y) = \lambda\cdot x + \lambda\cdot y$<br>$\forall\lambda,\psi \in \mathbb{R}, x \in V (\lambda + \psi)\cdot x = \lambda\cdot x + \psi\cdot x$</li>
+<li>결합 법칙 (외부 연산자): $\forall\lambda \in \mathbb{R}, x \in V: \lambda\cdot(\psi\cdot x) = (\lambda\psi)\cdot x$</li>
+<li>외부연산자에 대해서는 항등원이 존재한다: $\forall x \in V: 1 \cdot x = x$</li>
 </ul>
-<h3 id="발자국-2"><a href="#발자국-2" class="headerlink" title="발자국"></a>발자국</h3><h2 id="2021년-5월-20일-목요일"><a href="#2021년-5월-20일-목요일" class="headerlink" title="2021년 5월 20일 목요일"></a>2021년 5월 20일 목요일</h2><ul>
-<li>야근</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국-3"><a href="#발자국-3" class="headerlink" title="발자국"></a>발자국</h3><p>오랜만에 오전에 본사에 들렀다.<br>확실히 </p>
-<h2 id="2021년-5월-21일-금요일"><a href="#2021년-5월-21일-금요일" class="headerlink" title="2021년 5월 21일 금요일"></a>2021년 5월 21일 금요일</h2><ul>
-<li>DAsP 공부</li>
-<li>고양이 화장실 청소</li>
-</ul>
-<h3 id="발자국-4"><a href="#발자국-4" class="headerlink" title="발자국"></a>발자국</h3>
+<p>집합 $V$에 속하는 요소인 $x$는 벡터이다. 따라서 $(V,+)$의 항등원 또한 영벡터($[0,\dots,0$^T)이다.</p>
+
     </div>
 
     
@@ -303,11 +328,12 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Github/" rel="tag"># Github</a>
-              <a href="/tags/TIL/" rel="tag"># TIL</a>
-              <a href="/tags/TodayILearned/" rel="tag"># TodayILearned</a>
-              <a href="/tags/plan/" rel="tag"># plan</a>
-              <a href="/tags/diary/" rel="tag"># diary</a>
+              <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D/" rel="tag"># 머신러닝</a>
+              <a href="/tags/mathematics/" rel="tag"># mathematics</a>
+              <a href="/tags/machine-learning/" rel="tag"># machine learning</a>
+              <a href="/tags/mathematics-for-machine-learning/" rel="tag"># mathematics for machine learning</a>
+              <a href="/tags/%EB%A8%B8%EC%8B%A0%EB%9F%AC%EB%8B%9D-%EC%88%98%ED%95%99/" rel="tag"># 머신러닝 수학</a>
+              <a href="/tags/%EC%88%98%ED%95%99/" rel="tag"># 수학</a>
           </div>
 
         
@@ -316,10 +342,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/05/16/DAsP/DAsP-0/" rel="prev" title="1. 전사 아키텍처 이해 (1)">
-      <i class="fa fa-chevron-left"></i> 1. 전사 아키텍처 이해 (1)
+    <a href="/2020/05/02/DeeplearningJulia/Deeplearning-11/" rel="prev" title="11. 인공신경망 최적화 - Optimizer">
+      <i class="fa fa-chevron-left"></i> 11. 인공신경망 최적화 - Optimizer
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/05/15/DeeplearningJulia/Deeplearning-12/" rel="next" title="12. 인공신경망 최적화 - 가중치 초기값">
+      12. 인공신경망 최적화 - 가중치 초기값 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -379,7 +408,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-17일-월요일"><span class="nav-number">1.</span> <span class="nav-text">2021년 5월 17일 월요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국"><span class="nav-number">1.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-18일-화요일"><span class="nav-number">2.</span> <span class="nav-text">2021년 5월 18일 화요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-1"><span class="nav-number">2.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-19일-수요일"><span class="nav-number">3.</span> <span class="nav-text">2021년 5월 19일 수요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-2"><span class="nav-number">3.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-20일-목요일"><span class="nav-number">4.</span> <span class="nav-text">2021년 5월 20일 목요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-3"><span class="nav-number">4.1.</span> <span class="nav-text">발자국</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2021년-5월-21일-금요일"><span class="nav-number">5.</span> <span class="nav-text">2021년 5월 21일 금요일</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#발자국-4"><span class="nav-number">5.1.</span> <span class="nav-text">발자국</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#벡터-공간-Vector-Spaces"><span class="nav-number">1.</span> <span class="nav-text">벡터 공간 (Vector Spaces)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#군-Groups"><span class="nav-number">1.1.</span> <span class="nav-text">군 (Groups)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#벡터-공간-Vector-spaces"><span class="nav-number">1.2.</span> <span class="nav-text">벡터 공간 (Vector spaces)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -395,7 +424,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">81</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">포스트</span>
         </a>
       </div>
@@ -499,6 +528,54 @@
   
 
   
+      
+<script type="text/x-mathjax-config">
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') {
+          next = next.nextSibling;
+        }
+        if (next && next.nodeName.toLowerCase() === 'br') {
+          next.parentNode.removeChild(next);
+        }
+      }
+    });
+  });
+
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      element = document.getElementById(all[i].inputID + '-Frame').parentNode;
+      if (element.nodeName.toLowerCase() == 'li') {
+        element = element.parentNode;
+      }
+      element.classList.add('has-jax');
+    }
+  });
+</script>
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS-MML_HTMLorMML', () => {
+    MathJax.Hub.Typeset();
+  }, window.MathJax);
+</script>
+
+    
 
   
 
