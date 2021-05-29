@@ -67,16 +67,16 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:center">단계</th>
-<th style="text-align:center">공정</th>
-<th style="text-align:center">내용</th>
+<th>단계</th>
+<th>공정</th>
+<th>내용</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">EA비전 수립</td>
-<td style="text-align:center">EA 방향 수립</td>
-<td style="text-align:center">- EA 환경분석 <br> - EA 구축방향 정의</td>
+<td>EA비전 수립</td>
+<td>EA 방향 수립</td>
+<td>- EA 환경분석 <br> - EA 구축방향 정의</td>
 </tr>
 </tbody>
 </table>
