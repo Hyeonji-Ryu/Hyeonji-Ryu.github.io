@@ -63,7 +63,7 @@
 <li>성과참조모델(Performance Reference Model, PRM): 성과 측정을 위한 항목과 방법 제시</li>
 </ul>
 <h2 id="전사-아키텍처-프로세스"><a href="#전사-아키텍처-프로세스" class="headerlink" title="전사 아키텍처 프로세스"></a>전사 아키텍처 프로세스</h2><p>전사 아키텍처를 구축하고 관리하는 절차. 구성은 EA 비전 수립, EA 구축, EA 관리, EA 활용 단계로 구분한다.</p>
-<h3 id="EA-비전-수립"><a href="#EA-비전-수립" class="headerlink" title="EA 비전 수립"></a>EA 비전 수립</h3><p>| EA 환경 분석 | 기업 내외부 환경 분석 및 이해관계자로부터 수립 요건들을 도출<br>| EA 구축 방향 정의| 환경 분석 결과를 토대로 EA 구축 목적 및 범위를 정의<br>|EA 프레임워크 구성 정의| 산출물 분류 및 유지관리를 위한 프레임워크 정립</p>
+<h3 id="EA-비전-수립"><a href="#EA-비전-수립" class="headerlink" title="EA 비전 수립"></a>EA 비전 수립</h3><p>| EA 환경 분석 | 기업 내외부 환경 분석 및 이해관계자로부터 수립 요건들을 도출|<br>| EA 구축 방향 정의| 환경 분석 결과를 토대로 EA 구축 목적 및 범위를 정의|<br>|EA 프레임워크 구성 정의| 산출물 분류 및 유지관리를 위한 프레임워크 정립|</p>
 <h3 id="EA-구축"><a href="#EA-구축" class="headerlink" title="EA 구축"></a>EA 구축</h3><h4 id="EA-정보-구성-정의"><a href="#EA-정보-구성-정의" class="headerlink" title="EA 정보 구성 정의"></a>EA 정보 구성 정의</h4><ul>
 <li><h4 id="EA-정보-구축"><a href="#EA-정보-구축" class="headerlink" title="EA 정보 구축"></a>EA 정보 구축</h4></li>
 </ul>
@@ -789,9 +789,9 @@
         <tag>clustering</tag>
         <tag>하둡</tag>
         <tag>스파크</tag>
+        <tag>언박싱</tag>
         <tag>빅데이터</tag>
         <tag>bigdata</tag>
-        <tag>언박싱</tag>
       </tags>
   </entry>
   <entry>
@@ -885,10 +885,10 @@
         <tag>sql</tag>
         <tag>mariaDB</tag>
         <tag>RDBMS</tag>
+        <tag>DB</tag>
         <tag>정규화</tag>
         <tag>nomalization</tag>
         <tag>기본키</tag>
-        <tag>DB</tag>
       </tags>
   </entry>
   <entry>
