@@ -50,7 +50,7 @@
 <li>평가(성숙도 모형): EA관리 및 활용 수준을 주기적으로 평가 및 개선점 도출</li>
 </ul>
 <h2 id="아키텍처-도메인"><a href="#아키텍처-도메인" class="headerlink" title="아키텍처 도메인"></a>아키텍처 도메인</h2><p>아키텍처 메트릭스가 어떻게 구성되는지에 따라 달라진다. 도메인은 크게 BA, AA, DA, TA로 구분되며, 각각의 아키텍처들은 아키텍처 매트릭스의 사용자관점(Perspective)에 따라 활용 내용과 업무가 달라진다.</p>
-<h3 id="BA-Business-Architecture"><a href="#BA-Business-Architecture" class="headerlink" title="BA(Business Architecture)"></a>BA(Business Architecture)</h3><p>기업의 최종 목표를 달성하기 위한 업무 구조를 정의한 아키텍처. 아래의 다른 아키텍처들의 방향을 정의하고 검증하는 기준이 된다.</p>
+<h3 id="BA-Business-Architecture"><a href="#BA-Business-Architecture" class="headerlink" title="BA(Business Architecture)"></a>BA(Business Architecture)</h3><p>기업의 최종 목표를 달성하기 위한 업무 구조를 정의한 아키텍처.<br>아래의 다른 아키텍처들의 방향을 정의하고 검증하는 기준이 된다.</p>
 <h3 id="AA-Application-Architecture"><a href="#AA-Application-Architecture" class="headerlink" title="AA(Application Architecture)"></a>AA(Application Architecture)</h3><p>업무 수행에 필요한 어플리케이션을 식별하고 구조를 체계화 한 아키텍처.</p>
 <h3 id="DA-Data-Architecture"><a href="#DA-Data-Architecture" class="headerlink" title="DA(Data Architecture)"></a>DA(Data Architecture)</h3><p>업무 수행에 있어 필요한 데이터 구조를 체계적으로 정의한 아키텍처.</p>
 <h3 id="TA-Technical-Architecture"><a href="#TA-Technical-Architecture" class="headerlink" title="TA(Technical Architecture)"></a>TA(Technical Architecture)</h3><p>다른 아키텍처에서 요구하는 인프라 체계를 정의한 아키텍처.</p>
@@ -63,7 +63,7 @@
 <li>성과참조모델(Performance Reference Model, PRM): 성과 측정을 위한 항목과 방법 제시</li>
 </ul>
 <h2 id="전사-아키텍처-프로세스"><a href="#전사-아키텍처-프로세스" class="headerlink" title="전사 아키텍처 프로세스"></a>전사 아키텍처 프로세스</h2><p>전사 아키텍처를 구축하고 관리하는 절차. 구성은 EA 비전 수립, EA 구축, EA 관리, EA 활용 단계로 구분한다.</p>
-<p><img src="/images/98.jpg" alt="process"></p>
+<p><img src="/images/110.jpg" alt="process"></p>
 <h3 id="EA-비전-수립"><a href="#EA-비전-수립" class="headerlink" title="EA 비전 수립"></a>EA 비전 수립</h3><div class="table-container">
 <table>
 <thead>
@@ -99,14 +99,15 @@
 <tbody>
 <tr>
 <td>아키텍처 매트릭스 정의</td>
-<td></td>
+<td>목표에 필요한 산출물들을 사용자관점(Perspective)과 정보유형(View) 두 축을 바탕으로 매트릭스 구성</td>
 </tr>
 <tr>
 <td>참조모델 정의</td>
-<td></td>
+<td>각 정보유형(View)의 참조모델을 정의</td>
 </tr>
 <tr>
 <td>아키텍처 원칙 수립</td>
+<td>해당 아키텍처에 동일하게 적용되는 원칙 수립</td>
 </tr>
 </tbody>
 </table>
@@ -122,14 +123,15 @@
 <tbody>
 <tr>
 <td>EA 자료 수집</td>
-<td></td>
+<td>현행 아키텍처를 정의하기 위해 기존의 자료들을 수집</td>
 </tr>
 <tr>
-<td>EA 현행 아키텍처 정보 구축</td>
-<td></td>
+<td>현행 아키텍처 정의</td>
+<td>현행 시스템의 기존 자료를 분석하여 현행 아키텍처를 정의</td>
 </tr>
 <tr>
-<td>EA 목표 아키텍처 정보 구축</td>
+<td>목표 아키텍처 정의</td>
+<td>현행 아키텍처의 문제점의 개선안을 바탕으로 목표 아키텍처를 정의</td>
 </tr>
 </tbody>
 </table>
@@ -149,7 +151,7 @@
 </tr>
 <tr>
 <td>EA 관리 시스템</td>
-<td>EA 정보를 관리하기 위한 도구 선정 및 시스템 구축 <br> 시스템은 아래와 같다. <br> - 정보를 생산하는 모델링 도구 영역 <br> - 정보를 저장 및 관리하는 레파지토리 영역 <br> - 정보를 활용하는 포털 <br> - EA 정보를 활용하는 영역</td>
+<td>EA 정보를 관리하기 위한 도구 선정 및 시스템 구축 <br> - 정보를 생산하는 모델링 도구 영역 <br> - 정보를 저장 및 관리하는 레파지토리 영역 <br> - 정보를 활용하는 포털 <br> - EA 정보를 활용하는 영역</td>
 </tr>
 </tbody>
 </table>
@@ -164,15 +166,12 @@
 </thead>
 <tbody>
 <tr>
-<td>EA 자료 수집</td>
-<td></td>
+<td>EA 이행 계획</td>
+<td>다른 IT 업무에도 해당 아키텍처를 적용하기 위한 중장기 계획 수립</td>
 </tr>
 <tr>
-<td>EA 현행 아키텍처 정보 구축</td>
-<td></td>
-</tr>
-<tr>
-<td>EA 목표 아키텍처 정보 구축</td>
+<td>EA 정보 활용</td>
+<td>EA 정보를 활용하여 다른 IT 업무를 수행</td>
 </tr>
 </tbody>
 </table>
