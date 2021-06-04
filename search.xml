@@ -87,31 +87,9 @@
 </tbody>
 </table>
 </div>
-<h2 id="데이터-모델링-표기법"><a href="#데이터-모델링-표기법" class="headerlink" title="데이터 모델링 표기법"></a>데이터 모델링 표기법</h2><h3 id="바커-표기법"><a href="#바커-표기법" class="headerlink" title="바커 표기법"></a>바커 표기법</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>구성요소</th>
-<th>설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>엔터티</td>
-<td>반드시 2개 이상의 속성 필요</td>
-</tr>
-<tr>
-<td>관계</td>
-<td>일대일, 일대다, 다대다 가능 <br> 필수조건은 실선, 선택 조건은 점선</td>
-</tr>
-<tr>
-<td>식별자</td>
-<td>엔터티 대표 속성 </td>
-</tr>
-</tbody>
-</table>
-</div>
-<h3 id="IE-표기법"><a href="#IE-표기법" class="headerlink" title="IE 표기법"></a>IE 표기법</h3>]]></content>
+<h2 id="데이터-모델링-표기법"><a href="#데이터-모델링-표기법" class="headerlink" title="데이터 모델링 표기법"></a>데이터 모델링 표기법</h2><h3 id="바커-표기법"><a href="#바커-표기법" class="headerlink" title="바커 표기법"></a>바커 표기법</h3><p><img src="/images/111.jpg" alt="barker"></p>
+<h3 id="IE-Information-Engineering-표기법"><a href="#IE-Information-Engineering-표기법" class="headerlink" title="IE(Information Engineering) 표기법"></a>IE(Information Engineering) 표기법</h3><p><img src="/images/112.jpg" alt="IE"></p>
+]]></content>
       <categories>
         <category>DAsP</category>
       </categories>
