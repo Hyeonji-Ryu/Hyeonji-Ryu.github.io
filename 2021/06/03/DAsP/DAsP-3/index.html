@@ -48,13 +48,13 @@
 
   <meta name="description" content="해당 시리즈는 데이터아키텍처 준전문가(DAsP) 자격증 공부 내용을 정리합니다.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4. 데이터 모델링">
+<meta property="og:title" content="4. 데이터 모델링 이해">
 <meta property="og:url" content="https://hyeonji-ryu.github.io/2021/06/03/DAsP/DAsP-3/index.html">
 <meta property="og:site_name" content="DEV AnythinG">
 <meta property="og:description" content="해당 시리즈는 데이터아키텍처 준전문가(DAsP) 자격증 공부 내용을 정리합니다.">
 <meta property="og:locale" content="ko_KR">
 <meta property="article:published_time" content="2021-06-03T04:58:59.000Z">
-<meta property="article:modified_time" content="2021-06-04T09:23:54.413Z">
+<meta property="article:modified_time" content="2021-06-04T10:08:53.010Z">
 <meta property="article:author" content="Hyeonji Ryu">
 <meta property="article:tag" content="DAsP">
 <meta property="article:tag" content="데이터아키텍처">
@@ -77,7 +77,7 @@
   };
 </script>
 
-  <title>4. 데이터 모델링 | DEV AnythinG</title>
+  <title>4. 데이터 모델링 이해 | DEV AnythinG</title>
   
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163411677-2"></script>
     <script>
@@ -236,7 +236,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          4. 데이터 모델링
+          4. 데이터 모델링 이해
         </h1>
 
         <div class="post-meta">
@@ -307,7 +307,7 @@
 <tbody>
 <tr>
 <td>엔터티</td>
-<td>동질성을 가진 개체 집합이며 지속해서 관리를 해야하는 대상 <br> 모델설계 초기에 도출</td>
+<td>동질성을 가진 개체 집합이며 지속해서 관리를 해야하는 대상<br> 모델설계 초기에 도출</td>
 </tr>
 <tr>
 <td>속성</td>
@@ -315,25 +315,52 @@
 </tr>
 <tr>
 <td>식별자</td>
-<td>개체를 식별할 수 있는 속성 <br> 논리적 관점에서 엔터티는 식별자를 가지고 물리적인 테이블은 키를 가진다.</td>
+<td>개체를 식별할 수 있는 속성, 논리적 관점에서 엔터티는 식별자를 가지고 물리적인 테이블은 키를 가진다.<br> - 본질식별자:  집합의 본질의 명확하게 설명하는 의미상 주어 <br> - 후보식별자: 인스턴스를 유일하게 식별할 수 있는 속성 <br> - 대체식별자: 원래 식별자응 대신할 수 있는 또다른 속성 <br> - 인조식별자: 기존 본질 식별자를 사용하기 어려울 때 임의로 만들어 사용 <br> - 실질 식별자: 인스턴스를 구별하기 위해 공식적으로 부여된 식별자</td>
 </tr>
 <tr>
 <td>관계</td>
-<td>엔터티 간의 연관성을 표현한  것 <br> 일대일, 일대다, 다대다 관계가 존재</td>
+<td>엔터티 간의 연관성을 표현한 것 <br> 일대일, 일대다, 다대다 관계가 존재</td>
 </tr>
 <tr>
 <td>카디날리티</td>
+<td>관계에서 한 개체가 각 엔터티들에 참여되는 수<br> 예로 한 학생이 6개의 수업을 들을 수 있다면 카티날리티는 (1,6)이다.</td>
 </tr>
 <tr>
 <td>존재 종속</td>
+<td>한 엔터티의 개체가 다른 엔터티의 개체에 영향을 받는 경우</td>
 </tr>
 <tr>
 <td>서브타입</td>
+<td>전체집합인 슈퍼타입의 부분집합, 배타적/포괄적으로 구분</td>
 </tr>
 </tbody>
 </table>
 </div>
-
+<h2 id="데이터-모델링-표기법"><a href="#데이터-모델링-표기법" class="headerlink" title="데이터 모델링 표기법"></a>데이터 모델링 표기법</h2><h3 id="바커-표기법"><a href="#바커-표기법" class="headerlink" title="바커 표기법"></a>바커 표기법</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>구성요소</th>
+<th>설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>엔터티</td>
+<td>반드시 2개 이상의 속성 필요</td>
+</tr>
+<tr>
+<td>관계</td>
+<td>일대일, 일대다, 다대다 가능 <br> 필수조건은 실선, 선택 조건은 점선</td>
+</tr>
+<tr>
+<td>식별자</td>
+<td>엔터티 대표 속성 </td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="IE-표기법"><a href="#IE-표기법" class="headerlink" title="IE 표기법"></a>IE 표기법</h3>
     </div>
 
     
@@ -361,8 +388,8 @@
       <i class="fa fa-chevron-left"></i> 3. 데이터 표준화
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/06/04/DAsP/DAsP-4/" rel="next" title="5. 데이터 모데링 단계">
-      5. 데이터 모데링 단계 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/06/04/DAsP/DAsP-4/" rel="next" title="5. 데이터 모델링 단계">
+      5. 데이터 모델링 단계 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -423,7 +450,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#데이터-모델링"><span class="nav-number">1.</span> <span class="nav-text">데이터 모델링</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#데이터-모델링이-중요한-이유"><span class="nav-number">2.</span> <span class="nav-text">데이터 모델링이 중요한 이유</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#데이터-모델링-기본-원칙"><span class="nav-number">3.</span> <span class="nav-text">데이터 모델링 기본 원칙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#좋은-데이터-모델의-요소"><span class="nav-number">4.</span> <span class="nav-text">좋은 데이터 모델의 요소</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#데이터-모델링-기법"><span class="nav-number">5.</span> <span class="nav-text">데이터 모델링 기법</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#개체-관계-모델-구성요소"><span class="nav-number">5.1.</span> <span class="nav-text">개체-관계 모델 구성요소</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#데이터-모델링"><span class="nav-number">1.</span> <span class="nav-text">데이터 모델링</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#데이터-모델링이-중요한-이유"><span class="nav-number">2.</span> <span class="nav-text">데이터 모델링이 중요한 이유</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#데이터-모델링-기본-원칙"><span class="nav-number">3.</span> <span class="nav-text">데이터 모델링 기본 원칙</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#좋은-데이터-모델의-요소"><span class="nav-number">4.</span> <span class="nav-text">좋은 데이터 모델의 요소</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#데이터-모델링-기법"><span class="nav-number">5.</span> <span class="nav-text">데이터 모델링 기법</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#개체-관계-모델-구성요소"><span class="nav-number">5.1.</span> <span class="nav-text">개체-관계 모델 구성요소</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#데이터-모델링-표기법"><span class="nav-number">6.</span> <span class="nav-text">데이터 모델링 표기법</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#바커-표기법"><span class="nav-number">6.1.</span> <span class="nav-text">바커 표기법</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#IE-표기법"><span class="nav-number">6.2.</span> <span class="nav-text">IE 표기법</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
