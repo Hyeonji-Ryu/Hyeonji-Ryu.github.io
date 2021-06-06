@@ -108,7 +108,7 @@
     <url>/2021/06/03/DAsP/DAsP-2/</url>
     <content><![CDATA[<p>해당 시리즈는 데이터아키텍처 준전문가(DAsP) 자격증 공부 내용을 정리합니다.<br><a id="more"></a></p>
 <hr>
-<h2 id="데이터-표준화란"><a href="#데이터-표준화란" class="headerlink" title="데이터 표준화란"></a>데이터 표준화란</h2>]]></content>
+<h2 id="데이터-표준화"><a href="#데이터-표준화" class="headerlink" title="데이터 표준화"></a>데이터 표준화</h2><h2 id="데이터-표준-수립"><a href="#데이터-표준-수립" class="headerlink" title="데이터 표준 수립"></a>데이터 표준 수립</h2><h2 id="데이터-표준-관리"><a href="#데이터-표준-관리" class="headerlink" title="데이터 표준 관리"></a>데이터 표준 관리</h2>]]></content>
       <categories>
         <category>DAsP</category>
       </categories>
@@ -990,6 +990,68 @@
       </tags>
   </entry>
   <entry>
+    <title>4. Hadoop 분산시스템 설정하기</title>
+    <url>/2020/11/11/Cluster/Clustering-4/</url>
+    <content><![CDATA[<p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
+<hr>
+<h2 id="Hadoop-분산-시스템"><a href="#Hadoop-분산-시스템" class="headerlink" title="Hadoop 분산 시스템"></a>Hadoop 분산 시스템</h2>]]></content>
+      <categories>
+        <category>Clustering</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>raspberrypi</tag>
+        <tag>clustering</tag>
+        <tag>하둡</tag>
+        <tag>스파크</tag>
+        <tag>빅데이터</tag>
+        <tag>bigdata</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>3. Hadoop &amp; Spark 설치하기</title>
+    <url>/2020/11/10/Cluster/Clustering-3/</url>
+    <content><![CDATA[<p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
+<hr>
+<p>이번 글에서는 마스터 라즈베리 파이에서 하둡과 스파크를 다운받은 후 클러스터링을 진행할 것이다. 먼저 마스터로 지정한 라즈베리 파이에 접속한 후 아래의 순서대로 진행하자.</p>
+<h2 id="Hadoop-3-3-0-다운로드"><a href="#Hadoop-3-3-0-다운로드" class="headerlink" title="Hadoop 3.3.0 다운로드"></a>Hadoop 3.3.0 다운로드</h2><p>먼저 아래의 코드를 입력하여 하둡을 다운받고 압축을 풀어준다. (마스터에서만 진행한다.)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 다운</span></span><br><span class="line">wget https://downloads.apache.org/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 압축 해제</span></span><br><span class="line">sudo tar -xvf hadoop-3.2.1.tar.gz -C /opt/</span><br></pre></td></tr></table></figure>
+<p>그 다음 압축 해제된 파일을 <code>/opt/hadoop</code>으로 옮긴 후, 해당 디렉토리의 권한을 변경한다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> opt</span><br><span class="line">sudo mv hadoop-3.2.1 hadoop</span><br><span class="line">sudo chown pi:pi -R /opt/hadoop</span><br></pre></td></tr></table></figure>
+<p>각각의 실행파일들의 경로를 지정해야 한다. <code>~/.bashrc</code>에 들어가서 아래의 코드를 <strong>가장 윗부분에</strong>에 붙여넣는다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=$(readlink –f /usr/bin/java | sed <span class="string">"s:bin/java::"</span>)</span><br><span class="line"><span class="built_in">export</span> HADOOP_HOME=/opt/hadoop</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HADOOP_HOME</span>/bin:<span class="variable">$HADOOP_HOME</span>/sbin</span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> HADOOP_INSTALL=<span class="variable">$HADOOP_HOME</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_MAPRED_HOME=<span class="variable">$HADOOP_HOME</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_COMMON_HOME=<span class="variable">$HADOOP_HOME</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_HDFS_HOME=<span class="variable">$HADOOP_HOME</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_INSTALL=<span class="variable">$HADOOP_HOME</span></span><br><span class="line"><span class="built_in">export</span> YARN_HOME=<span class="variable">$HADOOP_HOME</span></span><br><span class="line"><span class="built_in">export</span> HADOOP_COMMON_LIB_NATIVE_DIR=<span class="variable">$HADOOP_HOME</span>/lib/native</span><br><span class="line"><span class="built_in">export</span> HADOOP_CONF_DIR=<span class="variable">$HADOOP_HOME</span>/etc/hadoop</span><br><span class="line"><span class="built_in">export</span> HADOOP_OPTS=<span class="string">"-Djava.library.path=<span class="variable">$HADOOP_HOME</span>/lib/native"</span></span><br></pre></td></tr></table></figure>
+<p>그 다음 해당 변경사항을 적용하자.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+<p>마지막으로 하둡 환경설정에도 자바 경로를 입력한다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /opt/hadoop/etc/hadoop/hadoop-env.sh</span><br></pre></td></tr></table></figure>
+<p>위 경로에 있는 스크립트 파일에서 아래의 코드를 추가해준다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=$(readlink –f /usr/bin/java | sed <span class="string">"s:bin/java::"</span>)</span><br></pre></td></tr></table></figure>
+<p>다 끝난 후 아래의 명령어로 하둡이 잘 설치되었는지 확인해보자.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hadoop version | grep Hadoop</span><br></pre></td></tr></table></figure>
+<h2 id="Spark-3-0-1-다운로드"><a href="#Spark-3-0-1-다운로드" class="headerlink" title="Spark 3.0.1 다운로드"></a>Spark 3.0.1 다운로드</h2><p>Sparkd도 Hadoop과 동일하게 진행하면 된다. 먼저 스파크를 다운받고 압축을 푼다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 다운</span></span><br><span class="line">wget https://downloads.apache.org/spark/spark-2.4.7/spark-2.4.7-bin-hadoop2.7.tgz</span><br><span class="line"></span><br><span class="line"><span class="comment"># 압축 해제</span></span><br><span class="line">sudo tar -xvf spark-2.4.7-bin-hadoop2.7.tgz -C /opt/</span><br></pre></td></tr></table></figure>
+<p>그 다음 압축 해제된 파일을 <code>/opt/spark</code>으로 옮긴 후, 해당 디렉토리의 권한을 변경한다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> opt</span><br><span class="line">sudo mv spark-2.4.7-bin-hadoop2.7 spark</span><br><span class="line">sudo chown pi:pi -R /opt/spark</span><br></pre></td></tr></table></figure>
+<p>하둡과 동일하게 각각의 실행파일들의 경로를 지정해야 한다. <code>~/.bashrc</code>에 들어가서 아래의 코드를 붙여넣는다.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> SPARK_HOME=/opt/spark</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$SPARK_HOME</span>/bin</span><br><span class="line"><span class="built_in">export</span> YARN_CONF_DIR=<span class="variable">$HADOOP_HOME</span>/etc/hadoop</span><br></pre></td></tr></table></figure>
+<p>변경사항을 적용해준 뒤 스파크가 잘 작동하는지 확인해보자.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line">spark-shell --version</span><br></pre></td></tr></table></figure>
+<p>이렇게 하둡과 스파크 설치는 끝났다. 다음 글에서는 분산처리 설정하는 방법에 대해서 살펴볼 것이다.</p>
+]]></content>
+      <categories>
+        <category>Clustering</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>raspberrypi</tag>
+        <tag>clustering</tag>
+        <tag>하둡</tag>
+        <tag>스파크</tag>
+        <tag>빅데이터</tag>
+        <tag>bigdata</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>2. Raspberry Pi SSH 셋팅하기</title>
     <url>/2020/11/09/Cluster/Clustering-2/</url>
     <content><![CDATA[<p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
@@ -1289,7 +1351,7 @@
   <entry>
     <title>0. Raspberry Pi 4 unboxing</title>
     <url>/2020/11/02/Cluster/Clustering-0/</url>
-    <content><![CDATA[<p>해당 시리즈는 라즈베리 파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
+    <content><![CDATA[<p>해당 시리즈는 라즈베리파이 3개를 연결하고 하둡(Hadoop)과 스파크(spark)를 사용하여 빅데이터를 다루는 과정을 보여줍니다.<br><a id="more"></a></p>
 <hr>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p>이제는 대부분의 데이터가 ‘빅데이터’라고 불리는 만큼 그 용량이 매우 크며, 이런 데이터들을 전부 저장하고 불러오기 위해서는 정말 좋은 컴퓨터 사양이 필요하다. 하지만 컴퓨터는 고성능일수록 가격이 가파르게 상승한다. 그렇다면 데이터를 다루기 위해 모든 사람들이 슈퍼컴퓨터를 살 필요가 있을까? 오히려 적당한 컴퓨터 여러 개를 붙여서 하나처럼 사용할 수 있다면 훨씬 저렴하게 빅데이터를 다룰 수 있을 것이다. 이처럼 여러 개의 컴퓨터를 연결하여 하나의 좋은 컴퓨터처럼 사용하는 시스템을 클러스터(Cluster)라고 한다. 결국 클러스터링(Clustering)은 클러스터를 만드는 과정인 것이다. 해당 프로젝트에서는 라즈베리 파이4 3개를 연결하여 클러스터링하는 과정들을 공부하고, 이를 기록하는 데 목적이 있다. 라즈베리 파이 3개를 연결한 모습은 다음과 같다.</p>
 <p><img src="/images/96.jpg" alt="rasp1"></p>
@@ -1320,7 +1382,6 @@
         <tag>스파크</tag>
         <tag>빅데이터</tag>
         <tag>bigdata</tag>
-        <tag>언박싱</tag>
       </tags>
   </entry>
   <entry>
