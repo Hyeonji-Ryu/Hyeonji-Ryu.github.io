@@ -1006,7 +1006,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yarn jar /opt/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.2.1.jar wordcount <span class="string">"books/*"</span> output</span><br></pre></td></tr></table></figure>
 <p>잡이 완료되면 <code>output</code> 폴더에 들어간 결과를 확인한다.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hdfs dfs -ls output</span><br><span class="line">hdfs dfs -cat output/part-r-00000 | less</span><br></pre></td></tr></table></figure>
-<h2 id="Spark-Pi-value-Test"><a href="#Spark-Pi-value-Test" class="headerlink" title="Spark Pi value Test"></a>Spark Pi value Test</h2><p>스파크에서는 기본적으로 파이 값(3.14..)을 찾는 예제를 제공한다. 아래의 코드를 입력하여 예제를 실행해보자.</p>
+<h2 id="Spark-Pi-π-value-Test"><a href="#Spark-Pi-π-value-Test" class="headerlink" title="Spark Pi(π) value Test"></a>Spark Pi(π) value Test</h2><p>스파크에서는 기본적으로 파이 값(3.14..)을 찾는 예제를 제공한다. 아래의 코드를 입력하여 예제를 실행해보자.</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">spark-submit --master yarn --deploy-mode cluster --class org.apache.spark.examples.SparkPi <span class="variable">$SPARK_HOME</span>/examples/jars/spark-examples_2.11-2.4.7.jar</span><br></pre></td></tr></table></figure>
 <p>위 코드는 하둡의 yarn에서 리소스를 받아 실행하는 것이기 때문에 결과값 또한 하둡 웹 UI에서 찾아볼 수 있다. 따라서 <code>pi-master.local:8088</code>로 접속하여 실행된 잡(어플리케이션)의 로그를 클릭하면 결과값을 확인할 수 있다.</p>
 ]]></content>
